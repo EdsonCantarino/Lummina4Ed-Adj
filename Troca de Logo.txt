@@ -1,0 +1,87 @@
+PROCEDIMENTO PARA TROCA DE LOGO NO LUMMINA4
+
+1.) Local do logo no projeto
+
+Os arquivos de logo ficam no seguinte diretório do projeto:
+components/httpd_app/www/resources/
+
+Nesse diretório já existem os logos das marcas atuais, sempre em dois formatos:
+arquivo PNG e o mesmo arquivo comprimido em PNG.GZ.
+
+2.) Tamanho obrigatório do logo
+
+O logo deve ter exatamente as seguintes dimensões:
+largura: 307 pixels
+altura: 57 pixels
+
+Esses valores foram obtidos a partir do logo atual utilizado no sistema.
+Não alterar resolução, proporção ou tamanho.
+
+3) Criar o novo logo
+
+Criar o novo logo no formato PNG, com 307 x 57 pixels.
+Nomear o arquivo conforme o padrão da marca, por exemplo:
+biosterons.png
+
+4) Comprimir o logo
+
+Gerar o arquivo comprimido correspondente, mantendo o mesmo nome do PNG.
+O resultado deve ser:
+biosterons.png.gz
+
+O arquivo PNG original também deve permanecer no diretório.
+
+5) Copiar os arquivos
+
+Copiar os dois arquivos (PNG e PNG.GZ) para o diretório:
+components/httpd_app/www/resources/
+
+Após a cópia, o diretório deve conter, por exemplo:
+biosterons.png
+biosterons.png.gz
+além dos arquivos das outras marcas já existentes.
+
+Não remover nenhum arquivo existente.
+
+6) Seleção do logo no firmware
+A escolha de qual logo será utilizado é feita pelo firmware com base no nome da marca definido na compilação.
+Nenhum arquivo HTML, JavaScript ou layout precisa ser alterado.
+Apenas o nome do arquivo correspondente à marca é utilizado.
+
+altere em branding.cpp colocando os textos do novo logo
+
+// Símbolos gerados pelo EMBED_FILES (components/httpd_app/CMakeLists.txt)
+extern const unsigned char _binary_maxximed_png_gz_start[];
+extern const unsigned char _binary_maxximed_png_gz_end[];
+
+extern const unsigned char _binary_biosterons_png_gz_start[];
+extern const unsigned char _binary_biosterons_png_gz_end[]
+
+static const branding_entry_t BRANDING_TABLE[] = {
+    {
+        "MAXXIMED",
+        _binary_maxximed_png_gz_start,
+        _binary_maxximed_png_gz_end,
+        "MAXXIMED LATIN AMERICA",
+        "Maxximed",
+        "Clicktest"
+    },
+    {
+        "BIOSTERONS",
+        _binary_biosterons_png_gz_start,
+        _binary_biosterons_png_gz_end,
+        "BIOSTERONS",
+        "BioSterons",
+        "Clicktest"
+    }
+};|
+
+7) Compilação
+No Windows, abrir um terminal comum (não é necessário modo administrador).
+Na pasta do projeto, executar a compilação informando a marca desejada.
+Aguardar o término da compilação e gravar o firmware normalmente
+
+.\compila.ps1 -Logo NOME_DO_LOGO (sem .png)
+
+exemplo: .\compila.ps1 -Logo BIOSTERONS
+

@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
+    <script src="/moment/moment.js"></script>
+    <script src="/moment/moment-with-locales.js"></script>
+    <script src="/custom/custom.js"></script>
+    <script src="/jquerymultilanguage/jquery.multilanguage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-toaster.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
+
+    <style>
+        @media (min-width: 576px) {
+            .modal-dialog {
+                max-width: 400px;
+            }
+
+            .modal-content {
+                padding: 1rem;
+            }
+        }
+
+        .modal-header {
+            .close {
+                margin-top: -1.5rem;
+            }
+        }
+
+        .form-title {
+            margin: -2rem 0rem 2rem;
+        }
+    </style>
+
+
+    <title>Lummina 4</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="../resources/logo.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown" id="menu_1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
+                        <div class="dropdown-menu" id="sub-menu-1">
+                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_9">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="language">Idioma</a>
+                        <div class="dropdown-menu" id="sub-menu-9">
+                            <a class="dropdown-item" href="javascript:setLanguage('pt-br')" key="pt-br">Português</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('es-es')" key="es-es">Español</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('en-us')" key="en-us">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3 id="reset-card-title">
+                <span key="title#1">Configurações</span>
+                <small class="text-muted" key="title#2">Dispositivo</small>
+            </h3>
+        </div>
+        <div class="card bg-light" id="connected-wifi-data">
+            <div class="card-body" id="reset-msg">
+                <p key="msg#1">Esta opção exclui os seguintes dados da memória do dispositivo:</p>
+                <p key="msg#2">1 - Sequência de incubação</p>
+                <p key="msg#3">2 - Histórico dos ultimos 12 testes realizados</p>
+                <p key="msg#4">3 - Nome do Hospital</p>
+
+                <button type="button" class="btn btn-danger" data-toggle="modal" id="btnShowModal" key="reset">
+                    Resetar dados do dispositivo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-reset-modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="resetFormTitle">
+                        <h4 key="title">Confirmação</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form id="resetForm">
+                            <div class="form-group" id="resetFormInfo">
+                                <p key="msg#1">Ao digitar a senha de confirmação e clicar no botão abaixo os dados serão
+                                    excluidos do dispositivo.</p>
+                                <p key="msg#2">Tenha certeza de que realmente quer excluir os dados.</p>
+                            </div>
+
+                            <div class="form-floating">
+                                <div class="form-floating mb-3" id="reset_password">
+                                    <input type="password" class="form-control" id="password1">
+                                    <label for="password1" key="password">Senha</label>
+                                </div>
+                            </div>
+                            <p key="msg#3">Esta operação não poderá ser cancelada nem revertida.</p>
+                            <button type="button" class="btn btn-danger btn-block" id="btnConfirmReset"
+                                key="confirm">Confirmar</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="restartDeviceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    &nbsp;
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="restartFormTitle">
+                        <h4 key="title">Sucesso</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <div class="form-group" id="restarFormInfo">
+                            <p key="msg#1">O dispositivo foi resetado com sucesso.
+                            </p>
+                            <p key="msg#2">É necessário reiniciar o dispositivo para que as configurações sejam
+                                concluidas.</p>
+                            <p key="msg#3">Desligue o dispositivo da tomada, aguarde alguns instantes e religue-o.</p>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-block" id="btnOkRestart" key="ok">Ok</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resetModalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    &nbsp;
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="resetErrorTitle">
+                        <h4 key="title">Erro</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form id="resetForm">
+                            <div class="form-group" id="resetErrorInfo">
+                                <p key="msg#1">O dispositivo não pode ser resetado enquanto houver análises em
+                                    andamento.
+                                </p>
+                                <p key="msg#2">Aguarde a finalização ou cancele as análises em andamento antes de
+                                    resetar
+                                    o dispositivo.</p>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-block" id="btnOk" key="ok">Ok</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="messages">
+        <input type="hidden" id="toast_title" name="toast_title" key="toast_title" value="Configurações do dispositivo">
+        <input type="hidden" id="toast_message" name="toast_message" key="toast_message"
+            value="Reset dos dados do dispositivo realizado com sucesso!">
+        <input type="hidden" id="error_message" name="error_message" key="error_message"
+            value="Erro ao resetar os dados do dispositivo. Tente novamente!">
+    </div>
+
+    <script src="/bootstrap/js/bootstrap-toaster.min.js"></script>
+
+    <script type="text/javascript">
+        $.get("/api/v1/language", function (data) {
+            console.log(JSON.stringify(data));
+
+            setLanguage(data.language);
+        });
+
+        $(function () {
+
+            Toast.setMaxCount(10);
+            Toast.enableQueue(true);
+
+            $("#btnShowModal").on('click', function (e) {
+                e.preventDefault();
+
+                var toast_title = $("#toast_title").val();
+                var toast_message = $("#toast_message").val();
+                var error_message = $("#error_message").val();
+
+                console.log(toast_title);
+                console.log(toast_message);
+                console.log(error_message);
+
+                // chama a API para verificar o status das ampoulas
+                // Se houve testes em execução o reset não é permitido.
+
+                $.ajax({
+                    url: '/api/v1/ampoules/status',
+                    type: "GET",
+                    success: function (data) {
+                        console.log(data);
+
+                        if (data.ampoules_status == false) {
+                            $('#resetModal').modal('show');
+                        } else {
+                            $('#resetModalError').modal('show');
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        console.log(e.responseJSON);
+                        console.log(e.responseJSON["message"]);
+
+                        var msg = e.responseJSON["message"];
+
+                        if (msg == "") {
+                            msg = error_message;
+                        }
+
+                        let toast = {
+                            title: toast_title,
+                            message: msg,
+                            status: TOAST_STATUS.DANGER,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+
+            $("#close-reset-modal").on('click', function (e) {
+                $('#resetModal').modal('hide');
+            });
+
+            $("#close-error-modal").on('click', function (e) {
+                $('#resetModalError').modal('hide');
+            });
+
+            $("#btnOk").on('click', function (e) {
+                $('#resetModalError').modal('hide');
+            });
+
+
+            $("#close-restart-modal").on('click', function (e) {
+                $('#restartDeviceModal').modal('hide');
+            });
+
+            $("#btnOkRestart").on('click', function (e) {
+                $('#restartDeviceModal').modal('hide');
+            });
+
+            $("#btnConfirmReset").on('click', function (e) {
+                e.preventDefault();
+
+                var password = $("#password1").val();
+
+                var toast_title = $("#toast_title").val();
+                var toast_message = $("#toast_message").val();
+                var error_message = $("#error_message").val();
+
+                console.log(toast_title);
+                console.log(toast_message);
+                console.log(error_message);
+
+                $.ajax({
+                    url: '/api/v1/reset',
+                    type: "POST",
+                    headers: {
+                        "Authorization": btoa(password)
+                    },
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        console.log(data);
+
+                        var data_json = JSON.parse(data);
+
+                        if (data_json.success == false) {
+                            if (data_json.ampoules_in_test == true) {
+                                $('#resetModal').modal('hide');
+                                $("#password1").val('');
+
+                                $('#resetModalError').modal('show');
+
+                                let toast = {
+                                    title: "Erro",
+                                    message: data_json.message,
+                                    status: TOAST_STATUS.ERROR,
+                                    timeout: 10000
+                                }
+
+                                Toast.setTheme(TOAST_THEME.LIGHT);
+                                Toast.create(toast);
+                            }
+                        } else {
+
+                            $('#resetModal').modal('hide');
+                            $("#password1").val('');
+
+                            $('#restartDeviceModal').modal('show');
+
+                            let toast = {
+                                title: toast_title,
+                                message: toast_message,
+                                status: TOAST_STATUS.SUCCESS,
+                                timeout: 10000
+                            }
+
+                            Toast.setTheme(TOAST_THEME.LIGHT);
+                            Toast.create(toast);
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        console.log(e.responseJSON);
+
+                        if (e.responseJSON["ampoules_in_test"] != null) {
+                            $('#resetModalError').modal('show');
+                        }
+
+                        console.log(e.responseJSON["message"]);
+
+                        var msg = e.responseJSON["message"];
+
+                        if (msg == "") {
+                            msg = error_message;
+                        }
+
+                        $('#resetModal').modal('hide');
+                        $("#password1").val('');
+
+                        let toast = {
+                            title: toast_title,
+                            message: msg,
+                            status: TOAST_STATUS.DANGER,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

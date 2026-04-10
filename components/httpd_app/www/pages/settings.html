@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
+    <script src="/moment/moment.js"></script>
+    <script src="/moment/moment-with-locales.js"></script>
+    <script src="/custom/custom.js"></script>
+    <script src="/jquerymultilanguage/jquery.multilanguage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-toaster.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
+
+    <title>Configurações do dispositivo</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="../resources/logo.png" />    
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown" id="menu_1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
+                        <div class="dropdown-menu" id="sub-menu-1">
+                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_9">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="language">Idioma</a>
+                        <div class="dropdown-menu" id="sub-menu-9">
+                            <a class="dropdown-item" href="javascript:setLanguage('pt-br')" key="pt-br">Português</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('es-es')" key="es-es">Español</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('en-us')" key="en-us">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3 id="settings-card-title">
+                <span key="title#1">Configurações</span>
+                <small class="text-muted" key="title#2">Dispositivo</small>
+            </h3>
+        </div>
+
+        <div class="card bg-light" id="connected-wifi-data">
+            <div class="card-body">
+                <div class="pb-2 mt-4 mb-2">
+                    <h4 id="version_title">
+                        <span key="title#1">Versão da firmware</span>
+                        <small class="text-muted">&nbsp;<span id="version">1.0.1</span></small>
+                    </h3>
+                </div>
+                <form>
+                    <div class="form-floating mb-3">
+                        <div class="form-floating mb-3" id="settings_date_time">
+                            <input type="text" class="form-control datepicker" id="date_time">
+                            <label for="date_time" key="date_time">Data e Hora</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-floating mb-3">
+                        <div class="form-floating mb-3" id="settings_institution">
+                            <input type="text" class="form-control" id="institution">
+                            <label for="institution" key="institution">Instituição</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2" id="save_settings">
+                    <button type="button" class="btn btn-primary" id="btnSalvar" key="save">Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings_messages">
+        <input type="hidden" id="save_success_toast_title" name="save_success_toast_title"
+            key="save_success_toast_title" value="Configurações do dispositivo">
+        <input type="hidden" id="save_success_toast_message" name="save_success_toast_message"
+            key="save_success_toast_message" value="Configurações salvas com sucesso!">
+        <input type="hidden" id="save_error_toast_title" name="save_error_toast_title" key="save_error_toast_title"
+            value="Configurações do dispositivo">
+        <input type="hidden" id="save_error_toast_message" name="save_error_toast_message"
+            key="save_error_toast_message" value="Erro ao salvar os dados. Tente novamente!">
+    </div>
+
+    <script src="/bootstrap/js/bootstrap-toaster.min.js"></script>
+
+    <script type="text/javascript">
+
+        $.get("/api/v1/language", function (data) {
+            console.log(JSON.stringify(data));
+
+            setLanguage(data.language);
+        });
+
+        $('.datepicker').datetimepicker({
+            language: 'pt-BR',
+            format: "dd/mm/yyyy HH:ii:ss",
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        });
+
+        function ascii_to_hexa(str) {
+            var arr1 = [];
+            for (var n = 0, l = str.length; n < l; n++) {
+                var hex = Number(str.charCodeAt(n)).toString(16);
+                arr1.push(hex);
+            }
+            return arr1.join('');
+        }
+
+        function hex_to_ascii(str1) {
+            var hex = str1.toString();
+            var str = '';
+            for (var n = 0; n < hex.length; n += 2) {
+                str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+            }
+            return str;
+        }
+
+        function removeAcentos(str) {
+            var com_acento = "ÄÅÁÂÀÃäáâàãÉÊËÈéêëèÍÎÏÌíîïìÖÓÔÒÕöóôòõÜÚÛüúûùÇç";
+            var sem_acento = "AAAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUuuuuCc";
+
+            let novaString = '';
+
+            for (let i = 0; i < str.length; i++) {
+                if (com_acento.indexOf(str.charAt(i)) != -1) {
+                    novaString += sem_acento.substr(com_acento.search(str.substr(i, 1)), 1);
+
+                } else {
+                    novaString += str.substr(i, 1);
+                }
+            }
+
+            return novaString;
+        }
+
+
+        function toTimestamp(strDate) {
+            var day = moment(strDate, "DD/MM/YYYY HH:mm:ss");
+
+            return day.unix();
+        }
+
+        function toDateTime(strDate) {
+            return moment(strDate, "DD/MM/YYYY HH:mm:ss");
+        }
+
+        $(function () {
+
+            Toast.setMaxCount(10);
+            Toast.enableQueue(true);
+
+            $.get("/api/v1/settings", function (data) {
+                console.log(JSON.stringify(data));
+
+                var timestamp = moment().format("DD/MM/YYYY HH:mm:ss");
+                $("#date_time").val(timestamp);
+
+                //var inst = hex_to_ascii(data.institution);
+
+                $("#institution").val(data.institution);
+
+                $("#version").text(data.version);
+            });
+
+            $("#btnSalvar").on('click', function (e) {
+                e.preventDefault();
+
+                //var dt = toTimestamp($("#date_time").val());
+
+                var date_time = toDateTime($("#date_time").val());
+
+                var institution = removeAcentos($("#institution").val());
+                //ascii_to_hexa($("#institution").val());
+
+                var data = {
+                    "year": date_time.get('year'),
+                    "month": date_time.get('month') + 1,
+                    "day": date_time.get('date'),
+                    "hour": date_time.get('hour'),
+                    "minute": date_time.get('minute'),
+                    "second": date_time.get('second'),
+                    "institution": institution
+                };
+
+                console.log(data);
+
+                $.ajax({
+                    url: '/api/v1/device/settings',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function () {
+                        let toast = {
+                            title: $("#save_success_toast_title").val(),
+                            message: $("#save_success_toast_message").val(),
+                            status: TOAST_STATUS.SUCCESS,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        let toast = {
+                            title: $("#save_error_toast_title").val(),
+                            message: $("#save_error_toast_message").val(),
+                            status: TOAST_STATUS.DANGER,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

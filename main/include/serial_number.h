@@ -1,0 +1,8 @@
+#ifndef SERIAL_NUMBER_H
+#define SERIAL_NUMBER_H
+
+
+#define DEFAULT_SERIAL_NUMBER "002300P4"
+
+
+#endif

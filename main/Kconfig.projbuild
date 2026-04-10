@@ -1,0 +1,198 @@
+menu "DS18x20 Configuration - Temperature Sensor"
+    config DS18X20_ONEWIRE_GPIO
+    	range 0 48
+        int "GPIO Number of 1-Wire bus, or DQ"
+        default 37
+        help
+            GPIO Number of 1-Wire bus, or DQ. You might need an external
+            pullup resistor on the bus. See README.md for details.
+
+    config DS18X20_MAX_SENSORS
+        int "Number of ds18x20 sensors on the 1-Wire bus"
+        default 1
+        help
+            Max number of ds18x20 sensors on th 1-Wire bus. If number of
+            sensors on the bus more than this value found on the bus, the rest
+            of sensors will be ignored.
+endmenu
+
+menu "HEATER configuration"
+	config HEATER_TEMPERATURE
+    	int "Heater limite temperature"
+        default 60
+        
+    config HEATER_TEMPERATURE_PRECISION
+    	int "Heater limite temperature"
+        default 2
+
+    config HEATER_GPIO
+    	range 0 48
+        int "GPIO Number of Heater"
+        default 35
+        help
+            GPIO Number of Buzzer.
+
+    config HEATER_FAIL_TIMEOUT
+        int "Time of heater is failed"
+        default 900000
+        help
+            The time in milliseconds of heater is timeout temperature.
+endmenu
+
+menu "I2C configuration"
+    config I2C_MASTER_SCL
+    	range 0 48
+        int "SCL GPIO Number"
+        default 9
+        help
+            GPIO number for I2C Master clock line.
+
+    config I2C_MASTER_SDA
+    	range 0 48
+        int "SDA GPIO Number"
+        default 8
+        help
+            GPIO number for I2C Master data line.
+endmenu
+
+menu "Buzzer configuration"
+    config BUZZER_GPIO
+    	range 0 48
+        int "GPIO Number of Buzzer"
+        default 36
+        help
+            GPIO Number of Buzzer.
+
+    config BUZZER_ACTIVATED
+        int "Time of buzzer is activated"
+        default 2000
+        help
+            The time in milliseconds of buzzer is activated.
+endmenu
+
+menu "Device Configuration"
+    
+    config WS_BASIC_AUTH
+        bool "Basic Authentication"
+        default n
+        help
+            Basic Authentication is a method for an HTTP user agent (e.g. a web browser)
+            to provide a user name and password when making a request. It is the simplest
+            technique for enforcing access controls to web resources. because it doesn't
+            require cookies, session identifiers, or login pages; rather, it uses standard
+            fields in the HTTP header.
+            Note that, Basic Authentication is not encrypted channel and also easy to retrieve
+            credentials as they are sent in plain text format.
+
+    config WS_BASIC_AUTH_USERNAME
+        string "Basic Authenticate User Name"
+        depends on WS_BASIC_AUTH
+        default "admin"
+        help
+            The client's user name which used for basic authenticate.
+
+    config WS_BASIC_AUTH_PASSWORD
+        string "Basic Authenticate Password"
+        depends on WS_BASIC_AUTH
+        default "lummina4@2022!!"
+        help
+            The client's password which used for basic authenticate.
+    
+endmenu
+
+menu "Wifi AP Configuration"
+
+    config WEBAPP_LOCATION
+        string "Defines the URL where the wifi manager is located"
+        default "/"
+        help
+        This parameter helps you relocate the wifimanager to another URL, for instance /wifimanager/ The trailing slash is important and should be included
+    
+    config DEFAULT_AP_SSID
+        string "Access Point SSID"
+        default "Lummina4"
+        help
+        SSID (network name) the the esp32 will broadcast.
+    
+    config DEFAULT_AP_PASSWORD
+        string "Access Point Password"
+        default "Maxximed@2022!!"
+        help
+        Password used for the Access Point. Leave empty and set AUTH MODE to WIFI_AUTH_OPEN for no password.
+    
+    config DEFAULT_AP_CHANNEL
+        int "Access Point WiFi Channel"
+        default 1
+        help
+        Be careful you might not see the access point if you use a channel not allowed in your country.
+    
+    config DEFAULT_AP_IP
+        string "Access Point IP Address"
+        default "10.10.0.1"
+        help
+        This is used for the redirection to the captive portal. It is recommended to leave unchanged.
+    
+    config DEFAULT_AP_GATEWAY
+        string "Access Point IP Gateway"
+        default "10.10.0.1"
+        help
+        This is used for the redirection to the captive portal. It is recommended to leave unchanged.
+    
+    config DEFAULT_AP_NETMASK
+        string "Access Point Netmask"
+        default "255.255.255.0"
+        help
+        This is used for the redirection to the captive portal. It is recommended to leave unchanged.
+    
+    config DEFAULT_AP_MAX_CONNECTIONS
+        int "Access Point Max Connections"
+        default 4
+        help
+        Max is 4.
+    
+    config DEFAULT_AP_BEACON_INTERVAL
+        int "Access Point Beacon Interval (ms)"
+        default 100
+        help
+        100ms is the recommended default.
+    
+endmenu
+
+menu "Http Auth Configuration"
+
+    config USE_BASIC_AUTH
+        bool "Basic Authentication"
+        default n
+        help
+            Basic Authentication is a method for an HTTP user agent (e.g. a web browser)
+            to provide a user name and password when making a request. It is the simplest
+            technique for enforcing access controls to web resources. because it doesn't
+            require cookies, session identifiers, or login pages; rather, it uses standard
+            fields in the HTTP header.
+            Note that, Basic Authentication is not encrypted channel and also easy to retrieve
+            credentials as they are sent in plain text format.
+
+    config DEFAULT_BASIC_AUTH_USERNAME
+        string "Basic Authenticate User Name"
+        depends on USE_BASIC_AUTH
+        default "maxximed"
+        help
+            The client's user name which used for basic authenticate.
+
+    config DEFAULT_BASIC_AUTH_PASSWORD
+        string "Basic Authenticate Password"
+        depends on USE_BASIC_AUTH
+        default "suporte@2022!!"
+        help
+            The client's password which used for basic authenticate.
+
+endmenu
+
+
+
+menu "Firmware"
+
+    config FIRMWARE_VERSION
+        string "Defines the firmware version"
+        default "1.0.0"
+endmenu

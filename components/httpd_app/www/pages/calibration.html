@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
+    <script src="/moment/moment.js"></script>
+    <script src="/moment/moment-with-locales.js"></script>
+    <script src="/custom/custom.js"></script>
+    <script src="/jquerymultilanguage/jquery.multilanguage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-toaster.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
+
+    <style>
+        .table-responsive {
+            max-height: 300px;
+        }
+    </style>
+
+    <title>Calibração Temperatura</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="../resources/logo.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown" id="menu_1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
+                        <div class="dropdown-menu" id="sub-menu-1">
+                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_9">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="language">Idioma</a>
+                        <div class="dropdown-menu" id="sub-menu-9">
+                            <a class="dropdown-item" href="javascript:setLanguage('pt-br')" key="pt-br">Português</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('es-es')" key="es-es">Español</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('en-us')" key="en-us">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3 id="calibration-card-title">
+                <span key="title#1">Calibração</span>
+                <small class="text-muted" key="title#2">Sensor de Temperatura</small>
+            </h3>
+        </div>
+
+        <div class="card bg-light" id="connected-wifi-data">
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <div class="form-floating mb-3" id="calibration_temperature_thermometer">
+                        <input type="text" class="form-control" id="temperature_thermometer" disabled>
+                        <label for="temperature_thermometer" key="temperature_thermometer">Temperatura Atual</label>
+                    </div>
+                    <!-- <div class="form-floating mb-3" id="calibration_temperature_thermometer_adjusted">
+                        <input type="text" class="form-control" id="temperature_thermometer_adjusted" disabled>
+                        <label for="temperature_thermometer_adjusted" key="temperature_thermometer_adjusted">Temperatura
+                            Ajustada</label>
+                    </div> -->
+                </div>
+            </div>
+            <div class="card-body d-none" id="dv_result">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-primary" onclick="decrementar()">-
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" id="temperature_factor" disabled>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-primary" onclick="incrementar()">+
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2" id="controls">
+                    <button type="button" class="btn btn-primary d-none" id="btnSalvar" key="save">Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="configModalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    &nbsp;
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="configErrorTitle">
+                        <h4 key="title">Erro</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <form id="configForm">
+                            <div class="form-group" id="configErrorInfo">
+                                <p key="msg#1">A temperatura não pode ser calibrada enquanto houver análises em
+                                    andamento.
+                                </p>
+                                <p key="msg#2">Aguarde a finalização ou cancele as análises em andamento antes de
+                                    configurar
+                                    o dispositivo.</p>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-block" id="btnOkConfigError"
+                                key="ok">Ok</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="configModalSucess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    &nbsp;
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="configSuccessFormTitle">
+                        <h4 key="title">Sucesso</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <div class="form-group" id="configSuccessFormInfo">
+                            <p key="msg#1">A temperatura foi calibrada com sucesso.
+                            </p>
+                            <!-- <p key="msg#2">É necessário reiniciar o dispositivo para que as configurações sejam
+                                concluidas.</p>
+                            <p key="msg#3">Desligue o dispositivo da tomada, aguarde alguns instantes e religue-o.</p> -->
+                        </div>
+                        <button type="button" class="btn btn-danger btn-block" id="btnOkConfigSuccess"
+                            key="ok">Ok</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="calibration_messages">
+        <input type="hidden" id="save_success_toast_title" name="save_success_toast_title"
+            key="save_success_toast_title" value="Calibração">
+        <input type="hidden" id="save_success_toast_message" name="save_success_toast_message"
+            key="save_success_toast_message" value="Fator de calibração salvo com sucesso!">
+        <input type="hidden" id="save_error_toast_title" name="save_error_toast_title" key="save_error_toast_title"
+            value="Calibração">
+        <input type="hidden" id="save_error_toast_message" name="save_error_toast_message"
+            key="save_error_toast_message" value="Erro ao salvar o fator de calibração. Tente novamente!">
+        <input type="hidden" id="read_temperatures_toast_title" name="read_temperatures_toast_title"
+            key="read_temperatures_toast_title" value="Calibração Sensor de Temperatura">
+        <input type="hidden" id="read_temperatures_toast_message" name="read_temperatures_toast_message"
+            key="read_temperatures_toast_message" value="Informe o valor lido no sensor de temperatura externo!">
+    </div>
+
+    <script src="/bootstrap/js/bootstrap-toaster.min.js"></script>
+
+    <script type="text/javascript">
+
+        var temp_range = 0.5;
+        var temperature = 0.0;
+        var factor_actual = 0.0;
+
+        function clearValue(value) {
+            return value.replace(" °C", "");
+        }
+
+        function incrementar() {
+            var valor = parseFloat(clearValue(document.getElementById("temperature_factor").value));
+            var temp = parseFloat(clearValue(document.getElementById("temperature_thermometer").value));
+            valor += temp_range;
+            temp += temp_range;
+
+            valor = formatTemperature(parseFloat(valor).toFixed(1).toString());
+            temp = formatTemperature(parseFloat(temp).toFixed(1).toString());
+
+            document.getElementById("temperature_factor").value = valor;
+            document.getElementById("temperature_thermometer").value = temp;
+
+            //$("#temperature_factor").val(parseFloat(valor).toFixed(1).toString() + "°C");
+            //$("#temperature_thermometer_adjusted").val(parseFloat(temp).toFixed(1).toString() + "°C");
+        }
+
+        function decrementar() {
+            var valor = parseFloat(clearValue(document.getElementById("temperature_factor").value));
+            var temp = parseFloat(clearValue(document.getElementById("temperature_thermometer").value));
+            valor -= temp_range;
+            temp -= temp_range;
+
+            document.getElementById("temperature_factor").value = parseFloat(valor).toFixed(1).toString() + "°C";
+            document.getElementById("temperature_thermometer").value = parseFloat(temp).toFixed(1).toString() + "°C"
+
+            //$("#temperature_factor").val(parseFloat(valor).toFixed(1).toString() + "°C");
+            //$("#temperature_thermometer_adjusted").val(parseFloat(temp).toFixed(1).toString() + "°C");
+        }
+
+        $.get("/api/v1/language", function (data) {
+            console.log(JSON.stringify(data));
+
+            setLanguage(data.language);
+        });
+
+        function check(){
+            $.get("/api/v1/temperatures", function (data) {
+                console.log(JSON.stringify(data));
+    
+                get_temperatures(data);
+            });
+        }
+
+        check();
+
+        function ascii(a) { return String.fromCharCode(a); }
+
+        function formatTemperature(t) {
+            return t.toString() + " " + ascii(176) + "C";
+        }
+
+        function get_temperatures(data) {
+            // Calcula a média dos valores
+            let average = get_average(data.temperatures);
+            let size = data.temperatures.length;
+            let soma = get_sum(data.temperatures);
+            let f_factor = data.factor;
+
+            factor_actual = parseFloat(f_factor);
+
+            let temp = parseFloat(average).toFixed(1);
+            temp = formatTemperature(temp.toString());
+            console.log(temp);
+
+            let factor = parseFloat("0").toFixed(1);
+            factor = formatTemperature(factor.toString());
+            console.log(factor);
+
+            document.getElementById("temperature_thermometer").value = temp.toString();
+            document.getElementById("temperature_factor").value = factor.toString();
+
+            temperature = temp;
+
+            //document.getElementById("temperature_thermometer_adjusted").value = "";
+
+            //$("#temperature_thermometer").val(temperature);
+            //$("#temperature_factor").val(factor);
+
+            $("#dv_result").removeClass('d-none');
+            $("#btnReadTemperatures").addClass('d-none');
+            $("#btnSalvar").removeClass('d-none');
+        }
+
+        function get_sum(temperatures) {
+            var value = 0;
+
+            $.each(temperatures, function (i, item) {
+                value += item;
+            });
+
+            return value.toFixed(1);
+        }
+
+        function get_average(temperatures) {
+            var value = get_sum(temperatures);
+
+            let size = temperatures.length;
+
+            let average = (value / size);
+
+            return parseFloat(average).toFixed(1);
+        }
+
+        $(function () {
+            Toast.setMaxCount(10);
+            Toast.enableQueue(true);
+
+            $("#btnOkConfigSuccess").on('click', function (e) {
+                $('#configModalSucess').modal('hide');
+
+                check();
+            });
+
+            $("#btnOkConfigError").on('click', function (e) {
+                $('#configModalError').modal('hide');
+            });
+
+
+            $.ajax({
+                url: '/api/v1/ampoules/status',
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+
+                    if (data.ampoules_status == true) {
+                        $('#configModalError').modal('show');
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                    console.log(e.responseJSON);
+                    console.log(e.responseJSON["message"]);
+
+                    var msg = e.responseJSON["message"];
+
+                    if (msg == "") {
+                        msg = error_message;
+                    }
+
+                    let toast = {
+                        title: toast_title,
+                        message: msg,
+                        status: TOAST_STATUS.DANGER,
+                        timeout: 10000
+                    }
+
+                    Toast.setTheme(TOAST_THEME.LIGHT);
+                    Toast.create(toast);
+                }
+            });
+
+            $("#btnSalvar").on('click', function (e) {
+                e.preventDefault();
+
+                var temp = parseFloat(clearValue(document.getElementById("temperature_thermometer").value));
+
+                var t_factor = parseFloat(clearValue(temperature.toString()));
+
+                var f = parseFloat(parseFloat(temp - t_factor).toFixed(1));
+                f = f + factor_actual;
+
+                var data = {
+                    "factor": parseFloat(f).toFixed(1)
+                };
+
+                console.log(data);
+
+                $.ajax({
+                    url: '/api/v1/device/calibration',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data) {
+                        console.log(data);
+
+                        if (data['ampoules_in_test']) {
+                            if (data.success == false && data.ampoules_in_test == true) {
+                                $('#configModalError').modal('show');
+                            }
+                        }
+
+                        if (data.success == true) {
+                            $('#configModalSucess').modal('show');
+
+                            let toast = {
+                                title: $("#save_success_toast_title").val(),
+                                message: $("#save_success_toast_message").val(),
+                                status: TOAST_STATUS.SUCCESS,
+                                timeout: 10000
+                            }
+
+                            Toast.setTheme(TOAST_THEME.LIGHT);
+                            Toast.create(toast);
+
+                            check();
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        let toast = {
+                            title: $("#save_error_toast_title").val(),
+                            message: $("#save_error_toast_message").val(),
+                            status: TOAST_STATUS.DANGER,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
+    <script src="/moment/moment.js"></script>
+    <script src="/moment/moment-with-locales.js"></script>
+    <script src="/custom/custom.js"></script>
+    <script src="/jquerymultilanguage/jquery.multilanguage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-toaster.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
+
+    <style>
+        .table-responsive {
+            max-height: 300px;
+        }
+    </style>
+
+    <title>Incubação</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="../resources/logo.png" />    
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown" id="menu_1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
+                        <div class="dropdown-menu" id="sub-menu-1">
+                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_2">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="incubation">Incubação</a>
+                        <div class="dropdown-menu" id="sub-menu-2">
+                            <a class="dropdown-item" href="/admin" key="analysis">Análise</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_3">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="restrict">Área Restrita</a>
+                        <div class="dropdown-menu" id="sub-menu-3">
+                            <a class="dropdown-item" href="/admin/restrict" key="settings">Configurações</a>
+                            <a class="dropdown-item" href="/admin/serialnumber" key="serial_number">Número de Série</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_4">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="system">Sistema</a>
+                        <div class="dropdown-menu" id="sub-menu-4">
+                            <a class="dropdown-item restart" href="#" key="restart">Reiniciar Dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_9">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="language">Idioma</a>
+                        <div class="dropdown-menu" id="sub-menu-9">
+                            <a class="dropdown-item" href="javascript:setLanguage('pt-br')" key="pt-br">Português</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('es-es')" key="es-es">Español</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('en-us')" key="en-us">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3 id="ampoules-card-title">
+                <span key="title#1">Incubação</span>
+                <small class="text-muted" key="title#2">Ampolas</small>
+            </h3>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card mb-3" style="max-width: 20rem;" id="cavity_1">
+                    <div class="card-header" key="title_cavity_1">Cavidade 01</div>
+                    <div class="card-body" id="body_cavity_1">
+                        <h5 class="card-title" key="key#1">N. Incub: <span id="incubadora_1"></span></h5>
+                        <hr />
+                        <h6 key="key#2">Data e Hora Inicio:</h6>
+                        <h6><span id="data_inicio_1"></span>&nbsp;<span id="hora_inicio_1"></span></h6>
+                        <hr />
+                        <h6 key="key#3">Data e Hora Término:</h6>
+                        <h6><span id="data_fim_1"></span>&nbsp;<span id="hora_fim_1"></span></h6>
+                        <hr />
+                        <div class="table-responsive">
+                            <table class="table" id="records_table_1">
+                                <tr id="records_table_cols_1">
+                                    <th key="key#1">Amostra</th>
+                                    <th key="key#2">Resultado</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr />
+                        <h6 id="ampoules_result_1">
+                            <span key="key#4">Qtde de leituras: </span><span id="qt_leitura_1"></span><br />
+                            <span key="key#5">Soma das leituras: </span><span id="soma_leitura_1"></span><br />
+                            <span key="key#6">Media das leituras: </span><span id="media_1"></span><br />
+                            <span key="key#7">Variacao Percentual: </span><span id="variacao_1"></span><br />
+                            <span key="key#8">% Positivação: </span><span id="p_positivacao_1"></span>
+                        </h6>
+                    </div>
+                    <div id="card_footer_result_1" class="card-footer">
+                        <h6><span key="key#1">Resultado: </span><span id="resultado_1"></span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-3" style="max-width: 20rem;" id="cavity_2">
+                    <div class="card-header" key="title_cavity_2">Cavidade 02</div>
+                    <div class="card-body" id="body_cavity_2">
+                        <h5 class="card-title" key="key#1">N. Incub: <span id="incubadora_2"></span></h5>
+                        <hr />
+                        <h6 key="key#2">Data e Hora Inicio:</h6>
+                        <h6><span id="data_inicio_2"></span>&nbsp;<span id="hora_inicio_2"></span></h6>
+                        <hr />
+                        <h6 key="key#3">Data e Hora Término:</h6>
+                        <h6><span id="data_fim_2"></span>&nbsp;<span id="hora_fim_2"></span></h6>
+                        <hr />
+                        <div class="table-responsive">
+                            <table class="table" id="records_table_2">
+                                <tr id="records_table_cols_2">
+                                    <th key="key#1">Amostra</th>
+                                    <th key="key#2">Resultado</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr />
+                        <h6 id="ampoules_result_2">
+                            <span key="key#4">Qtde de leituras: </span><span id="qt_leitura_2"></span><br />
+                            <span key="key#5">Soma das leituras: </span><span id="soma_leitura_2"></span><br />
+                            <span key="key#6">Media das leituras: </span><span id="media_2"></span><br />
+                            <span key="key#7">Variacao Percentual: </span><span id="variacao_2"></span><br />
+                            <span key="key#8">% Positivação: </span><span id="p_positivacao_2"></span>
+                        </h6>
+                    </div>
+                    <div id="card_footer_result_2" class="card-footer">
+                        <h6><span key="key#1">Resultado: </span><span id="resultado_2"></span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-3" style="max-width: 20rem;" id="cavity_3">
+                    <div class="card-header" key="title_cavity_3">Cavidade 03</div>
+                    <div class="card-body" id="body_cavity_3">
+                        <h5 class="card-title" key="key#1">N. Incub: <span id="incubadora_3"></span></h5>
+                        <hr />
+                        <h6 key="key#2">Data e Hora Inicio:</h6>
+                        <h6><span id="data_inicio_3"></span>&nbsp;<span id="hora_inicio_3"></span></h6>
+                        <hr />
+                        <h6 key="key#3">Data e Hora Término:</h6>
+                        <h6><span id="data_fim_3"></span>&nbsp;<span id="hora_fim_3"></span></h6>
+                        <hr />
+                        <div class="table-responsive">
+                            <table class="table" id="records_table_3">
+                                <tr id="records_table_cols_3">
+                                    <th key="key#1">Amostra</th>
+                                    <th key="key#2">Resultado</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr />
+                        <h6 id="ampoules_result_3">
+                            <span key="key#4">Qtde de leituras: </span><span id="qt_leitura_3"></span><br />
+                            <span key="key#5">Soma das leituras: </span><span id="soma_leitura_3"></span><br />
+                            <span key="key#6">Media das leituras: </span><span id="media_3"></span><br />
+                            <span key="key#7">Variacao Percentual: </span><span id="variacao_3"></span><br />
+                            <span key="key#8">% Positivação: </span><span id="p_positivacao_3"></span>
+                        </h6>
+                    </div>
+                    <div id="card_footer_result_3" class="card-footer">
+                        <h6><span key="key#1">Resultado: </span><span id="resultado_3"></span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-3" style="max-width: 20rem;" id="cavity_4">
+                    <div class="card-header" key="title_cavity_4">Cavidade 04</div>
+                    <div class="card-body" id="body_cavity_4">
+                        <h5 class="card-title" key="key#1">N. Incub: <span id="incubadora_4"></span></h5>
+                        <hr />
+                        <h6 key="key#2">Data e Hora Inicio:</h6>
+                        <h6><span id="data_inicio_4"></span>&nbsp;<span id="hora_inicio_4"></span></h6>
+                        <hr />
+                        <h6 key="key#3">Data e Hora Término:</h6>
+                        <h6><span id="data_fim_4"></span>&nbsp;<span id="hora_fim_4"></span></h6>
+                        <hr />
+                        <div class="table-responsive">
+                            <table class="table" id="records_table_4">
+                                <tr id="records_table_cols_4">
+                                    <th key="key#1">Amostra</th>
+                                    <th key="key#2">Resultado</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr />
+                        <h6 id="ampoules_result_4">
+                            <span key="key#4">Qtde de leituras: </span><span id="qt_leitura_4"></span><br />
+                            <span key="key#5">Soma das leituras: </span><span id="soma_leitura_4"></span><br />
+                            <span key="key#6">Media das leituras: </span><span id="media_4"></span><br />
+                            <span key="key#7">Variacao Percentual: </span><span id="variacao_4"></span><br />
+                            <span key="key#8">% Positivação: </span><span id="p_positivacao_4"></span>
+                        </h6>
+                    </div>
+                    <div id="card_footer_result_4" class="card-footer">
+                        <h6><span key="key#1">Resultado: </span><span id="resultado_4"></span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ampoules_messages">
+        <input type="hidden" id="restart_toast_title" name="restart_toast_title" key="restart_toast_title"
+            value="Reiniciar Dispositivo">
+        <input type="hidden" id="restart_toast_message" name="restart_toast_message" key="restart_toast_message"
+            value="O dispositivo será reiniciado em 10 segundos!">
+        <input type="hidden" id="process" name="process" key="process" value="Processando...">
+        <input type="hidden" id="positive_result" name="positive_result" key="positive_result"
+            value="**** POSITIVO ****">
+        <input type="hidden" id="negative_result" name="negative_result" key="negative_result"
+            value="**** NEGATIVO ****">
+    </div>
+
+    <script src="bootstrap/js/bootstrap-toaster.min.js"></script>
+
+    <script type="text/javascript">
+        var vTimeOut;
+        var refreshTimeOut = 30000;
+
+        $.get("/api/v1/language", function (data) {
+            console.log(JSON.stringify(data));
+
+            setLanguage(data.language);
+        });
+
+        function teste(json) {
+
+            $.each(json, function (i, item) {
+                var trHTML = '';
+                var id_data_inicio = 'data_inicio_' + item.ampoule;
+                var id_hora_inicio = 'hora_inicio_' + item.ampoule;
+                var id_incub = 'incubadora_' + item.ampoule;
+                var id_data_fim = 'data_fim_' + item.ampoule;
+                var id_hora_fim = 'hora_fim_' + item.ampoule;
+                var id_table = 'records_table' + '_' + item.ampoule;
+                var id_media = 'media_' + item.ampoule;
+                var id_qt_leitura = 'qt_leitura_' + item.ampoule;
+                var id_soma_leitura = 'soma_leitura_' + item.ampoule;
+                var id_variacao = 'variacao_' + item.ampoule;
+                var id_resultado = 'resultado_' + item.ampoule;
+                let id_card = 'card_footer_result_' + item.ampoule;
+
+                $("#" + id_table).find("tr:gt(0)").remove();
+
+                var id_p_positivacao = 'p_positivacao_' + item.ampoule;
+
+                let pp = item.positive_percentage;
+
+                if (isNaN(pp) || pp <= 0)
+                    pp = 20.0;
+
+                var positive_percentage = parseFloat(pp).toFixed(1);
+
+                if (item.incubation > 0) {
+
+                    $("#" + id_incub).text(item.incubation.toString().padStart(10, '0'));
+
+                    $("#" + id_data_inicio).text(item.start_date);
+                    $("#" + id_hora_inicio).text(item.start_hour);
+
+                    if ((item.start_date + item.start_hour) != (item.end_date + item.end_hour)) {
+                        $("#" + id_data_fim).text(item.end_date);
+                        $("#" + id_hora_fim).text(item.end_hour);
+                    } else {
+                        var p = $("#process").val();
+                        $("#" + id_data_fim).text(p);
+                    }
+
+                    
+                    
+                    $.each(item.samples, function (x, res) {
+                        trHTML += '<tr><td>' + (x + 1) + '</td>'
+                        trHTML += '<td>' + res + '</td></tr>';
+                    });
+
+                    //$('#' + id_table).empty();
+                    $('#' + id_table).append(trHTML);
+
+                    // Calcula a média dos valores
+                    let average = get_average(item.samples);
+
+                    $("#" + id_media).text(average);
+
+                    let size = item.samples.length;
+
+                    $("#" + id_qt_leitura).text(size);
+
+                    let soma = get_sum(item.samples);
+
+                    $("#" + id_soma_leitura).text(soma);
+
+                    let diff = get_percentual_variation(average, item.samples);
+
+                    $("#" + id_variacao).text(diff);
+
+                    let result = calculate_result(diff, positive_percentage);
+
+                    $("#" + id_p_positivacao).text(positive_percentage);
+
+                    var positive_result = $("#positive_result").val();
+                    var negative_result = $("#negative_result").val();
+
+                    $("#" + id_resultado).text(result ? positive_result : negative_result);
+
+                    $("#" + id_card).removeClass('bg-danger');
+                    $("#" + id_card).removeClass('bg-success');
+                    $("#" + id_card).removeClass('text-white');
+
+                    if (result) {
+                        $("#" + id_card).addClass('bg-danger');
+                        $("#" + id_card).addClass('text-white');
+                    } else {
+                        $("#" + id_card).addClass('bg-success');
+                        $("#" + id_card).addClass('text-white');
+                    }
+                } else {
+                    $("#" + id_card).removeClass('bg-danger');
+                    $("#" + id_card).removeClass('bg-success');
+                    $("#" + id_card).removeClass('text-white');
+
+                    $("#" + id_incub).text("***");
+
+                    $("#" + id_data_inicio).text("***");
+                    $("#" + id_hora_inicio).text("***");
+                    $("#" + id_data_fim).text("***");
+                    $("#" + id_hora_fim).text("***");
+
+                    $("#" + id_media).text("***");
+                    $("#" + id_qt_leitura).text("***");
+                    $("#" + id_soma_leitura).text("***");
+                    $("#" + id_variacao).text("***");
+                    $("#" + id_resultado).text("***");
+                }
+            });
+        }
+
+        $('.datepicker').datetimepicker({
+            language: 'pt-BR',
+            format: "dd/mm/yyyy HH:ii:ss",
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        });
+
+        function get_sum(samples) {
+            var value = 0;
+
+            $.each(samples, function (i, item) {
+                value += item;
+            });
+
+            return value;
+
+        }
+
+        function get_average(samples) {
+            var value = get_sum(samples);
+
+            let size = samples.length;
+
+            let average = (value / size);
+
+            return parseInt(average);
+        }
+
+        function get_percentual_variation(average, samples) {
+            let size = samples.length;
+
+            if (size <= 0)
+                return false;
+
+            if (size < 10)
+                return 0;
+
+            let diff = 0.0;
+            let medH = 0;
+            let medL = 0;
+            medH += samples[size - 1];
+            medH += samples[size - 2];
+            medH += samples[size - 3];
+            medH += samples[size - 4];
+            medH += samples[size - 5];
+            medL += samples[0];
+            medL += samples[1];
+            medL += samples[2];
+            medL += samples[3];
+            medL += samples[4];
+
+            for (let i = 0; i < size; i++) {
+                let s = samples[i] - average;
+
+                if (s < 0)
+                    s = s * -1.0;
+
+                diff += s;
+            }
+
+            if (diff > 0)
+                diff = diff / size;
+
+            diff = (diff / average) * 100;
+
+            diff = ((medH - medL) / medL) * 100;
+
+            return diff.toFixed(2);
+        }
+
+        function calculate_result(diff, positive_percentage) {
+
+            let is_positived = diff > positive_percentage;
+
+            return is_positived;
+        }
+
+        function toTimestamp(strDate) {
+            var day = moment(strDate, "DD/MM/YYYY HH:mm:ss");
+
+            return day.unix();
+        }
+
+        function toDateTime(strDate) {
+            return moment(strDate, "DD/MM/YYYY HH:mm:ss");
+        }
+
+        function load_data() {
+            $.get("/api/v1/ampoules", function (data) {
+                console.log(JSON.stringify(data));
+
+                teste(data);
+            });
+        }
+
+        function startRefresh() {
+            clearInterval(vTimeOut);
+            vTimeOut= setTimeout(startRefresh, refreshTimeOut);
+            load_data();
+          }
+
+        $(function () {
+
+            Toast.setMaxCount(10);
+            Toast.enableQueue(true);
+
+            $(".restart").on("click", function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/api/v1/device/restart',
+                    type: "GET",
+                    success: function () {
+                        let toast = {
+                            title: $("#restart_toast_title").val(),
+                            message: $("#restart_toast_message").val(),
+                            status: TOAST_STATUS.SUCCESS,
+                            timeout: 10000
+                        }
+
+                        Toast.enableTimers(TOAST_TIMERS.COUNTDOWN);
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+
+            $.get("/api/v1/settings", function (data) {
+                console.log(JSON.stringify(data));
+
+                var timestamp = moment().format("DD/MM/YYYY HH:mm:ss");
+                $("#date_time").val(timestamp);
+
+                $("#institution").val(data.institution);
+            });
+
+            load_data();
+
+            vTimeOut= setTimeout(startRefresh, refreshTimeOut);
+        });
+    </script>
+</body>
+
+</html>

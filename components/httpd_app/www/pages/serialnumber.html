@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
+    <script src="../../moment/moment.js"></script>
+    <script src="../../moment/moment-with-locales.js"></script>
+    <script src="../../custom/custom.js"></script>
+    <script src="../../jquerymultilanguage/jquery.multilanguage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap-toaster.min.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
+
+    <title>Área Restrita</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="../resources/logo.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown" id="menu_1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
+                        <div class="dropdown-menu" id="sub-menu-1">
+                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_2">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="incubation">Incubação</a>
+                        <div class="dropdown-menu" id="sub-menu-2">
+                            <a class="dropdown-item" href="/admin" key="analysis">Análise</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_3">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="restrict">Área Restrita</a>
+                        <div class="dropdown-menu" id="sub-menu-3">
+                            <a class="dropdown-item" href="/admin/restrict" key="settings">Configurações</a>
+                            <a class="dropdown-item" href="/admin/serialnumber" key="serial_number">Número de Série</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_4">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="system">Sistema</a>
+                        <div class="dropdown-menu" id="sub-menu-4">
+                            <a class="dropdown-item restart" href="#" key="restart">Reiniciar Dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_9">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="language">Idioma</a>
+                        <div class="dropdown-menu" id="sub-menu-9">
+                            <a class="dropdown-item" href="javascript:setLanguage('pt-br')" key="pt-br">Português</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('es-es')" key="es-es">Español</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('en-us')" key="en-us">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3 id="serial-number-card-title">
+                <span key="title#1">Configurações</span>
+                <small class="text-muted" key="title#2">Dispositivo (Área Restrita)</small>
+            </h3>
+        </div>
+
+
+        <div class="card bg-light" id="connected-wifi-data">
+            <div class="card-body">
+                <form>
+                    <div class="form-floating mb-3">
+                        <div class="form-floating mb-3" id="old_serial_number">
+                            <input type="text" class="form-control" id="num_serie_atual" disabled>
+                            <label for="num_serie" key="num_serie">Número de Série (Atual)</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="form-floating mb-3" id="new_serial_number">
+                            <input type="text" class="form-control" id="num_serie">
+                            <label for="num_serie" key="num_serie">Número de Série (Novo)</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2" id="save_serial_number">
+                    <button type="button" class="btn btn-primary" id="btnSalvar" key="save">Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="serial_number_messages">
+        <input type="hidden" id="restart_toast_title" name="restart_toast_title" key="restart_toast_title"
+            value="Reiniciar Dispositivo">
+        <input type="hidden" id="restart_toast_message" name="restart_toast_message" key="restart_toast_message"
+            value="O dispositivo será reiniciado em 10 segundos!">
+        <input type="hidden" id="save_success_toast_title" name="save_success_toast_title"
+            key="save_success_toast_title" value="Configurações do dispositivo">
+        <input type="hidden" id="save_success_toast_message" name="save_success_toast_message"
+            key="save_success_toast_message"
+            value="A alteração do Número de série do equipamento requer que o dispositivo seja reiniciado.<br />O dispositivo será reiniciado automaticamente em 10 segundos!">
+        <input type="hidden" id="save_error_toast_title" name="save_error_toast_title" key="save_error_toast_title"
+            value="Configurações do dispositivo">
+        <input type="hidden" id="save_error_toast_message" name="save_error_toast_message"
+            key="save_error_toast_message" value="Erro ao salvar os dados. Tente novamente!">
+    </div>
+
+    <script src="../../bootstrap/js/bootstrap-toaster.min.js"></script>
+
+    <script type="text/javascript">
+        $.get("/api/v1/language", function (data) {
+            console.log(JSON.stringify(data));
+
+            setLanguage(data.language);
+        });
+
+
+        $(function () {
+
+            Toast.setMaxCount(10);
+            Toast.enableQueue(true);
+
+            $(".restart").on("click", function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/api/v1/device/restart',
+                    type: "GET",
+                    success: function () {
+                        let toast = {
+                            title: $("#restart_toast_title").val(),
+                            message: $("#restart_toast_message").val(),
+                            status: TOAST_STATUS.SUCCESS,
+                            timeout: 10000
+                        }
+
+                        Toast.enableTimers(TOAST_TIMERS.COUNTDOWN);
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+
+            $.get("/api/v1/settings/serialnumber", function (data) {
+                console.log(JSON.stringify(data));
+
+                $("#num_serie_atual").val(data.serialNumber);
+            });
+
+            $("#btnSalvar").on('click', function (e) {
+                e.preventDefault();
+
+                var num_serie = $("#num_serie").val();
+
+                var data = {
+                    "serialNumber": num_serie
+                };
+
+                console.log(data);
+
+                $.ajax({
+                    url: '/api/v1/restrict/serialnumber',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function () {
+                        let toast = {
+                            title: $("#save_success_toast_title").val(),
+                            message: $("#save_success_toast_message").val(),
+                            status: TOAST_STATUS.SUCCESS,
+                            timeout: 10000
+                        }
+
+                        Toast.enableTimers(TOAST_TIMERS.COUNTDOWN);
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        let toast = {
+                            title: $("#save_error_toast_title").val(),
+                            message: $("#save_error_toast_message").val(),
+                            status: TOAST_STATUS.DANGER,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

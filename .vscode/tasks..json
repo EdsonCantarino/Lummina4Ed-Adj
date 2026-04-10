@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ESP32: Compilar (Docker)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\compila.ps1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "ESP32: Flash",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\flash.ps1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "ESP32: Shell ESP-IDF (Docker)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\linker_docker.ps1"],
+      "problemMatcher": []
+    }
+  ]
+}
+

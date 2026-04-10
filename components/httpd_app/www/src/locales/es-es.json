@@ -1,0 +1,296 @@
+{
+  "head": {
+    "title": "Lummina 4"
+  },
+  "#menu_1": {
+    "config": "Configuración"
+  },
+  "#sub-menu-1": {
+    "device": "Dispositivo",
+    "calibration": "Calibración",
+    "reset": "Restablecer dispositivo"
+  },
+  "#menu_2": {
+    "incubation": "Incubación"
+  },
+  "#sub-menu-2": {
+    "analysis": "Análisis"
+  },
+  "#menu_3": {
+    "restrict": "Área restringida"
+  },
+  "#sub-menu-3": {
+    "settings": "Configuraciones",
+    "serial_number": "Número de serie"
+  },
+  "#menu_4": {
+    "system": "Sistema"
+  },
+  "#sub-menu-4": {
+    "restart": "Reiniciar Dispositivo"
+  },
+  "#menu_9": {
+    "language": "Idioma"
+  },
+  "#sub-menu-9": {
+    "pt-br": "Português",
+    "es-es": "Español",
+    "en-us": "English"
+  },
+  "#reset-card-title": {
+    "title#1": "Configuración",
+    "title#2": "Dispositivo"
+  },
+  "#reset-msg": {
+    "msg#1": "Esta opción elimina los siguientes datos de la memoria del dispositivo:",
+    "msg#2": "1 - Secuencia de incubación",
+    "msg#3": "2 - Historial de las últimas 12 pruebas realizadas",
+    "msg#4": "3 - Nombre del hospital",
+    "reset": "Restablecer datos del dispositivo"
+  },
+  "#resetForm": {
+    "msg#3": "Esta operación no se puede cancelar ni revertir.",
+    "confirm": "Confirmar"
+  },
+  "#resetFormInfo": {
+    "msg#1": "Al ingresar la contraseña de confirmación y hacer clic en el botón a continuación, los datos se eliminarán del dispositivo.",
+    "msg#2": "Asegúrate de que realmente quieres borrar los datos."
+  },
+  "#resetFormTitle": {
+    "title": "Confirmación"
+  },
+
+  "#restartFormInfo": {
+    "msg#1": "El dispositivo se ha reiniciado con éxito.",
+    "msg#2": "Es necesario reiniciar el dispositivo para que se complete la configuración",
+    "msg#3": "Desenchufe el dispositivo del tomacorriente, espere unos momentos y luego vuelva a enchufarlo."
+  },
+  "#restartFormTitle": {
+    "title": "Éxito"
+  },
+
+  "#resetErrorInfo": {
+    "msg#1": "El dispositivo no se puede restablecer mientras el análisis está en curso.",
+    "msg#2": "Espere a que finalice o cancele los análisis en curso antes de reiniciar el dispositivo."
+  },
+  "#resetErrorTitle": {
+    "title": "Error"
+  },
+
+  "#configErrorTitle": {
+    "title": "Error"
+  },
+  "#configErrorInfo": {
+    "msg#1": "La temperatura no se puede calibrar mientras los análisis están en curso.",
+    "msg#2": "Espere a que finalice o cancele los análisis en curso antes de configurar el dispositivo."
+  },
+  "#configSuccessFormTitle": {
+    "title": "Éxito"
+  },
+  "#configSuccessFormInfo": {
+    "msg#1": "La temperatura se ha calibrado correctamente.",
+    "msg#2": "Es necesario reiniciar el dispositivo para que se complete la configuración",
+    "msg#3": "Desenchufe el dispositivo del tomacorriente, espere unos momentos y luego vuelva a enchufarlo."
+  },
+
+  "#messages": {
+    "toast_title": "Configuración del dispositivo",
+    "toast_message": "¡Restablecimiento de datos del dispositivo exitoso!",
+    "error_message": "Error al restablecer los datos del dispositivo. ¡Inténtalo de nuevo!"
+  },
+  "#serial-number-card-title": {
+    "title#1": "Configuración",
+    "title#2": "Dispositivo (Área restringida)"
+  },
+  "#restrict-card-title": {
+    "title#1": "Configuración",
+    "title#2": "Dispositivo (Área restringida)"
+  },
+  "#ampoules-card-title": {
+    "title#1": "Incubación",
+    "title#2": "Ampollas"
+  },
+  "#calibration-card-title": {
+    "title#1": "Calibración",
+    "title#2": "Sensor de temperatura"
+  },
+  "#settings-card-title": {
+    "title#1": "Configuración",
+    "title#2": "Dispositivo"
+  },
+  "#old_serial_number": {
+    "num_serie": "Número de serie (actual)"
+  },
+  "#new_serial_number": {
+    "num_serie": "Número de serie (nuevo)"
+  },
+  "#save_serial_number": {
+    "save": "Guardar"
+  },
+  "#serial_number_messages": {
+    "restart_toast_title": "Reiniciar Dispositivo",
+    "restart_toast_message": "¡El dispositivo se reiniciará en 10 segundos!",
+    "save_success_toast_title": "Configuración del dispositivo",
+    "save_success_toast_message": "Cambiar el número de serie del equipo requiere que se reinicie el dispositivo.<br />¡El dispositivo se reiniciará automáticamente en 10 segundos!",
+    "save_error_toast_title": "Configuración del dispositivo",
+    "save_error_toast_message": "Error al guardar los datos. ¡Inténtalo de nuevo!"
+  },
+  "#positivepercentage": {
+    "positive_percentage": "Porcentaje de positividad de las muestras"
+  },
+  "#save_positive_percentage": {
+    "save": "Guardar"
+  },
+  "#restrict_messages": {
+    "restart_toast_title": "Reiniciar dispositivo",
+    "restart_toast_message": "¡El dispositivo se reiniciará en 10 segundos!",
+    "save_success_toast_title": "Configuración del dispositivo",
+    "save_success_toast_message": "¡La configuración se guardó correctamente!",
+    "save_error_toast_title": "Configuración del dispositivo",
+    "save_error_toast_message": "Error al guardar los datos. ¡Inténtalo de nuevo!"
+  },
+  "#cavity_1": {
+    "title_cavity_1": "Cavidad 01"
+  },
+  "#body_cavity_1": {
+    "key#1": "N. Incub: ",
+    "key#2": "Fecha y hora de inicio:",
+    "key#3": "Fecha y hora de finalización:"
+  },
+  "#ampoules_result_1": {
+    "key#4": "Número de lecturas: ",
+    "key#5": "Suma de lecturas: ",
+    "key#6": "Lecturas promedio: ",
+    "key#7": "Cambio porcentual: ",
+    "key#8": "%Positivación: "
+  },
+  "#records_table_cols_1": {
+    "key#1": "Muestra",
+    "key#2": "Resultado"
+  },
+  "#card_footer_result_1": {
+    "key#1": "Resultado: "
+  },
+  "#cavity_2": {
+    "title_cavity_2": "Cavidad 02"
+  },
+  "#body_cavity_2": {
+    "key#1": "N. Incub: ",
+    "key#2": "Fecha y hora de inicio:",
+    "key#3": "Fecha y hora de finalización:"
+  },
+  "#ampoules_result_2": {
+    "key#4": "Número de lecturas: ",
+    "key#5": "Suma de lecturas: ",
+    "key#6": "Lecturas promedio: ",
+    "key#7": "Cambio porcentual: ",
+    "key#8": "%Positivación: "
+  },
+  "#records_table_cols_2": {
+    "key#1": "Muestra",
+    "key#2": "Resultado"
+  },
+  "#card_footer_result_2": {
+    "key#1": "Resultado: "
+  },
+  "#cavity_3": {
+    "title_cavity_3": "Cavidad 03"
+  },
+  "#body_cavity_3": {
+    "key#1": "N. Incub: ",
+    "key#2": "Fecha y hora de inicio:",
+    "key#3": "Fecha y hora de finalización:"
+  },
+  "#ampoules_result_3": {
+    "key#4": "Número de lecturas: ",
+    "key#5": "Suma de lecturas: ",
+    "key#6": "Lecturas promedio: ",
+    "key#7": "Cambio porcentual: ",
+    "key#8": "%Positivación: "
+  },
+  "#records_table_cols_3": {
+    "key#1": "Muestra",
+    "key#2": "Resultado"
+  },
+  "#card_footer_result_3": {
+    "key#1": "Resultado: "
+  },
+  "#cavity_4": {
+    "title_cavity_4": "Cavidad 04"
+  },
+  "#body_cavity_4": {
+    "key#1": "N. Incub: ",
+    "key#2": "Fecha y hora de inicio:",
+    "key#3": "Fecha y hora de finalización:"
+  },
+  "#ampoules_result_4": {
+    "key#4": "Número de lecturas: ",
+    "key#5": "Suma de lecturas: ",
+    "key#6": "Lecturas promedio: ",
+    "key#7": "Cambio porcentual: ",
+    "key#8": "%Positivación: "
+  },
+  "#records_table_cols_4": {
+    "key#1": "Muestra",
+    "key#2": "Resultado"
+  },
+  "#card_footer_resultado_4": {
+    "key#1": "Resultado: "
+  },
+  "#ampoules_messages": {
+    "restart_toast_title": "Reiniciar dispositivo",
+    "restart_toast_message": "¡El dispositivo se reiniciará en 10 segundos!",
+    "process": "Procesando...",
+    "positive_result": "**** POSITIVO ****",
+    "negative_result": "**** NEGATIVO ****"
+  },
+  "#settings_messages": {
+    "save_success_toast_title": "Configuración del dispositivo",
+    "save_success_toast_message": "¡La configuración se guardó correctamente!",
+    "save_error_toast_title": "Configuración del dispositivo",
+    "save_error_toast_message": "Error al guardar los datos. ¡Inténtalo de nuevo!"
+  },
+  "#version_title": {
+    "title#1": "Versión de Firmware"
+  },
+  "#settings_date_time": {
+    "date_time": "Fecha y Hora"
+  },
+  "#settings_institution": {
+    "institution": "Institución"
+  },
+  "#save_settings": {
+    "save": "Guardar"
+  },
+  "#calibration_messages": {
+    "save_success_toast_title": "Calibración",
+    "save_success_toast_message": "¡Factor de calibración guardado con éxito!",
+    "save_error_toast_title": "Calibración",
+    "save_error_toast_message": "Error al guardar el factor de calibración. ¡Inténtalo de nuevo!",
+    "read_temperatures_toast_title": "Calibración del sensor de temperatura",
+    "read_temperatures_toast_message": "¡Ingrese el valor leído del sensor de temperatura externo!"
+  },
+  "#calibration_temperature_thermometer": {
+    "temperature_thermometer": "Temperatura Actual"
+  },
+  "#calibration_temperature_thermometer_adjusted": {
+    "temperature_thermometer_adjusted": "Temperatura Ajustada"
+  },
+  "#table_temperatures_cols": {
+    "title#1": "Muestra",
+    "title#2": "Temperatura"
+  },
+  "#avg_title": {
+    "key#1": "Promedio: "
+  },
+  "#factor_calibration_title": {
+    "key#1": "Factor de calibración: "
+  },
+  "#controls": {
+    "read": "Iniciar calibración",
+    "save": "Guardar"
+  },
+  "#reset_password": {
+    "password": "Contraseña"
+  }
+}

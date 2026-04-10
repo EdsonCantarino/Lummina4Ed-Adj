@@ -1,0 +1,1 @@
+COMPONENT_EMBED_FILES += partitions_spiffs_8MB.csv

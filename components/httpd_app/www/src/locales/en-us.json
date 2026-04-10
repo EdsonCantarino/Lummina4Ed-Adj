@@ -1,0 +1,295 @@
+{
+  "head": {
+    "title": "Lummina 4"
+  },
+  "#menu_1": {
+    "config": "Settings"
+  },
+  "#sub-menu-1": {
+    "device": "Device",
+    "calibration": "Calibration",
+    "reset": "Reset device"
+  },
+  "#menu_2": {
+    "incubation": "Incubation"
+  },
+  "#submenu-2": {
+    "analysis": "Analysis"
+  },
+  "#menu_3": {
+    "restrict": "Restricted Area"
+  },
+  "#sub-menu-3": {
+    "settings": "Settings",
+    "serial_number": "Serial Number"
+  },
+  "#menu_4": {
+    "system": "System"
+  },
+  "#submenu-4": {
+    "restart": "Restart Device"
+  },
+  "#menu_9": {
+    "language": "Language"
+  },
+  "#submenu-9": {
+    "pt-br": "Português",
+    "es-es": "Español",
+    "en-us": "English"
+  },
+  "#reset-card-title": {
+    "title#1": "Device",
+    "title#2": "Settings"
+  },
+  "#reset-msg": {
+    "msg#1": "This option removes the following data from device memory:",
+    "msg#2": "1 - Incubation Sequence",
+    "msg#3": "2 - History of the last 12 tests performed",
+    "msg#4": "3 - Hospital Name",
+    "reset": "Reset device data"
+  },
+  "#resetForm": {
+    "msg#3": "This operation cannot be canceled or reverted.",
+    "confirm": "Confirm"
+  },
+  "#resetFormInfo": {
+    "msg#1": "By entering the confirmation password and clicking the button below, the data will be deleted from the device.",
+    "msg#2": "Make sure you really want to delete the data."
+  },
+  "#resetFormTitle": {
+    "title": "Confirmation"
+  },
+  "#restartFormInfo": {
+    "msg#1": "The device has been reset successfully.",
+    "msg#2": "A restart of the device is required for the settings to complete.",
+    "msg#3": "Turn off the device, wait a few moments, then turn it back on."
+  },
+  "#restartFormTitle": {
+    "title": "Success"
+  },
+
+  "#resetErrorInfo": {
+    "msg#1": "The device cannot be reset while analysis is in progress.",
+    "msg#2": "Wait for the completion or cancel the analyzes in progress before resetting the device."
+  },
+  "#resetErrorTitle": {
+    "title": "Error"
+  },
+  "#messages": {
+    "toast_title": "Device Settings",
+    "toast_message": "Device data reset successful!",
+    "error_message": "Error resetting device data. Please try again!"
+  },
+
+  "#configErrorTitle": {
+    "title": "Error"
+  },
+  "#configErrorInfo": {
+    "msg#1": "Temperature cannot be calibrated while analyzes are in progress.",
+    "msg#2": "Wait for the completion or cancel the analysis in progress before configuring the device."
+  },
+  "#configSuccessFormTitle": {
+    "title": "Success"
+  },
+  "#configSuccessFormInfo": {
+    "msg#1": "The temperature has been successfully calibrated.",
+    "msg#2": "A restart of the device is required for the settings to complete.",
+    "msg#3": "Turn off the device, wait a few moments, then turn it back on."
+  },
+
+  "#serial-number-card-title": {
+    "title#1": "Settings",
+    "title#2": "Device (Restricted Area)"
+  },
+  "#restrict-card-title": {
+    "title#1": "Settings",
+    "title#2": "Device (Restricted Area)"
+  },
+  "#ampoules-card-title": {
+    "title#1": "Incubation",
+    "title#2": "Ampules"
+  },
+  "#calibration-card-title": {
+    "title#1": "Calibration",
+    "title#2": "Temperature Sensor"
+  },
+  "#settings-card-title": {
+    "title#1": "Settings",
+    "title#2": "Device"
+  },
+  "#old_serial_number": {
+    "num_serie": "Serial Number (Current)"
+  },
+  "#new_serial_number": {
+    "num_serie": "Serial Number (New)"
+  },
+  "#save_serial_number": {
+    "save": "Save"
+  },
+  "#serial_number_messages": {
+    "restart_toast_title": "Restart Device",
+    "restart_toast_message": "Device will restart in 10 seconds!",
+    "save_success_toast_title": "Device Settings",
+    "save_success_toast_message": "Changing the Equipment Serial Number requires the device to be restarted.<br />The device will automatically restart in 10 seconds!",
+    "save_error_toast_title": "Device Settings",
+    "save_error_toast_message": "Error saving data. Please try again!"
+  },
+  "#positivepercentage": {
+    "positive_percentage": "Samples positivity percentage"
+  },
+  "#save_positive_percentage": {
+    "save": "Save"
+  },
+  "#restrict_messages": {
+    "restart_toast_title": "Restart Device",
+    "restart_toast_message": "Device will restart in 10 seconds!",
+    "save_success_toast_title": "Device Settings",
+    "save_success_toast_message": "Settings saved successfully!",
+    "save_error_toast_title": "Device Settings",
+    "save_error_toast_message": "Error saving data. Please try again!"
+  },
+  "#cavity_1": {
+    "title_cavity_1": "Cavity 01"
+  },
+  "#body_cavity_1": {
+    "key#1": "N. Incub: ",
+    "key#2": "Date and Time Start:",
+    "key#3": "Date and Time End:"
+  },
+  "#ampoules_result_1": {
+    "key#4": "Number of readings: ",
+    "key#5": "Sum of readings: ",
+    "key#6": "Average readings: ",
+    "key#7": "Percent Change: ",
+    "key#8": "% Positivation: "
+  },
+  "#records_table_cols_1": {
+    "key#1": "Sample",
+    "key#2": "Result"
+  },
+  "#card_footer_result_1": {
+    "key#1": "Result: "
+  },
+  "#cavity_2": {
+    "title_cavity_2": "Cavity 02"
+  },
+  "#body_cavity_2": {
+    "key#1": "N. Incub: ",
+    "key#2": "Date and Time Start:",
+    "key#3": "Date and Time End:"
+  },
+  "#ampoules_result_2": {
+    "key#4": "Number of readings: ",
+    "key#5": "Sum of readings: ",
+    "key#6": "Average readings: ",
+    "key#7": "Percent Change: ",
+    "key#8": "% Positivation: "
+  },
+  "#records_table_cols_2": {
+    "key#1": "Sample",
+    "key#2": "Result"
+  },
+  "#card_footer_result_2": {
+    "key#1": "Result: "
+  },
+  "#cavity_3": {
+    "title_cavity_3": "Cavity 03"
+  },
+  "#body_cavity_3": {
+    "key#1": "N. Incub: ",
+    "key#2": "Date and Time Start:",
+    "key#3": "Date and Time End:"
+  },
+  "#ampoules_result_3": {
+    "key#4": "Number of readings: ",
+    "key#5": "Sum of readings: ",
+    "key#6": "Average readings: ",
+    "key#7": "Percent Change: ",
+    "key#8": "% Positivation: "
+  },
+  "#records_table_cols_3": {
+    "key#1": "Sample",
+    "key#2": "Result"
+  },
+  "#card_footer_result_3": {
+    "key#1": "Result: "
+  },
+  "#cavity_4": {
+    "title_cavity_4": "Cavity 04"
+  },
+  "#body_cavity_4": {
+    "key#1": "N. Incub: ",
+    "key#2": "Date and Time Start:",
+    "key#3": "Date and Time End:"
+  },
+  "#ampoules_result_4": {
+    "key#4": "Number of readings: ",
+    "key#5": "Sum of readings: ",
+    "key#6": "Average readings: ",
+    "key#7": "Percent Change: ",
+    "key#8": "% Positivation: "
+  },
+  "#records_table_cols_4": {
+    "key#1": "Sample",
+    "key#2": "Result"
+  },
+  "#card_footer_resultado_4": {
+    "key#1": "Result: "
+  },
+  "#ampoules_messages": {
+    "restart_toast_title": "Restart Device",
+    "restart_toast_message": "Device will restart in 10 seconds!",
+    "process": "Processing...",
+    "positive_result": "**** POSITIVE ****",
+    "negative_result": "**** NEGATIVE ****"
+  },
+  "#settings_messages": {
+    "save_success_toast_title": "Device Settings",
+    "save_success_toast_message": "Settings saved successfully!",
+    "save_error_toast_title": "Device Settings",
+    "save_error_toast_message": "Error saving data. Please try again!"
+  },
+  "#version_title": {
+    "title#1": "Firmware Version"
+  },
+  "#settings_date_time": {
+    "date_time": "Date and Time"
+  },
+  "#settings_institution": {
+    "institution": "Institution"
+  },
+  "#save_settings": {
+    "save": "Save"
+  },
+  "#calibration_messages": {
+    "save_success_toast_title": "Calibration",
+    "save_success_toast_message": "Calibration factor successfully saved!",
+    "save_error_toast_title": "Calibration",
+    "save_error_toast_message": "Error saving calibration factor. Try again!",
+    "read_temperatures_toast_title": "Temperature Sensor Calibration",
+    "read_temperatures_toast_message": "Enter the value read from the external temperature sensor!"
+  },
+  "#calibration_temperature_thermometer": {
+    "temperature_thermometer": "Current Temperature"
+  },
+  "#calibration_temperature_thermometer_adjusted": {
+    "temperature_thermometer_adjusted": "Adjusted Temperature"
+  },
+  "#table_temperatures_cols": {
+    "title#1": "Sample",
+    "title#2": "Temperature"
+  },
+  "#avg_title": {
+    "key#1": "Average: "
+  },
+  "#factor_calibration_title": {
+    "key#1": "Calibration factor: "
+  },
+  "#controls": {
+    "read": "Start Calibration",
+    "save": "Save"
+  },
+  "#reset_password": {
+    "password": "Password"
+  }
+}

@@ -1,0 +1,18 @@
+menu "Temperature (ds18x20) configuration"
+    config DS18X20_ONEWIRE_GPIO
+    	range 0 48
+        int "GPIO Number of 1-Wire bus, or DQ"
+        default 37
+        help
+            GPIO Number of 1-Wire bus, or DQ. You might need an external
+            pullup resistor on the bus. See README.md for details.
+
+    config DS18X20_MAX_SENSORS
+        int "Number of ds18x20 sensors on the 1-Wire bus"
+        default 1
+        help
+            Max number of ds18x20 sensors on th 1-Wire bus. If number of
+            sensors on the bus more than this value found on the bus, the rest
+            of sensors will be ignored.
+endmenu
+

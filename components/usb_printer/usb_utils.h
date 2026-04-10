@@ -1,0 +1,8 @@
+#ifndef USB_PRINTER_USB_UTILS_H_
+#define USB_PRINTER_USB_UTILS_H_
+
+#define DAEMON_TASK_PRIORITY    9
+#define CLASS_TASK_PRIORITY     10
+
+
+#endif /* USB_PRINTER_USB_UTILS_H_ */

@@ -1,0 +1,50 @@
+menu "DS1302 configuration"
+
+    config DS1302_CE_GPIO
+    	range 0 48
+        int "CE GPIO number"
+        default 45
+        help
+            GPIO connected to CE pin
+
+    config DS1302_IO_GPIO
+    	range 0 48
+        int "I/O GPIO number"
+        default 47
+        help
+            GPIO connected to I/O pin
+
+    config DS1302_SCLK_GPIO
+    	range 0 48
+        int "SCLK GPIO number"
+        default 48
+        help
+            GPIO connected to SCLK pin`
+            
+	config DS1302_TIMESTAMP_YEAR
+		int "Default YEAR for adjuste time (Current YEAR - 1900)"
+		default 122
+
+	config DS1302_TIMESTAMP_MOUNTH
+		int "Default MOUNTH for adjuste time"
+		default 1
+		
+	config DS1302_TIMESTAMP_DAY
+		int "Default DAY for adjuste time"
+		default 1
+		
+	config DS1302_TIMESTAMP_HOUR
+		int "Default HOUR for adjuste time"
+		default 12
+		
+	config DS1302_TIMESTAMP_MINUTE
+		int "Default MINUTE for adjuste time"
+		default 0
+		
+	config DS1302_TIMESTAMP_SECOND
+		int "Default MINUTE for adjuste time"
+		default 0
+		
+
+endmenu
+
