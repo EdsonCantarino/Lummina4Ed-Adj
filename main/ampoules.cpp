@@ -195,14 +195,17 @@ void read_ampoules_test_task(void *pvParameter) {
 
 		if (ampoule_any()) {
 
-			if (check_if_heater_temperature_stabilized_ampoules()) {
+			bool cancelled_by_temp = is_any_present_cancelled_by_temp();
+
+			if (check_if_heater_temperature_stabilized_ampoules() && !cancelled_by_temp) {
 				// Temperatura já atingiu 37°C e está no range operacional: inicia teste
 				ampoules_test_leds_temp_error_timer_stop();
 				ampoules_test_leds_timer_start();
 
 				ampoule_test_start();
-			} else if (!heater_has_reached_target()) {
-				// Ampola inserida durante aquecimento inicial (antes de atingir 37°C): alarme
+			} else if (!heater_has_reached_target() || cancelled_by_temp) {
+				// Ampola inserida durante aquecimento inicial (antes de atingir 37°C)
+				// OU teste cancelado por temperatura alta: alarme até ampola ser removida
 				ampoules_test_leds_temp_error_timer_start();
 
 				for (int i = 0; i < 3; i++) {

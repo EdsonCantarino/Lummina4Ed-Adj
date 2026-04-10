@@ -1,16 +1,16 @@
 <#
 .SYNOPSIS
-Atualiza o repositório Git do Lummina 4 (add, commit e push).
+Atualiza o repositï¿½rio Git do Lummina 4 (add, commit e push).
 
 .DESCRIPTION
-Script para padronizar o fluxo de atualização do repositório Lummina4Ed.
-Executa validações, git add -A, commit (mensagem automática ou manual)
+Script para padronizar o fluxo de atualizaï¿½ï¿½o do repositï¿½rio Lummina4Ed.
+Executa validaï¿½ï¿½es, git add -A, commit (mensagem automï¿½tica ou manual)
 e push para o upstream. Opcionalmente faz pull --rebase.
 
 .EXAMPLE
 .\git_update.ps1 -RepoPath "D:\Github\ECK\Maxximed\Lummina4Ed"
 
-Commit + push com mensagem automática.
+Commit + push com mensagem automï¿½tica.
 
 .EXAMPLE
 .\git_update.ps1 -RepoPath "D:\Github\ECK\Maxximed\Lummina4Ed" `
@@ -31,7 +31,7 @@ Somente commit (sem push).
 
 
 param(
-  [string]$RepoPath = ".",
+  [string]$RepoPath = "D:\Github\ECK\Maxximed\Lummina4Ed 37\Lummina4Ed 37",
   [string]$Message = "",
   [switch]$PullRebase,
   [switch]$NoPush
@@ -45,18 +45,18 @@ function Die($msg) {
 }
 
 # 1) Ir para o repo
-if (!(Test-Path $RepoPath)) { Die "Caminho não existe: $RepoPath" }
+if (!(Test-Path $RepoPath)) { Die "Caminho nï¿½o existe: $RepoPath" }
 Push-Location $RepoPath
 
 try {
   # 2) Verificar git
-  if (-not (Get-Command git -ErrorAction SilentlyContinue)) { Die "git não encontrado no PATH." }
+  if (-not (Get-Command git -ErrorAction SilentlyContinue)) { Die "git nï¿½o encontrado no PATH." }
 
-  # 3) Verificar se é repo
+  # 3) Verificar se ï¿½ repo
   $isRepo = git rev-parse --is-inside-work-tree 2>$null
-  if ($LASTEXITCODE -ne 0 -or $isRepo.Trim() -ne "true") { Die "Este diretório não é um repositório git." }
+  if ($LASTEXITCODE -ne 0 -or $isRepo.Trim() -ne "true") { Die "Este diretï¿½rio nï¿½o ï¿½ um repositï¿½rio git." }
 
-  # 4) Info básica
+  # 4) Info bï¿½sica
   $branch = (git rev-parse --abbrev-ref HEAD).Trim()
   Write-Host "Repo: $(Resolve-Path .)"
   Write-Host "Branch: $branch"
@@ -79,7 +79,7 @@ try {
   git add -A
   if ($LASTEXITCODE -ne 0) { Die "Falha no git add -A." }
 
-  # 8) Commit (se houver mudanças staged)
+  # 8) Commit (se houver mudanï¿½as staged)
   $staged = git diff --cached --name-only
   if ([string]::IsNullOrWhiteSpace($staged)) {
     Write-Host "Nada para commitar (working tree limpa ou sem staged)."
@@ -108,7 +108,7 @@ try {
       if ($LASTEXITCODE -ne 0) { Die "Falha no push." }
     }
   } else {
-    Write-Host "NoPush habilitado: não foi feito push."
+    Write-Host "NoPush habilitado: nï¿½o foi feito push."
   }
 
   # 10) Status final

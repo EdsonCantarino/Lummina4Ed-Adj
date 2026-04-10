@@ -850,6 +850,7 @@ void ampoules_test_check_done_task(void *pvParameter) {
 						reset_ampoules_history_temp(i);
 						ampoules[i].is_testing = false;
 						ampoules[i].test_done = true;
+						ampoules[i].cancelled_by_temp = true;
 						ampoules[i].samples.clear();
 					}
 				}
@@ -942,6 +943,7 @@ void init_ampoules() {
 void ampoule_clear_test_done(int index) {
 // reinicia os testes se forem finalizados.
 	ampoules[index].test_done = false;
+	ampoules[index].cancelled_by_temp = false;
 	ampoules[index].is_testing = false;
 	ampoules[index].samples.clear();
 	ampoules[index].id_test = 0;
@@ -1022,6 +1024,7 @@ void ampoule_set_status(int id, bool present) {
 			if (!present && ampoules[i].test_done) {
 				// reinicia os testes se forem finalizados.
 				ampoules[i].test_done = false;
+				ampoules[i].cancelled_by_temp = false;
 				ampoules[i].is_testing = false;
 				ampoules[i].samples.clear();
 				ampoules[i].printed = false;
@@ -1170,6 +1173,15 @@ bool is_any_in_test_done() {
 	}
 
 	return is_done;
+}
+
+bool is_any_present_cancelled_by_temp() {
+	for (int i = 0; i < 4; i++) {
+		if (ampoules[i].is_present && ampoules[i].cancelled_by_temp) {
+			return true;
+		}
+	}
+	return false;
 }
 
 bool is_testing(int id) {

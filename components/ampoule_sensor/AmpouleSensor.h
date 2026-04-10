@@ -232,6 +232,7 @@ public:
 
 	bool print_result = true;
 	bool printed = false;
+	bool cancelled_by_temp = false;
 
 	//long current_time = 0;
 
