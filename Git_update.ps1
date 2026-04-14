@@ -1,32 +1,7 @@
 <#
 .SYNOPSIS
-Atualiza o reposit�rio Git do Lummina 4 (add, commit e push).
+Atualiza o reposit rio Git do Lummina 4Ed 37 (add, commit e push).
 
-.DESCRIPTION
-Script para padronizar o fluxo de atualiza��o do reposit�rio Lummina4Ed.
-Executa valida��es, git add -A, commit (mensagem autom�tica ou manual)
-e push para o upstream. Opcionalmente faz pull --rebase.
-
-.EXAMPLE
-.\git_update.ps1 -RepoPath "D:\Github\ECK\Maxximed\Lummina4Ed"
-
-Commit + push com mensagem autom�tica.
-
-.EXAMPLE
-.\git_update.ps1 -RepoPath "D:\Github\ECK\Maxximed\Lummina4Ed" `
-  -Message "fix: branding logo select via define"
-
-Commit + push com mensagem personalizada.
-
-.EXAMPLE
-.\git_update.ps1 -RepoPath "D:\Github\ECK\Maxximed\Lummina4Ed" -PullRebase
-
-Pull --rebase antes do commit/push.
-
-.EXAMPLE
-.\git_update.ps1 -RepoPath "D:\Github\ECK\Maxximed\Lummina4Ed" -NoPush
-
-Somente commit (sem push).
 #>
 
 
@@ -45,18 +20,18 @@ function Die($msg) {
 }
 
 # 1) Ir para o repo
-if (!(Test-Path $RepoPath)) { Die "Caminho n�o existe: $RepoPath" }
+if (!(Test-Path $RepoPath)) { Die "Caminho n o existe: $RepoPath" }
 Push-Location $RepoPath
 
 try {
   # 2) Verificar git
-  if (-not (Get-Command git -ErrorAction SilentlyContinue)) { Die "git n�o encontrado no PATH." }
+  if (-not (Get-Command git -ErrorAction SilentlyContinue)) { Die "git n o encontrado no PATH." }
 
-  # 3) Verificar se � repo
+  # 3) Verificar se   repo
   $isRepo = git rev-parse --is-inside-work-tree 2>$null
-  if ($LASTEXITCODE -ne 0 -or $isRepo.Trim() -ne "true") { Die "Este diret�rio n�o � um reposit�rio git." }
+  if ($LASTEXITCODE -ne 0 -or $isRepo.Trim() -ne "true") { Die "Este diret rio n o   um reposit rio git." }
 
-  # 4) Info b�sica
+  # 4) Info b sica
   $branch = (git rev-parse --abbrev-ref HEAD).Trim()
   Write-Host "Repo: $(Resolve-Path .)"
   Write-Host "Branch: $branch"
@@ -79,7 +54,7 @@ try {
   git add -A
   if ($LASTEXITCODE -ne 0) { Die "Falha no git add -A." }
 
-  # 8) Commit (se houver mudan�as staged)
+  # 8) Commit (se houver mudan as staged)
   $staged = git diff --cached --name-only
   if ([string]::IsNullOrWhiteSpace($staged)) {
     Write-Host "Nada para commitar (working tree limpa ou sem staged)."
@@ -108,7 +83,7 @@ try {
       if ($LASTEXITCODE -ne 0) { Die "Falha no push." }
     }
   } else {
-    Write-Host "NoPush habilitado: n�o foi feito push."
+    Write-Host "NoPush habilitado: n o foi feito push."
   }
 
   # 10) Status final

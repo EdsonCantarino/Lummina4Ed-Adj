@@ -854,8 +854,8 @@ void ampoules_test_check_done_task(void *pvParameter) {
 						ampoules[i].samples.clear();
 					}
 				}
-				// Exige atingir 37°C novamente antes de aceitar novos testes
-				reset_heater_reached_target();
+				// Não reseta heater_reached_target: novos testes podem iniciar assim que
+				// temperatura voltar ao range (>= 33°C), sem exigir re-aquecimento até 37°C.
 			}
 
 			bool alarm_is_on = false;

@@ -372,8 +372,11 @@ void reset_heater_reached_target() {
 	heater_reached_target = false;
 }
 
-// Retorna true somente após a temperatura ter atingido 37°C pela primeira vez
-// e ainda estar dentro do range operacional (35-43°C).
+// Retorna true após a temperatura ter atingido 37°C pela primeira vez
+// e ainda estar dentro do range operacional (>= 33°C).
+// Usa is_temperature_in_range() (>= 33°C) em vez de check_if_heater_temperature_stabilized()
+// (>= 35°C) para que novos testes sejam aceitos assim que a temperatura voltar ao range
+// após um alarme de temperatura baixa, sem exigir re-aquecimento até 35°C.
 bool check_if_heater_temperature_stabilized_ampoules() {
-	return heater_reached_target && check_if_heater_temperature_stabilized();
+	return heater_reached_target && is_temperature_in_range();
 }
