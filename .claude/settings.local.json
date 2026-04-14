@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -i \"\\\\.h$\")",
-      "Bash(python:*)"
-    ]
-  }
-}
