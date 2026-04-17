@@ -1,9 +1,11 @@
 #include "include/buzzer.h"
+#include "esp_timer.h"
 
 #define HIGH 1
 #define LOW 0
 
 #define BUZZER_TIMEOUT CONFIG_BUZZER_ACTIVATED
+#define BUZZER_SHUTOFF_MS (30LL * 60 * 1000)  // 30 minutos em ms
 static const gpio_num_t BUZZER_GPIO = (gpio_num_t) CONFIG_BUZZER_GPIO;
 
 static const char *TAG = "Buzzer";
@@ -16,6 +18,7 @@ volatile bool is_alert = false;
 
 bool is_buzzer_on_off = false;
 bool is_buzzer_alert_on_off = false;
+static int64_t buzzer_alert_activated_time = 0;
 
 void set_buzzer_on_off() {
 	is_buzzer_on_off = !is_buzzer_on_off;
@@ -29,6 +32,13 @@ void set_buzzer_on_off(bool status) {
 
 void set_buzzer_alert_on_off(bool status) {
 	is_buzzer_alert_on_off = status;
+	if (status) {
+		if (buzzer_alert_activated_time == 0) {
+			buzzer_alert_activated_time = esp_timer_get_time() / 1000;
+		}
+	} else {
+		buzzer_alert_activated_time = 0;
+	}
 }
 
 void set_alarm(bool status) {
@@ -73,6 +83,19 @@ void buzzer_alert_task(void *parameter) {
 
 	while (true) {
 		if (is_buzzer_on_off && is_buzzer_alert_on_off) {
+			// Auto-desligamento após 30 minutos
+			if (buzzer_alert_activated_time > 0) {
+				int64_t elapsed = (esp_timer_get_time() / 1000) - buzzer_alert_activated_time;
+				if (elapsed >= BUZZER_SHUTOFF_MS) {
+					ESP_LOGI(TAG, "Buzzer auto-desligado após 30 minutos");
+					is_buzzer_on_off = false;
+					is_buzzer_alert_on_off = false;
+					buzzer_alert_activated_time = 0;
+					buzzer_off();
+					vTaskDelay(xBlockTime);
+					continue;
+				}
+			}
 			//buzzer_alert(true);
 			buzzer_continuous(pdMS_TO_TICKS(500));
 		}
