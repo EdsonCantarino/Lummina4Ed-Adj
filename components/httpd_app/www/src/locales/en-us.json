@@ -21,6 +21,7 @@
   },
   "#sub-menu-3": {
     "settings": "Settings",
+    "advanced_config": "Advanced Settings",
     "serial_number": "Serial Number"
   },
   "#menu_4": {
@@ -146,6 +147,52 @@
     "save_success_toast_title": "Device Settings",
     "save_success_toast_message": "Settings saved successfully!",
     "save_error_toast_title": "Device Settings",
+    "save_error_toast_message": "Error saving data. Please try again!"
+  },
+  "#advanced-config-card-title": {
+    "title#1": "Advanced Settings",
+    "title#2": "Test Parameters"
+  },
+  "#crc_error_alert": {
+    "crc_error_msg#1": "An inconsistency was detected in the saved configuration (integrity failure). The device is temporarily operating with factory default values.",
+    "restore_defaults": "Restore factory defaults"
+  },
+  "#card_capture_time": {
+    "card_capture_time_title": "Capture Times",
+    "led_capture_time_label": "LED on time before reading (0.5 to 7 seconds)",
+    "loop_cycle_time_label": "Loop restart time (2 to 50 seconds)"
+  },
+  "#card_samples": {
+    "card_samples_title": "Samples",
+    "samples_initial_label": "Number of initial samples (3 to 10)",
+    "samples_final_label": "Number of final samples (3 to 10)"
+  },
+  "#card_cavities": {
+    "card_cavities_title": "Cavities",
+    "cavity_1_label": "Cavity 01",
+    "cavity_2_label": "Cavity 02",
+    "cavity_3_label": "Cavity 03",
+    "cavity_4_label": "Cavity 04"
+  },
+  "#card_early_check": {
+    "card_early_check_title": "Early Check",
+    "early_check_time_label": "Minimum time for early positive result check, in minutes (3 to 15)"
+  },
+  "#test_in_progress_alert": {
+    "test_in_progress_msg": "Cannot save while there are analyses in progress."
+  },
+  "#restoreConfirmTitle": {
+    "title": "Confirmation"
+  },
+  "#restoreConfirmBody": {
+    "restore_confirm_msg": "This will restore factory default values for the advanced settings. Do you want to continue?",
+    "cancel": "Back",
+    "confirm": "Confirm"
+  },
+  "#advanced_config_messages": {
+    "save_success_toast_title": "Advanced Settings",
+    "save_success_toast_message": "Settings saved successfully!",
+    "save_error_toast_title": "Advanced Settings",
     "save_error_toast_message": "Error saving data. Please try again!"
   },
   "#cavity_1": {

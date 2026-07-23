@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
+    <script src="../../moment/moment.js"></script>
+    <script src="../../moment/moment-with-locales.js"></script>
+    <script src="../../custom/custom.js"></script>
+    <script src="../../jquerymultilanguage/jquery.multilanguage.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap-toaster.min.css">
+    <link rel="stylesheet" type="text/css" href="../../bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
+
+    <title>Configurações Avançadas</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo" src="../resources/logo.png" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown" id="menu_1">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
+                        <div class="dropdown-menu" id="sub-menu-1">
+                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_2">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="incubation">Incubação</a>
+                        <div class="dropdown-menu" id="sub-menu-2">
+                            <a class="dropdown-item" href="/admin" key="analysis">Análise</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_3">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="restrict">Área Restrita</a>
+                        <div class="dropdown-menu" id="sub-menu-3">
+                            <a class="dropdown-item" href="/admin/restrict" key="settings">Configurações</a>
+                            <a class="dropdown-item" href="/admin/advanced_config" key="advanced_config">Configurações Avançadas</a>
+                            <a class="dropdown-item" href="/admin/serialnumber" key="serial_number">Número de Série</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_4">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="system">Sistema</a>
+                        <div class="dropdown-menu" id="sub-menu-4">
+                            <a class="dropdown-item restart" href="#" key="restart">Reiniciar Dispositivo</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu_9">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false" key="language">Idioma</a>
+                        <div class="dropdown-menu" id="sub-menu-9">
+                            <a class="dropdown-item" href="javascript:setLanguage('pt-br')" key="pt-br">Português</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('es-es')" key="es-es">Español</a>
+                            <a class="dropdown-item" href="javascript:setLanguage('en-us')" key="en-us">English</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+            <h3 id="advanced-config-card-title">
+                <span key="title#1">Configurações Avançadas</span>
+                <small class="text-muted" key="title#2">Parâmetros de Teste</small>
+            </h3>
+        </div>
+
+        <div class="alert alert-danger d-none" id="crc_error_alert" role="alert">
+            <p key="crc_error_msg#1">
+                Foi detectada uma inconsistência na configuração salva (falha de integridade). O equipamento está
+                operando temporariamente com os valores padrão de fábrica.
+            </p>
+            <button type="button" class="btn btn-danger" id="btnRestoreFactoryDefaults" key="restore_defaults">
+                Restaurar padrão de fábrica
+            </button>
+        </div>
+
+        <div class="card bg-light mb-3" id="card_capture_time">
+            <div class="card-header" key="card_capture_time_title">Tempos de Captura</div>
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="led_capture_time" min="0.5" max="7" step="0.5">
+                    <label for="led_capture_time" key="led_capture_time_label">Tempo de LED aceso antes da leitura (0,5 a 7 segundos)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="loop_cycle_time" min="2" max="50" step="1">
+                    <label for="loop_cycle_time" key="loop_cycle_time_label">Tempo de reinício do looping (2 a 50 segundos)</label>
+                </div>
+                <div class="form-text" id="loop_cycle_time_hint"></div>
+            </div>
+        </div>
+
+        <div class="card bg-light mb-3" id="card_samples">
+            <div class="card-header" key="card_samples_title">Amostras</div>
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="samples_initial" min="3" max="10" step="1">
+                    <label for="samples_initial" key="samples_initial_label">Quantidade de amostras iniciais (3 a 10)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="samples_final" min="3" max="10" step="1">
+                    <label for="samples_final" key="samples_final_label">Quantidade de amostras finais (3 a 10)</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-light mb-3" id="card_cavities">
+            <div class="card-header" key="card_cavities_title">Cavidades</div>
+            <div class="card-body">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cavity_enabled_1" checked>
+                    <label class="form-check-label" for="cavity_enabled_1" key="cavity_1_label">Cavidade 01</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cavity_enabled_2" checked>
+                    <label class="form-check-label" for="cavity_enabled_2" key="cavity_2_label">Cavidade 02</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cavity_enabled_3" checked>
+                    <label class="form-check-label" for="cavity_enabled_3" key="cavity_3_label">Cavidade 03</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="cavity_enabled_4" checked>
+                    <label class="form-check-label" for="cavity_enabled_4" key="cavity_4_label">Cavidade 04</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-light mb-3" id="card_early_check">
+            <div class="card-header" key="card_early_check_title">Checagem Antecipada</div>
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="early_check_time" min="3" max="15" step="1">
+                    <label for="early_check_time" key="early_check_time_label">Tempo mínimo para checagem antecipada de resultado positivo, em minutos (3 a 15)</label>
+                </div>
+                <div class="form-text" id="early_check_time_hint"></div>
+            </div>
+        </div>
+
+        <div class="alert alert-warning d-none" id="test_in_progress_alert" role="alert" key="test_in_progress_msg">
+            Não é possível salvar enquanto houver análises em andamento.
+        </div>
+
+        <div class="card-footer bg-light">
+            <div class="d-grid gap-2" id="save_advanced_config">
+                <button type="button" class="btn btn-primary" id="btnSalvar" key="save">Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="restoreConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    &nbsp;
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="restoreConfirmTitle">
+                        <h4 key="title">Confirmação</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center" id="restoreConfirmBody">
+                        <p key="restore_confirm_msg">
+                            Isso vai restaurar os valores padrão de fábrica para as configurações avançadas.
+                            Deseja continuar?
+                        </p>
+                        <button type="button" class="btn btn-secondary btn-block mb-2" id="btnCancelRestore"
+                            key="cancel">Voltar</button>
+                        <button type="button" class="btn btn-danger btn-block" id="btnConfirmRestore"
+                            key="confirm">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="advanced_config_messages">
+        <input type="hidden" id="save_success_toast_title" name="save_success_toast_title"
+            key="save_success_toast_title" value="Configurações Avançadas">
+        <input type="hidden" id="save_success_toast_message" name="save_success_toast_message"
+            key="save_success_toast_message" value="Configurações salvas com sucesso!">
+        <input type="hidden" id="save_error_toast_title" name="save_error_toast_title" key="save_error_toast_title"
+            value="Configurações Avançadas">
+        <input type="hidden" id="save_error_toast_message" name="save_error_toast_message"
+            key="save_error_toast_message" value="Erro ao salvar os dados. Tente novamente!">
+    </div>
+
+    <script src="../../bootstrap/js/bootstrap-toaster.min.js"></script>
+
+    <script type="text/javascript">
+        $.get("/api/v1/language", function (data) {
+            setLanguage(data.language);
+        });
+
+        function showToast(titleId, messageId, status) {
+            let toast = {
+                title: $("#" + titleId).val(),
+                message: $("#" + messageId).val(),
+                status: status,
+                timeout: 10000
+            };
+
+            Toast.setTheme(TOAST_THEME.LIGHT);
+            Toast.create(toast);
+        }
+
+        function getCavitiesEnabledCount() {
+            let count = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                if ($("#cavity_enabled_" + i).is(':checked')) {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        // Recalcula os minimos dependentes (item 2 e item 5) e ajusta os
+        // campos automaticamente caso o valor atual fique abaixo do minimo,
+        // conforme definido na analise tecnica.
+        function recalculateMinimums() {
+            let ledCaptureTime = parseFloat($("#led_capture_time").val()) || 0;
+            let loopCycleTime = parseInt($("#loop_cycle_time").val()) || 0;
+            let samplesInitial = parseInt($("#samples_initial").val()) || 0;
+            let samplesFinal = parseInt($("#samples_final").val()) || 0;
+            let earlyCheckTime = (parseFloat($("#early_check_time").val()) || 0) * 60;
+
+            let cavitiesEnabledCount = Math.max(getCavitiesEnabledCount(), 1);
+
+            let minLoopCycleTime = Math.ceil(
+                cavitiesEnabledCount * (ledCaptureTime + 0.5));
+
+            if (loopCycleTime < minLoopCycleTime) {
+                loopCycleTime = minLoopCycleTime;
+                $("#loop_cycle_time").val(loopCycleTime);
+            }
+
+            $("#loop_cycle_time_hint").text(
+                "Mínimo permitido agora: " + minLoopCycleTime + " segundos "
+                + "(" + cavitiesEnabledCount + " cavidade(s) ativa(s) × ("
+                + ledCaptureTime + "s + 0,5s de margem))");
+
+            let minEarlyCheckTimeSec = (samplesInitial + samplesFinal) * loopCycleTime;
+            let minEarlyCheckTimeMin = Math.ceil(minEarlyCheckTimeSec / 60);
+
+            if (earlyCheckTime < minEarlyCheckTimeSec) {
+                $("#early_check_time").val(minEarlyCheckTimeMin);
+            }
+
+            $("#early_check_time_hint").text(
+                "Mínimo permitido agora: " + minEarlyCheckTimeMin + " minutos "
+                + "(" + (samplesInitial + samplesFinal) + " amostras × "
+                + loopCycleTime + "s de looping)");
+        }
+
+        function loadCurrentConfig() {
+            $.get("/api/v1/advanced_config", function (data) {
+                $("#led_capture_time").val(data.ledCaptureTime);
+                $("#loop_cycle_time").val(data.loopCycleTime);
+                $("#samples_initial").val(data.samplesInitial);
+                $("#samples_final").val(data.samplesFinal);
+                $("#early_check_time").val(Math.round(data.earlyCheckTime / 60));
+
+                for (let i = 1; i <= 4; i++) {
+                    $("#cavity_enabled_" + i).prop('checked', data.cavityEnabled[i - 1]);
+                }
+
+                if (data.crcError) {
+                    $("#crc_error_alert").removeClass('d-none');
+                } else {
+                    $("#crc_error_alert").addClass('d-none');
+                }
+
+                recalculateMinimums();
+            });
+        }
+
+        function checkTestInProgress() {
+            $.ajax({
+                url: '/api/v1/ampoules/status',
+                type: "GET",
+                success: function (data) {
+                    if (data.ampoules_status == true) {
+                        $("#test_in_progress_alert").removeClass('d-none');
+                        $("#btnSalvar").prop('disabled', true);
+                    } else {
+                        $("#test_in_progress_alert").addClass('d-none');
+                        $("#btnSalvar").prop('disabled', false);
+                    }
+                }
+            });
+        }
+
+        $(function () {
+            Toast.setMaxCount(10);
+            Toast.enableQueue(true);
+
+            loadCurrentConfig();
+            checkTestInProgress();
+
+            $("#led_capture_time, #loop_cycle_time, #samples_initial, " +
+                "#samples_final, #early_check_time").on('change', recalculateMinimums);
+
+            $(".form-check-input").on('change', recalculateMinimums);
+
+            $("#btnSalvar").on('click', function (e) {
+                e.preventDefault();
+
+                if (getCavitiesEnabledCount() < 1) {
+                    showToast("save_error_toast_title", "save_error_toast_message",
+                        TOAST_STATUS.DANGER);
+                    return;
+                }
+
+                recalculateMinimums();
+
+                let cavityEnabled = [];
+                for (let i = 1; i <= 4; i++) {
+                    cavityEnabled.push($("#cavity_enabled_" + i).is(':checked'));
+                }
+
+                let data = {
+                    "ledCaptureTime": parseFloat($("#led_capture_time").val()),
+                    "loopCycleTime": parseInt($("#loop_cycle_time").val()),
+                    "samplesInitial": parseInt($("#samples_initial").val()),
+                    "samplesFinal": parseInt($("#samples_final").val()),
+                    "earlyCheckTime": parseFloat($("#early_check_time").val()) * 60,
+                    "cavityEnabled": cavityEnabled
+                };
+
+                $.ajax({
+                    url: '/api/v1/advanced_config',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (response) {
+                        if (response.success) {
+                            showToast("save_success_toast_title", "save_success_toast_message",
+                                TOAST_STATUS.SUCCESS);
+                            loadCurrentConfig();
+                        } else {
+                            let toast = {
+                                title: $("#save_error_toast_title").val(),
+                                message: response.message,
+                                status: TOAST_STATUS.DANGER,
+                                timeout: 10000
+                            };
+                            Toast.setTheme(TOAST_THEME.LIGHT);
+                            Toast.create(toast);
+                        }
+                    },
+                    error: function () {
+                        showToast("save_error_toast_title", "save_error_toast_message",
+                            TOAST_STATUS.DANGER);
+                    }
+                });
+            });
+
+            $("#btnRestoreFactoryDefaults").on('click', function (e) {
+                e.preventDefault();
+                $('#restoreConfirmModal').modal('show');
+            });
+
+            $("#btnCancelRestore").on('click', function (e) {
+                $('#restoreConfirmModal').modal('hide');
+            });
+
+            $("#btnConfirmRestore").on('click', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/api/v1/advanced_config/restore_defaults',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (response) {
+                        $('#restoreConfirmModal').modal('hide');
+
+                        if (response.success) {
+                            showToast("save_success_toast_title", "save_success_toast_message",
+                                TOAST_STATUS.SUCCESS);
+                            loadCurrentConfig();
+                        } else {
+                            showToast("save_error_toast_title", "save_error_toast_message",
+                                TOAST_STATUS.DANGER);
+                        }
+                    },
+                    error: function () {
+                        $('#restoreConfirmModal').modal('hide');
+                        showToast("save_error_toast_title", "save_error_toast_message",
+                            TOAST_STATUS.DANGER);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -22,6 +22,7 @@
 #include "include/app_httpd.h"
 #include "include/rtc_ds1302.h"
 #include "include/ampoule_test.h"
+#include "advanced_config.h"
 
 #include "include/version_config.h"
 #include "include/temperature.h"
@@ -664,7 +665,7 @@ static esp_err_t settings_serialnumber_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
 	if (uri.find("/admin/serialnumber") != string::npos) {
-		ESP_LOGI(TAG, "Serving page /settings");
+		ESP_LOGI(TAG, "Serving page /admin/serialnumber");
 
 		extern const unsigned char _start_serialnumber_html[] asm("_binary_serialnumber_html_gz_start");
 		extern const unsigned char _end_serialnumber_html[] asm("_binary_serialnumber_html_gz_end");
@@ -753,6 +754,8 @@ static esp_err_t restrict_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
 	if (uri.find("/admin/restrict") != string::npos) {
+		ESP_LOGI(TAG, "Serving page /admin/restrict");
+
 		httpd_resp_set_status(req, HTTPD_200);
 
 		extern const unsigned char _start_restrict_html[] asm("_binary_restrict_html_gz_start");
@@ -774,10 +777,42 @@ static esp_err_t restrict_handler(httpd_req_t *req) {
 	return ESP_OK;
 }
 
+static esp_err_t advanced_config_handler(httpd_req_t *req) {
+
+	if (check_basic_auth(req) != ESP_OK) {
+		return ESP_FAIL;
+	}
+
+	string uri = req->uri;
+
+	if (uri.find("/admin/advanced_config") != string::npos) {
+		ESP_LOGI(TAG, "Serving page /admin/advanced_config");
+
+		httpd_resp_set_status(req, HTTPD_200);
+
+		extern const unsigned char _start_advanced_config_html[] asm("_binary_advanced_config_html_gz_start");
+		extern const unsigned char _end_advanced_config_html[] asm("_binary_advanced_config_html_gz_end");
+
+		size_t _size = _end_advanced_config_html - _start_advanced_config_html;
+		httpd_resp_set_type(req, "text/html");
+		httpd_resp_set_hdr(req, "Content-Encoding", "gzip");
+
+		httpd_resp_send(req, (const char*) _start_advanced_config_html, _size);
+
+	} else {
+		/* send a 404 otherwise */
+		httpd_resp_send_404(req);
+	}
+
+	return ESP_OK;
+}
+
 static esp_err_t calibration_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
 	if (uri.find("/calibration") != string::npos) {
+		ESP_LOGI(TAG, "Serving page /calibration");
+
 		httpd_resp_set_status(req, HTTPD_200);
 
 		extern const unsigned char _start_calibration_html[] asm("_binary_calibration_html_gz_start");
@@ -1128,6 +1163,277 @@ static esp_err_t restrict_device_settings_post_handler(httpd_req_t *req) {
 	return ESP_OK;
 }
 
+static esp_err_t api_advanced_config_get_handler(httpd_req_t *req) {
+
+	if (check_basic_auth(req) != ESP_OK) {
+		return ESP_FAIL;
+	}
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/advanced_config") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	ESP_LOGI(TAG, "Consulta GET /api/v1/advanced_config (crcError=%d)",
+			g_advanced_config_crc_error);
+
+	cJSON *root = cJSON_CreateObject();
+
+	cJSON_AddNumberToObject(root, "ledCaptureTime",
+			g_advanced_config.led_capture_time_s);
+	cJSON_AddNumberToObject(root, "loopCycleTime",
+			g_advanced_config.loop_cycle_time_s);
+	cJSON_AddNumberToObject(root, "samplesInitial",
+			g_advanced_config.samples_initial);
+	cJSON_AddNumberToObject(root, "samplesFinal",
+			g_advanced_config.samples_final);
+	cJSON_AddNumberToObject(root, "earlyCheckTime",
+			g_advanced_config.early_check_time_s);
+
+	cJSON *cavities = cJSON_CreateArray();
+	for (int i = 0; i < 4; i++) {
+		cJSON_AddItemToArray(cavities,
+				cJSON_CreateBool(g_advanced_config.cavity_enabled[i]));
+	}
+	cJSON_AddItemToObject(root, "cavityEnabled", cavities);
+
+	cJSON_AddBoolToObject(root, "crcError", g_advanced_config_crc_error);
+
+	int cavities_enabled_count = advanced_config_cavities_enabled_count();
+
+	cJSON_AddNumberToObject(root, "minLoopCycleTime",
+			advanced_config_min_loop_cycle_time(
+					g_advanced_config.led_capture_time_s,
+					cavities_enabled_count));
+
+	cJSON_AddNumberToObject(root, "minEarlyCheckTime",
+			advanced_config_min_early_check_time(
+					g_advanced_config.samples_initial,
+					g_advanced_config.samples_final,
+					g_advanced_config.loop_cycle_time_s));
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+
+	return ESP_OK;
+}
+
+static void send_advanced_config_error(httpd_req_t *req, const char *message) {
+	ESP_LOGW(TAG, "Configuracao avancada recusada: %s", message);
+
+	cJSON *root = cJSON_CreateObject();
+	cJSON_AddBoolToObject(root, "success", false);
+	cJSON_AddStringToObject(root, "message", message);
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+}
+
+static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
+
+	if (check_basic_auth(req) != ESP_OK) {
+		return ESP_FAIL;
+	}
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/advanced_config") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	if (ampoule_any()) {
+		send_advanced_config_error(req,
+				"Não é possível salvar enquanto houver análises em andamento.");
+		return ESP_OK;
+	}
+
+	int total_len = req->content_len;
+	int cur_len = 0;
+
+	char *buf = (char*) malloc(SCRATCH_BUFSIZE);
+
+	int received = 0;
+	if (total_len >= SCRATCH_BUFSIZE) {
+		free(buf);
+		httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
+				"content too long");
+		return ESP_FAIL;
+	}
+	while (cur_len < total_len) {
+		received = httpd_req_recv(req, buf + cur_len, total_len);
+		if (received <= 0) {
+			free(buf);
+			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
+					"Failed to post control value");
+			return ESP_FAIL;
+		}
+		cur_len += received;
+	}
+
+	buf[total_len] = '\0';
+
+	ESP_LOGI(TAG, "%s\n", buf);
+
+	cJSON *root = cJSON_Parse(buf);
+	free(buf);
+
+	if (!root) {
+		send_advanced_config_error(req, "JSON inválido.");
+		return ESP_OK;
+	}
+
+	advanced_config_t cfg = g_advanced_config;
+
+	cJSON *item;
+
+	if ((item = cJSON_GetObjectItem(root, "ledCaptureTime")))
+		cfg.led_capture_time_s = (float) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "loopCycleTime")))
+		cfg.loop_cycle_time_s = (uint32_t) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "samplesInitial")))
+		cfg.samples_initial = (uint8_t) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "samplesFinal")))
+		cfg.samples_final = (uint8_t) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "earlyCheckTime")))
+		cfg.early_check_time_s = (uint32_t) item->valuedouble;
+
+	cJSON *cavities = cJSON_GetObjectItem(root, "cavityEnabled");
+	int cavities_enabled_count = 0;
+
+	if (cavities && cJSON_IsArray(cavities) && cJSON_GetArraySize(cavities) == 4) {
+		for (int i = 0; i < 4; i++) {
+			cJSON *c = cJSON_GetArrayItem(cavities, i);
+			cfg.cavity_enabled[i] = cJSON_IsTrue(c);
+			if (cfg.cavity_enabled[i])
+				cavities_enabled_count++;
+		}
+	} else {
+		for (int i = 0; i < 4; i++) {
+			if (cfg.cavity_enabled[i])
+				cavities_enabled_count++;
+		}
+	}
+
+	cJSON_Delete(root);
+
+	// Validacao defensiva no firmware - independente da validacao ja
+	// feita na tela web, o backend nunca aceita uma combinacao fora dos
+	// limites absolutos ou que viole as regras cruzadas entre itens.
+	if (cfg.led_capture_time_s < 0.5f || cfg.led_capture_time_s > 7.0f) {
+		send_advanced_config_error(req,
+				"Tempo de captura fora da faixa permitida (0,5 a 7 segundos).");
+		return ESP_OK;
+	}
+
+	if (cfg.loop_cycle_time_s < 2 || cfg.loop_cycle_time_s > 50) {
+		send_advanced_config_error(req,
+				"Tempo de looping fora da faixa permitida (2 a 50 segundos).");
+		return ESP_OK;
+	}
+
+	if (cfg.samples_initial < 3 || cfg.samples_initial > 10
+			|| cfg.samples_final < 3 || cfg.samples_final > 10) {
+		send_advanced_config_error(req,
+				"Quantidade de amostras fora da faixa permitida (3 a 10).");
+		return ESP_OK;
+	}
+
+	if (cfg.early_check_time_s < 180 || cfg.early_check_time_s > 900) {
+		send_advanced_config_error(req,
+				"Tempo de checagem antecipada fora da faixa permitida (3 a 15 minutos).");
+		return ESP_OK;
+	}
+
+	if (cavities_enabled_count < 1) {
+		send_advanced_config_error(req,
+				"É necessário manter ao menos uma cavidade ativa.");
+		return ESP_OK;
+	}
+
+	uint32_t min_loop = advanced_config_min_loop_cycle_time(
+			cfg.led_capture_time_s, cavities_enabled_count);
+
+	if (cfg.loop_cycle_time_s < min_loop) {
+		send_advanced_config_error(req,
+				"Tempo de looping menor do que o mínimo permitido para o tempo de captura e a quantidade de cavidades ativas configurados.");
+		return ESP_OK;
+	}
+
+	uint32_t min_early_check = advanced_config_min_early_check_time(
+			cfg.samples_initial, cfg.samples_final, cfg.loop_cycle_time_s);
+
+	if (cfg.early_check_time_s < min_early_check) {
+		send_advanced_config_error(req,
+				"Tempo de checagem antecipada menor do que o mínimo permitido para a quantidade de amostras e o tempo de looping configurados.");
+		return ESP_OK;
+	}
+
+	if (advanced_config_save(cfg) != ESP_OK) {
+		send_advanced_config_error(req,
+				"Erro ao gravar a configuração (falha de integridade na gravação).");
+		return ESP_OK;
+	}
+
+	ESP_LOGI(TAG, "Configuracao avancada salva com sucesso via POST /api/v1/advanced_config");
+
+	ampoule_apply_cavity_enabled_config();
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_sendstr(req, "{\"success\": true}");
+
+	return ESP_OK;
+}
+
+static esp_err_t api_advanced_config_restore_defaults_post_handler(
+		httpd_req_t *req) {
+
+	if (check_basic_auth(req) != ESP_OK) {
+		return ESP_FAIL;
+	}
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/advanced_config/restore_defaults")
+			== string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	ESP_LOGW(TAG,
+			"Restauracao de padrao de fabrica solicitada via web (POST /api/v1/advanced_config/restore_defaults)");
+
+	if (advanced_config_restore_defaults() != ESP_OK) {
+		send_advanced_config_error(req,
+				"Erro ao restaurar o padrão de fábrica. Tente novamente.");
+		return ESP_OK;
+	}
+
+	ampoule_apply_cavity_enabled_config();
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_sendstr(req, "{\"success\": true}");
+
+	return ESP_OK;
+}
+
 static esp_err_t calibration_post_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
@@ -1451,6 +1757,23 @@ static const httpd_uri_t index_get_uri = { .uri = "/admin", .method = HTTP_GET,
 static const httpd_uri_t restrict_get_uri = { .uri = "/admin/restrict",
 		.method = HTTP_GET, .handler = restrict_handler, .user_ctx = NULL };
 
+static const httpd_uri_t advanced_config_get_uri = { .uri =
+		"/admin/advanced_config", .method = HTTP_GET, .handler =
+		advanced_config_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_advanced_config_get_uri = { .uri =
+		"/api/v1/advanced_config", .method = HTTP_GET, .handler =
+		api_advanced_config_get_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_advanced_config_post_uri = { .uri =
+		"/api/v1/advanced_config", .method = HTTP_POST, .handler =
+		api_advanced_config_post_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_advanced_config_restore_defaults_post_uri = {
+		.uri = "/api/v1/advanced_config/restore_defaults", .method =
+		HTTP_POST, .handler = api_advanced_config_restore_defaults_post_handler,
+		.user_ctx = NULL };
+
 static const httpd_uri_t calibration_get_uri = { .uri = "/calibration",
 		.method = HTTP_GET, .handler = calibration_handler, .user_ctx = NULL };
 
@@ -1607,6 +1930,12 @@ void app_httpd_register_uri(httpd_handle_t *httpd_handle) {
 	httpd_register_basic_auth(httpd_handle, api_ampoules_get_uri);
 	httpd_register_basic_auth(httpd_handle, api_ampoules_status_get_uri);
 	httpd_register_basic_auth(httpd_handle, restrict_device_settings_post_uri);
+
+	httpd_register_basic_auth(httpd_handle, advanced_config_get_uri);
+	httpd_register_basic_auth(httpd_handle, api_advanced_config_get_uri);
+	httpd_register_basic_auth(httpd_handle, api_advanced_config_post_uri);
+	httpd_register_basic_auth(httpd_handle,
+			api_advanced_config_restore_defaults_post_uri);
 
 	httpd_register_basic_auth(httpd_handle, serialnumber_get_uri);
 	httpd_register_basic_auth(httpd_handle, api_serialnumber_get_uri);

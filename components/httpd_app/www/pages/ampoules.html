@@ -64,6 +64,7 @@
                             aria-haspopup="true" aria-expanded="false" key="restrict">Área Restrita</a>
                         <div class="dropdown-menu" id="sub-menu-3">
                             <a class="dropdown-item" href="/admin/restrict" key="settings">Configurações</a>
+                            <a class="dropdown-item" href="/admin/advanced_config" key="advanced_config">Configurações Avançadas</a>
                             <a class="dropdown-item" href="/admin/serialnumber" key="serial_number">Número de Série</a>
                         </div>
                     </li>
@@ -403,28 +404,40 @@
             return parseInt(average);
         }
 
+        // Preenchido por load_advanced_config_samples() a partir de
+        // /api/v1/advanced_config - precisa ficar em sincronia com o que o
+        // firmware realmente usa para decidir positivo/negativo
+        // (AmpouleSensor::get_test_result em components/ampoule_sensor/AmpouleSensor.h).
+        var samples_initial_count = 5;
+        var samples_final_count = 5;
+
+        function load_advanced_config_samples() {
+            $.get("/api/v1/advanced_config", function (data) {
+                samples_initial_count = data.samplesInitial;
+                samples_final_count = data.samplesFinal;
+            });
+        }
+
         function get_percentual_variation(average, samples) {
             let size = samples.length;
 
             if (size <= 0)
                 return false;
 
-            if (size < 10)
+            if (size < (samples_initial_count + samples_final_count))
                 return 0;
 
             let diff = 0.0;
             let medH = 0;
             let medL = 0;
-            medH += samples[size - 1];
-            medH += samples[size - 2];
-            medH += samples[size - 3];
-            medH += samples[size - 4];
-            medH += samples[size - 5];
-            medL += samples[0];
-            medL += samples[1];
-            medL += samples[2];
-            medL += samples[3];
-            medL += samples[4];
+
+            for (let i = 0; i < samples_final_count; i++) {
+                medH += samples[size - 1 - i];
+            }
+
+            for (let i = 0; i < samples_initial_count; i++) {
+                medL += samples[i];
+            }
 
             for (let i = 0; i < size; i++) {
                 let s = samples[i] - average;
@@ -511,6 +524,7 @@
                 $("#institution").val(data.institution);
             });
 
+            load_advanced_config_samples();
             load_data();
 
             vTimeOut= setTimeout(startRefresh, refreshTimeOut);

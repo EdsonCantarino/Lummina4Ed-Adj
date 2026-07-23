@@ -20,6 +20,7 @@ using namespace std;
 #include "DateTime.h"
 
 #include "nvs_helpers.h"
+#include "advanced_config.h"
 
 class Utils {
 
@@ -389,11 +390,16 @@ public:
 
 		printf("Tamanho da lista de resultados: (%d)\n", samples.size());
 
-		if (samples.size() < 10) {
-			samples.add(val);
-		}else{
+		int capacity = g_advanced_config.samples_initial
+				+ g_advanced_config.samples_final;
 
-			samples.remove(5);
+		if (samples.size() < capacity) {
+			samples.add(val);
+		} else {
+
+			// Preserva as `samples_initial` primeiras amostras e mantem
+			// somente as `samples_final` mais recentes na janela final.
+			samples.remove(g_advanced_config.samples_initial);
 
 			printf("Tamanho da lista de resultados (após exclusão): (%d)\n", samples.size());
 
@@ -510,19 +516,26 @@ public:
 		if (size <= 0)
 			return false;
 
+		int n_initial = g_advanced_config.samples_initial;
+		int n_final = g_advanced_config.samples_final;
+
+		// Protecao contra acesso a indice invalido: so calcula o
+		// resultado quando ja existem amostras suficientes para as
+		// duas janelas (inicial e final) configuradas.
+		if (size < n_initial + n_final)
+			return false;
+
 		float diff = 0.0f;
 		float medH = 0;
 		float medL = 0;
-		medH = medH + (float) samples.get(size - 1);
-		medH = medH + (float) samples.get(size - 2);
-		medH = medH + (float) samples.get(size - 3);
-		medH = medH + (float) samples.get(size - 4);
-		medH = medH + (float) samples.get(size - 5);
-		medL = medL + (float) samples.get(0);
-		medL = medL + (float) samples.get(1);
-		medL = medL + (float) samples.get(2);
-		medL = medL + (float) samples.get(3);
-		medL = medL + (float) samples.get(4);
+
+		for (int i = 0; i < n_final; i++) {
+			medH = medH + (float) samples.get(size - 1 - i);
+		}
+
+		for (int i = 0; i < n_initial; i++) {
+			medL = medL + (float) samples.get(i);
+		}
 
 		for (int i = 0; i < size; i++) {
 			float s = (float) samples.get(i) - average;

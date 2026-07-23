@@ -1,0 +1,181 @@
+LUMMINA 4 - DEFINIÇÃO DE MUDANÇAS
+=====================================================
+
+Este documento apresenta, em linguagem simples, os itens solicitados,
+o que será feito para atender cada um, e quais limites terão que ser
+respeitados para o equipamento continuar funcionando de forma segura.
+
+Todas as configurações abaixo ficarão na mesma área protegida da web
+que já existe hoje no equipamento (a mesma onde já se configura o
+percentual de positivação).
+
+
+ITEM 1 - TEMPO DE CAPTURA DA LEITURA
+---------------------------------------
+Solicitação original:
+"Hoje Acende Led UV da Cavidade e faz a leitura. Quero ajustar de 1 a
+7 segundos esse tempo do Led aceso antes da captura."
+
+O que será feito:
+Esse tempo, hoje fixo, passará a ser configurável pela web. Com base
+na análise técnica do sensor eletrônico, o piso seguro fica em 0,5
+segundo (e não 1 segundo, como no pedido original) - abaixo disso o
+sensor não consegue estabilizar a leitura de forma confiável.
+
+Limites considerados:
+De 0,5 a 7 segundos. Esse valor afeta diretamente o cálculo do item 2
+(explicado abaixo), então não é totalmente independente dele.
+
+
+ITEM 2 - REINÍCIO DO LOOPING DE CAPTURA DE DADOS
+----------------------------------------------------
+Solicitação original:
+"Hoje ele reinicia o looping com 20 segundos. Gostaria de poder
+configurar esse tempo. Ex: 2 a 50 segundos."
+
+O que será feito:
+Esse tempo passará a ser configurável pela web, dentro de uma faixa
+de 2 a 50 segundos.
+
+Limites considerados (importante):
+O valor mínimo aceito para esse tempo não é sempre o mesmo - ele
+depende de quantas cavidades estão ativas (item 4) e de quanto tempo
+de captura foi configurado (item 1). A regra é:
+
+    tempo mínimo do ciclo = (nº de cavidades ativas) x
+                             (tempo de captura configurado + 0,5s)
+
+Exemplo prático: com ciclo de 20 segundos, tempo de captura de 1
+segundo e as 4 cavidades ativas, o equipamento gasta 4 segundos
+efetivamente capturando (4 cavidades x 1 segundo) e distribui os 16
+segundos restantes como intervalo de descanso entre uma cavidade e
+outra (16 / 4 = 4 segundos entre cada leitura). Se o operador tentar
+configurar um ciclo menor que o mínimo permitido para aquela
+combinação (nesse exemplo, o mínimo seria 4 x (1 + 0,5) = 6
+segundos), o sistema não aceita e ajusta automaticamente o valor
+para o mínimo seguro - impossível salvar uma combinação que trave ou
+prejudique o funcionamento do equipamento.
+
+Essa margem de 0,5 segundo por cavidade cobre o tempo que o sensor
+eletrônico interno precisa para estabilizar cada leitura.
+
+
+ITEM 3 - QUANTIDADE DE AMOSTRAS PARA CÁLCULO DO RESULTADO
+--------------------------------------------------------------
+Solicitação original:
+"A média é retirada das 5 primeiras e 5 últimas leituras. Queria
+poder configurar de 3 a 10 amostras."
+"Configurar a números de amostras iniciais para determinar o padrão.
+O sistema pega as 7 primeiras amostras e usa como base para
+determinar o padrão e compara com as 8 últimas. Queria poder
+configurar número amostras iniciais e finais."
+
+O que será feito:
+Esses dois pedidos descrevem a mesma função do equipamento (comparar
+leituras do início do teste com leituras do fim do teste para decidir
+o resultado). Serão unificados em uma única configuração: o operador
+poderá escolher, separadamente, quantas amostras iniciais e quantas
+amostras finais entram nessa comparação, cada uma numa faixa de 3 a
+10.
+
+Limites considerados:
+- Cada quantidade (inicial e final) pode ser de 3 a 10.
+- A tela vai impedir configurações onde não dê tempo de coletar
+  todas as amostras necessárias antes do tempo mínimo de checagem
+  antecipada (item 5) ser atingido - ou seja, esse item também
+  depende do item 2 e do item 5 para o cálculo do mínimo aceitável.
+- Ponto de atenção: mudar essa quantidade muda a forma como o
+  equipamento decide "positivo" ou "negativo". Recomendamos que, antes
+  de operar em produção com valores diferentes do padrão atual (5 e
+  5), isso seja validado por quem responde pela validação do método/
+  registro do equipamento.
+
+
+ITEM 4 - DESATIVAR CAVIDADES
+--------------------------------
+Solicitação original:
+"Na web eu queria uma área com quatro caixas de seleção, uma pra
+cada cavidade. Se eu ativar somente a caixa 1 somente a cavidade um
+irá funcionar. Desta forma, o equipamento faria a leitura da
+cavidade 1, contaria o tempo de looping configurado e iniciaria a
+leitura da cavidade 1 novamente."
+
+O que será feito:
+Será criada uma área nova na web (ela ainda não existe hoje) com 4
+caixas de seleção, uma para cada cavidade. Se o operador desmarcar,
+por exemplo, as cavidades 2, 3 e 4, o equipamento passa a considerar
+somente a cavidade 1: ela lê, aguarda o tempo de ciclo configurado
+(item 2) e reinicia a leitura, ignorando as demais - exatamente como
+descrito na solicitação.
+
+Limites considerados:
+De 1 a 4 cavidades ativas simultaneamente. Quanto menos cavidades
+ativas, menor pode ser o tempo mínimo de ciclo permitido no item 2
+(ver fórmula do item 2).
+
+
+ITEM 5 - TEMPO MÍNIMO PARA CHECAGEM ANTECIPADA DE RESULTADO POSITIVO
+--------------------------------------------------------------------
+O que é hoje:
+O equipamento só passa a considerar um resultado positivo antes do
+fim do teste a partir de 7 minutos de teste (fixo). Se o resultado
+continuar negativo, o teste segue normalmente até o fim do ciclo
+total, sem qualquer restrição de impressão.
+
+O que será feito:
+Esse tempo de 7 minutos passará a ser configurável pela web, numa
+faixa de 3 a 15 minutos.
+
+Limites considerados:
+De 3 a 15 minutos. Esse valor precisa ser compatível com a
+quantidade de amostras exigida no item 3 e com o tempo de ciclo do
+item 2 - a tela vai impedir configurar um tempo mínimo de checagem
+antecipada menor do que o necessário para coletar todas as amostras
+iniciais e finais configuradas.
+
+Ponto de atenção: esse tempo provavelmente foi definido com base em
+quanto tempo a reação do indicador biológico leva para ficar
+confiável. Recomendamos validar tecnicamente antes de operar em
+produção com valores próximos do mínimo (3 minutos).
+
+
+PROTEÇÃO CONTRA FALHA DE ENERGIA / GRAVAÇÃO INCOMPLETA
+----------------------------------------------------------
+Como esse equipamento já teve um caso de configuração corrompida por
+queda de energia durante uma gravação, as configurações dos itens 1 a
+5 serão protegidas assim:
+
+- São gravadas juntas, como um pacote único - ou grava tudo
+  corretamente, ou não grava nada.
+- O pacote é gravado em duas áreas de memória diferentes, cada uma
+  com um código de verificação (um "selo de integridade").
+- Se, ao ligar o equipamento, as duas áreas não baterem entre si (ou
+  o selo de uma delas estiver corrompido), o equipamento aciona o
+  alarme sonoro, passa a operar temporariamente com os valores
+  padrão de fábrica (para não travar o uso), e mostra uma mensagem de
+  erro na área protegida da web com um botão para restaurar
+  definitivamente os valores de fábrica dessas configurações.
+
+O botão "Resetar dispositivo" que já existe hoje continua exatamente
+como está (apaga histórico de testes, nome da instituição, etc.) e
+não tem relação com o mecanismo acima.
+
+
+CONFIGURAÇÃO VIA WEB
+=========================
+Resumo do que será configurável e as faixas de cada item:
+
+1) Tempo de captura da leitura (LED aceso) ..... 0,5 a 7 segundos
+2) Tempo de reinício do looping ................ 2 a 50 segundos
+                                                  (mínimo variável,
+                                                  ver fórmula do
+                                                  item 2)
+3) Amostras iniciais e finais (cada uma) ....... 3 a 10 amostras
+4) Cavidades ativas ............................. 1 a 4 (checkboxes)
+5) Tempo mínimo para checagem antecipada
+   de resultado positivo ........................ 3 a 15 minutos
+
+Todos os itens acima serão ajustados de forma automática pelo
+próprio sistema sempre que uma alteração em um deles tornar outro
+inválido, de forma que nunca seja possível salvar uma combinação
+insegura ou que prejudique o funcionamento do equipamento.

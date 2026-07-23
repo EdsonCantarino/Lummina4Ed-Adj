@@ -21,6 +21,7 @@
   },
   "#sub-menu-3": {
     "settings": "Configuraciones",
+    "advanced_config": "Configuraciones Avanzadas",
     "serial_number": "Número de serie"
   },
   "#menu_4": {
@@ -147,6 +148,52 @@
     "save_success_toast_title": "Configuración del dispositivo",
     "save_success_toast_message": "¡La configuración se guardó correctamente!",
     "save_error_toast_title": "Configuración del dispositivo",
+    "save_error_toast_message": "Error al guardar los datos. ¡Inténtalo de nuevo!"
+  },
+  "#advanced-config-card-title": {
+    "title#1": "Configuraciones Avanzadas",
+    "title#2": "Parámetros de Prueba"
+  },
+  "#crc_error_alert": {
+    "crc_error_msg#1": "Se detectó una inconsistencia en la configuración guardada (fallo de integridad). El equipo está operando temporalmente con los valores predeterminados de fábrica.",
+    "restore_defaults": "Restaurar valores de fábrica"
+  },
+  "#card_capture_time": {
+    "card_capture_time_title": "Tiempos de Captura",
+    "led_capture_time_label": "Tiempo de LED encendido antes de la lectura (0,5 a 7 segundos)",
+    "loop_cycle_time_label": "Tiempo de reinicio del ciclo (2 a 50 segundos)"
+  },
+  "#card_samples": {
+    "card_samples_title": "Muestras",
+    "samples_initial_label": "Cantidad de muestras iniciales (3 a 10)",
+    "samples_final_label": "Cantidad de muestras finales (3 a 10)"
+  },
+  "#card_cavities": {
+    "card_cavities_title": "Cavidades",
+    "cavity_1_label": "Cavidad 01",
+    "cavity_2_label": "Cavidad 02",
+    "cavity_3_label": "Cavidad 03",
+    "cavity_4_label": "Cavidad 04"
+  },
+  "#card_early_check": {
+    "card_early_check_title": "Verificación Anticipada",
+    "early_check_time_label": "Tiempo mínimo para verificación anticipada de resultado positivo, en minutos (3 a 15)"
+  },
+  "#test_in_progress_alert": {
+    "test_in_progress_msg": "No es posible guardar mientras haya análisis en curso."
+  },
+  "#restoreConfirmTitle": {
+    "title": "Confirmación"
+  },
+  "#restoreConfirmBody": {
+    "restore_confirm_msg": "Esto restaurará los valores predeterminados de fábrica para las configuraciones avanzadas. ¿Desea continuar?",
+    "cancel": "Volver",
+    "confirm": "Confirmar"
+  },
+  "#advanced_config_messages": {
+    "save_success_toast_title": "Configuraciones Avanzadas",
+    "save_success_toast_message": "¡Configuración guardada con éxito!",
+    "save_error_toast_title": "Configuraciones Avanzadas",
     "save_error_toast_message": "Error al guardar los datos. ¡Inténtalo de nuevo!"
   },
   "#cavity_1": {

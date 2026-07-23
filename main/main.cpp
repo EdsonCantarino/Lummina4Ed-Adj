@@ -42,6 +42,7 @@
 #include "include/ampoules.h"
 #include "include/light_sensor.h"
 #include "include/ampoule_test.h"
+#include "advanced_config.h"
 
 #include "include/printer.h"
 #include "include/nvs_utils.h"
@@ -356,6 +357,10 @@ void setup() {
 
 	task_manager_setup();
 
+	// Carrega as configuracoes avancadas (itens 1 a 5) da NVS antes de
+	// qualquer outro setup que dependa delas.
+	advanced_config_load();
+
 	temperature_setup();
 
 	heater_setup();
@@ -369,6 +374,10 @@ void setup() {
 	led_uv_setup();
 	keyboard_setup();
 	ampoule_sensor_setup();
+
+	// Aplica o estado de cavidades habilitadas/desabilitadas (item 4)
+	// depois que as ampolas ja foram inicializadas.
+	ampoule_apply_cavity_enabled_config();
 
 	light_sensor_setup();
 	//light_sensor_main();

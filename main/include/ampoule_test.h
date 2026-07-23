@@ -25,6 +25,8 @@ void ampoule_set_status(int id, bool present);
 void ampoule_set_status(bool ampoule1, bool ampoule2, bool ampoule3,
 		bool ampoule4);
 
+void ampoule_apply_cavity_enabled_config();
+
 void clear_histories();
 void ampoule_test_start();
 

@@ -20,9 +20,7 @@
 #include "include/ampoule_test_history.h"
 #include "include/helper_utils.h"
 #include "include/TimerManager.h"
-
-#define TASK_TIME 28000
-#define TASK_TIME_DELAY 2000
+#include "advanced_config.h"
 
 #define DEFAULT_TIME_TEST (20 * 60) // 20 * 60
 //#define DEFAULT_TIME_TEST (2 * 60) // 20 * 60
@@ -417,7 +415,9 @@ void prepare_test(int ampoule) {
 // Liga o led UV
 	led_uv_on(ampoule);
 
-	vTaskDelay(pdMS_TO_TICKS(TASK_TIME_DELAY));
+	vTaskDelay(
+			pdMS_TO_TICKS(
+					(uint32_t) (g_advanced_config.led_capture_time_s * 1000)));
 
 // Desliga o aquecedor
 	set_heater_controlling(false);
@@ -630,8 +630,9 @@ void ampoule_test(int index) {
 		printf("[AMPOLA %d] Tempo para concluir o teste : %ld (segundos)\n",
 				ampoule, time - ampoules[index].current_time);
 
-		if (ampoules[index].current_time >= 420 && !ampoules[index].test_done
-				&& ampoules[index].is_testing) {
+		if (ampoules[index].current_time
+				>= (long) g_advanced_config.early_check_time_s
+				&& !ampoules[index].test_done && ampoules[index].is_testing) {
 			bool is_positived = ampoules[index].calcule_test_result();
 
 			if (is_positived) {
@@ -648,15 +649,12 @@ void ampoule_test(int index) {
 			bool is_long_test = ampoules[index].current_time > 1200;
 
 			if (!is_long_test) {
-				ampoules[index].current_time += ((TASK_TIME + TASK_TIME_DELAY)
-						/ 1000);
+				ampoules[index].current_time +=
+						g_advanced_config.loop_cycle_time_s;
 			} else {
-				ampoules[index].current_time += (((TASK_TIME + TASK_TIME_DELAY)
-						* 2) / 1000);
+				ampoules[index].current_time +=
+						(g_advanced_config.loop_cycle_time_s * 2);
 			}
-
-//			ampoules[index].current_time += ((TASK_TIME + TASK_TIME_DELAY)
-//					/ 1000);
 
 			prepare_test(ampoule);
 
@@ -772,7 +770,8 @@ void ampoules_test_timer_task(void *pvParameter) {
 
 		if (!check_if_heater_temperature_stabilized()) {
 
-			vTaskDelay(pdMS_TO_TICKS(TASK_TIME));
+			vTaskDelay(
+					pdMS_TO_TICKS(g_advanced_config.loop_cycle_time_s * 1000));
 			continue;
 		}
 
@@ -805,16 +804,26 @@ void ampoules_test_timer_task(void *pvParameter) {
 			}
 		}
 
+		int64_t cycle_ms = (int64_t) g_advanced_config.loop_cycle_time_s * 1000;
+
 		if (!is_long_test) {
-			int64_t delay = (TASK_TIME + TASK_TIME_DELAY) - round(tt);
+			int64_t delay = cycle_ms - round(tt);
+
+			// Protecao defensiva: mesmo com a validacao feita na web, o
+			// delay nunca pode chegar negativo aqui - isso corromperia o
+			// vTaskDelay (que espera um valor sem sinal) e travaria a
+			// tarefa. Se acontecer, usa um minimo seguro.
+			if (delay < 100)
+				delay = 100;
 
 			ESP_LOGI("TEST", "Delay: %lld ms", delay);
 
 			vTaskDelay(pdMS_TO_TICKS(delay));
 		} else {
-			int64_t delay = (TASK_TIME + TASK_TIME_DELAY);
+			int64_t delay = (cycle_ms * 2) - round(tt);
 
-			delay = (delay * 2) - round(tt);
+			if (delay < 100)
+				delay = 100;
 
 			ESP_LOGI("TEST", "Long Time Delay: %lld ms", delay);
 
@@ -964,6 +973,16 @@ void ampoule_set_test_counter(int index) {
 	}
 
 	ampoules[index].id_test = ampoute_test_cont;
+}
+
+// Aplica o estado de cavidades habilitadas/desabilitadas configurado via
+// web (item 4). Cavidades desabilitadas ficam com is_present sempre
+// congelado (ver ampoule_set_status(bool,bool,bool,bool) abaixo), entao o
+// loop de testes ja as ignora naturalmente.
+void ampoule_apply_cavity_enabled_config() {
+	for (int i = 0; i < 4; i++) {
+		ampoules[i].set_disabled_status(!g_advanced_config.cavity_enabled[i]);
+	}
 }
 
 void ampoule_set_status(bool ampoule1, bool ampoule2, bool ampoule3,

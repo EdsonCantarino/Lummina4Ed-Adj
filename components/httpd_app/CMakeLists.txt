@@ -1,6 +1,7 @@
 idf_component_register(
     EMBED_FILES 
         "www/pages/restrict.html.gz"
+        "www/pages/advanced_config.html.gz"
         "www/pages/calibration.html.gz"
         "www/pages/settings.html.gz"
         "www/pages/ampoules.html.gz"
