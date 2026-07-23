@@ -161,8 +161,6 @@ void update_button_level(buttons_history_t *d) {
 
 				if (d->level > 4)
 					d->level = 1;
-
-				buzzer_alarm();
 			}
 		} else {
 			ESP_LOGI(TAG,
