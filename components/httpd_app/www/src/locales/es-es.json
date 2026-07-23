@@ -179,6 +179,13 @@
     "card_early_check_title": "Verificación Anticipada",
     "early_check_time_label": "Tiempo mínimo para verificación anticipada de resultado positivo, en minutos (3 a 15)"
   },
+  "#card_temperature": {
+    "card_temperature_title": "Temperatura",
+    "heater_setpoint_label": "Temperatura de calentamiento (setpoint), en grados",
+    "heater_min_temp_label": "Temperatura mínima (por debajo de esto cancela la prueba y suena la alarma)",
+    "heater_max_temp_label": "Temperatura máxima (por encima de esto cancela la prueba y suena la alarma)",
+    "heater_release_temp_label": "Temperatura de liberación (calculada = mínima + 2)"
+  },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "No es posible guardar mientras haya análisis en curso."
   },

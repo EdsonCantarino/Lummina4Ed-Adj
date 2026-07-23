@@ -1,7 +1,7 @@
 # Lummina 4 — Descritivo do Sistema e Registro de Mudanças
 
-**Data de referência:** 23/07/2026
-**Status:** Planejamento concluído, implementação ainda não iniciada (branch `feature/config-web` criada, aguardando autorização para começar).
+**Data de referência:** 23/07/2026 (última atualização: 23/07/2026, tarde — item 6/temperatura)
+**Status:** Itens 1 a 5 implementados (commit `85fab6e`), testados ao vivo no equipamento (página, salvar, restaurar, bloqueio durante teste, faixas e mínimos cruzados — ver seção 9 do `historico/`) e com uma correção aplicada (bloqueio de `ampoule_any()` faltando em `restore_defaults`, ver seção 9 do `historico/`). Item 6 (temperatura) implementado nesta mesma sessão, aguardando gravação no equipamento e teste ao vivo (ver seção 7 abaixo). Branch `feature/config-web`, nada commitado ainda além do `85fab6e`.
 **Documentos relacionados:**
 - `Proposta_Configuracoes_Web.txt` (raiz) — versão para o cliente, linguagem simples.
 - `historico/2026-07-23-configuracoes-web.md` — análise técnica detalhada por item (arquivos, linhas, riscos).
@@ -60,6 +60,8 @@ Resumo (detalhamento completo em `historico/2026-07-23-configuracoes-web.md`):
 
 Todas as 5 configurações ficarão numa **página nova** (`/admin/advanced_config`), dentro da Área Restrita, e não dentro da `restrict.html` existente (decisão tomada por causa da poluição visual que teríamos numa tela de celular padrão se colocássemos tudo junto com o percentual de positivação).
 
+Um sexto item (temperatura) foi pedido pelo cliente depois da implementação inicial dos 5 primeiros — ver seção 7.
+
 ---
 
 ## 3. Decisões de projeto registradas durante o planejamento
@@ -103,16 +105,62 @@ Registradas para não repetir a mesma checagem depois:
 
 ---
 
-## 5. Arquivos já criados (fase de planejamento / scaffold)
+## 5. Arquivos já criados e implementados
 
-- `components/httpd_app/www/pages/advanced_config.html` — esqueleto da página nova (estrutura, campos, menu de navegação apontando pra si mesma, textos ainda não conectados a nenhum backend). **Ainda não registrado no servidor** (`app_httpd.cpp`), **não gzipado**, **não adicionado ao `CMakeLists.txt`**, e o **link no menu das outras 5 páginas ainda não foi adicionado** (aguardando autorização para prosseguir).
+- `components/advanced_config/` (novo componente) — struct `advanced_config_t`, defaults, carga/gravação em dupla área da NVS com CRC (`advanced_config_load/save/restore_defaults`).
+- `components/httpd_app/www/pages/advanced_config.html` — página completa (itens 1-5 + item 6/temperatura, seção 7), traduzida (pt-br/es-es/en-us), gzipada e no `CMakeLists.txt`.
+- `main/app_httpd.cpp` — rotas registradas (`GET /admin/advanced_config`, `GET/POST /api/v1/advanced_config`, `POST /api/v1/advanced_config/restore_defaults`), protegidas por `httpd_register_basic_auth` (autenticação **atualmente desativada** para testes, ver `historico/`).
+- `main/ampoule_test.cpp`, `components/ampoule_sensor` — itens 1-5 usando `g_advanced_config` em vez de constantes fixas.
+- `main/heater.cpp` — item 6 (temperatura) usando `g_advanced_config` em vez de `HEATER_TEMPERATURE`/`heater_min_temp`/`heater_max_temp`/`get_min_temperature()`/`get_max_temperature()` hardcoded.
 
-## 6. Próximos passos (aguardando autorização explícita para começar)
+## 6. Próximos passos
 
-1. Adicionar o link "Configurações Avançadas" no menu das 5 páginas existentes.
-2. Adicionar as traduções (es-es, en-us) da nova página.
-3. Registrar a rota `/admin/advanced_config` em `app_httpd.cpp` (com `check_basic_auth`), gerar o `.gz` e incluir no `CMakeLists.txt`.
-4. Implementar a struct de configuração + gravação em blob único + dupla área + CRC (`nvs_utils.cpp` / `nvs_helpers`).
-5. Implementar a lógica de cada um dos 5 itens no firmware (`ampoule_test.cpp`, `AmpouleSensor.h`), incluindo os guards defensivos e a separação de constantes.
-6. Sincronizar a lógica duplicada em `ampoules.html` (JS) com os novos N/M configuráveis.
-7. Testar compilação via Docker a cada etapa.
+1. ~~Implementação dos itens 1-5~~ — feito (commit `85fab6e`), testado ao vivo (`historico/`, seção 9).
+2. ~~Bug do `restore_defaults` não bloquear durante teste~~ — corrigido e testado ao vivo (`historico/`, seção 9).
+3. Item 6 (temperatura) — implementado nesta sessão (seção 7 abaixo). **Ainda não gravado no equipamento nem testado ao vivo** — só compilado.
+4. Reverter a autenticação desativada (`check_basic_auth()` em `app_httpd.cpp`) antes do uso normal do equipamento.
+5. Atualizar o manual do usuário (`.docx`) com as telas de Configurações Avançadas (itens 1-6).
+6. Confirmar com o cliente/responsável pela validação biológica os valores absolutos de temperatura (hoje 20-60°C é só um limite de engenharia provisório, ver seção 7.3) e a margem de 4°C definida para mínimo/máximo em relação ao setpoint.
+
+---
+
+## 7. Item 6 — Temperatura (pedido do cliente após a implementação inicial)
+
+### 7.1 Estado encontrado no código (antes da mudança)
+
+Levantamento feito analisando `main/heater.cpp` a pedido do cliente, que suspeitava haver "algum detalhe" na temperatura:
+
+- `HEATER_TEMPERATURE = 37.0f` (constante) — único ponto de comparação do controle liga/desliga do aquecedor (`check_heater_temperature_task`): liga se `heater_temperature < 37.0`, desliga caso contrário. **Sem histerese** — mesmo valor exato liga e desliga.
+- Duas faixas hardcoded **diferentes** e **independentes** do setpoint:
+  - `get_min_temperature()=33` / `get_max_temperature()=43` — fora dessa faixa: cancela teste em andamento (`trigger_temp_out_of_range_cancel()`) + soa alarme (`heater_fail_start()`).
+  - `heater_min_temp=35` / `heater_max_temp=43` — dentro dessa faixa: `check_if_heater_temperature_stabilized()` retorna true, liberando os botões/início de novo teste.
+- `Kconfig.projbuild` tem `HEATER_TEMPERATURE` (default 60) e `HEATER_TEMPERATURE_PRECISION` (default 2) — **confirmado morto/sem efeito**, o código real ignora o Kconfig e usa a constante `37.0f` hardcoded (`//(float) CONFIG_HEATER_TEMPERATURE_PRECISION` comentado).
+- Conclusão importante repassada ao cliente: a lógica de mínimo/máximo/liberação **não é** resquício de histerese abandonado — ela roda a cada leitura de temperatura (~1x/s) e tem efeito real (cancela teste, dispara alarme, libera botões). Não é um parâmetro "de conveniência" como os itens 1-5; mexe em segurança térmica do teste biológico.
+
+### 7.2 Evolução da conversa até o design final (registrado para não repetir a discussão)
+
+Propostas intermediárias consideradas e descartadas antes de chegar ao design final:
+- Setpoint calculado como média entre um "máximo" e "mínimo" configurados, com regra de janela fixa (`máximo - mínimo = 8`) e um segundo par `alarme_mínimo`/`alarme_máximo` (`mínimo-2`/`máximo+2`). Descartada: ao mapear contra o código real, 2 dos 6 valores (`máximo` e `alarme_mínimo`, no exemplo usado) não correspondiam a nenhum uso real na lógica — o cliente confirmou que a ideia veio de "setups" genéricos de outros equipamentos, não de engenharia reversa do firmware real.
+- Regra de margem mínima entre setpoint e mínimo/máximo passou por duas versões invertidas antes de chegar à final (`mínimo ≤ setpoint-4` / `máximo ≥ setpoint+4`, ambas por baixo — ou seja, uma margem **mínima** obrigatória de 4°C para cada lado, evitando janela apertada demais que gere alarme por oscilação normal do aquecedor).
+
+### 7.3 Design final implementado
+
+4 campos configuráveis (`components/advanced_config/include/advanced_config.h`, campos `heater_setpoint_c`, `heater_min_temp_c`, `heater_max_temp_c`, `heater_release_temp_c`):
+
+| Campo | Substitui (hoje hardcoded) | Efeito real |
+|---|---|---|
+| `heater_setpoint_c` | `HEATER_TEMPERATURE` (37) | Ponto único de liga/desliga do aquecedor (sem histerese, comportamento preservado) |
+| `heater_min_temp_c` | `get_min_temperature()` (33) | Abaixo disso: cancela teste em andamento + alarme |
+| `heater_max_temp_c` | `get_max_temperature()`/`heater_max_temp` (43, mesmo valor hoje) | Acima disso: cancela teste em andamento + alarme; também teto da faixa "estabilizada" |
+| `heater_release_temp_c` | `heater_min_temp` (35) | Piso da faixa "estabilizada" (libera botões/início de teste) — **calculado na tela** como `mínimo + 2`, campo `readonly` |
+
+Regras de validação (defensivas no backend, `main/app_httpd.cpp`, `api_advanced_config_post_handler`):
+1. Faixa absoluta 20-60°C para os 4 campos — **provisória, só para barrar valores absurdos**; não é uma faixa clinicamente validada (precisa confirmação de quem valida o método biológico, decisão nº 6 da seção 6 acima).
+2. `setpoint - mínimo >= 4` e `máximo - setpoint >= 4` (margem mínima de 4°C, inclusive).
+3. `liberação == mínimo + 2` (exato, tolerância de 0,01 por ser float).
+
+Valores padrão escolhidos para **não mudar o comportamento atual** do equipamento: setpoint=37, mínimo=33, máximo=43, liberação=35 — idênticos aos valores hardcoded que substituem.
+
+Arquivos alterados: `components/advanced_config/include/advanced_config.h` (struct), `components/advanced_config/advanced_config.cpp` (defaults, log), `main/heater.cpp` (usa `g_advanced_config` em vez das constantes/globais antigos), `main/app_httpd.cpp` (GET/POST), `components/httpd_app/www/pages/advanced_config.html` (novo card "Temperatura"), traduções (`pt-br`/`es-es`/`en-us`.json).
+
+**Pendente:** gravar o binário novo no equipamento e repetir a bateria de testes ao vivo (salvar válido, rejeições de faixa, bloqueio durante teste) que já foi feita para os itens 1-5.

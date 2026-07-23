@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <fcntl.h>
+#include <cmath>
 #include "esp_system.h"
 #include "esp_wifi.h"
 #include "esp_log.h"
@@ -166,11 +167,17 @@ static esp_err_t check_password(httpd_req_t *req) {
 }
 
 static esp_err_t check_basic_auth(httpd_req_t *req) {
+	// TESTE TEMPORARIO - autenticacao desligada a pedido do usuario para
+	// depurar a pagina de configuracao avancada sem o dialogo nativo de
+	// Basic Auth do Chrome travando a automacao do navegador.
+	// REVERTER antes de voltar o equipamento para uso normal.
+	return ESP_OK;
+
 	char *buf = NULL;
 	size_t buf_len = 0;
 	basic_auth_info_t *basic_auth_info = (basic_auth_info_t*) req->user_ctx;
 
-	
+
         (void)basic_auth_info;buf_len = httpd_req_get_hdr_value_len(req, "Authorization") + 1;
 
 	if (buf_len <= 1) {
@@ -1192,6 +1199,15 @@ static esp_err_t api_advanced_config_get_handler(httpd_req_t *req) {
 	cJSON_AddNumberToObject(root, "earlyCheckTime",
 			g_advanced_config.early_check_time_s);
 
+	cJSON_AddNumberToObject(root, "heaterSetpoint",
+			g_advanced_config.heater_setpoint_c);
+	cJSON_AddNumberToObject(root, "heaterMinTemp",
+			g_advanced_config.heater_min_temp_c);
+	cJSON_AddNumberToObject(root, "heaterMaxTemp",
+			g_advanced_config.heater_max_temp_c);
+	cJSON_AddNumberToObject(root, "heaterReleaseTemp",
+			g_advanced_config.heater_release_temp_c);
+
 	cJSON *cavities = cJSON_CreateArray();
 	for (int i = 0; i < 4; i++) {
 		cJSON_AddItemToArray(cavities,
@@ -1315,6 +1331,18 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 	if ((item = cJSON_GetObjectItem(root, "earlyCheckTime")))
 		cfg.early_check_time_s = (uint32_t) item->valuedouble;
 
+	if ((item = cJSON_GetObjectItem(root, "heaterSetpoint")))
+		cfg.heater_setpoint_c = (float) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "heaterMinTemp")))
+		cfg.heater_min_temp_c = (float) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "heaterMaxTemp")))
+		cfg.heater_max_temp_c = (float) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "heaterReleaseTemp")))
+		cfg.heater_release_temp_c = (float) item->valuedouble;
+
 	cJSON *cavities = cJSON_GetObjectItem(root, "cavityEnabled");
 	int cavities_enabled_count = 0;
 
@@ -1386,6 +1414,51 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 		return ESP_OK;
 	}
 
+	// Item 6 (temperatura) - faixa absoluta de engenharia (20 a 60 graus),
+	// provisoria ate confirmacao de quem valida o metodo biologico/clinico -
+	// serve so para barrar valores absurdos (negativos, centenas de graus),
+	// nao e uma faixa clinicamente validada.
+	const float HEATER_TEMP_ABS_MIN = 20.0f;
+	const float HEATER_TEMP_ABS_MAX = 60.0f;
+
+	if (cfg.heater_setpoint_c < HEATER_TEMP_ABS_MIN
+			|| cfg.heater_setpoint_c > HEATER_TEMP_ABS_MAX
+			|| cfg.heater_min_temp_c < HEATER_TEMP_ABS_MIN
+			|| cfg.heater_min_temp_c > HEATER_TEMP_ABS_MAX
+			|| cfg.heater_max_temp_c < HEATER_TEMP_ABS_MIN
+			|| cfg.heater_max_temp_c > HEATER_TEMP_ABS_MAX
+			|| cfg.heater_release_temp_c < HEATER_TEMP_ABS_MIN
+			|| cfg.heater_release_temp_c > HEATER_TEMP_ABS_MAX) {
+		send_advanced_config_error(req,
+				"Temperatura fora da faixa absoluta permitida (20 a 60 graus).");
+		return ESP_OK;
+	}
+
+	// Regra cruzada: minimo e maximo precisam manter uma margem de pelo
+	// menos 4 graus para cada lado do setpoint - evita uma janela apertada
+	// demais que gere alarme/cancelamento de teste pela oscilacao normal
+	// do aquecedor.
+	if (cfg.heater_setpoint_c - cfg.heater_min_temp_c < 4.0f) {
+		send_advanced_config_error(req,
+				"Temperatura mínima muito próxima do setpoint (mínimo de 4 graus de margem).");
+		return ESP_OK;
+	}
+
+	if (cfg.heater_max_temp_c - cfg.heater_setpoint_c < 4.0f) {
+		send_advanced_config_error(req,
+				"Temperatura máxima muito próxima do setpoint (mínimo de 4 graus de margem).");
+		return ESP_OK;
+	}
+
+	// Regra cruzada: liberacao (piso da faixa "estabilizada") = minimo + 2.
+	if (fabsf(
+			cfg.heater_release_temp_c - (cfg.heater_min_temp_c + 2.0f))
+			> 0.01f) {
+		send_advanced_config_error(req,
+				"Temperatura de liberação precisa ser exatamente 2 graus acima da temperatura mínima.");
+		return ESP_OK;
+	}
+
 	if (advanced_config_save(cfg) != ESP_OK) {
 		send_advanced_config_error(req,
 				"Erro ao gravar a configuração (falha de integridade na gravação).");
@@ -1414,6 +1487,12 @@ static esp_err_t api_advanced_config_restore_defaults_post_handler(
 	if (uri.find("/api/v1/advanced_config/restore_defaults")
 			== string::npos) {
 		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	if (ampoule_any()) {
+		send_advanced_config_error(req,
+				"Não é possível restaurar o padrão de fábrica enquanto houver análises em andamento.");
 		return ESP_OK;
 	}
 

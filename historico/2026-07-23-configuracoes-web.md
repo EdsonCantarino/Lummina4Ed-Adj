@@ -2,7 +2,7 @@
 
 **Data de referência:** 23/07/2026
 **Origem:** Levantamento de requisitos do cliente + análise de código atual, discutido em sessão de planejamento antes de qualquer implementação.
-**Status:** Nenhuma linha de código foi alterada ainda. Este documento é a referência técnica para quando a implementação começar.
+**Status:** Implementado (commit `85fab6e`) e em teste na branch `feature/config-web`. Ver seção 9 para um bug encontrado e corrigido durante o teste pós-implementação. Ver seção 10 para o item 6 (temperatura), pedido pelo cliente após a implementação inicial dos 5 itens deste documento.
 **Documento não técnico correspondente:** `Proposta_Configuracoes_Web.txt` (raiz do projeto), gerado para o cliente a partir desta mesma análise.
 
 ---
@@ -191,3 +191,34 @@ Todas as validações cruzadas (itens 1↔2, 2↔4, 3↔5) devem ser recalculada
 - `main/nvs_utils.cpp` + `components/nvs_helpers` — nova função de gravação em blob único, duplicado em duas áreas, com CRC.
 - `main/buzzer.cpp` — reaproveitar `buzzer_alarm()` para o alarme de divergência de configuração.
 - `main/ampoule_test.cpp` (`ampoule_set_status`) — nenhuma mudança estrutural necessária para o item 4 (infraestrutura já existe via `is_disabled`), só passar a permitir setar esse campo a partir da web.
+
+---
+
+## 9. Bug encontrado em teste pós-implementação (23/07/2026, tarde) — "Restaurar padrão de fábrica" não bloqueava durante teste em andamento
+
+**Como foi encontrado:** auditoria cruzando este documento (item 13 da tabela de decisões, em `doc/descritivo-sistema-e-mudancas.md`) contra o código já implementado, a pedido do usuário ("checar as regras que criamos"), com a página `/admin/advanced_config` baixada via `curl` e o log serial (COM20) monitorado ao vivo durante os testes.
+
+**O que estava errado:** a decisão registrada dizia que "o(s) endpoint(s) novo(s)" bloqueariam salvamento com `ampoule_any()` (mesmo padrão de Calibração/Reset). Isso foi implementado corretamente em `POST /api/v1/advanced_config` (salvar), mas **não** em `POST /api/v1/advanced_config/restore_defaults` — esse handler (`main/app_httpd.cpp`, função `api_advanced_config_restore_defaults_post_handler`) não tinha nenhuma checagem de teste em andamento. No front-end (`advanced_config.html`), `checkTestInProgress()` também só desabilitava o botão `#btnSalvar`, deixando `#btnRestoreFactoryDefaults` sempre clicável.
+
+**Risco real:** um operador podia clicar em "Restaurar padrão de fábrica" com ampolas em teste ativo. Isso reescreve `g_advanced_config` para os valores de fábrica (as 4 cavidades voltam a `true`) e chama `ampoule_apply_cavity_enabled_config()`, que reabilita imediatamente qualquer cavidade desativada de propósito — alterando um teste em andamento sem aviso.
+
+**Correção aplicada:**
+- `main/app_httpd.cpp`: `api_advanced_config_restore_defaults_post_handler` agora checa `ampoule_any()` no início e recusa a restauração (mesma mensagem de erro no padrão dos outros bloqueios) se houver teste em andamento.
+- `components/httpd_app/www/pages/advanced_config.html`: `checkTestInProgress()` agora desabilita/habilita `#btnRestoreFactoryDefaults` junto com `#btnSalvar`.
+- `advanced_config.html.gz` regerado a partir do HTML atualizado (o `.gz` é um artefato estático, não gerado automaticamente pelo build — precisa ser regenerado manualmente a cada mudança no `.html`, ver `components/httpd_app/CMakeLists.txt`).
+- Firmware recompilado via Docker (`espressif/idf:release-v5.1`) após a correção.
+
+**Restante da auditoria (sem problemas encontrados):** faixas de valores, mínimos cruzados (loop×cavidades, checagem×amostras), bloqueio de 0 cavidades ativas, gravação NVS em dupla área com CRC e verificação de leitura, e a lógica de boot (ausente+ausente = 1º boot; OK+idênticas = confia; qualquer divergência = padrão de fábrica em memória + flag `crcError`, sem "escolher" uma área sozinha) — todos conferidos linha a linha contra este documento e batendo com o implementado.
+
+---
+
+## 10. Item 6 — Temperatura (pedido do cliente após a implementação inicial dos itens 1-5)
+
+Análise técnica completa, evolução do design e regras finais estão documentadas em `doc/descritivo-sistema-e-mudancas.md`, seção 7 (para não duplicar o conteúdo nos dois arquivos). Resumo:
+
+- Cliente pediu para incluir configuração de temperatura, suspeitando de "algum detalhe" no sistema atual.
+- Análise de `main/heater.cpp` confirmou: o setpoint (37°C) e duas faixas de segurança (33-43 para alarme/cancelamento de teste; 35-43 para liberar botões) eram constantes hardcoded, **independentes entre si e do setpoint** — não uma fórmula tipo `setpoint ± margem`. Essa lógica está ativa (roda a cada leitura de temperatura, ~1x/s) e tem efeito real: cancela teste em andamento, dispara alarme sonoro, e libera/bloqueia início de novos testes. Não é resquício abandonado.
+- Também confirmado morto: `HEATER_TEMPERATURE`/`HEATER_TEMPERATURE_PRECISION` no `Kconfig.projbuild` — opções de menuconfig sem nenhum efeito real (o código ignora e usa a constante hardcoded).
+- Design final: 4 campos configuráveis (setpoint, mínimo, máximo, liberação), com liberação calculada como `mínimo + 2` (campo readonly na tela) e regra de margem mínima de 4°C entre o setpoint e cada extremo (mínimo/máximo). Defaults escolhidos para reproduzir exatamente o comportamento atual (37/33/43/35).
+- Implementado nesta sessão (struct em `components/advanced_config`, backend em `main/app_httpd.cpp`, `main/heater.cpp` lendo de `g_advanced_config`, card novo em `advanced_config.html` com traduções). Build via Docker ok.
+- **Pendente:** gravar no equipamento e repetir a bateria de testes ao vivo já feita para os itens 1-5 (salvar válido, rejeições de faixa/margem, bloqueio durante teste). Também pendente: confirmação do cliente/responsável pela validação biológica sobre a faixa absoluta de 20-60°C (hoje só um limite de engenharia provisório) e a margem de 4°C.

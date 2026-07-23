@@ -11,6 +11,15 @@ typedef struct {
 	uint8_t samples_final;        // 3 a 10
 	bool cavity_enabled[4];
 	uint32_t early_check_time_s;  // 180 a 900 (3 a 15 minutos)
+
+	// Item 6 (temperatura) - substituem as constantes hardcoded que
+	// existiam em heater.cpp (HEATER_TEMPERATURE=37, get_min_temperature()=33,
+	// heater_max_temp/get_max_temperature()=43, heater_min_temp=35).
+	float heater_setpoint_c;       // ponto de liga/desliga do aquecedor
+	float heater_min_temp_c;       // abaixo disso: cancela teste em andamento + alarme
+	float heater_max_temp_c;       // acima disso: cancela teste em andamento + alarme;
+	                                // tambem teto da faixa "estabilizada"
+	float heater_release_temp_c;   // piso da faixa "estabilizada" (libera botoes/inicio de teste)
 } advanced_config_t;
 
 extern const advanced_config_t ADVANCED_CONFIG_DEFAULTS;

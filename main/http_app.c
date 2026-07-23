@@ -70,7 +70,10 @@ void http_app_start(bool lru_purge_enable) {
 	if (httpd_handle == NULL) {
 
 		httpd_config_t config = HTTPD_DEFAULT_CONFIG();
-		config.max_uri_handlers = 38;
+		// 40 rotas registradas hoje (24 diretas + 4 novas da Configuracao
+		// Avancada + 13 protegidas por senha, ver app_httpd_register_uri())
+		// - valor com folga para futuras rotas sem repetir esse estouro.
+		config.max_uri_handlers = 48;
 
 		/* this is an important option that isn't set up by default.
 		 * We could register all URLs one by one, but this would not work while the fake DNS is active */

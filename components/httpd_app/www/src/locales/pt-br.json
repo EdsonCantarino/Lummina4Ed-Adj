@@ -180,6 +180,13 @@
     "card_early_check_title": "Checagem Antecipada",
     "early_check_time_label": "Tempo mínimo para checagem antecipada de resultado positivo, em minutos (3 a 15)"
   },
+  "#card_temperature": {
+    "card_temperature_title": "Temperatura",
+    "heater_setpoint_label": "Temperatura de aquecimento (setpoint), em graus",
+    "heater_min_temp_label": "Temperatura mínima (abaixo disso cancela o teste e soa o alarme)",
+    "heater_max_temp_label": "Temperatura máxima (acima disso cancela o teste e soa o alarme)",
+    "heater_release_temp_label": "Temperatura de liberação (calculada = mínima + 2)"
+  },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "Não é possível salvar enquanto houver análises em andamento."
   },

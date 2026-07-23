@@ -9,15 +9,13 @@
 #include "include/keyboard.h"
 #include "include/led_panel.h"
 #include "include/ampoule_test.h"
+#include "advanced_config.h"
 
 #define ON 1
 #define OFF 0
 
 #define HEATER_TIMEOUT CONFIG_HEATER_FAIL_TIMEOUT
 static const gpio_num_t HEATER_GPIO = (gpio_num_t) CONFIG_HEATER_GPIO;
-static const float HEATER_TEMPERATURE = 37.0f;
-static const float HEATER_TEMPERATURE_PRECISION = 2.0f;
-//(float) CONFIG_HEATER_TEMPERATURE_PRECISION;
 
 static const char *TAG = "HEATER";
 
@@ -55,9 +53,6 @@ bool heater_temp_is_up = false;
 
 static bool tests_cancelled_on_temp_error = false;
 
-float heater_min_temp = 35.0f;
-float heater_max_temp = 43.0f;
-
 bool enable_functions = true;
 static bool heater_reached_target = false;
 
@@ -70,15 +65,15 @@ bool check_temperature_status(bool is_in_test) {
 }
 
 float get_target_temperature() {
-	return HEATER_TEMPERATURE;
+	return g_advanced_config.heater_setpoint_c;
 }
 
 float get_min_temperature(bool is_in_test) {
-	return 33.0f;
+	return g_advanced_config.heater_min_temp_c;
 }
 
 float get_max_temperature(bool is_in_test) {
-	return 43.0f;
+	return g_advanced_config.heater_max_temp_c;
 }
 
 void set_heater_controlling(bool status) {
@@ -99,8 +94,8 @@ bool is_temperature_in_range() {
 }
 
 bool check_if_heater_temperature_stabilized() {
-	if ((heater_temperature >= heater_min_temp)
-			&& (heater_temperature <= heater_max_temp))
+	if ((heater_temperature >= g_advanced_config.heater_release_temp_c)
+			&& (heater_temperature <= g_advanced_config.heater_max_temp_c))
 		return true;
 
 	return false;
@@ -199,12 +194,13 @@ void check_heater_temperature_task(void *parameter) {
 		if (xReceivedBytes > 0) {
 			heater_temperature = *temperature;
 
-			if (heater_temperature >= HEATER_TEMPERATURE && !heater_reached_target) {
+			if (heater_temperature >= g_advanced_config.heater_setpoint_c
+					&& !heater_reached_target) {
 				heater_reached_target = true;
 			}
 
 			if (is_heater_on) {
-				if (heater_temperature < HEATER_TEMPERATURE) {
+				if (heater_temperature < g_advanced_config.heater_setpoint_c) {
 					heater_start();
 				} else {
 					heater_stop();
@@ -231,7 +227,9 @@ void check_heater_temperature_task(void *parameter) {
 			ESP_LOGE(TAG, "Temperatura estabilizada: %s",
 					is_temp_stabilized ? "Sim" : "Nao");
 
-			ESP_LOGE(TAG, "Temperatura no Range > 33 e < 43: %s",
+			ESP_LOGE(TAG, "Temperatura no Range > %.1f e < %.1f: %s",
+					g_advanced_config.heater_min_temp_c,
+					g_advanced_config.heater_max_temp_c,
 					is_in_range ? "Sim" : "Nao");
 
 			printf("\n");
@@ -266,16 +264,18 @@ void check_heater_temperature_task(void *parameter) {
 					//ESP_LOGE(TAG, "Aqui - Fora do Range e não esta em teste");
 					xTaskNotify(blink_led_heater_task_handle, 1, eSetBits);
 
-					// Cancela todos os testes em andamento se temperatura sair do range 33-43
+					// Cancela todos os testes em andamento se temperatura sair da
+					// faixa configurada (heater_min_temp_c-heater_max_temp_c)
 					if (!tests_cancelled_on_temp_error && is_any_testing()) {
 						tests_cancelled_on_temp_error = true;
 						trigger_temp_out_of_range_cancel();
 					}
 
 					// Alarme de temperatura fora do range:
-					// - Sempre alarma se > 43 graus
-					// - Só alarma se < 33 graus quando a máquina já estabilizou ao menos
-					//   uma vez (!enable_functions), evitando alarme no aquecimento inicial
+					// - Sempre alarma se > heater_max_temp_c
+					// - Só alarma se < heater_min_temp_c quando a máquina já
+					//   estabilizou ao menos uma vez (!enable_functions),
+					//   evitando alarme no aquecimento inicial
 					if (heater_temperature > get_max_temperature(false)
 							|| (!enable_functions && heater_temperature < get_min_temperature(false))) {
 						heater_fail_start();

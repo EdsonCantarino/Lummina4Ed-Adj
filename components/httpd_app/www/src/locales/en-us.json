@@ -178,6 +178,13 @@
     "card_early_check_title": "Early Check",
     "early_check_time_label": "Minimum time for early positive result check, in minutes (3 to 15)"
   },
+  "#card_temperature": {
+    "card_temperature_title": "Temperature",
+    "heater_setpoint_label": "Heating temperature (setpoint), in degrees",
+    "heater_min_temp_label": "Minimum temperature (below this cancels the test and sounds the alarm)",
+    "heater_max_temp_label": "Maximum temperature (above this cancels the test and sounds the alarm)",
+    "heater_release_temp_label": "Release temperature (calculated = minimum + 2)"
+  },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "Cannot save while there are analyses in progress."
   },

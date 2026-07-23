@@ -163,6 +163,30 @@
             </div>
         </div>
 
+        <div class="card bg-light mb-3" id="card_temperature">
+            <div class="card-header" key="card_temperature_title">Temperatura</div>
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="heater_setpoint" min="20" max="60" step="0.5">
+                    <label for="heater_setpoint" key="heater_setpoint_label">Temperatura de aquecimento (setpoint), em graus</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="heater_min_temp" min="20" max="60" step="0.5">
+                    <label for="heater_min_temp" key="heater_min_temp_label">Temperatura mínima (abaixo disso cancela o teste e soa o alarme)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="heater_max_temp" min="20" max="60" step="0.5">
+                    <label for="heater_max_temp" key="heater_max_temp_label">Temperatura máxima (acima disso cancela o teste e soa o alarme)</label>
+                </div>
+                <div class="form-text" id="heater_min_max_hint"></div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="heater_release_temp" min="20" max="60" step="0.5" readonly>
+                    <label for="heater_release_temp" key="heater_release_temp_label">Temperatura de liberação (calculada = mínima + 2)</label>
+                </div>
+                <div class="form-text" id="heater_release_temp_hint"></div>
+            </div>
+        </div>
+
         <div class="alert alert-warning d-none" id="test_in_progress_alert" role="alert" key="test_in_progress_msg">
             Não é possível salvar enquanto houver análises em andamento.
         </div>
@@ -281,6 +305,38 @@
                 + loopCycleTime + "s de looping)");
         }
 
+        // Recalcula a temperatura de liberação (sempre mínima + 2) e os
+        // avisos de margem minima de 4 graus entre minimo/maximo e o
+        // setpoint, ajustando os campos automaticamente quando necessario.
+        function recalculateTemperatureHints() {
+            let setpoint = parseFloat($("#heater_setpoint").val()) || 0;
+            let minTemp = parseFloat($("#heater_min_temp").val()) || 0;
+            let maxTemp = parseFloat($("#heater_max_temp").val()) || 0;
+
+            let minAllowedMinTemp = setpoint - 4;
+            let minAllowedMaxTemp = setpoint + 4;
+
+            if (minTemp > minAllowedMinTemp) {
+                minTemp = minAllowedMinTemp;
+                $("#heater_min_temp").val(minTemp);
+            }
+
+            if (maxTemp < minAllowedMaxTemp) {
+                maxTemp = minAllowedMaxTemp;
+                $("#heater_max_temp").val(maxTemp);
+            }
+
+            $("#heater_min_max_hint").text(
+                "Setpoint: " + setpoint + "°C — mínima precisa ser ≤ "
+                + minAllowedMinTemp + "°C e máxima precisa ser ≥ "
+                + minAllowedMaxTemp + "°C (margem mínima de 4°C para cada lado)");
+
+            let releaseTemp = minTemp + 2;
+            $("#heater_release_temp").val(releaseTemp);
+            $("#heater_release_temp_hint").text(
+                "Calculada automaticamente: mínima (" + minTemp + "°C) + 2°C");
+        }
+
         function loadCurrentConfig() {
             $.get("/api/v1/advanced_config", function (data) {
                 $("#led_capture_time").val(data.ledCaptureTime);
@@ -288,6 +344,10 @@
                 $("#samples_initial").val(data.samplesInitial);
                 $("#samples_final").val(data.samplesFinal);
                 $("#early_check_time").val(Math.round(data.earlyCheckTime / 60));
+                $("#heater_setpoint").val(data.heaterSetpoint);
+                $("#heater_min_temp").val(data.heaterMinTemp);
+                $("#heater_max_temp").val(data.heaterMaxTemp);
+                $("#heater_release_temp").val(data.heaterReleaseTemp);
 
                 for (let i = 1; i <= 4; i++) {
                     $("#cavity_enabled_" + i).prop('checked', data.cavityEnabled[i - 1]);
@@ -300,6 +360,7 @@
                 }
 
                 recalculateMinimums();
+                recalculateTemperatureHints();
             });
         }
 
@@ -311,9 +372,11 @@
                     if (data.ampoules_status == true) {
                         $("#test_in_progress_alert").removeClass('d-none');
                         $("#btnSalvar").prop('disabled', true);
+                        $("#btnRestoreFactoryDefaults").prop('disabled', true);
                     } else {
                         $("#test_in_progress_alert").addClass('d-none');
                         $("#btnSalvar").prop('disabled', false);
+                        $("#btnRestoreFactoryDefaults").prop('disabled', false);
                     }
                 }
             });
@@ -331,6 +394,9 @@
 
             $(".form-check-input").on('change', recalculateMinimums);
 
+            $("#heater_setpoint, #heater_min_temp, #heater_max_temp").on(
+                'change', recalculateTemperatureHints);
+
             $("#btnSalvar").on('click', function (e) {
                 e.preventDefault();
 
@@ -341,6 +407,7 @@
                 }
 
                 recalculateMinimums();
+                recalculateTemperatureHints();
 
                 let cavityEnabled = [];
                 for (let i = 1; i <= 4; i++) {
@@ -353,7 +420,11 @@
                     "samplesInitial": parseInt($("#samples_initial").val()),
                     "samplesFinal": parseInt($("#samples_final").val()),
                     "earlyCheckTime": parseFloat($("#early_check_time").val()) * 60,
-                    "cavityEnabled": cavityEnabled
+                    "cavityEnabled": cavityEnabled,
+                    "heaterSetpoint": parseFloat($("#heater_setpoint").val()),
+                    "heaterMinTemp": parseFloat($("#heater_min_temp").val()),
+                    "heaterMaxTemp": parseFloat($("#heater_max_temp").val()),
+                    "heaterReleaseTemp": parseFloat($("#heater_release_temp").val())
                 };
 
                 $.ajax({
