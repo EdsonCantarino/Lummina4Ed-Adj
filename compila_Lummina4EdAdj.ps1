@@ -1,9 +1,9 @@
 # =========================================================
 # COMPILACAO ESP32 (DOCKER + ESP-IDF 5.1)
-# Projeto: Lummina4Ed 37
+# Projeto: Lummina4Ed Adj
 # =========================================================
-# .\compila_Lummina4Ed37.ps1 -Logo BIOSTERONS
-# .\compila_Lummina4Ed37.ps1  (MAXXIMED)
+# .\compila_Lummina4EdAdj.ps1 -Logo BIOSTERONS
+# .\compila_Lummina4EdAdj.ps1  (MAXXIMED)
 
 $ErrorActionPreference = "Stop"
 

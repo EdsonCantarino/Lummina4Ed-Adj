@@ -1,12 +1,12 @@
 <#
 .SYNOPSIS
-Atualiza o reposit rio Git do Lummina 4Ed 37 (add, commit e push).
+Atualiza o reposit rio Git do Lummina 4Ed Adj (add, commit e push).
 
 #>
 
 
 param(
-  [string]$RepoPath = "D:\Github\ECK\Maxximed\Lummina4Ed 37\Lummina4Ed 37",
+  [string]$RepoPath = "D:\Github\ECK\Maxximed\Lummina4Ed Adj\Lummina4Ed Adj",
   [string]$Message = "",
   [switch]$PullRebase,
   [switch]$NoPush

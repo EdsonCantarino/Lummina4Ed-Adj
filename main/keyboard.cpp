@@ -358,7 +358,7 @@ void button_event_task(void *pvParameter) {
 						|| (ev.button == BUTTON_3 && !ampoule_is_locked(3) && !ampoule_is_disabled(3))
 						|| (ev.button == BUTTON_4 && !ampoule_is_locked(4) && !ampoule_is_disabled(4))) {
 
-					/* Lummina4Ed 37:
+					/* Lummina4Ed Adj:
 					 * botoes de tempo desabilitados.
 					 * Nao altera tempo e nao altera LEDs de nivel.
 					 */
