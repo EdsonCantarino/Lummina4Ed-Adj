@@ -78,10 +78,19 @@
                 </div>
                 <form>
                     <div class="form-floating mb-3">
+                        <div class="form-floating mb-3" id="settings_device_date_time">
+                            <input type="text" class="form-control" id="device_date_time" disabled>
+                            <label for="device_date_time" key="device_date_time">Data e Hora Atual do Equipamento (RTC)</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
                         <div class="form-floating mb-3" id="settings_date_time">
                             <input type="text" class="form-control datepicker" id="date_time">
-                            <label for="date_time" key="date_time">Data e Hora</label>
+                            <label for="date_time" key="date_time">Nova Data e Hora</label>
                         </div>
+                    </div>
+                    <div class="mb-3" id="settings_use_computer_time">
+                        <button type="button" class="btn btn-secondary btn-sm" id="btnUseComputerTime" key="use_computer_time">Atualizar hora do Lummina?</button>
                     </div>
                 </form>
             </div>
@@ -99,6 +108,36 @@
                 <div class="d-grid gap-2" id="save_settings">
                     <button type="button" class="btn btn-primary" id="btnSalvar" key="save">Salvar
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dateTimeConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-datetime-confirm-modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-title text-center" id="dateTimeConfirmFormTitle">
+                        <h4 key="title">Confirmar atualização de data/hora</h4>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                        <p>
+                            <span key="msg#1">Hora atual do equipamento:</span>
+                            <strong id="dateTimeConfirmCurrent"></strong>
+                        </p>
+                        <p>
+                            <span key="msg#2">Nova hora a ser gravada:</span>
+                            <strong id="dateTimeConfirmNew"></strong>
+                        </p>
+                        <button type="button" class="btn btn-primary btn-block" id="btnConfirmDateTime"
+                            key="confirm">Confirmar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,6 +222,61 @@
             return moment(strDate, "DD/MM/YYYY HH:mm:ss");
         }
 
+        var deviceDateTimeOriginal = "";
+
+        function doSaveSettings() {
+            var date_time = toDateTime($("#date_time").val());
+
+            var institution = removeAcentos($("#institution").val());
+            //ascii_to_hexa($("#institution").val());
+
+            var data = {
+                "year": date_time.get('year'),
+                "month": date_time.get('month') + 1,
+                "day": date_time.get('date'),
+                "hour": date_time.get('hour'),
+                "minute": date_time.get('minute'),
+                "second": date_time.get('second'),
+                "institution": institution
+            };
+
+            console.log(data);
+
+            $.ajax({
+                url: '/api/v1/device/settings',
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function () {
+                    let toast = {
+                        title: $("#save_success_toast_title").val(),
+                        message: $("#save_success_toast_message").val(),
+                        status: TOAST_STATUS.SUCCESS,
+                        timeout: 10000
+                    }
+
+                    Toast.setTheme(TOAST_THEME.LIGHT);
+                    Toast.create(toast);
+
+                    deviceDateTimeOriginal = $("#date_time").val();
+                    $("#device_date_time").val(deviceDateTimeOriginal);
+                },
+                error: function (e) {
+                    console.log(e);
+                    let toast = {
+                        title: $("#save_error_toast_title").val(),
+                        message: $("#save_error_toast_message").val(),
+                        status: TOAST_STATUS.DANGER,
+                        timeout: 10000
+                    }
+
+                    Toast.setTheme(TOAST_THEME.LIGHT);
+                    Toast.create(toast);
+                }
+            });
+        }
+
         $(function () {
 
             Toast.setMaxCount(10);
@@ -191,8 +285,10 @@
             $.get("/api/v1/settings", function (data) {
                 console.log(JSON.stringify(data));
 
-                var timestamp = moment().format("DD/MM/YYYY HH:mm:ss");
-                $("#date_time").val(timestamp);
+                deviceDateTimeOriginal = data.deviceDateTime;
+
+                $("#device_date_time").val(deviceDateTimeOriginal);
+                $("#date_time").val(deviceDateTimeOriginal);
 
                 //var inst = hex_to_ascii(data.institution);
 
@@ -201,58 +297,38 @@
                 $("#version").text(data.version);
             });
 
+            $("#btnUseComputerTime").on('click', function (e) {
+                e.preventDefault();
+
+                var timestamp = moment().format("DD/MM/YYYY HH:mm:ss");
+                $("#date_time").val(timestamp);
+            });
+
+            $("#btnConfirmDateTime").on('click', function (e) {
+                $('#dateTimeConfirmModal').modal('hide');
+
+                doSaveSettings();
+            });
+
+            $("#close-datetime-confirm-modal").on('click', function (e) {
+                $('#dateTimeConfirmModal').modal('hide');
+            });
+
             $("#btnSalvar").on('click', function (e) {
                 e.preventDefault();
 
-                //var dt = toTimestamp($("#date_time").val());
+                var newDateTime = $("#date_time").val();
 
-                var date_time = toDateTime($("#date_time").val());
+                if (newDateTime !== deviceDateTimeOriginal) {
+                    $("#dateTimeConfirmCurrent").text(deviceDateTimeOriginal);
+                    $("#dateTimeConfirmNew").text(newDateTime);
 
-                var institution = removeAcentos($("#institution").val());
-                //ascii_to_hexa($("#institution").val());
+                    $('#dateTimeConfirmModal').modal('show');
 
-                var data = {
-                    "year": date_time.get('year'),
-                    "month": date_time.get('month') + 1,
-                    "day": date_time.get('date'),
-                    "hour": date_time.get('hour'),
-                    "minute": date_time.get('minute'),
-                    "second": date_time.get('second'),
-                    "institution": institution
-                };
+                    return;
+                }
 
-                console.log(data);
-
-                $.ajax({
-                    url: '/api/v1/device/settings',
-                    type: "POST",
-                    data: JSON.stringify(data),
-                    dataType: "json",
-                    contentType: "application/json;charset=utf-8",
-                    success: function () {
-                        let toast = {
-                            title: $("#save_success_toast_title").val(),
-                            message: $("#save_success_toast_message").val(),
-                            status: TOAST_STATUS.SUCCESS,
-                            timeout: 10000
-                        }
-
-                        Toast.setTheme(TOAST_THEME.LIGHT);
-                        Toast.create(toast);
-                    },
-                    error: function (e) {
-                        console.log(e);
-                        let toast = {
-                            title: $("#save_error_toast_title").val(),
-                            message: $("#save_error_toast_message").val(),
-                            status: TOAST_STATUS.DANGER,
-                            timeout: 10000
-                        }
-
-                        Toast.setTheme(TOAST_THEME.LIGHT);
-                        Toast.create(toast);
-                    }
-                });
+                doSaveSettings();
             });
         });
     </script>

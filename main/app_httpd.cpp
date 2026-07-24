@@ -167,12 +167,6 @@ static esp_err_t check_password(httpd_req_t *req) {
 }
 
 static esp_err_t check_basic_auth(httpd_req_t *req) {
-	// TESTE TEMPORARIO - autenticacao desligada a pedido do usuario para
-	// depurar a pagina de configuracao avancada sem o dialogo nativo de
-	// Basic Auth do Chrome travando a automacao do navegador.
-	// REVERTER antes de voltar o equipamento para uso normal.
-	return ESP_OK;
-
 	char *buf = NULL;
 	size_t buf_len = 0;
 	basic_auth_info_t *basic_auth_info = (basic_auth_info_t*) req->user_ctx;
@@ -566,7 +560,7 @@ static esp_err_t translate_json_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -727,6 +721,9 @@ static esp_err_t api_settings_get_handler(httpd_req_t *req) {
 		string serialNumber = get_serial_number();
 		float positive_perc = get_positive_percentage();
 
+		char rtc_date_time[72];
+		rtc_ds1302_get_date_time(rtc_date_time);
+
 		httpd_resp_set_type(req, "application/json");
 		cJSON *root = cJSON_CreateObject();
 
@@ -735,6 +732,7 @@ static esp_err_t api_settings_get_handler(httpd_req_t *req) {
 		cJSON_AddStringToObject(root, "serialNumber", serialNumber.c_str());
 		cJSON_AddNumberToObject(root, "positivePercentage", positive_perc);
 		cJSON_AddStringToObject(root, "version", getFirmwareVersion());
+		cJSON_AddStringToObject(root, "deviceDateTime", rtc_date_time);
 
 		const char *sys_info = cJSON_Print(root);
 		httpd_resp_sendstr(req, sys_info);
@@ -961,7 +959,7 @@ static esp_err_t device_settings_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -1062,7 +1060,7 @@ static esp_err_t api_settings_serialnumber_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -1126,7 +1124,7 @@ static esp_err_t restrict_device_settings_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -1290,7 +1288,7 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 		return ESP_FAIL;
 	}
 	while (cur_len < total_len) {
-		received = httpd_req_recv(req, buf + cur_len, total_len);
+		received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 		if (received <= 0) {
 			free(buf);
 			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -1414,12 +1412,12 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 		return ESP_OK;
 	}
 
-	// Item 6 (temperatura) - faixa absoluta de engenharia (20 a 60 graus),
+	// Item 6 (temperatura) - faixa absoluta de engenharia (20 a 70 graus),
 	// provisoria ate confirmacao de quem valida o metodo biologico/clinico -
 	// serve so para barrar valores absurdos (negativos, centenas de graus),
 	// nao e uma faixa clinicamente validada.
 	const float HEATER_TEMP_ABS_MIN = 20.0f;
-	const float HEATER_TEMP_ABS_MAX = 60.0f;
+	const float HEATER_TEMP_ABS_MAX = 70.0f;
 
 	if (cfg.heater_setpoint_c < HEATER_TEMP_ABS_MIN
 			|| cfg.heater_setpoint_c > HEATER_TEMP_ABS_MAX
@@ -1539,7 +1537,7 @@ static esp_err_t calibration_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -1616,7 +1614,7 @@ static esp_err_t reset_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
@@ -1671,7 +1669,7 @@ static esp_err_t api_language_post_handler(httpd_req_t *req) {
 			return ESP_FAIL;
 		}
 		while (cur_len < total_len) {
-			received = httpd_req_recv(req, buf + cur_len, total_len);
+			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,

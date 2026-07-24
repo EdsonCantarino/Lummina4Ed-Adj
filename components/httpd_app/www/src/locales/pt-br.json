@@ -308,8 +308,14 @@
   "#version_title": {
     "title#1": "Versão da firmware"
   },
+  "#settings_device_date_time": {
+    "device_date_time": "Data e Hora Atual do Equipamento (RTC)"
+  },
   "#settings_date_time": {
-    "date_time": "Data e Hora"
+    "date_time": "Nova Data e Hora"
+  },
+  "#settings_use_computer_time": {
+    "use_computer_time": "Atualizar hora do Lummina?"
   },
   "#settings_institution": {
     "institution": "Instituição"

@@ -306,8 +306,14 @@
   "#version_title": {
     "title#1": "Firmware Version"
   },
+  "#settings_device_date_time": {
+    "device_date_time": "Current Device Date and Time (RTC)"
+  },
   "#settings_date_time": {
-    "date_time": "Date and Time"
+    "date_time": "New Date and Time"
+  },
+  "#settings_use_computer_time": {
+    "use_computer_time": "Update Lummina's time?"
   },
   "#settings_institution": {
     "institution": "Institution"
