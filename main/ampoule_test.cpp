@@ -1066,7 +1066,6 @@ long ampoule_get_time_test(int id) {
 
 	return time;
 }
-/*
 void ampoule_set_time_test(int id, int level) {
 	long time = 0;
 
@@ -1083,20 +1082,6 @@ void ampoule_set_time_test(int id, int level) {
 	}
 
 	printf("TIME  %ld\n", time);
-
-	for (int i = 0; i < 4; i++) {
-		if (ampoules[i].id == id) {
-			ampoules[i].time_test = time;
-			break;
-		}
-	}
-}
-*/
-void ampoule_set_time_test(int id, int level) {
-	long time = 20 * 60;
-
-	printf("LEVEL IGNORADO %d\n", level);
-	printf("TIME FIXO %ld\n", time);
 
 	for (int i = 0; i < 4; i++) {
 		if (ampoules[i].id == id) {

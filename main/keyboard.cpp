@@ -17,6 +17,7 @@
 #include "include/buzzer.h"
 #include "include/ampoule_sensor.h"
 #include "include/ampoule_test.h"
+#include "advanced_config.h"
 
 #include "include/nvs_utils.h"
 
@@ -161,6 +162,9 @@ void update_button_level(buttons_history_t *d) {
 
 				if (d->level > 4)
 					d->level = 1;
+
+				if (!g_advanced_config.eto_mode)
+					buzzer_alarm();
 			}
 		} else {
 			ESP_LOGI(TAG,
@@ -342,15 +346,27 @@ void button_event_task(void *pvParameter) {
 
 				if (ev.button == BUTTON_1 && !ampoule_is_locked(1) && !ampoule_is_disabled(1)) {
 					panel = LED_PANEL1;
+
+					if (!g_advanced_config.eto_mode)
+						ampoule_set_time_test(1, ev.level);
 				}
 				if (ev.button == BUTTON_2 && !ampoule_is_locked(2) && !ampoule_is_disabled(2)) {
 					panel = LED_PANEL2;
+
+					if (!g_advanced_config.eto_mode)
+						ampoule_set_time_test(2, ev.level);
 				}
 				if (ev.button == BUTTON_3 && !ampoule_is_locked(3) && !ampoule_is_disabled(3)) {
 					panel = LED_PANEL3;
+
+					if (!g_advanced_config.eto_mode)
+						ampoule_set_time_test(3, ev.level);
 				}
 				if (ev.button == BUTTON_4 && !ampoule_is_locked(4) && !ampoule_is_disabled(4)) {
 					panel = LED_PANEL4;
+
+					if (!g_advanced_config.eto_mode)
+						ampoule_set_time_test(4, ev.level);
 				}
 
 				if ((ev.button == BUTTON_1 && !ampoule_is_locked(1) && !ampoule_is_disabled(1))
@@ -358,10 +374,19 @@ void button_event_task(void *pvParameter) {
 						|| (ev.button == BUTTON_3 && !ampoule_is_locked(3) && !ampoule_is_disabled(3))
 						|| (ev.button == BUTTON_4 && !ampoule_is_locked(4) && !ampoule_is_disabled(4))) {
 
-					/* Lummina4Ed Adj:
-					 * botoes de tempo desabilitados.
-					 * Nao altera tempo e nao altera LEDs de nivel.
-					 */
+					if (g_advanced_config.eto_mode) {
+						/* ETO: botoes de tempo desabilitados.
+						 * Nao altera tempo e nao altera LEDs de nivel.
+						 */
+					} else if (is_buttons_functions_enabled) {
+						if (ev.level == 0) {
+							xTaskNotify(led_panel_task_handle,
+									LED_OFF(panel, 9), eSetBits);
+						} else {
+							xTaskNotify(led_panel_task_handle,
+									LED_ON(panel, ev.level), eSetBits);
+						}
+					}
 				}
 
 				if (ev.button == BUTTON_PRINT) {

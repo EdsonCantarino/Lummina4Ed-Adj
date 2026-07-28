@@ -1206,6 +1206,8 @@ static esp_err_t api_advanced_config_get_handler(httpd_req_t *req) {
 	cJSON_AddNumberToObject(root, "heaterReleaseTemp",
 			g_advanced_config.heater_release_temp_c);
 
+	cJSON_AddBoolToObject(root, "etoMode", g_advanced_config.eto_mode);
+
 	cJSON *cavities = cJSON_CreateArray();
 	for (int i = 0; i < 4; i++) {
 		cJSON_AddItemToArray(cavities,
@@ -1340,6 +1342,9 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 
 	if ((item = cJSON_GetObjectItem(root, "heaterReleaseTemp")))
 		cfg.heater_release_temp_c = (float) item->valuedouble;
+
+	if ((item = cJSON_GetObjectItem(root, "etoMode")))
+		cfg.eto_mode = cJSON_IsTrue(item);
 
 	cJSON *cavities = cJSON_GetObjectItem(root, "cavityEnabled");
 	int cavities_enabled_count = 0;

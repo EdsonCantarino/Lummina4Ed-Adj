@@ -185,6 +185,11 @@
     "heater_max_temp_label": "Maximum temperature (above this cancels the test and sounds the alarm)",
     "heater_release_temp_label": "Release temperature (calculated = minimum + 2)"
   },
+  "#card_operation_mode": {
+    "card_operation_mode_title": "Operation Mode",
+    "mode_normal_label": "Normal",
+    "mode_eto_label": "ETO"
+  },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "Cannot save while there are analyses in progress."
   },

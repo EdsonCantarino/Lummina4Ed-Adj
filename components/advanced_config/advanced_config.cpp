@@ -17,7 +17,8 @@ const advanced_config_t ADVANCED_CONFIG_DEFAULTS = {
 	37.0f,                       // heater_setpoint_c (comportamento atual)
 	33.0f,                       // heater_min_temp_c (comportamento atual)
 	43.0f,                       // heater_max_temp_c (comportamento atual)
-	35.0f                        // heater_release_temp_c (comportamento atual)
+	35.0f,                       // heater_release_temp_c (comportamento atual)
+	false                        // eto_mode (padrao de fabrica = Normal)
 };
 
 advanced_config_t g_advanced_config = ADVANCED_CONFIG_DEFAULTS;
@@ -54,14 +55,15 @@ static const char* area_state_name(AreaState state) {
 
 static void log_config(const char *prefix, const advanced_config_t &cfg) {
 	ESP_LOGI(TAG,
-			"%s: captura=%.1fs looping=%lus amostras=%d+%d checagem=%lus cavidades=[%d,%d,%d,%d] temp[setpoint=%.1f min=%.1f liberacao=%.1f max=%.1f]",
+			"%s: captura=%.1fs looping=%lus amostras=%d+%d checagem=%lus cavidades=[%d,%d,%d,%d] temp[setpoint=%.1f min=%.1f liberacao=%.1f max=%.1f] modo=%s",
 			prefix, cfg.led_capture_time_s,
 			(unsigned long) cfg.loop_cycle_time_s, cfg.samples_initial,
 			cfg.samples_final, (unsigned long) cfg.early_check_time_s,
 			cfg.cavity_enabled[0], cfg.cavity_enabled[1],
 			cfg.cavity_enabled[2], cfg.cavity_enabled[3],
 			cfg.heater_setpoint_c, cfg.heater_min_temp_c,
-			cfg.heater_release_temp_c, cfg.heater_max_temp_c);
+			cfg.heater_release_temp_c, cfg.heater_max_temp_c,
+			cfg.eto_mode ? "ETO" : "Normal");
 }
 
 static AreaState read_area(const char *key, advanced_config_t &out) {

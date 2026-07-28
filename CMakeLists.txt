@@ -17,7 +17,7 @@ add_definitions(-DVERSION_LIBINTERFACE=${LIBINTERFACE_VERSION} )
 #string(REPLACE " " "_" ProjectId ${ProjectId})
 #project(${ProjectId})
 
-set(VERSION_FIRMWARE "2025.03.11")
+string(TIMESTAMP VERSION_FIRMWARE "%Y.%m.%d")
 set(PROJECT_VERU ${VERSION_FIRMWARE})
 set(PROJECT_PREF "Lummina4")
 

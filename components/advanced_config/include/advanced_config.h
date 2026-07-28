@@ -20,6 +20,11 @@ typedef struct {
 	float heater_max_temp_c;       // acima disso: cancela teste em andamento + alarme;
 	                                // tambem teto da faixa "estabilizada"
 	float heater_release_temp_c;   // piso da faixa "estabilizada" (libera botoes/inicio de teste)
+
+	// Modo de operacao: false = Normal (tempo selecionavel via botoes:
+	// 20min/1h/2h/3h, com beep e LED de nivel), true = ETO (tempo fixo de
+	// 20min, botoes de tempo sem efeito).
+	bool eto_mode;
 } advanced_config_t;
 
 extern const advanced_config_t ADVANCED_CONFIG_DEFAULTS;

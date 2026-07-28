@@ -163,6 +163,20 @@
             </div>
         </div>
 
+        <div class="card bg-light mb-3" id="card_operation_mode">
+            <div class="card-header" key="card_operation_mode_title">Modo de Operação</div>
+            <div class="card-body">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mode_normal" checked>
+                    <label class="form-check-label" for="mode_normal" key="mode_normal_label">Normal</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mode_eto">
+                    <label class="form-check-label" for="mode_eto" key="mode_eto_label">ETO</label>
+                </div>
+            </div>
+        </div>
+
         <div class="card bg-light mb-3" id="card_temperature">
             <div class="card-header" key="card_temperature_title">Temperatura</div>
             <div class="card-body">
@@ -349,6 +363,9 @@
                 $("#heater_max_temp").val(data.heaterMaxTemp);
                 $("#heater_release_temp").val(data.heaterReleaseTemp);
 
+                $("#mode_normal").prop('checked', !data.etoMode);
+                $("#mode_eto").prop('checked', data.etoMode);
+
                 for (let i = 1; i <= 4; i++) {
                     $("#cavity_enabled_" + i).prop('checked', data.cavityEnabled[i - 1]);
                 }
@@ -397,6 +414,22 @@
             $("#heater_setpoint, #heater_min_temp, #heater_max_temp").on(
                 'change', recalculateTemperatureHints);
 
+            $("#mode_normal").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $("#mode_eto").prop('checked', false);
+                } else {
+                    $(this).prop('checked', true);
+                }
+            });
+
+            $("#mode_eto").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $("#mode_normal").prop('checked', false);
+                } else {
+                    $(this).prop('checked', true);
+                }
+            });
+
             $("#btnSalvar").on('click', function (e) {
                 e.preventDefault();
 
@@ -424,7 +457,8 @@
                     "heaterSetpoint": parseFloat($("#heater_setpoint").val()),
                     "heaterMinTemp": parseFloat($("#heater_min_temp").val()),
                     "heaterMaxTemp": parseFloat($("#heater_max_temp").val()),
-                    "heaterReleaseTemp": parseFloat($("#heater_release_temp").val())
+                    "heaterReleaseTemp": parseFloat($("#heater_release_temp").val()),
+                    "etoMode": $("#mode_eto").is(':checked')
                 };
 
                 $.ajax({
