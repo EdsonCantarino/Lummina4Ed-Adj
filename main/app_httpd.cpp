@@ -1206,7 +1206,11 @@ static esp_err_t api_advanced_config_get_handler(httpd_req_t *req) {
 	cJSON_AddNumberToObject(root, "heaterReleaseTemp",
 			g_advanced_config.heater_release_temp_c);
 
-	cJSON_AddBoolToObject(root, "etoMode", g_advanced_config.eto_mode);
+	const char *operation_mode_str =
+			g_advanced_config.operation_mode == OPERATION_MODE_CRC1 ? "crc1" :
+			g_advanced_config.operation_mode == OPERATION_MODE_ETO ? "eto" :
+					"normal";
+	cJSON_AddStringToObject(root, "operationMode", operation_mode_str);
 
 	cJSON *cavities = cJSON_CreateArray();
 	for (int i = 0; i < 4; i++) {
@@ -1343,8 +1347,14 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 	if ((item = cJSON_GetObjectItem(root, "heaterReleaseTemp")))
 		cfg.heater_release_temp_c = (float) item->valuedouble;
 
-	if ((item = cJSON_GetObjectItem(root, "etoMode")))
-		cfg.eto_mode = cJSON_IsTrue(item);
+	if ((item = cJSON_GetObjectItem(root, "operationMode")) && item->valuestring) {
+		if (strcmp(item->valuestring, "crc1") == 0)
+			cfg.operation_mode = OPERATION_MODE_CRC1;
+		else if (strcmp(item->valuestring, "eto") == 0)
+			cfg.operation_mode = OPERATION_MODE_ETO;
+		else
+			cfg.operation_mode = OPERATION_MODE_NORMAL;
+	}
 
 	cJSON *cavities = cJSON_GetObjectItem(root, "cavityEnabled");
 	int cavities_enabled_count = 0;
@@ -1364,6 +1374,17 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 	}
 
 	cJSON_Delete(root);
+
+	// CRC1: so a cavidade 1 pode ficar habilitada - forcado no backend
+	// independente do que a tela web enviou (defesa contra requisicao
+	// manual/fora da tela).
+	if (cfg.operation_mode == OPERATION_MODE_CRC1) {
+		cfg.cavity_enabled[0] = true;
+		cfg.cavity_enabled[1] = false;
+		cfg.cavity_enabled[2] = false;
+		cfg.cavity_enabled[3] = false;
+		cavities_enabled_count = 1;
+	}
 
 	// Validacao defensiva no firmware - independente da validacao ja
 	// feita na tela web, o backend nunca aceita uma combinacao fora dos
@@ -1387,9 +1408,17 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 		return ESP_OK;
 	}
 
-	if (cfg.early_check_time_s < 180 || cfg.early_check_time_s > 900) {
+	// CRC1 permite reduzir o minimo absoluto de checagem antecipada de 3
+	// para 1 minuto (pedido do cliente); Normal e ETO mantem o minimo de 3.
+	uint32_t early_check_abs_min_s =
+			cfg.operation_mode == OPERATION_MODE_CRC1 ? 60 : 180;
+
+	if (cfg.early_check_time_s < early_check_abs_min_s
+			|| cfg.early_check_time_s > 900) {
 		send_advanced_config_error(req,
-				"Tempo de checagem antecipada fora da faixa permitida (3 a 15 minutos).");
+				cfg.operation_mode == OPERATION_MODE_CRC1 ?
+						"Tempo de checagem antecipada fora da faixa permitida (1 a 15 minutos)." :
+						"Tempo de checagem antecipada fora da faixa permitida (3 a 15 minutos).");
 		return ESP_OK;
 	}
 

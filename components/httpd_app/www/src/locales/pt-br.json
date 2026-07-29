@@ -178,7 +178,7 @@
   },
   "#card_early_check": {
     "card_early_check_title": "Checagem Antecipada",
-    "early_check_time_label": "Tempo mínimo para checagem antecipada de resultado positivo, em minutos (3 a 15)"
+    "early_check_time_label": "Tempo mínimo para checagem antecipada de resultado positivo, em minutos"
   },
   "#card_temperature": {
     "card_temperature_title": "Temperatura",
@@ -190,7 +190,8 @@
   "#card_operation_mode": {
     "card_operation_mode_title": "Modo de Operação",
     "mode_normal_label": "Normal",
-    "mode_eto_label": "ETO"
+    "mode_eto_label": "ETO",
+    "mode_crc1_label": "CRC1"
   },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "Não é possível salvar enquanto houver análises em andamento."

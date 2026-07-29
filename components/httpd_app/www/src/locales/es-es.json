@@ -177,7 +177,7 @@
   },
   "#card_early_check": {
     "card_early_check_title": "Verificación Anticipada",
-    "early_check_time_label": "Tiempo mínimo para verificación anticipada de resultado positivo, en minutos (3 a 15)"
+    "early_check_time_label": "Tiempo mínimo para verificación anticipada de resultado positivo, en minutos"
   },
   "#card_temperature": {
     "card_temperature_title": "Temperatura",
@@ -189,7 +189,8 @@
   "#card_operation_mode": {
     "card_operation_mode_title": "Modo de Operación",
     "mode_normal_label": "Normal",
-    "mode_eto_label": "ETO"
+    "mode_eto_label": "ETO",
+    "mode_crc1_label": "CRC1"
   },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "No es posible guardar mientras haya análisis en curso."

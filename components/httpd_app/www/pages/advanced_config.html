@@ -157,7 +157,7 @@
             <div class="card-body">
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="early_check_time" min="3" max="15" step="1">
-                    <label for="early_check_time" key="early_check_time_label">Tempo mínimo para checagem antecipada de resultado positivo, em minutos (3 a 15)</label>
+                    <label for="early_check_time" key="early_check_time_label">Tempo mínimo para checagem antecipada de resultado positivo, em minutos</label>
                 </div>
                 <div class="form-text" id="early_check_time_hint"></div>
             </div>
@@ -173,6 +173,10 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="mode_eto">
                     <label class="form-check-label" for="mode_eto" key="mode_eto_label">ETO</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mode_crc1">
+                    <label class="form-check-label" for="mode_crc1" key="mode_crc1_label">CRC1</label>
                 </div>
             </div>
         </div>
@@ -281,10 +285,52 @@
             return count;
         }
 
+        function getOperationMode() {
+            if ($("#mode_crc1").is(':checked')) return 'crc1';
+            if ($("#mode_eto").is(':checked')) return 'eto';
+            return 'normal';
+        }
+
+        // CRC1: so a cavidade 1 pode ficar habilitada. Enquanto CRC1 estiver
+        // selecionado, trava as 4 cavidades na tela (1 marcada, 2/3/4
+        // desmarcadas, todas desabilitadas) guardando o estado anterior para
+        // restaurar quando o operador voltar para Normal/ETO.
+        let cavityStateBeforeCrc1 = null;
+
+        function updateCrc1CavityLock() {
+            let isCrc1 = getOperationMode() === 'crc1';
+
+            if (isCrc1 && cavityStateBeforeCrc1 === null) {
+                cavityStateBeforeCrc1 = [];
+                for (let i = 1; i <= 4; i++) {
+                    cavityStateBeforeCrc1.push($("#cavity_enabled_" + i).is(':checked'));
+                }
+            }
+
+            if (isCrc1) {
+                for (let i = 1; i <= 4; i++) {
+                    $("#cavity_enabled_" + i).prop('checked', i === 1)
+                        .prop('disabled', true);
+                }
+            } else {
+                if (cavityStateBeforeCrc1 !== null) {
+                    for (let i = 1; i <= 4; i++) {
+                        $("#cavity_enabled_" + i).prop('checked', cavityStateBeforeCrc1[i - 1]);
+                    }
+                    cavityStateBeforeCrc1 = null;
+                }
+                for (let i = 1; i <= 4; i++) {
+                    $("#cavity_enabled_" + i).prop('disabled', false);
+                }
+            }
+        }
+
         // Recalcula os minimos dependentes (item 2 e item 5) e ajusta os
         // campos automaticamente caso o valor atual fique abaixo do minimo,
         // conforme definido na analise tecnica.
         function recalculateMinimums() {
+            updateCrc1CavityLock();
+
             let ledCaptureTime = parseFloat($("#led_capture_time").val()) || 0;
             let loopCycleTime = parseInt($("#loop_cycle_time").val()) || 0;
             let samplesInitial = parseInt($("#samples_initial").val()) || 0;
@@ -306,7 +352,14 @@
                 + "(" + cavitiesEnabledCount + " cavidade(s) ativa(s) × ("
                 + ledCaptureTime + "s + 0,5s de margem))");
 
-            let minEarlyCheckTimeSec = (samplesInitial + samplesFinal) * loopCycleTime;
+            // CRC1 reduz o minimo absoluto de checagem antecipada de 3 para
+            // 1 minuto; Normal e ETO mantem o minimo de 3.
+            let earlyCheckAbsMinMin = getOperationMode() === 'crc1' ? 1 : 3;
+            $("#early_check_time").attr('min', earlyCheckAbsMinMin);
+
+            let minEarlyCheckTimeSec = Math.max(
+                (samplesInitial + samplesFinal) * loopCycleTime,
+                earlyCheckAbsMinMin * 60);
             let minEarlyCheckTimeMin = Math.ceil(minEarlyCheckTimeSec / 60);
 
             if (earlyCheckTime < minEarlyCheckTimeSec) {
@@ -314,7 +367,8 @@
             }
 
             $("#early_check_time_hint").text(
-                "Mínimo permitido agora: " + minEarlyCheckTimeMin + " minutos "
+                "Faixa permitida: " + earlyCheckAbsMinMin + " a 15 minutos. "
+                + "Mínimo permitido agora: " + minEarlyCheckTimeMin + " minutos "
                 + "(" + (samplesInitial + samplesFinal) + " amostras × "
                 + loopCycleTime + "s de looping)");
         }
@@ -363,8 +417,9 @@
                 $("#heater_max_temp").val(data.heaterMaxTemp);
                 $("#heater_release_temp").val(data.heaterReleaseTemp);
 
-                $("#mode_normal").prop('checked', !data.etoMode);
-                $("#mode_eto").prop('checked', data.etoMode);
+                $("#mode_normal").prop('checked', data.operationMode === 'normal');
+                $("#mode_eto").prop('checked', data.operationMode === 'eto');
+                $("#mode_crc1").prop('checked', data.operationMode === 'crc1');
 
                 for (let i = 1; i <= 4; i++) {
                     $("#cavity_enabled_" + i).prop('checked', data.cavityEnabled[i - 1]);
@@ -417,6 +472,7 @@
             $("#mode_normal").on('change', function () {
                 if ($(this).is(':checked')) {
                     $("#mode_eto").prop('checked', false);
+                    $("#mode_crc1").prop('checked', false);
                 } else {
                     $(this).prop('checked', true);
                 }
@@ -425,6 +481,16 @@
             $("#mode_eto").on('change', function () {
                 if ($(this).is(':checked')) {
                     $("#mode_normal").prop('checked', false);
+                    $("#mode_crc1").prop('checked', false);
+                } else {
+                    $(this).prop('checked', true);
+                }
+            });
+
+            $("#mode_crc1").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $("#mode_normal").prop('checked', false);
+                    $("#mode_eto").prop('checked', false);
                 } else {
                     $(this).prop('checked', true);
                 }
@@ -458,7 +524,7 @@
                     "heaterMinTemp": parseFloat($("#heater_min_temp").val()),
                     "heaterMaxTemp": parseFloat($("#heater_max_temp").val()),
                     "heaterReleaseTemp": parseFloat($("#heater_release_temp").val()),
-                    "etoMode": $("#mode_eto").is(':checked')
+                    "operationMode": getOperationMode()
                 };
 
                 $.ajax({

@@ -18,7 +18,7 @@ const advanced_config_t ADVANCED_CONFIG_DEFAULTS = {
 	33.0f,                       // heater_min_temp_c (comportamento atual)
 	43.0f,                       // heater_max_temp_c (comportamento atual)
 	35.0f,                       // heater_release_temp_c (comportamento atual)
-	false                        // eto_mode (padrao de fabrica = Normal)
+	OPERATION_MODE_NORMAL        // operation_mode (padrao de fabrica = Normal)
 };
 
 advanced_config_t g_advanced_config = ADVANCED_CONFIG_DEFAULTS;
@@ -63,7 +63,8 @@ static void log_config(const char *prefix, const advanced_config_t &cfg) {
 			cfg.cavity_enabled[2], cfg.cavity_enabled[3],
 			cfg.heater_setpoint_c, cfg.heater_min_temp_c,
 			cfg.heater_release_temp_c, cfg.heater_max_temp_c,
-			cfg.eto_mode ? "ETO" : "Normal");
+			cfg.operation_mode == OPERATION_MODE_CRC1 ? "CRC1" :
+			cfg.operation_mode == OPERATION_MODE_ETO ? "ETO" : "Normal");
 }
 
 static AreaState read_area(const char *key, advanced_config_t &out) {
