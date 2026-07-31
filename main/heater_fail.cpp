@@ -15,6 +15,9 @@ void heater_fail_task(void *pvParameter) {
 
 		bool alarm_off = get_buzzer_button_state();
 
+		printf("[DEBUG-ALARM] heater_fail_task disparou (ciclo de 10s) - alarm_off=%d\n",
+				alarm_off);
+
 		if (!alarm_off) {
 			bool state = false;
 
@@ -55,6 +58,7 @@ void heater_fail_setup() {
 
 void heater_fail_start() {
 	if (xTimerIsTimerActive(heater_fail_timer) == pdFALSE) {
+		printf("[DEBUG-ALARM] heater_fail_start(): iniciando timer de alarme (estava parado)\n");
 		xTimerStart(heater_fail_timer, 0);
 	}
 }

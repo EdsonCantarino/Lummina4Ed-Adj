@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap-toaster.min.css">
     <link rel="stylesheet" type="text/css" href="../../bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
 
-    <title>Área Restrita</title>
+    <title>Histórico</title>
 </head>
 
 <body>
@@ -86,63 +86,138 @@
 
     <div class="container">
         <div class="pb-2 mt-4 mb-2 border-bottom">
-            <h3 id="serial-number-card-title">
-                <span key="title#1">Configurações</span>
-                <small class="text-muted" key="title#2">Dispositivo (Área Restrita)</small>
+            <h3 id="history-card-title">
+                <span key="title#1">Histórico</span>
+                <small class="text-muted" key="title#2">Resultados de Testes</small>
             </h3>
         </div>
 
+        <div class="alert alert-warning d-none" id="test_in_progress_alert" role="alert">
+            <span key="test_in_progress_msg">Não é possível alterar essa configuração enquanto houver análises em
+                andamento.</span>
+        </div>
 
-        <div class="card bg-light" id="connected-wifi-data">
+        <div class="card bg-light mb-3" id="card_print_count">
+            <div class="card-header" key="card_print_count_title">Impressão</div>
             <div class="card-body">
-                <form>
-                    <div class="form-floating mb-3">
-                        <div class="form-floating mb-3" id="old_serial_number">
-                            <input type="text" class="form-control" id="num_serie_atual" disabled>
-                            <label for="num_serie" key="num_serie">Número de Série (Atual)</label>
-                        </div>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <div class="form-floating mb-3" id="new_serial_number">
-                            <input type="text" class="form-control" id="num_serie">
-                            <label for="num_serie" key="num_serie">Número de Série (Novo)</label>
-                        </div>
-                    </div>
-                </form>
+                <div class="form-floating mb-2">
+                    <input type="number" min="1" max="64" step="1" class="form-control" id="print_count">
+                    <label for="print_count" key="print_count_label">Quantidade de resultados a imprimir (1 a
+                        64)</label>
+                </div>
             </div>
             <div class="card-footer">
-                <div class="d-grid gap-2" id="save_serial_number">
-                    <button type="button" class="btn btn-primary" id="btnSalvar" key="save">Salvar
+                <div class="d-grid gap-2" id="save_print_count">
+                    <button type="button" class="btn btn-primary" id="btnSalvarPrintCount" key="save">Salvar
                     </button>
                 </div>
             </div>
         </div>
+
+        <div class="card bg-light mb-3" id="card_history_table">
+            <div class="card-header" key="card_history_table_title">Últimos Resultados</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped align-middle" id="history_table_cols">
+                        <thead>
+                            <tr>
+                                <th key="col_date">Data/Hora</th>
+                                <th key="col_cavidade">Cavidade</th>
+                                <th key="col_resultado">Resultado</th>
+                                <th key="col_ciclo">Tempo de Teste</th>
+                                <th key="col_temperatura">Temperatura</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history_table_body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-outline-secondary" id="btnScrollUp">
+                    <i class="bi bi-arrow-up"></i>
+                </button>
+                <span id="history_position_label"></span>
+                <button type="button" class="btn btn-outline-secondary" id="btnScrollDown">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+        </div>
     </div>
-    <div id="serial_number_messages">
-        <input type="hidden" id="restart_toast_title" name="restart_toast_title" key="restart_toast_title"
-            value="Reiniciar Dispositivo">
-        <input type="hidden" id="restart_toast_message" name="restart_toast_message" key="restart_toast_message"
-            value="O dispositivo será reiniciado em 10 segundos!">
+
+    <div id="history_messages">
         <input type="hidden" id="save_success_toast_title" name="save_success_toast_title"
-            key="save_success_toast_title" value="Configurações do dispositivo">
+            key="save_success_toast_title" value="Histórico">
         <input type="hidden" id="save_success_toast_message" name="save_success_toast_message"
-            key="save_success_toast_message"
-            value="A alteração do Número de série do equipamento requer que o dispositivo seja reiniciado.<br />O dispositivo será reiniciado automaticamente em 10 segundos!">
+            key="save_success_toast_message" value="Configurações salvas com sucesso!">
         <input type="hidden" id="save_error_toast_title" name="save_error_toast_title" key="save_error_toast_title"
-            value="Configurações do dispositivo">
+            value="Histórico">
         <input type="hidden" id="save_error_toast_message" name="save_error_toast_message"
             key="save_error_toast_message" value="Erro ao salvar os dados. Tente novamente!">
+        <input type="hidden" id="result_positive_label" key="result_positive_label" value="Positivo">
+        <input type="hidden" id="result_negative_label" key="result_negative_label" value="Negativo">
+        <input type="hidden" id="result_cancelled_label" key="result_cancelled_label" value="Cancelado">
+        <input type="hidden" id="empty_history_label" key="empty_history_label" value="Nenhum resultado salvo.">
     </div>
 
     <script src="../../bootstrap/js/bootstrap-toaster.min.js"></script>
 
     <script type="text/javascript">
-        $.get("/api/v1/language", function (data) {
-            console.log(JSON.stringify(data));
+        let historyOffset = 0;
+        let historyTotal = 0;
 
+        function resultLabel(code) {
+            if (code === "P") return $("#result_positive_label").val();
+            if (code === "C") return $("#result_cancelled_label").val();
+            return $("#result_negative_label").val();
+        }
+
+        function resultBadgeClass(code) {
+            if (code === "P") return "bg-danger";
+            if (code === "C") return "bg-secondary";
+            return "bg-success";
+        }
+
+        function loadHistoryPage() {
+            $.get("/api/v1/history?offset=" + historyOffset, function (data) {
+                historyTotal = data.total;
+
+                let rows = "";
+
+                if (!data.records || data.records.length === 0) {
+                    rows = '<tr><td colspan="5" class="text-center text-muted">'
+                        + $("#empty_history_label").val() + '</td></tr>';
+                } else {
+                    data.records.forEach(function (rec) {
+                        let dt = moment.unix(rec.tsInicio).format("DD/MM/YYYY HH:mm:ss");
+
+                        rows += "<tr>";
+                        rows += "<td>" + dt + "</td>";
+                        rows += "<td>" + rec.cavidade + "</td>";
+                        rows += '<td><span class="badge ' + resultBadgeClass(rec.resultado) + '">'
+                            + resultLabel(rec.resultado) + "</span></td>";
+                        rows += "<td>" + rec.cicloMinutos + " min</td>";
+                        rows += "<td>" + rec.temperatura + "&deg;C</td>";
+                        rows += "</tr>";
+                    });
+                }
+
+                $("#history_table_body").html(rows);
+
+                let last = Math.min(historyOffset + 8, historyTotal);
+                let label = historyTotal === 0 ? "0 / 0"
+                    : (historyOffset + 1) + "-" + last + " / " + historyTotal;
+
+                $("#history_position_label").text(label);
+
+                $("#btnScrollUp").prop("disabled", historyOffset <= 0);
+                $("#btnScrollDown").prop("disabled", historyOffset + 8 >= historyTotal);
+            });
+        }
+
+        $.get("/api/v1/language", function (data) {
             setLanguage(data.language);
         });
-
 
         $(function () {
 
@@ -154,46 +229,65 @@
 
                 $.ajax({
                     url: '/api/v1/device/restart',
-                    type: "GET",
-                    success: function () {
-                        let toast = {
-                            title: $("#restart_toast_title").val(),
-                            message: $("#restart_toast_message").val(),
-                            status: TOAST_STATUS.SUCCESS,
-                            timeout: 10000
-                        }
-
-                        Toast.enableTimers(TOAST_TIMERS.COUNTDOWN);
-                        Toast.setTheme(TOAST_THEME.LIGHT);
-                        Toast.create(toast);
-                    }
+                    type: "GET"
                 });
             });
 
-            $.get("/api/v1/settings/serialnumber", function (data) {
-                console.log(JSON.stringify(data));
-
-                $("#num_serie_atual").val(data.serialNumber);
+            $.get("/api/v1/ampoules/status", function (data) {
+                if (data && data.ampoules_status) {
+                    $("#test_in_progress_alert").removeClass("d-none");
+                    $("#btnSalvarPrintCount").prop("disabled", true);
+                }
             });
 
-            $("#btnSalvar").on('click', function (e) {
+            $.get("/api/v1/history_config", function (data) {
+                $("#print_count").val(data.printCount);
+            });
+
+            loadHistoryPage();
+
+            $("#btnScrollUp").on("click", function () {
+                if (historyOffset > 0) {
+                    historyOffset--;
+                    loadHistoryPage();
+                }
+            });
+
+            $("#btnScrollDown").on("click", function () {
+                if (historyOffset + 8 < historyTotal) {
+                    historyOffset++;
+                    loadHistoryPage();
+                }
+            });
+
+            $("#btnSalvarPrintCount").on('click', function (e) {
                 e.preventDefault();
 
-                var num_serie = $("#num_serie").val();
+                let printCount = parseInt($("#print_count").val());
 
-                var data = {
-                    "serialNumber": num_serie
+                let data = {
+                    "printCount": printCount
                 };
 
-                console.log(data);
-
                 $.ajax({
-                    url: '/api/v1/restrict/serialnumber',
+                    url: '/api/v1/history_config',
                     type: "POST",
                     data: JSON.stringify(data),
                     dataType: "json",
                     contentType: "application/json;charset=utf-8",
-                    success: function () {
+                    success: function (resp) {
+                        if (resp && resp.success === false) {
+                            let toast = {
+                                title: $("#save_error_toast_title").val(),
+                                message: resp.message,
+                                status: TOAST_STATUS.DANGER,
+                                timeout: 10000
+                            }
+                            Toast.setTheme(TOAST_THEME.LIGHT);
+                            Toast.create(toast);
+                            return;
+                        }
+
                         let toast = {
                             title: $("#save_success_toast_title").val(),
                             message: $("#save_success_toast_message").val(),
@@ -201,12 +295,10 @@
                             timeout: 10000
                         }
 
-                        Toast.enableTimers(TOAST_TIMERS.COUNTDOWN);
                         Toast.setTheme(TOAST_THEME.LIGHT);
                         Toast.create(toast);
                     },
                     error: function (e) {
-                        console.log(e);
                         let toast = {
                             title: $("#save_error_toast_title").val(),
                             message: $("#save_error_toast_message").val(),

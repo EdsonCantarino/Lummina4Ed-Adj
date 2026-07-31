@@ -18,6 +18,7 @@ using namespace std;
 #include "include/device_utils.h"
 #include "include/rtc_ds1302.h"
 #include "include/ampoule_test_history.h"
+#include "ampoule_history.h"
 #include "include/serial_number.h"
 #include "include/ampoule_test.h"
 #include "nvs_helpers.h"
@@ -153,6 +154,30 @@ esp_err_t save_serial_number(string sn) {
 	serial_number = sn;
 
 	return ESP_OK;
+}
+
+esp_err_t save_print_count(uint8_t count) {
+	ESP_LOGI(TAG, "Prepare to save Print Count in NVS\n");
+
+	bool ok = nvs_storage.setInt("print_count", count, true);
+
+	if (!ok) {
+		return ESP_FAIL;
+	}
+
+	ESP_LOGI(TAG, "Print Count: %d saved in NVS!\n", count);
+
+	return ESP_OK;
+}
+
+uint8_t get_print_count() {
+	int64_t count = nvs_storage.getInt("print_count", -1);
+
+	if (count < 1 || count > AMPOULE_HISTORY_MAX_RECORDS) {
+		return 12; // default - mesmo comportamento historico do limite antigo
+	}
+
+	return (uint8_t) count;
 }
 
 esp_err_t save_positive_percentage(float pp) {

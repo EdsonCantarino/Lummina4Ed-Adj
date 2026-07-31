@@ -24,6 +24,7 @@
 #include "include/rtc_ds1302.h"
 #include "include/ampoule_test.h"
 #include "advanced_config.h"
+#include "ampoule_history.h"
 
 #include "include/version_config.h"
 #include "include/temperature.h"
@@ -1545,6 +1546,219 @@ static esp_err_t api_advanced_config_restore_defaults_post_handler(
 	return ESP_OK;
 }
 
+static esp_err_t history_handler(httpd_req_t *req) {
+
+	string uri = req->uri;
+
+	if (uri.find("/history") != string::npos) {
+		ESP_LOGI(TAG, "Serving page /history");
+
+		httpd_resp_set_status(req, HTTPD_200);
+
+		extern const unsigned char _start_history_html[] asm("_binary_history_html_gz_start");
+		extern const unsigned char _end_history_html[] asm("_binary_history_html_gz_end");
+
+		size_t _size = _end_history_html - _start_history_html;
+		httpd_resp_set_type(req, "text/html");
+		httpd_resp_set_hdr(req, "Content-Encoding", "gzip");
+
+		httpd_resp_send(req, (const char*) _start_history_html, _size);
+
+	} else {
+		httpd_resp_send_404(req);
+	}
+
+	return ESP_OK;
+}
+
+static void send_history_error(httpd_req_t *req, const char *message) {
+	ESP_LOGW(TAG, "Historico/impressao recusado: %s", message);
+
+	cJSON *root = cJSON_CreateObject();
+	cJSON_AddBoolToObject(root, "success", false);
+	cJSON_AddStringToObject(root, "message", message);
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+}
+
+static esp_err_t api_history_config_get_handler(httpd_req_t *req) {
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/history_config") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	cJSON *root = cJSON_CreateObject();
+	cJSON_AddNumberToObject(root, "printCount", get_print_count());
+	cJSON_AddNumberToObject(root, "maxRecords", AMPOULE_HISTORY_MAX_RECORDS);
+	cJSON_AddNumberToObject(root, "totalRecords", ampoule_history_get_count());
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+
+	return ESP_OK;
+}
+
+static esp_err_t api_history_config_post_handler(httpd_req_t *req) {
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/history_config") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	if (ampoule_any()) {
+		send_history_error(req,
+				"Não é possível alterar essa configuração enquanto houver análises em andamento.");
+		return ESP_OK;
+	}
+
+	int total_len = req->content_len;
+	int cur_len = 0;
+
+	char *buf = (char*) malloc(SCRATCH_BUFSIZE);
+
+	int received = 0;
+	if (total_len >= SCRATCH_BUFSIZE) {
+		free(buf);
+		httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
+				"content too long");
+		return ESP_FAIL;
+	}
+	while (cur_len < total_len) {
+		received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
+		if (received <= 0) {
+			free(buf);
+			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
+					"Failed to post control value");
+			return ESP_FAIL;
+		}
+		cur_len += received;
+	}
+
+	buf[total_len] = '\0';
+
+	cJSON *root = cJSON_Parse(buf);
+	free(buf);
+
+	if (!root) {
+		send_history_error(req, "JSON inválido.");
+		return ESP_OK;
+	}
+
+	cJSON *item = cJSON_GetObjectItem(root, "printCount");
+
+	if (!item) {
+		cJSON_Delete(root);
+		send_history_error(req, "Campo printCount ausente.");
+		return ESP_OK;
+	}
+
+	int print_count = item->valueint;
+
+	cJSON_Delete(root);
+
+	if (print_count < 1 || print_count > AMPOULE_HISTORY_MAX_RECORDS) {
+		send_history_error(req,
+				"Quantidade a imprimir fora da faixa permitida (1 a 64).");
+		return ESP_OK;
+	}
+
+	if (save_print_count((uint8_t) print_count) != ESP_OK) {
+		send_history_error(req, "Erro ao gravar a configuração. Tente novamente.");
+		return ESP_OK;
+	}
+
+	ESP_LOGI(TAG, "printCount salvo: %d", print_count);
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_sendstr(req, "{\"success\": true}");
+
+	return ESP_OK;
+}
+
+static esp_err_t api_history_get_handler(httpd_req_t *req) {
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/history") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	int offset = 0;
+
+	char query[32];
+	if (httpd_req_get_url_query_str(req, query, sizeof(query)) == ESP_OK) {
+		char offset_str[16];
+		if (httpd_query_key_value(query, "offset", offset_str,
+				sizeof(offset_str)) == ESP_OK) {
+			offset = atoi(offset_str);
+		}
+	}
+
+	if (offset < 0)
+		offset = 0;
+
+	cJSON *root = cJSON_CreateObject();
+
+	int total = ampoule_history_get_count();
+	cJSON_AddNumberToObject(root, "total", total);
+	cJSON_AddNumberToObject(root, "offset", offset);
+
+	cJSON *records = cJSON_CreateArray();
+
+	for (int i = offset; i < offset + 8 && i < total; i++) {
+		ampoule_history_record_t rec;
+
+		if (!ampoule_history_get_record(i, rec))
+			continue;
+
+		cJSON *item = cJSON_CreateObject();
+
+		cJSON_AddNumberToObject(item, "idTest", rec.id_test);
+		cJSON_AddNumberToObject(item, "cavidade", rec.cavidade);
+		cJSON_AddNumberToObject(item, "cicloMinutos", rec.ciclo_minutos);
+		cJSON_AddNumberToObject(item, "tsInicio", rec.ts_inicio);
+		cJSON_AddNumberToObject(item, "tsFim", rec.ts_fim);
+		cJSON_AddNumberToObject(item, "temperatura", rec.temperatura);
+
+		const char *resultado_str =
+				rec.resultado == AMPOULE_RESULT_POSITIVE ? "P" :
+				rec.resultado == AMPOULE_RESULT_CANCELLED ? "C" : "N";
+		cJSON_AddStringToObject(item, "resultado", resultado_str);
+
+		cJSON_AddItemToArray(records, item);
+	}
+
+	cJSON_AddItemToObject(root, "records", records);
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+
+	return ESP_OK;
+}
+
 static esp_err_t calibration_post_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
@@ -1665,7 +1879,6 @@ static esp_err_t reset_post_handler(httpd_req_t *req) {
 			esp_err_t err = reset_user_data();
 
 			clear_histories();
-			load_ampoules_test();
 
 			if (err == ESP_OK) {
 				httpd_resp_set_status(req, "200 OK");
@@ -1885,6 +2098,21 @@ static const httpd_uri_t api_advanced_config_restore_defaults_post_uri = {
 		HTTP_POST, .handler = api_advanced_config_restore_defaults_post_handler,
 		.user_ctx = NULL };
 
+static const httpd_uri_t history_get_uri = { .uri = "/history",
+		.method = HTTP_GET, .handler = history_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_history_config_get_uri = { .uri =
+		"/api/v1/history_config", .method = HTTP_GET, .handler =
+		api_history_config_get_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_history_config_post_uri = { .uri =
+		"/api/v1/history_config", .method = HTTP_POST, .handler =
+		api_history_config_post_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_history_get_uri = { .uri = "/api/v1/history",
+		.method = HTTP_GET, .handler = api_history_get_handler, .user_ctx =
+		NULL };
+
 static const httpd_uri_t calibration_get_uri = { .uri = "/calibration",
 		.method = HTTP_GET, .handler = calibration_handler, .user_ctx = NULL };
 
@@ -2033,6 +2261,11 @@ void app_httpd_register_uri(httpd_handle_t *httpd_handle) {
 
 	httpd_register_uri_handler(httpd_handle, &language_get_uri);
 	httpd_register_uri_handler(httpd_handle, &language_post_uri);
+
+	httpd_register_uri_handler(httpd_handle, &history_get_uri);
+	httpd_register_uri_handler(httpd_handle, &api_history_config_get_uri);
+	httpd_register_uri_handler(httpd_handle, &api_history_config_post_uri);
+	httpd_register_uri_handler(httpd_handle, &api_history_get_uri);
 
 	// Rotas protegidas
 	httpd_register_basic_auth(httpd_handle, restart_device_get_uri);

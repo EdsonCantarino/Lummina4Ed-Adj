@@ -359,11 +359,14 @@ public:
 	int get_ampoule_alarm() {
 		bool error = is_error() && count_alarm_is_ausent >= 0;
 
-		if (ampoule_alarm_inserted)
+		if (ampoule_alarm_inserted) {
+			printf("[DEBUG-ALARM] Ampola %d: alarm_status=1 (inserida)\n", id);
 			return 1;
-		else if (ampoule_alarm_removed && !error)
+		} else if (ampoule_alarm_removed && !error) {
+			printf("[DEBUG-ALARM] Ampola %d: alarm_status=2 (removida, fora de teste)\n", id);
 			return 2;
-		else if (error && count_alarm_is_ausent == 1) {
+		} else if (error && count_alarm_is_ausent == 1) {
+			printf("[DEBUG-ALARM] Ampola %d: alarm_status=3 (removida DURANTE teste)\n", id);
 			return 3;
 		} else
 			return 0;

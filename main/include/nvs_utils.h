@@ -42,6 +42,13 @@ esp_err_t get_calibration_factor(float &factor);
 esp_err_t save_positive_percentage(float positive_percentage);
 float get_positive_percentage();
 
+// Quantidade de resultados mais recentes a imprimir quando o botao fisico
+// de imprimir e pressionado (1 a AMPOULE_HISTORY_MAX_RECORDS). Independente
+// da struct advanced_config_t de proposito - assim ajustar isso nao reseta
+// as demais configuracoes avancadas de unidades ja configuradas em campo.
+esp_err_t save_print_count(uint8_t count);
+uint8_t get_print_count();
+
 esp_err_t save_serial_number(string serial_number);
 string get_serial_number();
 

@@ -22,6 +22,7 @@
   "#sub-menu-3": {
     "settings": "Settings",
     "advanced_config": "Advanced Settings",
+    "history": "History",
     "serial_number": "Serial Number"
   },
   "#menu_4": {
@@ -357,5 +358,39 @@
   },
   "#reset_password": {
     "password": "Password"
+  },
+  "#history-card-title": {
+    "title#1": "History",
+    "title#2": "Test Results"
+  },
+  "#test_in_progress_alert": {
+    "test_in_progress_msg": "This setting cannot be changed while there are analyses in progress."
+  },
+  "#card_print_count": {
+    "card_print_count_title": "Printing",
+    "print_count_label": "Number of results to print (1 to 64)"
+  },
+  "#save_print_count": {
+    "save": "Save"
+  },
+  "#card_history_table": {
+    "card_history_table_title": "Latest Results"
+  },
+  "#history_table_cols": {
+    "col_date": "Date/Time",
+    "col_cavidade": "Cavity",
+    "col_resultado": "Result",
+    "col_ciclo": "Test Time",
+    "col_temperatura": "Temperature"
+  },
+  "#history_messages": {
+    "save_success_toast_title": "History",
+    "save_success_toast_message": "Settings saved successfully!",
+    "save_error_toast_title": "History",
+    "save_error_toast_message": "Error saving data. Please try again!",
+    "result_positive_label": "Positive",
+    "result_negative_label": "Negative",
+    "result_cancelled_label": "Cancelled",
+    "empty_history_label": "No results saved."
   }
 }

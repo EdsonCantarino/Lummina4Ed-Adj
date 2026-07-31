@@ -1,4 +1,5 @@
 #include "include/light_sensor.h"
+#include "esp_system.h"
 
 static const char *TAG = "LIGHT_SENSOR";
 
@@ -18,6 +19,11 @@ char sDebug[120];
 
 #define SCLK_PIN  (gpio_num_t)12
 #define CS_PIN    (gpio_num_t)10
+
+// Timeout de espera pelo sinal DRDY do CS5532/CS5534 (linha MOSI baixa = pronto).
+// Leitura normal fica na faixa de ~10-20ms; 1000ms da bastante margem sem travar
+// o teste indefinidamente caso o ADC nao sinalize pronto (falha intermitente de hardware).
+#define CS5532_DRDY_TIMEOUT_MS 1000
 
 unsigned char vTimeOutCS5532 = 0;
 signed long vOffset = 0;
@@ -257,6 +263,28 @@ void write_pin(gpio_num_t pin, int level) {
 // Read_Pin_Dout_CS5532
 int read_mosi_pin() {
 	return read_pin(MOSI_PIN);
+}
+
+// Aguarda o DRDY igual as leituras normais, mas usado apenas nas rotinas de
+// calibracao chamadas no boot (antes de qualquer teste rodar). Se o ADC nao
+// sinalizar pronto dentro do timeout, nao ha teste em andamento pra
+// preservar - reinicia o equipamento pra dar uma nova chance ao hardware
+// (falha de energizacao/DRDY intermitente costuma sumir num novo boot), em
+// vez de travar o boot para sempre esperando um sinal que pode nunca vir.
+static void wait_drdy_or_reset_boot(const char *contexto) {
+	uint16_t drdy_wait_ms = 0;
+
+	while (read_mosi_pin()) {
+		vTaskDelay(pdMS_TO_TICKS(10));
+		drdy_wait_ms += 10;
+
+		if (drdy_wait_ms >= CS5532_DRDY_TIMEOUT_MS) {
+			ESP_LOGE(TAG,
+					"Timeout aguardando DRDY do CS5532/CS5534 durante %s no boot - reiniciando",
+					contexto);
+			esp_restart();
+		}
+	}
 }
 
 // Write_Pin_Din_CS5532_H
@@ -896,9 +924,7 @@ unsigned long CS5532_Auto_Gain_Calibration(unsigned char vChannel) {
 		vCh = CMDH_Channel_Setup_Pt8;
 	cmd = cmd | vCh;
 	resl = CS5532_CMD_REG(cmd, auxl);
-	while (read_mosi_pin()) {
-		vTaskDelay(pdMS_TO_TICKS(10));
-	}
+	wait_drdy_or_reset_boot("CS5532_Auto_Gain_Calibration");
 
 	return (resl);
 }
@@ -933,9 +959,7 @@ unsigned long CS5532_Auto_OffSet_Calibration(unsigned char vChannel) {
 		vCh = CMDH_Channel_Setup_Pt8;
 	cmd = cmd | vCh;
 	resl = CS5532_CMD_REG(cmd, auxl);
-	while (read_mosi_pin()) {
-		vTaskDelay(pdMS_TO_TICKS(10));
-	}
+	wait_drdy_or_reset_boot("CS5532_Auto_OffSet_Calibration");
 
 // turn off input short
 	cmd = CMDH_Single_Convertion | vCh;
@@ -1047,6 +1071,26 @@ void read_channel(uint8_t channel) {
 	vTaskDelay(pdMS_TO_TICKS(500));
 }
 
+// Ultima leitura valida e contador de falhas consecutivas por canal (0-3),
+// usados quando o DRDY do CS5532/CS5534 estoura o timeout - em vez de
+// devolver um valor inventado (-1), "congela" no ultimo dado confiavel
+// daquele canal. O contador e exposto para quem chama decidir se desiste
+// da cavidade apos falhas repetidas (ver get_channel_consecutive_timeouts).
+static long last_valid_channel_value[4] = { 0, 0, 0, 0 };
+static uint8_t channel_consecutive_timeouts[4] = { 0, 0, 0, 0 };
+
+uint8_t get_channel_consecutive_timeouts(uint8_t channel) {
+	if (channel > 3)
+		return 0;
+	return channel_consecutive_timeouts[channel];
+}
+
+void reset_channel_consecutive_timeouts(uint8_t channel) {
+	if (channel > 3)
+		return;
+	channel_consecutive_timeouts[channel] = 0;
+}
+
 long read_channel_value(uint8_t channel) {
 	uint8_t aux = 0;
 	long auxl = 0;
@@ -1109,8 +1153,21 @@ long read_channel_value(uint8_t channel) {
 			break;
 		}
 
+		uint16_t drdy_wait_ms = 0;
 		while (read_mosi_pin()) {
 			vTaskDelay(pdMS_TO_TICKS(10));
+			drdy_wait_ms += 10;
+			if (drdy_wait_ms >= CS5532_DRDY_TIMEOUT_MS) {
+				ESP_LOGE(TAG,
+						"Timeout aguardando DRDY do CS5532/CS5534 (canal %d, leitura %d/5) - assumindo ultima leitura valida",
+						channel + 1, i + 1);
+				End_CS_Line();
+
+				if (channel_consecutive_timeouts[channel] < 255)
+					channel_consecutive_timeouts[channel]++;
+
+				return last_valid_channel_value[channel];
+			}
 		}
 		CS5532_BYTE(0x00);
 		auxl = CS5532_LONG(0X00000000);
@@ -1119,6 +1176,9 @@ long read_channel_value(uint8_t channel) {
 		End_CS_Line();
 		vTaskDelay(pdMS_TO_TICKS(10));
 	}
+
+	last_valid_channel_value[channel] = auxl;
+	channel_consecutive_timeouts[channel] = 0;
 
 //		vTaskDelay(pdMS_TO_TICKS(10));
 //	}

@@ -18,13 +18,13 @@
 #include "include/helper_utils.h"
 
 #include "branding.h"
+#include "ampoule_history.h"
 #include <string>
+#include <ctime>
 
 using namespace std;
 
 device_settings_t settings;
-
-LinkedList<string> ampoules_test_history = LinkedList<string>();
 
 void print_test(string ampola, string id_test, string dt_inicio,
 		string hr_inicio, string dt_fim, string hr_fim, int resultado,
@@ -35,9 +35,41 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		string hr_inicio, string ciclo, int temperature, string serial_number,
 		string inst, string tempo_em_teste, string language);
 
-void load_ampoules_test_histories() {
+static string format_ts(uint32_t ts) {
+	if (ts == 0)
+		return "01/01/2000 00:00:00";
 
-	load_ampoules_test_history(ampoules_test_history);
+	time_t t = (time_t) ts;
+	struct tm tm_val;
+	localtime_r(&t, &tm_val);
+
+	char buf[64];
+	snprintf(buf, sizeof(buf), "%02d/%02d/%04d %02d:%02d:%02d",
+			tm_val.tm_mday, tm_val.tm_mon + 1, tm_val.tm_year + 1900,
+			tm_val.tm_hour, tm_val.tm_min, tm_val.tm_sec);
+
+	return string(buf);
+}
+
+void ampoule_history_record_to_result(const ampoule_history_record_t &rec,
+		AmpouleTestResult &result) {
+
+	char id_test_format[11];
+	snprintf(id_test_format, sizeof(id_test_format), "%010lu",
+			(unsigned long) rec.id_test);
+
+	result.set_id_test(string(id_test_format));
+	result.set_id(rec.cavidade);
+	result.set_cicle((long) rec.ciclo_minutos * 60);
+
+	result.set_date_time(format_ts(rec.ts_inicio), true);
+	result.set_date_time(format_ts(rec.ts_fim), false);
+
+	bool is_positived = rec.resultado == AMPOULE_RESULT_POSITIVE;
+	bool is_cancelled = rec.resultado == AMPOULE_RESULT_CANCELLED;
+
+	result.set_result(is_positived, is_cancelled);
+	result.set_temperature(rec.temperatura);
 }
 
 void print_check_status(void *pvParameter) {
@@ -180,14 +212,24 @@ void print_test_task_notify(void *pvParameter) {
 		if (xResult == pdPASS) {
 			if (usb_print_setup_done()) {
 
-				load_ampoules_test_histories();
+				uint8_t print_count = get_print_count();
+				int total = ampoule_history_get_count();
 
-				int size = ampoules_test_history.size();
+				if (print_count > total)
+					print_count = total;
 
-				for (int i = 0; i < size; i++) {
+				// Imprime do mais antigo para o mais recente dentro do
+				// recorte escolhido, para o ticket sair na ordem
+				// cronologica na impressora.
+				for (int i = print_count - 1; i >= 0; i--) {
+					ampoule_history_record_t rec;
+
+					if (!ampoule_history_get_record(i, rec))
+						continue;
+
 					AmpouleTestResult result = AmpouleTestResult();
 
-					to_ampoule_test_result(ampoules_test_history[i], result);
+					ampoule_history_record_to_result(rec, result);
 
 					print_ampoule_test_history(result);
 				}

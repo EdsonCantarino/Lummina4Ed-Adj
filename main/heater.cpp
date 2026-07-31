@@ -14,6 +14,13 @@
 #define ON 1
 #define OFF 0
 
+// Banda de histerese (+-) em torno do setpoint, em graus C. O GPIO do
+// aquecedor vai a um MOSFET com dissipador (STP60NF06), que aguenta
+// chaveamento frequente sem desgaste - a histerese so existe para reduzir
+// a oscilacao da temperatura em torno do setpoint (liga/desliga puro sem
+// margem faz a leitura cruzar o limiar de "estabilizado" repetidamente).
+#define HEATER_HYSTERESIS_C 1.0f
+
 #define HEATER_TIMEOUT CONFIG_HEATER_FAIL_TIMEOUT
 static const gpio_num_t HEATER_GPIO = (gpio_num_t) CONFIG_HEATER_GPIO;
 
@@ -200,11 +207,17 @@ void check_heater_temperature_task(void *parameter) {
 			}
 
 			if (is_heater_on) {
-				if (heater_temperature < g_advanced_config.heater_setpoint_c) {
+				if (heater_temperature
+						< g_advanced_config.heater_setpoint_c
+								- HEATER_HYSTERESIS_C) {
 					heater_start();
-				} else {
+				} else if (heater_temperature
+						>= g_advanced_config.heater_setpoint_c
+								+ HEATER_HYSTERESIS_C) {
 					heater_stop();
 				}
+				// Dentro da banda de histerese: mantem o estado atual do
+				// aquecedor (nao chama start nem stop).
 			}
 
 			bool is_in_test = is_any_testing();
@@ -278,6 +291,10 @@ void check_heater_temperature_task(void *parameter) {
 					//   evitando alarme no aquecimento inicial
 					if (heater_temperature > get_max_temperature(false)
 							|| (!enable_functions && heater_temperature < get_min_temperature(false))) {
+						printf(
+								"[DEBUG-ALARM] heater_fail_start chamado por FORA DO RANGE - temp: %.3f (min: %.1f, max: %.1f)\n",
+								heater_temperature, get_min_temperature(false),
+								get_max_temperature(false));
 						heater_fail_start();
 					}
 				}
@@ -304,7 +321,9 @@ void check_heater_temperature_task(void *parameter) {
 }
 
 void heater_temperature_timeout_callback(TimerHandle_t xTimer) {
-	//ESP_LOGE(TAG, "Heater temperature error");
+	printf(
+			"[DEBUG-ALARM] heater_temperature_timeout_callback: aquecedor ligado continuamente por %d ms sem estabilizar - temp atual: %.3f\n",
+			HEATER_TIMEOUT, heater_temperature);
 
 	BaseType_t xHigherPriorityTaskWoken;
 	xEventGroupSetBitsFromISR(task_manager_event_group,

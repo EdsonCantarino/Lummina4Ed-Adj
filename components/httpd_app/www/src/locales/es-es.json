@@ -22,6 +22,7 @@
   "#sub-menu-3": {
     "settings": "Configuraciones",
     "advanced_config": "Configuraciones Avanzadas",
+    "history": "Historial",
     "serial_number": "Número de serie"
   },
   "#menu_4": {
@@ -358,5 +359,39 @@
   },
   "#reset_password": {
     "password": "Contraseña"
+  },
+  "#history-card-title": {
+    "title#1": "Historial",
+    "title#2": "Resultados de Pruebas"
+  },
+  "#test_in_progress_alert": {
+    "test_in_progress_msg": "No es posible cambiar esta configuración mientras haya análisis en curso."
+  },
+  "#card_print_count": {
+    "card_print_count_title": "Impresión",
+    "print_count_label": "Cantidad de resultados a imprimir (1 a 64)"
+  },
+  "#save_print_count": {
+    "save": "Guardar"
+  },
+  "#card_history_table": {
+    "card_history_table_title": "Últimos Resultados"
+  },
+  "#history_table_cols": {
+    "col_date": "Fecha/Hora",
+    "col_cavidade": "Cavidad",
+    "col_resultado": "Resultado",
+    "col_ciclo": "Tiempo de Prueba",
+    "col_temperatura": "Temperatura"
+  },
+  "#history_messages": {
+    "save_success_toast_title": "Historial",
+    "save_success_toast_message": "¡Configuración guardada con éxito!",
+    "save_error_toast_title": "Historial",
+    "save_error_toast_message": "Error al guardar los datos. ¡Inténtelo de nuevo!",
+    "result_positive_label": "Positivo",
+    "result_negative_label": "Negativo",
+    "result_cancelled_label": "Cancelado",
+    "empty_history_label": "No hay resultados guardados."
   }
 }

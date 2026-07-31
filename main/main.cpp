@@ -43,6 +43,7 @@
 #include "include/light_sensor.h"
 #include "include/ampoule_test.h"
 #include "advanced_config.h"
+#include "ampoule_history.h"
 
 #include "include/printer.h"
 #include "include/nvs_utils.h"
@@ -360,6 +361,7 @@ void setup() {
 	// Carrega as configuracoes avancadas (itens 1 a 5) da NVS antes de
 	// qualquer outro setup que dependa delas.
 	advanced_config_load();
+	ampoule_history_load();
 
 	temperature_setup();
 

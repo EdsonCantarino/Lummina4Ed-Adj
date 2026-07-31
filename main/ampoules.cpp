@@ -179,7 +179,10 @@ void read_ampoules_test_task(void *pvParameter) {
 			if (!function_enabled) {
 				if (check_if_heater_temperature_stabilized()) {
 					enable_buttons_functions();
-					set_led_function_active();
+					// Acende o LED de 20min so nas cavidades habilitadas -
+					// set_led_function_active() acendia nas 4 sem checar o
+					// modo (ex: CRC1 com so a cavidade 1 ativa).
+					ampoule_test_check_cavity_finalize();
 				} else {
 					set_led_function_deactive();
 				}
@@ -198,13 +201,18 @@ void read_ampoules_test_task(void *pvParameter) {
 			bool cancelled_by_temp = is_any_present_cancelled_by_temp();
 
 			if (check_if_heater_temperature_stabilized() && !cancelled_by_temp) {
-				// Temperatura >= 35°C: inicia teste
+				// Temperatura estabilizada (>= heater_release_temp_c): inicia teste
 				ampoules_test_leds_temp_error_timer_stop();
 				ampoules_test_leds_timer_start();
 
 				ampoule_test_start();
-			} else if (!check_if_heater_temperature_stabilized() || cancelled_by_temp) {
-				// Temperatura < 35°C OU teste cancelado por temperatura alta: alarme
+			} else if (!is_temperature_in_range() || cancelled_by_temp) {
+				// Temperatura fora do range de seguranca (55-65C) OU teste
+				// cancelado por temperatura alta: alarme. Nao usa mais
+				// check_if_heater_temperature_stabilized() aqui - esse limiar
+				// e mais apertado (heater_release_temp_c) e disparava alarme
+				// falso toda vez que a temperatura oscilava logo abaixo dele,
+				// mesmo dentro do range seguro e com o teste rodando normal.
 				ampoules_test_leds_temp_error_timer_start();
 
 				for (int i = 0; i < 3; i++) {

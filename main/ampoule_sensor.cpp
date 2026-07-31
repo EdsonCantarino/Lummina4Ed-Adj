@@ -25,17 +25,58 @@ void ampoule_sensor_setup() {
 	ampoule.pin_mode(P7, INPUT);
 }
 
+// Numero de leituras consecutivas (a cada 300ms) que precisam concordar antes
+// de aceitar uma mudanca de presenca de ampola. Sem isso, uma unica leitura
+// ruidosa do I2C (barramento ja documentado como instavel) derruba
+// is_present, e ampoule_test() para de processar aquela cavidade em
+// silencio, pra sempre, ate a proxima leitura "correta" por acaso.
+#define AMPOULE_PRESENCE_DEBOUNCE_COUNT 4
+
+// Numero de leituras rapidas feitas por pino em cada ciclo, e quantas
+// precisam concordar para aceitar o valor "bruto" daquele ciclo (filtra
+// ruido eletrico pontual de uma unica transacao I2C corrompida). Com um
+// sinal binario, 5 amostras so podem se dividir 5-0, 4-1 ou 3-2 - exigir
+// "mais de 2 iguais" (>= 3 de 5) garante sempre um resultado decisivo;
+// exigir >= 4 de 5 deixaria o caso 3-2 sem decisao.
+#define AMPOULE_FAST_SAMPLE_COUNT 5
+#define AMPOULE_FAST_SAMPLE_MAJORITY 3
+
+static bool read_pin_majority(uint8_t pin) {
+	int present_count = 0;
+
+	for (int i = 0; i < AMPOULE_FAST_SAMPLE_COUNT; i++) {
+		if (ampoule.digital_read(pin) == 0)
+			present_count++;
+	}
+
+	return present_count >= AMPOULE_FAST_SAMPLE_MAJORITY;
+}
+
 void read_ampoules(void *pvParameter) {
+
+	bool confirmed_present[4] = { false, false, false, false };
+	uint8_t debounce_count[4] = { 0, 0, 0, 0 };
 
 	while (1) {
 
-		uint8_t ampoule1 = ampoule.digital_read(P4);
-		uint8_t ampoule2 = ampoule.digital_read(P5);
-		uint8_t ampoule3 = ampoule.digital_read(P6);
-		uint8_t ampoule4 = ampoule.digital_read(P7);
+		bool raw_present[4] = { read_pin_majority(P4), read_pin_majority(P5),
+				read_pin_majority(P6), read_pin_majority(P7) };
 
-		bool is_ampoules = (ampoule1 == 0 || ampoule2 == 0 || ampoule3 == 0
-				|| ampoule4 == 0);
+		for (int i = 0; i < 4; i++) {
+			if (raw_present[i] == confirmed_present[i]) {
+				debounce_count[i] = 0;
+			} else {
+				debounce_count[i]++;
+
+				if (debounce_count[i] >= AMPOULE_PRESENCE_DEBOUNCE_COUNT) {
+					confirmed_present[i] = raw_present[i];
+					debounce_count[i] = 0;
+				}
+			}
+		}
+
+		bool is_ampoules = (confirmed_present[0] || confirmed_present[1]
+				|| confirmed_present[2] || confirmed_present[3]);
 
 		if (is_ampoules_present_in_init && is_ampoules) {
 
@@ -44,8 +85,8 @@ void read_ampoules(void *pvParameter) {
 		} else {
 			is_ampoules_present_in_init = false;
 
-			ampoule_set_status(ampoule1 == 0, ampoule2 == 0, ampoule3 == 0,
-					ampoule4 == 0);
+			ampoule_set_status(confirmed_present[0], confirmed_present[1],
+					confirmed_present[2], confirmed_present[3]);
 		}
 
 		vTaskDelay(pdMS_TO_TICKS(300));

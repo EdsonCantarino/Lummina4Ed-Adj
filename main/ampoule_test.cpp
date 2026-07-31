@@ -16,11 +16,13 @@
 #include "cJSON.h"
 #include "esp_timer.h"
 #include <cmath>
+#include <ctime>
 
 #include "include/ampoule_test_history.h"
 #include "include/helper_utils.h"
 #include "include/TimerManager.h"
 #include "advanced_config.h"
+#include "ampoule_history.h"
 
 #define DEFAULT_TIME_TEST (20 * 60) // 20 * 60
 //#define DEFAULT_TIME_TEST (2 * 60) // 20 * 60
@@ -34,10 +36,8 @@ TaskHandle_t ampoules_test_task_handle = NULL;
 TaskHandle_t ampoules_test_error_task_handle = NULL;
 
 LinkedList<AmpouleSensor> ampoules = LinkedList<AmpouleSensor>();
-LinkedList<string> ampoules_history = LinkedList<string>();
 
 string ampoule_test_history_to_string(ampoule_test_history_t hist);
-esp_err_t set_history_string(string h, bool auto_save, bool auto_load);
 
 void ampoule_clear_test_done(int index);
 long ampoule_get_time_test(int id);
@@ -55,11 +55,6 @@ volatile bool temp_out_of_range_cancel = false;
 
 void trigger_temp_out_of_range_cancel() {
 	temp_out_of_range_cancel = true;
-}
-
-void load_histories() {
-
-	load_ampoules_test_history(ampoules_history);
 }
 
 vector<string> string_split(string s, string delimiter) {
@@ -190,7 +185,7 @@ void load_temp_histories() {
 //}
 
 void clear_histories() {
-	ampoules_history = LinkedList<string>();
+	ampoule_history_clear();
 }
 
 string convert_ampoules_test_to_json() {
@@ -257,49 +252,6 @@ string convert_ampoules_test_status_to_json() {
 	return _json;
 }
 
-string convert_history() {
-	int size = ampoules_history.size();
-
-	string shist = "";
-
-	for (int i = 0; i < size; i++) {
-
-		if (shist != "") {
-			shist.append("|");
-		}
-
-		shist.append(ampoules_history[i]);
-	}
-
-//printf("\nTeste dados memoria: %s\n\n", shist.c_str());
-
-	return shist;
-}
-
-esp_err_t set_history_string(string h, bool auto_save, bool auto_load) {
-
-	ampoules_history.add(h);
-
-	if (ampoules_history.size() > 12) {
-		ampoules_history.shift();
-	}
-
-	if (auto_save) {
-
-		string s = convert_history();
-
-		esp_err_t err = save_ampoules_test(s);
-
-		return err;
-	}
-
-	if (auto_load) {
-		load_histories();
-	}
-
-	return ESP_OK;
-}
-
 esp_err_t set_history_temp_string(int index, string history) {
 
 	return save_ampoules_history_temp(history, index);
@@ -362,16 +314,54 @@ string ampoule_test_history_to_string(ampoule_test_history_t hist) {
 	return shist;
 }
 
-esp_err_t set_history(int index, bool is_cancelled = false) {
+// Converte "dd/mm/yyyy" + "hh:mm:ss" (formato usado em todo o projeto,
+// vindo do RTC) para timestamp Unix. Retorna 0 se o parse falhar.
+static uint32_t parse_date_time_to_ts(const string &date, const string &hour) {
+	struct tm tm_val = { };
+	int day, month, year, h, min, sec;
 
-	if (ampoules_history.size() <= 0)
-		load_histories();
+	if (sscanf(date.c_str(), "%d/%d/%d", &day, &month, &year) != 3)
+		return 0;
+
+	if (sscanf(hour.c_str(), "%d:%d:%d", &h, &min, &sec) != 3)
+		return 0;
+
+	tm_val.tm_mday = day;
+	tm_val.tm_mon = month - 1;
+	tm_val.tm_year = year - 1900;
+	tm_val.tm_hour = h;
+	tm_val.tm_min = min;
+	tm_val.tm_sec = sec;
+	tm_val.tm_isdst = -1;
+
+	time_t t = mktime(&tm_val);
+
+	if (t < 0)
+		return 0;
+
+	return (uint32_t) t;
+}
+
+esp_err_t set_history(int index, bool is_cancelled = false) {
 
 	ampoule_test_history_t hist = to_ampoule_test_history(index, is_cancelled);
 
-	string shist = ampoule_test_history_to_string(hist);
+	ampoule_history_record_t record = { };
+	record.id_test = (uint32_t) hist.id_test;
+	record.cavidade = (uint8_t) hist.id;
+	record.ciclo_minutos = (uint16_t) atoi(hist.ciclo.c_str());
+	record.ts_inicio = parse_date_time_to_ts(hist.dt_inicio, hist.hr_inicio);
+	record.ts_fim = parse_date_time_to_ts(hist.dt_fim, hist.hr_fim);
+	record.temperatura = (uint8_t) hist.temperature;
 
-	return set_history_string(shist, true, true);
+	if (hist.resultado == "P")
+		record.resultado = AMPOULE_RESULT_POSITIVE;
+	else if (hist.resultado == "C")
+		record.resultado = AMPOULE_RESULT_CANCELLED;
+	else
+		record.resultado = AMPOULE_RESULT_NEGATIVE;
+
+	return ampoule_history_add(record);
 }
 
 esp_err_t set_temp_history(int index) {
@@ -497,6 +487,40 @@ void finalize_ampoule_test(int index, int ampoule, bool early_result) {
 	timeManager.start_timer();
 }
 
+// Numero de leituras seguidas "assumidas" (timeout do DRDY, valor congelado
+// no ultimo dado bom) que uma cavidade tolera antes de abortar o teste por
+// falha de sensor. Isolado por cavidade (ver get_channel_consecutive_timeouts
+// em light_sensor.cpp) - uma falha isolada nao aborta nada, so falha
+// persistente.
+#define MAX_CONSECUTIVE_SENSOR_TIMEOUTS 3
+
+void abort_ampoule_test_sensor_fault(int index, int ampoule) {
+	printf(
+			"***** [AMPOLA %d] TESTE ABORTADO - falha persistente de leitura do sensor *****\n",
+			ampoule);
+
+	print_ampoule_test(index, true);
+
+	set_history(index, true);
+	reset_ampoules_history_temp(index);
+
+	ampoules[index].test_done = true;
+	ampoules[index].is_testing = false;
+
+	if (ampoules[index].samples.size() > 0) {
+		ampoules[index].samples.clear();
+	}
+
+	reset_channel_consecutive_timeouts(index);
+
+	for (int m = 0; m < 4; m++) {
+		buzzer_on();
+		vTaskDelay(pdMS_TO_TICKS(50));
+		buzzer_off();
+		vTaskDelay(pdMS_TO_TICKS(50));
+	}
+}
+
 bool get_is_cavities_in_test() {
 	return is_cavities_in_test;
 }
@@ -590,6 +614,13 @@ void ampoule_test(int index) {
 
 //printf("**** NUMERO DA AMPOLA %d \n", ampoule);
 
+	if (!ampoules[index].is_present && ampoules[index].is_testing
+			&& !ampoules[index].test_done) {
+		ESP_LOGW("", "[AMPOLA %d] is_present=false durante teste em "
+				"andamento - iteracao pulada (leitura instavel do sensor?)",
+				ampoule);
+	}
+
 	if (ampoules[index].is_present) {
 		long time = ampoules[index].time_test;
 
@@ -660,6 +691,12 @@ void ampoule_test(int index) {
 
 			// Faz a leitura do sensor
 			long sensor = read_channel_value(index);
+
+			if (get_channel_consecutive_timeouts(index)
+					>= MAX_CONSECUTIVE_SENSOR_TIMEOUTS) {
+				abort_ampoule_test_sensor_fault(index, ampoule);
+				return;
+			}
 
 			sensor = sensor / 100;
 
