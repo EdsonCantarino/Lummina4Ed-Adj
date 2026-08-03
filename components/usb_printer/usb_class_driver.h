@@ -30,5 +30,4 @@ esp_err_t transfer_cmd(uint8_t *data, int size);
 
 void class_driver_task(void *arg);
 
-
 #endif /* USB_PRINTER_USB_CLASS_DRIVER_H_ */

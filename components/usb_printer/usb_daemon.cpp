@@ -16,26 +16,17 @@ static void host_lib_daemon_task(void *arg) {
 	xSemaphoreGive(signaling_sem);
 	vTaskDelay(10); //Short delay to let client task spin up
 
-	bool has_clients = true;
-	bool has_devices = true;
-	while (has_clients || has_devices) {
+	// A lib USB host fica instalada para sempre - o equipamento nunca
+	// desliga a impressora de proposito. Tentamos reinstalar a lib em
+	// runtime quando a impressora desconecta (pra redetectar reconexao sem
+	// reboot), mas isso se mostrou instavel em teste fisico (3 formas
+	// diferentes de crash/deadlock) - a recuperacao de desconexao agora e
+	// feita via esp_restart() protegido (ver printer.cpp), nao aqui.
+	for (;;) {
 		uint32_t event_flags;
 		ESP_ERROR_CHECK(
 				usb_host_lib_handle_events(portMAX_DELAY, &event_flags));
-		if (event_flags & USB_HOST_LIB_EVENT_FLAGS_NO_CLIENTS) {
-			has_clients = false;
-		}
-		if (event_flags & USB_HOST_LIB_EVENT_FLAGS_ALL_FREE) {
-			has_devices = false;
-		}
 	}
-	ESP_LOGI(TAG, "No more clients and devices");
-
-	//Uninstall the USB Host Library
-	ESP_ERROR_CHECK(usb_host_uninstall());
-	//Wait to be deleted
-	xSemaphoreGive(signaling_sem);
-	vTaskSuspend(NULL);
 }
 
 void usb_daemon_setup() {

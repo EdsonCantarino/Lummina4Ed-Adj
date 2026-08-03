@@ -20,6 +20,7 @@ typedef struct {
 	uint32_t ts_fim;
 	ampoule_history_result_t resultado;
 	uint8_t temperatura;
+	bool printed;             // true = ja saiu impresso com sucesso alguma vez
 } ampoule_history_record_t;
 
 // Carrega o histórico da NVS para a cache em RAM. Chamar uma única vez no
@@ -39,6 +40,11 @@ int ampoule_history_get_count();
 // Retorna false se o índice estiver fora do intervalo [0, count).
 bool ampoule_history_get_record(int index_from_newest,
 		ampoule_history_record_t &out);
+
+// Marca um registro (por id_test) como impresso com sucesso. Usado tanto
+// pela impressao ao vivo (teste recem concluido) quanto pela reimpressao
+// manual/automatica - no-op se o id_test nao for encontrado.
+void ampoule_history_mark_printed(uint32_t id_test);
 
 // Apaga todo o histórico (usado no reset de dados do usuário).
 void ampoule_history_clear();

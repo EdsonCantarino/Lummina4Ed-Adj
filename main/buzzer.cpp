@@ -1,11 +1,11 @@
 #include "include/buzzer.h"
 #include "esp_timer.h"
+#include "include/nvs_utils.h"
 
 #define HIGH 1
 #define LOW 0
 
 #define BUZZER_TIMEOUT CONFIG_BUZZER_ACTIVATED
-#define BUZZER_SHUTOFF_MS (30LL * 60 * 1000)  // 30 minutos em ms
 static const gpio_num_t BUZZER_GPIO = (gpio_num_t) CONFIG_BUZZER_GPIO;
 
 static const char *TAG = "Buzzer";
@@ -83,11 +83,14 @@ void buzzer_alert_task(void *parameter) {
 
 	while (true) {
 		if (is_buzzer_on_off && is_buzzer_alert_on_off) {
-			// Auto-desligamento após 30 minutos
+			// Auto-desligamento apos N minutos (configuravel via tela de
+			// configuracoes do usuario, 1 a 30 min - default 30).
 			if (buzzer_alert_activated_time > 0) {
 				int64_t elapsed = (esp_timer_get_time() / 1000) - buzzer_alert_activated_time;
-				if (elapsed >= BUZZER_SHUTOFF_MS) {
-					ESP_LOGI(TAG, "Buzzer auto-desligado após 30 minutos");
+				int64_t timeout_ms = (int64_t) get_buzzer_alert_timeout_min() * 60 * 1000;
+				if (elapsed >= timeout_ms) {
+					ESP_LOGI(TAG, "Buzzer auto-desligado apos %d min",
+							get_buzzer_alert_timeout_min());
 					is_buzzer_on_off = false;
 					is_buzzer_alert_on_off = false;
 					buzzer_alert_activated_time = 0;

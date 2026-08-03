@@ -59,6 +59,14 @@ void ampoules_leds_disabled(int ampoule, bool state);
 void start_stop_led_effect_test(bool start);
 void set_led_function_on_off(bool state_led_panel1, bool state_led_panel2, bool state_led_panel3, bool state_led_panel4);
 
+// Teste de lampada: percorre LED1->2->3->4 (tempo) so na cavidade 1,
+// terminando com o LED1 aceso. Usado no modo CRC1 (unica cavidade
+// habilitada) pra confirmar visualmente que os 4 niveis de tempo dessa
+// cavidade funcionam - em Normal/ETO isso nao e necessario (Normal ja
+// mostra LED1 aceso em todas as cavidades habilitadas; ETO nunca usa
+// LED2/3/4).
+void crc1_led_lamp_test_cavity1();
+
 #ifdef __cplusplus
 }
 #endif

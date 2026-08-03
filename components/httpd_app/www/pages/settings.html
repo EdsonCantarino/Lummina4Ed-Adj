@@ -112,6 +112,23 @@
                 </div>
             </div>
         </div>
+
+        <div class="card bg-light mt-3" id="card_buzzer_alert_timeout">
+            <div class="card-header" key="card_buzzer_alert_timeout_title">Alerta sonoro de teste concluído</div>
+            <div class="card-body">
+                <div class="form-floating mb-2">
+                    <input type="number" min="1" max="30" step="1" class="form-control" id="buzzer_alert_timeout_min">
+                    <label for="buzzer_alert_timeout_min" key="buzzer_alert_timeout_min_label">Tempo até o alerta
+                        desligar sozinho, se não for reconhecido (1 a 30 min)</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2" id="save_buzzer_alert_timeout">
+                    <button type="button" class="btn btn-primary" id="btnSalvarBuzzerAlertTimeout" key="save">Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="dateTimeConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -296,6 +313,62 @@
                 $("#institution").val(data.institution);
 
                 $("#version").text(data.version);
+            });
+
+            $.get("/api/v1/buzzer_config", function (data) {
+                $("#buzzer_alert_timeout_min").val(data.buzzerAlertTimeoutMin);
+            });
+
+            $("#btnSalvarBuzzerAlertTimeout").on('click', function (e) {
+                e.preventDefault();
+
+                let buzzerAlertTimeoutMin = parseInt($("#buzzer_alert_timeout_min").val());
+
+                let data = {
+                    "buzzerAlertTimeoutMin": buzzerAlertTimeoutMin
+                };
+
+                $.ajax({
+                    url: '/api/v1/buzzer_config',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (resp) {
+                        if (resp && resp.success === false) {
+                            let toast = {
+                                title: $("#save_error_toast_title").val(),
+                                message: resp.message,
+                                status: TOAST_STATUS.DANGER,
+                                timeout: 10000
+                            }
+                            Toast.setTheme(TOAST_THEME.LIGHT);
+                            Toast.create(toast);
+                            return;
+                        }
+
+                        let toast = {
+                            title: $("#save_success_toast_title").val(),
+                            message: $("#save_success_toast_message").val(),
+                            status: TOAST_STATUS.SUCCESS,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    },
+                    error: function (e) {
+                        let toast = {
+                            title: $("#save_error_toast_title").val(),
+                            message: $("#save_error_toast_message").val(),
+                            status: TOAST_STATUS.DANGER,
+                            timeout: 10000
+                        }
+
+                        Toast.setTheme(TOAST_THEME.LIGHT);
+                        Toast.create(toast);
+                    }
+                });
             });
 
             $("#btnUseComputerTime").on('click', function (e) {

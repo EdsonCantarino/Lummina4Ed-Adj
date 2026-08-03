@@ -21,6 +21,12 @@ const uint8_t interface_number = 0x01;
 
 class_driver_t driver_obj = { 0 };
 
+// Handle da task recriavel em runtime por usb_class_driver_reset() -
+// diferente do handle repassado por referencia em usb_class_driver_setup(),
+// que so existe no escopo do chamador (usb_daemon_setup(), que nunca
+// retorna em operacao normal).
+static TaskHandle_t class_driver_task_hdl_static = NULL;
+
 static bool isSetupDone = false;
 static bool isPrinterError = false;
 static bool isPrinterConnected = false;
@@ -234,10 +240,24 @@ static void transfer_alloc(class_driver_t *driver_obj) {
 void class_driver_task(void *arg) {
 	SemaphoreHandle_t signaling_sem = (SemaphoreHandle_t) arg;
 
-	set_setup_done(false);
+	// signaling_sem == NULL quando a task e recriada em runtime por
+	// usb_class_driver_reset() - a USB host lib ja esta instalada nesse
+	// caso, entao nao ha por quem esperar (ninguem vai dar esse semaforo
+	// de novo, o daemon so faz isso uma vez no boot). So espera aqui, uma
+	// unica vez - o loop de reconexao abaixo nunca espera de novo.
+	if (signaling_sem != NULL) {
+		//Wait until daemon task has installed USB Host Library
+		xSemaphoreTake(signaling_sem, portMAX_DELAY);
+	}
 
-	//Wait until daemon task has installed USB Host Library
-	xSemaphoreTake(signaling_sem, portMAX_DELAY);
+	// Loop de reconexao: ao inves de encerrar a task quando o device some
+	// (USB_HOST_CLIENT_EVENT_DEV_GONE), registra um client novo e volta a
+	// esperar - assim, tirar e recolocar o cabo da impressora nao exige
+	// reiniciar o ESP32 (antes, a task se suspendia pra sempre nesse caso).
+	for (;;) {
+
+	set_setup_done(false);
+	driver_obj = { 0 };
 
 	ESP_LOGI(TAG, "Registering Client");
 
@@ -345,22 +365,28 @@ void class_driver_task(void *arg) {
 	usb_host_client_deregister(driver_obj.client_hdl);
 	//);
 
-//	do {
-//		if (usb_host_device_free_all() != ESP_ERR_NOT_FINISHED) {
-//			printf("usb_host_device_free_all confirmed\n\n");
-//			break;
-//		}
-//
-//		printf("usb_host_device_free_all NOT confirmed\n\n");
-//
-//		vTaskDelay(500);
-//	} while (1);
-
 	set_printer_connected(false);
 
-	//Wait to be deleted
-	xSemaphoreGive(signaling_sem);
-	vTaskSuspend(NULL);
+	// Nao libera transfer/transfer_in aqui: transfer_in fica continuamente
+	// resubmetido em loop por transfer_cb() (transfer IN da impressora), e
+	// liberar um buffer com operacao possivelmente ainda em voo causou
+	// crash (Guru Meditation StoreProhibited) em teste fisico - a callback
+	// do host USB chega depois e mexe num ponteiro ja liberado. transfer_alloc()
+	// realoca buffers novos a cada reconexao; o custo e um pequeno vazamento
+	// (~1KB) por reconexao, bem mais seguro que travar o equipamento.
+
+	// Melhor esforco: registra um client novo (as vezes basta). Chegamos a
+	// tentar reinstalar a lib USB inteira aqui pra forcar redeteccao, mas
+	// isso se mostrou instavel em teste fisico (crash/deadlock em 3 formas
+	// diferentes) - a recuperacao confiavel de desconexao agora e via
+	// esp_restart() protegido em printer.cpp (so quando nenhuma cavidade
+	// estiver testando), nao aqui.
+	ESP_LOGW(TAG, "Impressora desconectada - registrando client novo");
+	vTaskDelay(pdMS_TO_TICKS(500));
+
+	// Volta ao topo do for(;;) - registra client novo, em vez de suspender
+	// a task pra sempre.
+	}
 }
 
 void usb_class_driver_setup(SemaphoreHandle_t &signaling_sem,
@@ -370,4 +396,5 @@ void usb_class_driver_setup(SemaphoreHandle_t &signaling_sem,
 	xTaskCreatePinnedToCore(class_driver_task, "USB_CLASS_TASK", 4096,
 			(void*) signaling_sem, CLASS_TASK_PRIORITY, &class_driver_task_hdl,
 			0);
+	class_driver_task_hdl_static = class_driver_task_hdl;
 }

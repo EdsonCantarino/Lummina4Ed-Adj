@@ -260,6 +260,16 @@ void check_heater_temperature_task(void *parameter) {
 					if (!is_in_test) {
 						start_stop_led_effect_test(false);
 						ampoule_test_check_cavity_finalize();
+
+						// CRC1: so a cavidade 1 fica habilitada - percorre
+						// LED1->2->3->4 so nela, confirmando visualmente
+						// que os 4 niveis de tempo funcionam (Normal ja
+						// mostra LED1 aceso em todas as cavidades
+						// habilitadas; ETO nunca usa LED2/3/4).
+						if (g_advanced_config.operation_mode
+								== OPERATION_MODE_CRC1) {
+							crc1_led_lamp_test_cavity1();
+						}
 					}
 				}
 

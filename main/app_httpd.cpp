@@ -1692,6 +1692,104 @@ static esp_err_t api_history_config_post_handler(httpd_req_t *req) {
 	return ESP_OK;
 }
 
+static esp_err_t api_buzzer_config_get_handler(httpd_req_t *req) {
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/buzzer_config") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	cJSON *root = cJSON_CreateObject();
+	cJSON_AddNumberToObject(root, "buzzerAlertTimeoutMin",
+			get_buzzer_alert_timeout_min());
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+
+	return ESP_OK;
+}
+
+static esp_err_t api_buzzer_config_post_handler(httpd_req_t *req) {
+
+	string uri = req->uri;
+
+	if (uri.find("/api/v1/buzzer_config") == string::npos) {
+		httpd_resp_send_404(req);
+		return ESP_OK;
+	}
+
+	int total_len = req->content_len;
+	int cur_len = 0;
+
+	char *buf = (char*) malloc(SCRATCH_BUFSIZE);
+
+	int received = 0;
+	if (total_len >= SCRATCH_BUFSIZE) {
+		free(buf);
+		httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
+				"content too long");
+		return ESP_FAIL;
+	}
+	while (cur_len < total_len) {
+		received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
+		if (received <= 0) {
+			free(buf);
+			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
+					"Failed to post control value");
+			return ESP_FAIL;
+		}
+		cur_len += received;
+	}
+
+	buf[total_len] = '\0';
+
+	cJSON *root = cJSON_Parse(buf);
+	free(buf);
+
+	if (!root) {
+		send_history_error(req, "JSON inválido.");
+		return ESP_OK;
+	}
+
+	cJSON *item = cJSON_GetObjectItem(root, "buzzerAlertTimeoutMin");
+
+	if (!item) {
+		cJSON_Delete(root);
+		send_history_error(req, "Campo buzzerAlertTimeoutMin ausente.");
+		return ESP_OK;
+	}
+
+	int minutes = item->valueint;
+
+	cJSON_Delete(root);
+
+	if (minutes < 1 || minutes > 30) {
+		send_history_error(req,
+				"Tempo fora da faixa permitida (1 a 30 minutos).");
+		return ESP_OK;
+	}
+
+	if (save_buzzer_alert_timeout_min((uint8_t) minutes) != ESP_OK) {
+		send_history_error(req,
+				"Erro ao gravar a configuração. Tente novamente.");
+		return ESP_OK;
+	}
+
+	ESP_LOGI(TAG, "buzzerAlertTimeoutMin salvo: %d", minutes);
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_sendstr(req, "{\"success\": true}");
+
+	return ESP_OK;
+}
+
 static esp_err_t api_history_get_handler(httpd_req_t *req) {
 
 	string uri = req->uri;
@@ -2109,6 +2207,14 @@ static const httpd_uri_t api_history_config_post_uri = { .uri =
 		"/api/v1/history_config", .method = HTTP_POST, .handler =
 		api_history_config_post_handler, .user_ctx = NULL };
 
+static const httpd_uri_t api_buzzer_config_get_uri = { .uri =
+		"/api/v1/buzzer_config", .method = HTTP_GET, .handler =
+		api_buzzer_config_get_handler, .user_ctx = NULL };
+
+static const httpd_uri_t api_buzzer_config_post_uri = { .uri =
+		"/api/v1/buzzer_config", .method = HTTP_POST, .handler =
+		api_buzzer_config_post_handler, .user_ctx = NULL };
+
 static const httpd_uri_t api_history_get_uri = { .uri = "/api/v1/history",
 		.method = HTTP_GET, .handler = api_history_get_handler, .user_ctx =
 		NULL };
@@ -2265,6 +2371,8 @@ void app_httpd_register_uri(httpd_handle_t *httpd_handle) {
 	httpd_register_uri_handler(httpd_handle, &history_get_uri);
 	httpd_register_uri_handler(httpd_handle, &api_history_config_get_uri);
 	httpd_register_uri_handler(httpd_handle, &api_history_config_post_uri);
+	httpd_register_uri_handler(httpd_handle, &api_buzzer_config_get_uri);
+	httpd_register_uri_handler(httpd_handle, &api_buzzer_config_post_uri);
 	httpd_register_uri_handler(httpd_handle, &api_history_get_uri);
 
 	// Rotas protegidas

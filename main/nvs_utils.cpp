@@ -180,6 +180,34 @@ uint8_t get_print_count() {
 	return (uint8_t) count;
 }
 
+// Tempo (em minutos) que o alerta de teste concluido (buzzer_alert) soa
+// antes de desligar sozinho, caso ninguem reconheca (retire a ampola ou
+// inicie um novo teste). Independente da struct advanced_config_t de
+// proposito - mesmo motivo do save_print_count acima.
+esp_err_t save_buzzer_alert_timeout_min(uint8_t minutes) {
+	ESP_LOGI(TAG, "Prepare to save Buzzer Alert Timeout in NVS\n");
+
+	bool ok = nvs_storage.setInt("buzz_alert_min", minutes, true);
+
+	if (!ok) {
+		return ESP_FAIL;
+	}
+
+	ESP_LOGI(TAG, "Buzzer Alert Timeout: %d min saved in NVS!\n", minutes);
+
+	return ESP_OK;
+}
+
+uint8_t get_buzzer_alert_timeout_min() {
+	int64_t minutes = nvs_storage.getInt("buzz_alert_min", -1);
+
+	if (minutes < 1 || minutes > 30) {
+		return 30; // default - mesmo comportamento historico do timeout fixo
+	}
+
+	return (uint8_t) minutes;
+}
+
 esp_err_t save_positive_percentage(float pp) {
 	ESP_LOGI(TAG, "Prepare to save Restrict Device Setting in NVS\n");
 
@@ -485,6 +513,13 @@ esp_err_t reset_user_data() {
 	} else {
 		ESP_LOGE(TAG, "Nao ha resultado de testes para serem excluido");
 	}
+
+	// Historico novo (ate AMPOULE_HISTORY_MAX_RECORDS, usado pela tela
+	// /history e reimpressao) fica em namespace/chave proprios
+	// (amp_history/records_v1) - nao era limpo aqui, entao os resultados
+	// de testes anteriores continuavam visiveis mesmo apos "resetar".
+	ESP_LOGI(TAG, "Excluindo historico de testes (ampoule_history)");
+	ampoule_history_clear();
 
 	// Temp history
 

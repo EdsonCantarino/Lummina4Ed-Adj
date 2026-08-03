@@ -10,7 +10,7 @@
 
 void printer_setup();
 void print_ampoule_test();
-void print_ampoule_test(int id, bool is_cancelled = false);
+bool print_ampoule_test(int id, bool is_cancelled = false);
 
 void print_ampoule_test_history_temp(string temp);
 

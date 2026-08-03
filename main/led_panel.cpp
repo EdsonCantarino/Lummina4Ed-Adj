@@ -361,6 +361,17 @@ void set_led_function_active() {
 	led_panel_4.digital_write(P0, 0);
 }
 
+void crc1_led_lamp_test_cavity1() {
+	for (int p = 0; p < 4; p++) {
+		led_panel_1.digital_write(p, 0); // ON (ativo em nivel baixo)
+		vTaskDelay(pdMS_TO_TICKS(300));
+		led_panel_1.digital_write(p, 1); // OFF
+	}
+
+	// Volta ao padrao (LED1 aceso), mesma convencao usada em Normal/ETO.
+	led_panel_1.digital_write(P0, 0);
+}
+
 void set_led_function_on_off(bool state_led_panel1, bool state_led_panel2,
 		bool state_led_panel3, bool state_led_panel4) {
 	led_panel_1.digital_write(P0, state_led_panel1);

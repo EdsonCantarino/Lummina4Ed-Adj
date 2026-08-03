@@ -24,8 +24,9 @@
 #include "advanced_config.h"
 #include "ampoule_history.h"
 
-#define DEFAULT_TIME_TEST (20 * 60) // 20 * 60
-//#define DEFAULT_TIME_TEST (2 * 60) // 20 * 60
+// Deve ficar igual ao valor do nivel 0 (default/sem nenhum aperto do botao
+// de tempo) em ampoule_set_time_test() - hoje 5 min, ver comentario la.
+#define DEFAULT_TIME_TEST (5 * 60)
 
 TimerManager timeManager;
 int alarmTimeout = 30 * 60;
@@ -342,14 +343,19 @@ static uint32_t parse_date_time_to_ts(const string &date, const string &hour) {
 	return (uint32_t) t;
 }
 
-esp_err_t set_history(int index, bool is_cancelled = false) {
+esp_err_t set_history(int index, bool is_cancelled = false,
+		bool printed_ok = false) {
 
 	ampoule_test_history_t hist = to_ampoule_test_history(index, is_cancelled);
 
 	ampoule_history_record_t record = { };
 	record.id_test = (uint32_t) hist.id_test;
 	record.cavidade = (uint8_t) hist.id;
-	record.ciclo_minutos = (uint16_t) atoi(hist.ciclo.c_str());
+	// hist.ciclo vem em segundos (ampoules[index].time_test); ciclo_minutos
+	// e consumido como MINUTOS (tela de Historico, reimpressao via
+	// printer.cpp) - sem o /60 aqui, um teste de 20min (1200s) era gravado
+	// como "1200 min".
+	record.ciclo_minutos = (uint16_t) (atoi(hist.ciclo.c_str()) / 60);
 	record.ts_inicio = parse_date_time_to_ts(hist.dt_inicio, hist.hr_inicio);
 	record.ts_fim = parse_date_time_to_ts(hist.dt_fim, hist.hr_fim);
 	record.temperatura = (uint8_t) hist.temperature;
@@ -360,6 +366,8 @@ esp_err_t set_history(int index, bool is_cancelled = false) {
 		record.resultado = AMPOULE_RESULT_CANCELLED;
 	else
 		record.resultado = AMPOULE_RESULT_NEGATIVE;
+
+	record.printed = printed_ok;
 
 	return ampoule_history_add(record);
 }
@@ -472,10 +480,10 @@ void finalize_ampoule_test(int index, int ampoule, bool early_result) {
 
 	printf("\n***** [AMPOLA %d] IMPRIMINDO RESULTADO *****\n\n", ampoule);
 
-	print_ampoule_test(index);
+	bool printed_ok = print_ampoule_test(index);
 
 // Chamar depois de print_ampoule_test para pegar o resultado do test, antes o resultado ser� sempre negativo.
-	set_history(index);
+	set_history(index, false, printed_ok);
 	reset_ampoules_history_temp(index);
 
 // Liga o led verde ou vermelho se positivado ou nï¿½o
@@ -499,9 +507,9 @@ void abort_ampoule_test_sensor_fault(int index, int ampoule) {
 			"***** [AMPOLA %d] TESTE ABORTADO - falha persistente de leitura do sensor *****\n",
 			ampoule);
 
-	print_ampoule_test(index, true);
+	bool printed_ok = print_ampoule_test(index, true);
 
-	set_history(index, true);
+	set_history(index, true, printed_ok);
 	reset_ampoules_history_temp(index);
 
 	ampoules[index].test_done = true;
@@ -753,7 +761,7 @@ void ampoule_test_error_task(void *pvParameter) {
 				vTaskDelay(pdMS_TO_TICKS(1000));
 
 				// Aqui imprimir o resutado da ampola... apenas se o test tiver sido iniciado.
-				print_ampoule_test(i, true);
+				bool printed_ok = print_ampoule_test(i, true);
 
 				vTaskDelay(pdMS_TO_TICKS(1000));
 
@@ -763,7 +771,7 @@ void ampoule_test_error_task(void *pvParameter) {
 				ampoules_leds_removed_error(id);
 
 				// Salva em mem�ria o resultado.
-				set_history(i, true);
+				set_history(i, true, printed_ok);
 				reset_ampoules_history_temp(i);
 
 				if (ampoules[i].samples.size() > 0) {
@@ -890,9 +898,9 @@ void ampoules_test_check_done_task(void *pvParameter) {
 						printf("\n***** [AMPOLA %d] CANCELANDO TESTE POR TEMPERATURA FORA DO RANGE *****\n\n", ampoules[i].id);
 						set_date_time(i, false);
 						vTaskDelay(pdMS_TO_TICKS(500));
-						print_ampoule_test(i, true);
+						bool printed_ok = print_ampoule_test(i, true);
 						vTaskDelay(pdMS_TO_TICKS(1000));
-						set_history(i, true);
+						set_history(i, true, printed_ok);
 						reset_ampoules_history_temp(i);
 						ampoules[i].is_testing = false;
 						ampoules[i].test_done = true;
@@ -1108,14 +1116,17 @@ void ampoule_set_time_test(int id, int level) {
 
 	printf("LEVEL %d\n", level);
 
+	// Sequencia de tempos nos botoes fisicos: 5min -> 20min -> 1h -> 3h
+	// (level vem de keyboard.cpp como d->level-1, entao 0 e o default/nivel
+	// inicial). Antes era 20min -> 1h -> 2h -> 3h.
 	if (level == 1) {
-		time = 60 * 60;
+		time = 20 * 60;
 	} else if (level == 2) {
-		time = 2 * 60 * 60;
+		time = 60 * 60;
 	} else if (level == 3) {
 		time = 3 * 60 * 60;
 	} else {
-		time = 20 * 60;
+		time = 5 * 60;
 	}
 
 	printf("TIME  %ld\n", time);

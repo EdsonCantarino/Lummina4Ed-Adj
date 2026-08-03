@@ -21,10 +21,72 @@
 #include "ampoule_history.h"
 #include <string>
 #include <ctime>
+#include "esp_timer.h"
+#include "esp_system.h"
 
 using namespace std;
 
+static const char *TAG = "PRINTER";
+
 device_settings_t settings;
+
+// Watchdog de impressora travada/desconectada. Duas correcoes de USB em
+// runtime (re-registrar client, e depois reinstalar a lib USB inteira)
+// se mostraram instaveis em teste fisico (3 formas diferentes de
+// crash/deadlock) - a recuperacao confiavel e um esp_restart(), mas so
+// quando nenhuma cavidade estiver testando (ver attempt_safe_printer_recovery),
+// pra nunca arriscar perder um teste em andamento.
+#define PRINT_HANG_TIMEOUT_MS (15 * 1000)
+#define PRINTER_DISCONNECTED_TIMEOUT_MS (30 * 1000)
+
+static volatile int64_t print_operation_started_ms = 0;
+static int64_t printer_disconnected_since_ms = 0;
+static bool printer_ever_connected = false;
+static bool printer_was_ready = false;
+
+// Bits usados em xTaskNotify(print_ampoule_test_task_handle, ...): botao
+// fisico de imprimir reimprime os ultimos N (print_count); a reconexao da
+// impressora dispara so os pendentes (nao impressos ainda) - ver
+// print_test_task_notify() e print_pending_unprinted_history().
+#define PRINT_NOTIFY_BUTTON         (1 << 0)
+#define PRINT_NOTIFY_PENDING_REPRINT (1 << 1)
+
+static void print_operation_begin() {
+	print_operation_started_ms = esp_timer_get_time() / 1000;
+	set_is_priting(true);
+}
+
+// Retorna se a impressao provavelmente teve sucesso. O envio USB e
+// assincrono - o pequeno delay da tempo da callback (transfer_cb em
+// usb_class_driver.cpp) atualizar isPrinterError/isSetupDone antes da
+// gente checar.
+static bool print_operation_end() {
+	set_is_priting(false);
+	print_operation_started_ms = 0;
+
+	vTaskDelay(pdMS_TO_TICKS(300));
+
+	return is_printer_connected() && !is_printer_error();
+}
+
+static bool any_cavity_testing() {
+	return is_testing(1) || is_testing(2) || is_testing(3) || is_testing(4);
+}
+
+// So reinicia se nenhuma cavidade estiver testando - senao so loga e
+// tenta de novo no proximo ciclo do watchdog (1s).
+static void attempt_safe_printer_recovery(const char *reason) {
+	if (any_cavity_testing()) {
+		ESP_LOGW(TAG,
+				"%s, mas ha cavidade em teste - adiando reinicio ate ficar seguro",
+				reason);
+		return;
+	}
+
+	ESP_LOGE(TAG, "%s - reiniciando o equipamento pra recuperar a impressora",
+			reason);
+	esp_restart();
+}
 
 void print_test(string ampola, string id_test, string dt_inicio,
 		string hr_inicio, string dt_fim, string hr_fim, int resultado,
@@ -34,6 +96,12 @@ void print_test(string ampola, string id_test, string dt_inicio,
 void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		string hr_inicio, string ciclo, int temperature, string serial_number,
 		string inst, string tempo_em_teste, string language);
+
+// Ticket imprime a hora sem os segundos; hour_start/hour_end seguem com
+// segundos internamente (usados no calculo de duracao do teste).
+static string strip_seconds(const string &hhmmss) {
+	return hhmmss.size() >= 5 ? hhmmss.substr(0, 5) : hhmmss;
+}
 
 static string format_ts(uint32_t ts) {
 	if (ts == 0)
@@ -77,12 +145,64 @@ void print_check_status(void *pvParameter) {
 	bool statePrinterConnected = false;
 	for (;;) {
 
+		if (print_operation_started_ms > 0) {
+			int64_t elapsed = (esp_timer_get_time() / 1000)
+					- print_operation_started_ms;
+
+			if (elapsed >= PRINT_HANG_TIMEOUT_MS) {
+				print_operation_started_ms = 0;
+				set_is_priting(false);
+
+				char reason[64];
+				snprintf(reason, sizeof(reason),
+						"Impressao travada ha %lld ms sem concluir",
+						(long long) elapsed);
+				attempt_safe_printer_recovery(reason);
+			}
+		}
+
 		if (!is_printer_connected()) {
 			print_leds(1);
+			printer_was_ready = false;
+
+			// So considera "desconectada" pra fins de watchdog depois de ja
+			// ter conectado uma vez - evita disparar um restart no boot,
+			// antes da impressora terminar a enumeracao USB normal.
+			if (printer_ever_connected) {
+				if (printer_disconnected_since_ms == 0) {
+					printer_disconnected_since_ms = esp_timer_get_time()
+							/ 1000;
+				} else {
+					int64_t disconnected_elapsed = (esp_timer_get_time()
+							/ 1000) - printer_disconnected_since_ms;
+
+					if (disconnected_elapsed
+							>= PRINTER_DISCONNECTED_TIMEOUT_MS) {
+						printer_disconnected_since_ms = 0;
+
+						char reason[64];
+						snprintf(reason, sizeof(reason),
+								"Impressora desconectada ha %lld ms",
+								(long long) disconnected_elapsed);
+						attempt_safe_printer_recovery(reason);
+					}
+				}
+			}
 		} else {
+			printer_ever_connected = true;
+			printer_disconnected_since_ms = 0;
 
 			statePrinterConnected = is_setup_done() && !is_printer_error();
 			print_leds(!statePrinterConnected);
+
+			// Borda desconectada->pronta: dispara reimpressao dos tickets
+			// pendentes (nao impressos por erro/desconexao anterior).
+			if (statePrinterConnected && !printer_was_ready
+					&& print_ampoule_test_task_handle != NULL) {
+				xTaskNotify(print_ampoule_test_task_handle,
+				PRINT_NOTIFY_PENDING_REPRINT, eSetBits);
+			}
+			printer_was_ready = statePrinterConnected;
 
 			// Aceso conectada, apagada n�o conectada e piscando erro de impress�o.
 			if (!is_setup_done()) {
@@ -97,8 +217,8 @@ void print_check_status(void *pvParameter) {
 	}
 }
 
-void print_ampoule_test_history(AmpouleTestResult &amp) {
-	set_is_priting(true);
+void print_ampoule_test_history(AmpouleTestResult &amp, uint32_t id_test = 0) {
+	print_operation_begin();
 
 	string institution = get_institution();
 
@@ -118,14 +238,18 @@ void print_ampoule_test_history(AmpouleTestResult &amp) {
 				amp.get_time_in_test(), language);
 	}
 
-	set_is_priting(false);
+	bool ok = print_operation_end();
+
+	if (ok && id_test != 0) {
+		ampoule_history_mark_printed(id_test);
+	}
 }
 
 void print_history() {
 
 }
 
-void print_ampoule_test(int id, bool is_cancelled = false) {
+bool print_ampoule_test(int id, bool is_cancelled = false) {
 
 	string institution = get_institution();
 	string serial_number = get_serial_number();
@@ -138,7 +262,7 @@ void print_ampoule_test(int id, bool is_cancelled = false) {
 	ESP_LOGI("", "End   Date & Time Formatted: %s",
 			amp.get_formated_date_time(false, " | ").c_str());
 
-	set_is_priting(true);
+	print_operation_begin();
 
 	if (!is_cancelled) {
 
@@ -154,7 +278,7 @@ void print_ampoule_test(int id, bool is_cancelled = false) {
 				amp.get_time_in_test(), language);
 	}
 
-	set_is_priting(false);
+	return print_operation_end();
 }
 
 void to_ampoule_test_result(string hist, AmpouleTestResult &result) {
@@ -196,6 +320,54 @@ void print_ampoule_test_history_temp(string temp) {
 	print_ampoule_test_history(result);
 }
 
+// Reimprime so os tickets pendentes (nao impressos com sucesso ainda),
+// varrendo do mais recente pro mais antigo e parando no primeiro ja
+// impresso - nao pula pra procurar nao-impressos alem dele (ex: historico
+// de antes dessa funcionalidade existir, ou intervalo ja tratado de outra
+// forma). Chamado quando a impressora volta a ficar pronta (ver
+// print_check_status).
+static void print_pending_unprinted_history() {
+	int total = ampoule_history_get_count();
+
+	int first_unprinted = -1;
+	int last_unprinted = -1;
+
+	for (int i = 0; i < total; i++) {
+		ampoule_history_record_t rec;
+
+		if (!ampoule_history_get_record(i, rec))
+			break;
+
+		if (rec.printed)
+			break;
+
+		if (first_unprinted < 0)
+			first_unprinted = i;
+		last_unprinted = i;
+	}
+
+	if (first_unprinted < 0)
+		return;
+
+	ESP_LOGW(TAG,
+			"Reimprimindo %d ticket(s) pendente(s) apos a impressora ficar pronta",
+			last_unprinted - first_unprinted + 1);
+
+	// Imprime do mais antigo pro mais recente (ordem cronologica no papel).
+	for (int i = last_unprinted; i >= first_unprinted; i--) {
+		ampoule_history_record_t rec;
+
+		if (!ampoule_history_get_record(i, rec))
+			continue;
+
+		AmpouleTestResult result = AmpouleTestResult();
+
+		ampoule_history_record_to_result(rec, result);
+
+		print_ampoule_test_history(result, rec.id_test);
+	}
+}
+
 void print_test_task_notify(void *pvParameter) {
 	const TickType_t xMaxBlockTime = pdMS_TO_TICKS(500);
 	BaseType_t xResult;
@@ -212,26 +384,32 @@ void print_test_task_notify(void *pvParameter) {
 		if (xResult == pdPASS) {
 			if (usb_print_setup_done()) {
 
-				uint8_t print_count = get_print_count();
-				int total = ampoule_history_get_count();
+				if (ulNotifiedValue & PRINT_NOTIFY_BUTTON) {
+					uint8_t print_count = get_print_count();
+					int total = ampoule_history_get_count();
 
-				if (print_count > total)
-					print_count = total;
+					if (print_count > total)
+						print_count = total;
 
-				// Imprime do mais antigo para o mais recente dentro do
-				// recorte escolhido, para o ticket sair na ordem
-				// cronologica na impressora.
-				for (int i = print_count - 1; i >= 0; i--) {
-					ampoule_history_record_t rec;
+					// Imprime do mais antigo para o mais recente dentro do
+					// recorte escolhido, para o ticket sair na ordem
+					// cronologica na impressora.
+					for (int i = print_count - 1; i >= 0; i--) {
+						ampoule_history_record_t rec;
 
-					if (!ampoule_history_get_record(i, rec))
-						continue;
+						if (!ampoule_history_get_record(i, rec))
+							continue;
 
-					AmpouleTestResult result = AmpouleTestResult();
+						AmpouleTestResult result = AmpouleTestResult();
 
-					ampoule_history_record_to_result(rec, result);
+						ampoule_history_record_to_result(rec, result);
 
-					print_ampoule_test_history(result);
+						print_ampoule_test_history(result, rec.id_test);
+					}
+				}
+
+				if (ulNotifiedValue & PRINT_NOTIFY_PENDING_REPRINT) {
+					print_pending_unprinted_history();
 				}
 
 //				for (int i = 0; i < 4; i++) {
@@ -434,7 +612,7 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append(" HORA:");
 	}
 
-	printer.append(hr_inicio.c_str());
+	printer.append(strip_seconds(hr_inicio).c_str());
 
 	printer.newLine();
 	printer.newLine();
@@ -627,7 +805,7 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append(" HORA:");
 	}
 
-	printer.append(hr_inicio.c_str());
+	printer.append(strip_seconds(hr_inicio).c_str());
 
 	printer.newLine();
 	printer.newLine();

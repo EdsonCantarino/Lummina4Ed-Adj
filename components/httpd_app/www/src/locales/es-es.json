@@ -46,7 +46,7 @@
   "#reset-msg": {
     "msg#1": "Esta opción elimina los siguientes datos de la memoria del dispositivo:",
     "msg#2": "1 - Secuencia de incubación",
-    "msg#3": "2 - Historial de las últimas 12 pruebas realizadas",
+    "msg#3": "2 - Todo el historial de pruebas del equipo",
     "msg#4": "3 - Nombre del hospital",
     "reset": "Restablecer datos del dispositivo"
   },
@@ -327,6 +327,13 @@
     "institution": "Institución"
   },
   "#save_settings": {
+    "save": "Guardar"
+  },
+  "#card_buzzer_alert_timeout": {
+    "card_buzzer_alert_timeout_title": "Alerta sonora de prueba finalizada",
+    "buzzer_alert_timeout_min_label": "Tiempo hasta que la alerta se apague sola, si no es reconocida (1 a 30 min)"
+  },
+  "#save_buzzer_alert_timeout": {
     "save": "Guardar"
   },
   "#calibration_messages": {

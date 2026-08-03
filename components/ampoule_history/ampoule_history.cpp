@@ -11,14 +11,18 @@ static const char *NVS_NAMESPACE = "amp_history";
 static const char *NVS_KEY = "records_v1";
 
 static const uint16_t MAGIC = 0xA55A;
-static const uint8_t FORMAT_VERSION = 1;
+// v2 adiciona o campo "printed" (1 byte) ao fim do registro - registros
+// gravados em v1 nao tem esse byte, entao a versao muda e o load() reseta
+// o historico pra vazio nesse caso (ja e o comportamento documentado pra
+// qualquer incompatibilidade de formato - nao e dado critico).
+static const uint8_t FORMAT_VERSION = 2;
 
 // Tamanho de cada registro serializado, em bytes. Layout explícito e fixo
 // (nao usa memcpy de struct C direto - evita depender de padding do
 // compilador, sempre serializa campo a campo nessa ordem):
 // id_test(4) + cavidade(1) + ciclo_minutos(2) + ts_inicio(4) + ts_fim(4) +
-// resultado(1) + temperatura(1) = 17 bytes
-static const size_t RECORD_SIZE = 17;
+// resultado(1) + temperatura(1) + printed(1) = 18 bytes
+static const size_t RECORD_SIZE = 18;
 
 // magic(2) + version(1) + count(1) + write_index(1) + crc(4) = 9 bytes
 static const size_t HEADER_SIZE = 9;
@@ -57,6 +61,7 @@ static void serialize_record(std::vector<uint8_t> &buf,
 	write_u32(buf, r.ts_fim);
 	buf.push_back((uint8_t) r.resultado);
 	buf.push_back(r.temperatura);
+	buf.push_back(r.printed ? 1 : 0);
 }
 
 static void deserialize_record(const uint8_t *p, ampoule_history_record_t &r) {
@@ -67,6 +72,7 @@ static void deserialize_record(const uint8_t *p, ampoule_history_record_t &r) {
 	r.ts_fim = read_u32(p + 11);
 	r.resultado = (ampoule_history_result_t) p[15];
 	r.temperatura = p[16];
+	r.printed = p[17] != 0;
 }
 
 static uint32_t compute_crc(const std::vector<uint8_t> &buf,
@@ -204,4 +210,16 @@ bool ampoule_history_get_record(int index_from_newest,
 	out = cache[slot];
 
 	return true;
+}
+
+void ampoule_history_mark_printed(uint32_t id_test) {
+	for (int i = 0; i < AMPOULE_HISTORY_MAX_RECORDS; i++) {
+		if (cache[i].id_test == id_test) {
+			if (!cache[i].printed) {
+				cache[i].printed = true;
+				persist();
+			}
+			return;
+		}
+	}
 }

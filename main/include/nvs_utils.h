@@ -49,6 +49,11 @@ float get_positive_percentage();
 esp_err_t save_print_count(uint8_t count);
 uint8_t get_print_count();
 
+// Tempo (1 a 30 min) que o alerta de teste concluido soa antes de desligar
+// sozinho sem reconhecimento (ver buzzer_alert_task em buzzer.cpp).
+esp_err_t save_buzzer_alert_timeout_min(uint8_t minutes);
+uint8_t get_buzzer_alert_timeout_min();
+
 esp_err_t save_serial_number(string serial_number);
 string get_serial_number();
 

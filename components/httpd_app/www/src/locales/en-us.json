@@ -46,7 +46,7 @@
   "#reset-msg": {
     "msg#1": "This option removes the following data from device memory:",
     "msg#2": "1 - Incubation Sequence",
-    "msg#3": "2 - History of the last 12 tests performed",
+    "msg#3": "2 - All of the device's test history",
     "msg#4": "3 - Hospital Name",
     "reset": "Reset device data"
   },
@@ -326,6 +326,13 @@
     "institution": "Institution"
   },
   "#save_settings": {
+    "save": "Save"
+  },
+  "#card_buzzer_alert_timeout": {
+    "card_buzzer_alert_timeout_title": "Test completed sound alert",
+    "buzzer_alert_timeout_min_label": "Time until the alert turns off by itself, if not acknowledged (1 to 30 min)"
+  },
+  "#save_buzzer_alert_timeout": {
     "save": "Save"
   },
   "#calibration_messages": {
