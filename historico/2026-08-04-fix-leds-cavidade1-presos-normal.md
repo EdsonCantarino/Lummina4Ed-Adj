@@ -45,13 +45,14 @@ Duas mudanças no campo "TEMPO DE LEITURA" do ticket impresso:
 ## Testado no equipamento (COM20, ESP32-S3 `dc:da:0c:49:07:a8`, 192.168.10.10)
 
 - Build limpo via Docker `espressif/idf:release-v5.1` em cada etapa (só os warnings pré-existentes de `LED_ON`/`LED_OFF` redefinidos em `led_panel_pin_mapping.h`, não relacionados).
-- Gravado com sucesso (`esptool`, reset via RTS) já com os 4 fixes juntos.
+- Gravado com sucesso (`esptool`, reset via RTS) já com os 4 fixes juntos. Commit `8d7cf71`, pushed pra `feature/config-web`.
 - Configuração do cliente replicada na tela web (`/admin/advanced_config`): modo Normal, 4 cavidades, 60/53/66°C, 0,5s/4s, checagem antecipada 3min — salva com sucesso.
-- Log serial (COM20) após reset, com a config do cliente aplicada: `Temperatura estabilizada: Sim` / `Funcoes Habilitadas: Sim` / `Temperatura no Range > 53.0 e < 66.0: Sim` já nos primeiros segundos de boot (equipamento já estava quente) — confirma que o caminho de código corrigido (item 1) rodou, mas **não confirma visualmente** o estado físico dos LEDs.
-- Cliente rodando um teste de 5 min no equipamento físico no momento em que este arquivo foi salvo — resultado ainda não registrado aqui.
-- **Nenhum dos 4 itens foi confirmado visualmente ainda** (LEDs cavidade 1 apagados no idle, reimpressão limitada a 4, ETO em 20min, formato novo do ticket).
+- Log serial (COM20) após reset, com a config do cliente aplicada: `Temperatura estabilizada: Sim` / `Funcoes Habilitadas: Sim` / `Temperatura no Range > 53.0 e < 66.0: Sim` já nos primeiros segundos de boot — confirma que o caminho de código corrigido (item 1) rodou.
+- Teste real de 5 min rodado na cavidade 1 (modo Normal): `Tempo total de teste: 300 (segundos)` do início ao fim, confirmando que o fix do ETO (item 3) não alterou o tempo padrão de Normal. Ticket impresso com sucesso (`Transfer status 0`) — dump hex da impressora decodificado confirma `TEMPO DE LEITURA: 00H05Min` no papel, validando o item 4 fisicamente (não só por log).
+- **Usuário confirmou verbalmente que os 4 itens desta sessão estão funcionando no teste físico dele** (LEDs cavidade 1, limite de reimpressão, ETO 20min, formato do ticket) — reimpressão de pendentes (item 2) e LEDs da cavidade 1 no idle (item 1) confirmados por observação direta do usuário, não por log/print como os itens 3 e 4.
+- Firmware já enviado ao cliente para validação em campo; resposta esperada em algumas horas (04/08/2026, tarde).
 
 ## Pendente pra próxima sessão
 
-- Confirmar visualmente no equipamento os 4 itens desta sessão.
+- Aguardar retorno do cliente sobre o firmware enviado (04/08/2026) — confirmar se o bug original (LEDs da cavidade 1) não volta a aparecer no uso real dele.
 - Reconfirmar junto os itens já pendentes do fix anterior de hoje (`efeito_giroflex()` e `boot_lamp_test()` contra o vídeo de referência, sweep do CRC1, destravamento de cavidades ao trocar de modo sem reload, bug de fuso do histórico, reset por `POWERON_RESET` sob stress) — ver `historico/2026-08-04-fix-leds-mascara-memory-leak.md`.
