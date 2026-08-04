@@ -4,11 +4,12 @@
 #include <stdint.h>
 #include "esp_err.h"
 
-// Normal: tempo selecionavel via botoes (20min/1h/2h/3h), com beep e LED de
-// nivel. ETO: tempo fixo de 20min, botoes de tempo sem efeito. CRC1: mesmo
-// comportamento de botoes do Normal (tempo selecionavel, beep, LED), porem
-// so a cavidade 1 pode ficar habilitada e o minimo absoluto de checagem
-// antecipada cai de 3 para 1 minuto.
+// Normal: tempo selecionavel via botoes (5min/20min/1h/3h), com beep e LED
+// de nivel. ETO: tempo fixo de 20min (forcado em ampoule_test(), ver
+// ampoule_test.cpp), botoes de tempo sem efeito. CRC1: mesmo comportamento
+// de botoes do Normal (tempo selecionavel, beep, LED), porem so a cavidade 1
+// pode ficar habilitada e o minimo absoluto de checagem antecipada cai de 3
+// para 1 minuto.
 typedef enum {
 	OPERATION_MODE_NORMAL = 0,
 	OPERATION_MODE_ETO = 1,

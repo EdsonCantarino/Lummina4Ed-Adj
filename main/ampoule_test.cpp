@@ -639,6 +639,16 @@ void ampoule_test(int index) {
 
 			//turn_on_buzzer_button();
 
+			// ETO e fixo em 20 min (botao de tempo fica desabilitado nesse
+			// modo, ver keyboard.cpp) - forcado aqui, no inicio do teste,
+			// porque time_test pode ter ficado com um valor herdado de
+			// Normal/CRC1 (5 min por padrao) se o modo foi trocado pela
+			// tela web sem reboot.
+			if (g_advanced_config.operation_mode == OPERATION_MODE_ETO) {
+				ampoules[index].time_test = 20 * 60;
+				time = 20 * 60;
+			}
+
 			set_date_time(index, true);
 
 			ampoule_set_test_counter(index);

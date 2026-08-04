@@ -577,13 +577,32 @@ void start_stop_led_effect_test(bool start) {
 		} else {
 			vTaskSuspend(task_efect_led_handle);
 
-			// Apaga apenas os LEDs animados pelo efeito (P4 e P5)
+			// Apaga todos os LEDs animados pelo efeito (P0-P5). A
+			// suspensao pode ocorrer no meio do ciclo de acumulo de
+			// efeito_giroflex() (P0-P3), entao precisa limpar tambem
+			// esses pinos, nao so P4/P5, senao ficam presos em ON.
+			change_led_status(&led_panel_1, P0, LED_OFF);
+			change_led_status(&led_panel_1, P1, LED_OFF);
+			change_led_status(&led_panel_1, P2, LED_OFF);
+			change_led_status(&led_panel_1, P3, LED_OFF);
 			change_led_status(&led_panel_1, P4, LED_OFF);
 			change_led_status(&led_panel_1, P5, LED_OFF);
+			change_led_status(&led_panel_2, P0, LED_OFF);
+			change_led_status(&led_panel_2, P1, LED_OFF);
+			change_led_status(&led_panel_2, P2, LED_OFF);
+			change_led_status(&led_panel_2, P3, LED_OFF);
 			change_led_status(&led_panel_2, P4, LED_OFF);
 			change_led_status(&led_panel_2, P5, LED_OFF);
+			change_led_status(&led_panel_3, P0, LED_OFF);
+			change_led_status(&led_panel_3, P1, LED_OFF);
+			change_led_status(&led_panel_3, P2, LED_OFF);
+			change_led_status(&led_panel_3, P3, LED_OFF);
 			change_led_status(&led_panel_3, P4, LED_OFF);
 			change_led_status(&led_panel_3, P5, LED_OFF);
+			change_led_status(&led_panel_4, P0, LED_OFF);
+			change_led_status(&led_panel_4, P1, LED_OFF);
+			change_led_status(&led_panel_4, P2, LED_OFF);
+			change_led_status(&led_panel_4, P3, LED_OFF);
 			change_led_status(&led_panel_4, P4, LED_OFF);
 			change_led_status(&led_panel_4, P5, LED_OFF);
 		}

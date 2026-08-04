@@ -51,6 +51,11 @@ static bool printer_was_ready = false;
 #define PRINT_NOTIFY_BUTTON         (1 << 0)
 #define PRINT_NOTIFY_PENDING_REPRINT (1 << 1)
 
+// Limite de reimpressao automatica de pendentes quando a impressora volta a
+// ficar pronta (ex.: reset do ESP32) - mantem so os N mais recentes, evita
+// imprimir uma pilha grande de tickets antigos de uma vez.
+#define PENDING_REPRINT_MAX 4
+
 static void print_operation_begin() {
 	print_operation_started_ms = esp_timer_get_time() / 1000;
 	set_is_priting(true);
@@ -101,6 +106,17 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 // segundos internamente (usados no calculo de duracao do teste).
 static string strip_seconds(const string &hhmmss) {
 	return hhmmss.size() >= 5 ? hhmmss.substr(0, 5) : hhmmss;
+}
+
+// Formata duracao "HH:MM:SS" (saida de diffDateTime, ver get_time_in_test())
+// como "HHHMMMin" (ex.: "00H00Min", "01H23Min") pro campo "Tempo de leitura"
+// do ticket - diferente de strip_seconds(), que so tira os segundos de um
+// horario de relogio (ex.: hora de inicio) e mantem o "HH:MM".
+static string format_duration_hm(const string &hhmmss) {
+	if (hhmmss.size() < 5)
+		return hhmmss;
+
+	return hhmmss.substr(0, 2) + "H" + hhmmss.substr(3, 2) + "Min";
 }
 
 static string format_ts(uint32_t ts) {
@@ -349,6 +365,27 @@ static void print_pending_unprinted_history() {
 	if (first_unprinted < 0)
 		return;
 
+	// Se ha mais pendentes que o limite, imprime so os mais recentes
+	// (ate PENDING_REPRINT_MAX) e marca os mais antigos que sobrarem
+	// como impressos sem imprimir de fato - senao ficariam presos pra
+	// sempre atras do indice 0 (que vai virar "impresso" daqui a pouco),
+	// ja que a varredura acima para no primeiro registro ja impresso e
+	// nunca mais chegaria neles.
+	if (last_unprinted - first_unprinted + 1 > PENDING_REPRINT_MAX) {
+		int new_last_unprinted = first_unprinted + PENDING_REPRINT_MAX - 1;
+
+		for (int i = last_unprinted; i > new_last_unprinted; i--) {
+			ampoule_history_record_t rec;
+
+			if (!ampoule_history_get_record(i, rec))
+				continue;
+
+			ampoule_history_mark_printed(rec.id_test);
+		}
+
+		last_unprinted = new_last_unprinted;
+	}
+
 	ESP_LOGW(TAG,
 			"Reimprimindo %d ticket(s) pendente(s) apos a impressora ficar pronta",
 			last_unprinted - first_unprinted + 1);
@@ -548,7 +585,7 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append("TIEMPO DE LEER: ");
 	}
 
-	printer.append(tempo_em_teste.c_str(), true);
+	printer.append(format_duration_hm(tempo_em_teste).c_str(), true);
 
 	printer.newLine();
 	printer.newLine();
@@ -738,7 +775,7 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append("TIEMPO DE LEER: ");
 	}
 
-	printer.append(tempo_em_teste.c_str(), true);
+	printer.append(format_duration_hm(tempo_em_teste).c_str(), true);
 
 	printer.newLine();
 	printer.newLine();
