@@ -22,6 +22,7 @@ idf_component_register(
         "led_uv.cpp"
         "ampoules.cpp"
         "light_sensor.cpp"
+        "light_sensor_ads1248.cpp"
         "ampoule_test.cpp"
         "printer.cpp"
         "app_httpd.cpp"

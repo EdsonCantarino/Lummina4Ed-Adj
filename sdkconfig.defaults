@@ -25,6 +25,12 @@ CONFIG_HTTPD_PURGE_BUF_LEN=32
 # end of HTTP Server
 
 #
+# ADC (conversor analogico)
+#
+CONFIG_ADC_CHIP_CS5534=y
+# end of ADC (conversor analogico)
+
+#
 # Firmware
 #
 CONFIG_FIRMWARE_VERSION="2026.08.04"

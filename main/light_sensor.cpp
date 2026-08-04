@@ -1,5 +1,11 @@
 #include "include/light_sensor.h"
 #include "esp_system.h"
+#include "sdkconfig.h"
+
+// Driver do CS5534 (Cirrus) - so compilado quando essa placa e a selecionada
+// em "ADC (conversor analogico)" no menuconfig. O driver do ADS1248 (TI, placa
+// nova) mora em light_sensor_ads1248.cpp e implementa a mesma API publica.
+#if CONFIG_ADC_CHIP_CS5534
 
 static const char *TAG = "LIGHT_SENSOR";
 
@@ -1184,6 +1190,9 @@ long read_channel_value(uint8_t channel) {
 //	}
 
 	printf("Read CH%02d %d = %ld\n", channel + 1, aux, auxl);
+#if CONFIG_ADC_DEBUG_SERIAL
+	printf("[ADCDBG] chip=CS5534 ch=%u raw=%ld\n", channel, auxl);
+#endif
 
 	return auxl;
 }
@@ -1312,3 +1321,5 @@ void light_sensor_main() {
 	xTaskCreate(light_sensor_task, "light_sensor", configMINIMAL_STACK_SIZE * 4,
 	NULL, 5, NULL);
 }
+
+#endif // CONFIG_ADC_CHIP_CS5534

@@ -190,6 +190,34 @@ endmenu
 
 
 
+menu "ADC (conversor analogico)"
+
+    choice ADC_CHIP
+        prompt "Chip conversor AD instalado nesta placa"
+        default ADC_CHIP_CS5534
+        help
+            Escolhe qual conversor AD esta fisicamente presente na placa que
+            vai receber este firmware. CS5534 (Cirrus) e a placa atual em
+            producao; ADS1248 (TI) e a placa nova, ainda em bring-up. As duas
+            opcoes nao coexistem no mesmo build.
+
+        config ADC_CHIP_CS5534
+            bool "CS5534 (Cirrus, placa atual em producao)"
+
+        config ADC_CHIP_ADS1248
+            bool "ADS1248 (TI, placa nova em bring-up)"
+    endchoice
+
+    config ADC_DEBUG_SERIAL
+        bool "Debug serial: imprime leitura bruta de cada canal do AD"
+        default n
+        help
+            Ativa impressao via printf/UART de cada leitura bruta de canal do
+            AD selecionado acima, usada para comparar CS5534 x ADS1248
+            rodando em placas separadas durante o bring-up. Nao afeta o
+            webserver nem a configuracao salva em NVS.
+endmenu
+
 menu "Firmware"
 
     config FIRMWARE_VERSION

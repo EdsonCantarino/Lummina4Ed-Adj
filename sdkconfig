@@ -543,6 +543,14 @@ CONFIG_DEFAULT_BASIC_AUTH_PASSWORD="suporte@2022!!"
 # end of Http Auth Configuration
 
 #
+# ADC (conversor analogico)
+#
+CONFIG_ADC_CHIP_CS5534=y
+# CONFIG_ADC_CHIP_ADS1248 is not set
+# CONFIG_ADC_DEBUG_SERIAL is not set
+# end of ADC (conversor analogico)
+
+#
 # Firmware
 #
 CONFIG_FIRMWARE_VERSION="2026.08.04"
