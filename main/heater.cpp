@@ -251,9 +251,13 @@ void check_heater_temperature_task(void *parameter) {
 				//ESP_LOGE(TAG, "Aqui - Temperatura estabilizada");
 
 				if (enable_functions) {
-					// Aqui ativa as funções do teclado e mantem os leds ligados(1, 2, 3 e 4)
+					// Aqui ativa as funções do teclado e mantem os leds ligados
+					// so nas cavidades habilitadas - set_led_function_active()
+					// ligava as 4 sem checar disabled_status (mesmo bug ja
+					// corrigido em read_ampoules_test_task(), so que aqui nao
+					// tinha sido aplicado).
 					enable_buttons_functions();
-					set_led_function_active();
+					ampoule_test_check_cavity_finalize();
 
 					enable_functions = false;
 

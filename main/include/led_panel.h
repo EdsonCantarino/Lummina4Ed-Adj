@@ -67,6 +67,12 @@ void set_led_function_on_off(bool state_led_panel1, bool state_led_panel2, bool 
 // LED2/3/4).
 void crc1_led_lamp_test_cavity1();
 
+// Self-test de boot: acende todos os LEDs (P0-P7) das cavidades habilitadas
+// por ~1s e apaga. Existia no firmware original (led_panel_setup(), sem
+// distincao de cavidade - nao havia esse conceito ainda) e foi perdido num
+// refactor. Reintroduzido respeitando cavidade habilitada/CRC1.
+void boot_lamp_test();
+
 #ifdef __cplusplus
 }
 #endif

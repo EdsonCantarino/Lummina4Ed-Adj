@@ -477,6 +477,7 @@
                 } else {
                     $(this).prop('checked', true);
                 }
+                recalculateMinimums();
             });
 
             $("#mode_eto").on('change', function () {
@@ -486,6 +487,7 @@
                 } else {
                     $(this).prop('checked', true);
                 }
+                recalculateMinimums();
             });
 
             $("#mode_crc1").on('change', function () {
@@ -495,6 +497,7 @@
                 } else {
                     $(this).prop('checked', true);
                 }
+                recalculateMinimums();
             });
 
             $("#btnSalvar").on('click', function (e) {

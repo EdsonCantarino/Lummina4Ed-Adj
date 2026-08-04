@@ -556,6 +556,7 @@ static esp_err_t translate_json_post_handler(httpd_req_t *req) {
 		int received = 0;
 		if (total_len >= SCRATCH_BUFSIZE) {
 			/* Respond with 500 Internal Server Error */
+			free(buf);
 			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 					"content too long");
 			return ESP_FAIL;
@@ -564,6 +565,7 @@ static esp_err_t translate_json_post_handler(httpd_req_t *req) {
 			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
+				free(buf);
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 						"Failed to post control value");
 				return ESP_FAIL;
@@ -576,6 +578,7 @@ static esp_err_t translate_json_post_handler(httpd_req_t *req) {
 		ESP_LOGI(TAG, "%s\n", buf);
 
 		cJSON *root = cJSON_Parse(buf);
+		free(buf);
 
 		if (cJSON_GetObjectItem(root, "language")) {
 			string l = string(
@@ -608,6 +611,7 @@ static esp_err_t translate_json_post_handler(httpd_req_t *req) {
 			cJSON_Delete(root);
 		} else {
 			/* send a 404 otherwise */
+			cJSON_Delete(root);
 			httpd_resp_send_404(req);
 		}
 
@@ -955,6 +959,7 @@ static esp_err_t device_settings_post_handler(httpd_req_t *req) {
 		int received = 0;
 		if (total_len >= SCRATCH_BUFSIZE) {
 			/* Respond with 500 Internal Server Error */
+			free(buf);
 			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 					"content too long");
 			return ESP_FAIL;
@@ -963,6 +968,7 @@ static esp_err_t device_settings_post_handler(httpd_req_t *req) {
 			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
+				free(buf);
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 						"Failed to post control value");
 				return ESP_FAIL;
@@ -979,6 +985,7 @@ static esp_err_t device_settings_post_handler(httpd_req_t *req) {
 		int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
 
 		cJSON *root = cJSON_Parse(buf);
+		free(buf);
 
 		if (cJSON_GetObjectItem(root, "year")) {
 			int data = (int) cJSON_GetObjectItem(root, "year")->valueint;
@@ -1056,6 +1063,7 @@ static esp_err_t api_settings_serialnumber_post_handler(httpd_req_t *req) {
 		int received = 0;
 		if (total_len >= SCRATCH_BUFSIZE) {
 			/* Respond with 500 Internal Server Error */
+			free(buf);
 			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 					"content too long");
 			return ESP_FAIL;
@@ -1064,6 +1072,7 @@ static esp_err_t api_settings_serialnumber_post_handler(httpd_req_t *req) {
 			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
+				free(buf);
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 						"Failed to post control value");
 				return ESP_FAIL;
@@ -1078,6 +1087,7 @@ static esp_err_t api_settings_serialnumber_post_handler(httpd_req_t *req) {
 		string serialNumber = "";
 
 		cJSON *root = cJSON_Parse(buf);
+		free(buf);
 
 		if (cJSON_GetObjectItem(root, "serialNumber")) {
 			char *serial =
@@ -1120,6 +1130,7 @@ static esp_err_t restrict_device_settings_post_handler(httpd_req_t *req) {
 		int received = 0;
 		if (total_len >= SCRATCH_BUFSIZE) {
 			/* Respond with 500 Internal Server Error */
+			free(buf);
 			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 					"content too long");
 			return ESP_FAIL;
@@ -1128,6 +1139,7 @@ static esp_err_t restrict_device_settings_post_handler(httpd_req_t *req) {
 			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
+				free(buf);
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 						"Failed to post control value");
 				return ESP_FAIL;
@@ -1142,6 +1154,7 @@ static esp_err_t restrict_device_settings_post_handler(httpd_req_t *req) {
 		float pp = 0.0f;
 
 		cJSON *root = cJSON_Parse(buf);
+		free(buf);
 
 		if (cJSON_GetObjectItem(root, "positivePercentage")) {
 			char *pdata =
@@ -2009,6 +2022,7 @@ static esp_err_t api_language_post_handler(httpd_req_t *req) {
 		int received = 0;
 		if (total_len >= SCRATCH_BUFSIZE) {
 			/* Respond with 500 Internal Server Error */
+			free(buf);
 			httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 					"content too long");
 			return ESP_FAIL;
@@ -2017,6 +2031,7 @@ static esp_err_t api_language_post_handler(httpd_req_t *req) {
 			received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
 			if (received <= 0) {
 				/* Respond with 500 Internal Server Error */
+				free(buf);
 				httpd_resp_send_err(req, HTTPD_500_INTERNAL_SERVER_ERROR,
 						"Failed to post control value");
 				return ESP_FAIL;
@@ -2031,6 +2046,7 @@ static esp_err_t api_language_post_handler(httpd_req_t *req) {
 		string language = "";
 
 		cJSON *root = cJSON_Parse(buf);
+		free(buf);
 
 		if (cJSON_GetObjectItem(root, "language")) {
 			char *l = cJSON_GetObjectItem(root, "language")->valuestring;

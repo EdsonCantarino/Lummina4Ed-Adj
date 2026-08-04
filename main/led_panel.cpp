@@ -3,6 +3,8 @@
 #include "include/led_panel_pin_mapping.h"
 #include "include/task_manager.h"
 #include "include/buzzer.h"
+#include "include/ampoule_test.h"
+#include "advanced_config.h"
 
 #define LED_ON 0
 #define LED_OFF 1
@@ -22,15 +24,51 @@ PCF8574 led_panel_4(I2C_PANEL_4_ADDRESS, I2C_MASTER_SDA_GPIO,
 TaskHandle_t task_handle_ledext;
 TaskHandle_t task_efect_led_handle;
 
+// Cavidade (1-4) correspondente a esse painel, ou 0 se nao reconhecido.
+static int cavity_of_panel(PCF8574 *led_panel) {
+	if (led_panel == &led_panel_1)
+		return 1;
+	if (led_panel == &led_panel_2)
+		return 2;
+	if (led_panel == &led_panel_3)
+		return 3;
+	if (led_panel == &led_panel_4)
+		return 4;
+	return 0;
+}
+
+// Mascara central: pinos de cavidade (P0-P5) de uma cavidade desabilitada
+// (config web "Cavidades" / forcado pelo CRC1) nunca acendem, nao importa
+// quem chamou change_led_status/set_all. Em ETO, alem disso, os niveis
+// 2/3/4 (P1/P2/P3 - 1H/2H/3H) nunca acendem em nenhuma cavidade - ETO so
+// usa o nivel 1 (20M). P6/P7 sao icones globais (impressora/wifi/alarme),
+// ficam fora da mascara. So mascara tentativa de ACENDER (LED_ON) - apagar
+// nunca e bloqueado.
+static int apply_cavity_mask(PCF8574 *led_panel, uint8_t pin, int state) {
+	if (pin > P5 || state != LED_ON)
+		return state;
+
+	int cavity = cavity_of_panel(led_panel);
+
+	if (cavity != 0 && ampoule_is_disabled(cavity))
+		return LED_OFF;
+
+	if (g_advanced_config.operation_mode == OPERATION_MODE_ETO && pin >= P1
+			&& pin <= P3)
+		return LED_OFF;
+
+	return state;
+}
+
 void change_led_status(PCF8574 *led_panel, uint8_t pin, int state) {
 	configASSERT(led_panel != NULL);
 
-	led_panel->digital_write(pin, state);
+	led_panel->digital_write(pin, apply_cavity_mask(led_panel, pin, state));
 }
 
 void set_all(PCF8574 *led_panel, int state) {
 	for (int i = 0; i < 8; i++) {
-		led_panel->digital_write(i, state);
+		led_panel->digital_write(i, apply_cavity_mask(led_panel, i, state));
 		vTaskDelay(pdMS_TO_TICKS(1));
 	}
 }
@@ -355,36 +393,52 @@ void ampoules_leds_removed_error(int ampoule) {
 }
 
 void set_led_function_active() {
-	led_panel_1.digital_write(P0, 0);
-	led_panel_2.digital_write(P0, 0);
-	led_panel_3.digital_write(P0, 0);
-	led_panel_4.digital_write(P0, 0);
+	change_led_status(&led_panel_1, P0, 0);
+	change_led_status(&led_panel_2, P0, 0);
+	change_led_status(&led_panel_3, P0, 0);
+	change_led_status(&led_panel_4, P0, 0);
 }
 
 void crc1_led_lamp_test_cavity1() {
 	for (int p = 0; p < 4; p++) {
-		led_panel_1.digital_write(p, 0); // ON (ativo em nivel baixo)
+		change_led_status(&led_panel_1, p, 0); // ON (ativo em nivel baixo)
 		vTaskDelay(pdMS_TO_TICKS(300));
-		led_panel_1.digital_write(p, 1); // OFF
+		change_led_status(&led_panel_1, p, 1); // OFF
 	}
 
 	// Volta ao padrao (LED1 aceso), mesma convencao usada em Normal/ETO.
-	led_panel_1.digital_write(P0, 0);
+	change_led_status(&led_panel_1, P0, 0);
+}
+
+void boot_lamp_test() {
+	// A mascara em set_all()/change_led_status() ja garante que cavidades
+	// desabilitadas (config web / CRC1) nunca acendem - nao precisa checar
+	// aqui.
+	set_all(&led_panel_1, 0);
+	set_all(&led_panel_2, 0);
+	set_all(&led_panel_3, 0);
+	set_all(&led_panel_4, 0);
+
+	vTaskDelay(pdMS_TO_TICKS(1000));
+
+	clear_all();
+
+	vTaskDelay(pdMS_TO_TICKS(1000));
 }
 
 void set_led_function_on_off(bool state_led_panel1, bool state_led_panel2,
 		bool state_led_panel3, bool state_led_panel4) {
-	led_panel_1.digital_write(P0, state_led_panel1);
-	led_panel_2.digital_write(P0, state_led_panel2);
-	led_panel_3.digital_write(P0, state_led_panel3);
-	led_panel_4.digital_write(P0, state_led_panel4);
+	change_led_status(&led_panel_1, P0, state_led_panel1);
+	change_led_status(&led_panel_2, P0, state_led_panel2);
+	change_led_status(&led_panel_3, P0, state_led_panel3);
+	change_led_status(&led_panel_4, P0, state_led_panel4);
 }
 
 void set_led_function_deactive() {
-	led_panel_1.digital_write(P0, 1);
-	led_panel_2.digital_write(P0, 1);
-	led_panel_3.digital_write(P0, 1);
-	led_panel_4.digital_write(P0, 1);
+	change_led_status(&led_panel_1, P0, 1);
+	change_led_status(&led_panel_2, P0, 1);
+	change_led_status(&led_panel_3, P0, 1);
+	change_led_status(&led_panel_4, P0, 1);
 }
 
 void efeito_giroflex(int led, uint8_t pin, int state) {
@@ -400,32 +454,56 @@ void efeito_giroflex(int led, uint8_t pin, int state) {
 	}
 }
 
+// Efeito de aquecimento (roda enquanto a temperatura nao estabiliza), por
+// cavidade habilitada: "-" (verde) acende sozinho e o nivel de tempo
+// preenche 20M->1H->2H->3H (acumulando, tipo termometro); esvazia de volta
+// 3H->...->20M e o "-" apaga; "+" (vermelho) acende sozinho; "+" e "-"
+// acendem juntos; apaga tudo e repete. Confirmado contra video de referencia
+// do cliente (WhatsApp Video 2026-08-03 15.02.23).
 void efeito_giroflex() {
-	const int total_leds = 2;
-	const int leds[total_leds] = { 4, 5 };
+	const int STEP_MS = 300;
 
 	for (int i = 0; i < 4; i++) {
 
-		for (int p = 0; p < total_leds; p++) {
+		// Cavidade desabilitada (ex.: CRC1 so deixa a cavidade 1 ativa) - nao
+		// participa do efeito.
+		if (ampoule_is_disabled(i + 1))
+			continue;
 
-			if (p == 0) {
-				efeito_giroflex(i, leds[total_leds - 1], LED_ON);
-			} else {
-				efeito_giroflex(i, p - 1, LED_ON);
-			}
+		efeito_giroflex(i, P5, LED_ON);
+		efeito_giroflex(i, P0, LED_ON);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
 
-			efeito_giroflex(i, leds[p], LED_ON);
+		efeito_giroflex(i, P1, LED_ON);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
 
-			vTaskDelay(20);
+		efeito_giroflex(i, P2, LED_ON);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
 
-			if (p == 0) {
-				efeito_giroflex(i, leds[total_leds - 1], LED_OFF);
-			} else {
-				efeito_giroflex(i, p - 1, LED_OFF);
-			}
+		efeito_giroflex(i, P3, LED_ON);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
 
-			efeito_giroflex(i, leds[p], LED_OFF);
-		}
+		efeito_giroflex(i, P3, LED_OFF);
+		efeito_giroflex(i, P5, LED_OFF);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
+
+		efeito_giroflex(i, P2, LED_OFF);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
+
+		efeito_giroflex(i, P1, LED_OFF);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
+
+		efeito_giroflex(i, P0, LED_OFF);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
+
+		efeito_giroflex(i, P4, LED_ON);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
+
+		efeito_giroflex(i, P5, LED_ON);
+		vTaskDelay(pdMS_TO_TICKS(STEP_MS));
+
+		efeito_giroflex(i, P4, LED_OFF);
+		efeito_giroflex(i, P5, LED_OFF);
 
 		vTaskDelay(pdMS_TO_TICKS(500));
 	}
@@ -530,11 +608,11 @@ void led_panel_main() {
 //		vTaskSuspend(task_efect_led_handle);
 //	}
 
-	// LED P0 = 20 minutos fixo em todos os paineis
-	led_panel_1.digital_write(P0, 0);
-	led_panel_2.digital_write(P0, 0);
-	led_panel_3.digital_write(P0, 0);
-	led_panel_4.digital_write(P0, 0);
+	// LED P0 = 20 minutos fixo em todos os paineis habilitados
+	change_led_status(&led_panel_1, P0, 0);
+	change_led_status(&led_panel_2, P0, 0);
+	change_led_status(&led_panel_3, P0, 0);
+	change_led_status(&led_panel_4, P0, 0);
 }
 
 void ampoules_leds_disabled(int ampoule, bool state) {

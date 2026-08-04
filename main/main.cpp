@@ -381,6 +381,10 @@ void setup() {
 	// depois que as ampolas ja foram inicializadas.
 	ampoule_apply_cavity_enabled_config();
 
+	// Self-test de boot: pisca os LEDs das cavidades habilitadas (existia no
+	// firmware original, perdido num refactor - ver led_panel.h).
+	boot_lamp_test();
+
 	light_sensor_setup();
 	//light_sensor_main();
 
