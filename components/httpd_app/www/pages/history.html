@@ -189,7 +189,7 @@
                         + $("#empty_history_label").val() + '</td></tr>';
                 } else {
                     data.records.forEach(function (rec) {
-                        let dt = moment.unix(rec.tsInicio).format("DD/MM/YYYY HH:mm:ss");
+                        let dt = moment.unix(rec.tsInicio).utc().format("DD/MM/YYYY HH:mm:ss");
 
                         rows += "<tr>";
                         rows += "<td>" + dt + "</td>";
