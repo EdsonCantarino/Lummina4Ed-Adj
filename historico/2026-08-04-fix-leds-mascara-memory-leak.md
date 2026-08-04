@@ -54,20 +54,32 @@ Corrigidos seguindo o mesmo padrão dos 3 handlers que já estavam certos (`free
 
 Os handlers de `change` dos checkboxes `mode_normal`/`mode_eto`/`mode_crc1` cuidam da exclusão mútua (desmarcar os outros dois) mas **nunca chamavam `updateCrc1CavityLock()`** — a função que reabilita os checkboxes de cavidade ao sair do CRC1. Ela só rodava uma vez, no carregamento da página. Resultado: depois de entrar em CRC1 (que trava as cavidades 2-4), trocar pra Normal/ETO **na mesma sessão da página, sem recarregar**, deixava as cavidades 2-4 travadas pra sempre (visualmente cinza, `disabled=true` mesmo com o modo já trocado). Corrigido chamando `recalculateMinimums()` (que já chama `updateCrc1CavityLock()`) nos três handlers.
 
-**Pendente:** esse fix é só no `.html` fonte — precisa regenerar o `.html.gz` manualmente (`gzip -kf9`) e regravar o firmware pra valer no equipamento; não foi feito ainda nesta sessão (ficou pra próxima).
+Fix e `.gz` regenerado e gravado nesta mesma sessão (ver item 7).
+
+## 7. Bug de fuso horário (-3h) na tela de Histórico (`components/httpd_app/www/pages/history.html`)
+
+Achado numa conversa lateral sobre "o que acontece se a impressora estiver desligada" — o usuário reparou que um ticket reimpresso a partir do histórico mostrava `06:53:55` quando o horário certo (visto ao vivo na tela de Incubação, e confirmado como o RTC "está certo") era `09:53:55`.
+
+Causa: `history.html` formatava com `moment.unix(rec.tsInicio).format("DD/MM/YYYY HH:mm:ss")` — sem `.utc()`, o `moment` aplica o **fuso horário do navegador** por cima do valor. O `ts_inicio` salvo pelo equipamento é a hora local crua (do RTC) tratada como se fosse epoch UTC — o firmware não tem fuso configurado em lugar nenhum (`mktime`/`localtime_r` sem `setenv("TZ",...)`/`tzset()` em todo o projeto, de propósito, então são simétricos e sem offset). Confirmado numericamente: o epoch `1785837235` convertido como UTC puro dá exatamente `09:53:55` — o navegador (rodando em fuso Brasília, UTC-3) estava subtraindo mais 3h de um valor que nunca foi UTC de verdade.
+
+Fix: `.utc()` depois do `moment.unix()`, pra impedir o `moment` de aplicar qualquer fuso.
+
+**Não verificado**: se o ticket de **papel** físico (caminho C++, `format_ts()` em `main/printer.cpp`) também imprimia a hora errada. O raciocínio é que não deveria — mesma ausência de fuso no firmware, mas simétrica (`mktime` grava, `localtime_r` lê, sem TZ nos dois lados) — mas não foi testado imprimindo de verdade nesta sessão.
 
 ## Testado no equipamento (COM20 + Wi-Fi AP `MAX-4907A8`, 192.168.10.10)
 
 - Build limpo em todas as etapas (Docker `edsoncan/espressif-idf:release-v5.1`).
 - CRC1: confirmado fisicamente que só a cavidade 1 pisca agora (antes vazava pras cavidades 2-4 mesmo com elas travadas na tela).
-- Novo efeito de aquecimento gravado e testado (aguardando confirmação visual final contra o vídeo de referência).
+- Novo efeito de aquecimento gravado (aguardando confirmação visual final contra o vídeo de referência).
 - `boot_lamp_test()` gravado, comportamento no boot ainda não confirmado visualmente contra o vídeo em condição real de boot frio→quente completo.
 - Memory leak fix validado via stress test (2600 requisições, 0 falhas, sem degradação).
-- Bug de JS achado e corrigido no fonte, **não regzipado/regravado ainda**.
+- Bug de JS das cavidades (item 6) e bug de fuso do histórico (item 7): corrigidos, `.gz` regenerado e **gravado** — sem confirmação visual do usuário ainda no equipamento.
 
 ## Pendente pra próxima sessão
 
-- Regenerar `.html.gz` do `advanced_config.html` e regravar, pra o fix de JS valer no equipamento.
 - Confirmar visualmente o novo `efeito_giroflex()` e o `boot_lamp_test()` contra o vídeo de referência do cliente numa bateria de boot frio→quente completa.
+- Confirmar o sweep LED12→13→14 do CRC1 (`crc1_led_lamp_test_cavity1`) — precisa deixar a resistência ligada até passar de `heater_release_temp_c` (35°C default), não aconteceu nesta sessão.
+- Confirmar na tela web que as cavidades destravam corretamente ao trocar de modo sem reload, e que o histórico mostra a hora certa agora.
+- Testar se o ticket de papel físico tinha (e agora não tem) o bug de -3h (item 7).
 - Investigar o reset por `POWERON_RESET` sob stress de `/api/v1/language` (não é o memory leak, causa ainda não identificada — suspeita de brownout).
 - Equipamento ficou em modo Normal, 4 cavidades habilitadas (estado do fim da sessão anterior, 03/08) — não restaurado a um estado "de fábrica" de propósito, fica assim pro cliente ver.
