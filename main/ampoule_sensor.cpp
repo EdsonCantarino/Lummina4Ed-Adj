@@ -3,6 +3,7 @@
 #include "include/task_manager.h"
 #include "include/buzzer.h"
 #include "include/ampoule_test.h"
+#include "esp_timer.h"
 
 static const gpio_num_t I2C_MASTER_SCL_GPIO = (gpio_num_t) CONFIG_I2C_MASTER_SCL;
 static const gpio_num_t I2C_MASTER_SDA_GPIO = (gpio_num_t) CONFIG_I2C_MASTER_SDA;
@@ -41,6 +42,14 @@ void ampoule_sensor_setup() {
 #define AMPOULE_FAST_SAMPLE_COUNT 5
 #define AMPOULE_FAST_SAMPLE_MAJORITY 3
 
+// Tempo continuo sem nenhuma ampola detectada, exigido antes de liberar a
+// trava de boot (is_ampoules_present_in_init). Qualquer deteccao de
+// presenca durante essa janela zera o contador - so libera depois de 10s
+// "limpos" seguidos. Substitui a checagem de uma unica leitura confirmada,
+// que se mostrou fragil em teste fisico (05/08): a trava liberava cedo
+// demais mesmo com ampola fisicamente presente na cavidade ao ligar.
+#define AMPOULE_ABSENT_CONFIRM_MS (10 * 1000)
+
 static bool read_pin_majority(uint8_t pin) {
 	int present_count = 0;
 
@@ -56,6 +65,7 @@ void read_ampoules(void *pvParameter) {
 
 	bool confirmed_present[4] = { false, false, false, false };
 	uint8_t debounce_count[4] = { 0, 0, 0, 0 };
+	int64_t no_ampoule_since_ms = 0;
 
 	while (1) {
 
@@ -78,13 +88,22 @@ void read_ampoules(void *pvParameter) {
 		bool is_ampoules = (confirmed_present[0] || confirmed_present[1]
 				|| confirmed_present[2] || confirmed_present[3]);
 
-		if (is_ampoules_present_in_init && is_ampoules) {
+		if (is_ampoules_present_in_init) {
+			if (is_ampoules) {
+				no_ampoule_since_ms = 0;
+			} else {
+				int64_t now_ms = esp_timer_get_time() / 1000;
 
-			//printf("\n\nAQUI: Ampola inserida, tem que remover\n\n");
+				if (no_ampoule_since_ms == 0) {
+					no_ampoule_since_ms = now_ms;
+				} else if (now_ms - no_ampoule_since_ms
+						>= AMPOULE_ABSENT_CONFIRM_MS) {
+					is_ampoules_present_in_init = false;
+				}
+			}
+		}
 
-		} else {
-			is_ampoules_present_in_init = false;
-
+		if (!is_ampoules_present_in_init) {
 			ampoule_set_status(confirmed_present[0], confirmed_present[1],
 					confirmed_present[2], confirmed_present[3]);
 		}

@@ -33,15 +33,17 @@ device_settings_t settings;
 // Watchdog de impressora travada/desconectada. Duas correcoes de USB em
 // runtime (re-registrar client, e depois reinstalar a lib USB inteira)
 // se mostraram instaveis em teste fisico (3 formas diferentes de
-// crash/deadlock) - a recuperacao confiavel e um esp_restart(), mas so
-// quando nenhuma cavidade estiver testando (ver attempt_safe_printer_recovery),
-// pra nunca arriscar perder um teste em andamento.
-#define PRINT_HANG_TIMEOUT_MS (15 * 1000)
-#define PRINTER_DISCONNECTED_TIMEOUT_MS (30 * 1000)
-
-static volatile int64_t print_operation_started_ms = 0;
-static int64_t printer_disconnected_since_ms = 0;
-static bool printer_ever_connected = false;
+// crash/deadlock) - a recuperacao confiavel e um esp_restart(), disparado
+// direto pelo flag isPrinterError do driver USB (is_printer_error(),
+// usb_class_driver.cpp - reflete falha real de transferencia USB), sem
+// timers de tolerancia (decisao do usuario 05/08: nao fazem diferenca no
+// resultado final). So reinicia se nao houver ampola em nenhuma cavidade
+// (ver attempt_safe_printer_recovery) - is_testing() nao serve de guarda
+// porque vira false assim que o ciclo termina, antes do ticket ser
+// impresso e antes do operador remover a ampola; ampoule_any() reflete
+// presenca fisica real (sensor), so fica false depois da remocao de
+// verdade - protege tambem o caso "impressora trava bem no fim do ciclo,
+// ampola ainda la dentro" (relatado pelo cliente 05/08).
 static bool printer_was_ready = false;
 
 // Bits usados em xTaskNotify(print_ampoule_test_task_handle, ...): botao
@@ -57,7 +59,6 @@ static bool printer_was_ready = false;
 #define PENDING_REPRINT_MAX 4
 
 static void print_operation_begin() {
-	print_operation_started_ms = esp_timer_get_time() / 1000;
 	set_is_priting(true);
 }
 
@@ -67,23 +68,18 @@ static void print_operation_begin() {
 // gente checar.
 static bool print_operation_end() {
 	set_is_priting(false);
-	print_operation_started_ms = 0;
 
 	vTaskDelay(pdMS_TO_TICKS(300));
 
 	return is_printer_connected() && !is_printer_error();
 }
 
-static bool any_cavity_testing() {
-	return is_testing(1) || is_testing(2) || is_testing(3) || is_testing(4);
-}
-
-// So reinicia se nenhuma cavidade estiver testando - senao so loga e
+// So reinicia se nao houver ampola em nenhuma cavidade - senao so loga e
 // tenta de novo no proximo ciclo do watchdog (1s).
 static void attempt_safe_printer_recovery(const char *reason) {
-	if (any_cavity_testing()) {
+	if (ampoule_any()) {
 		ESP_LOGW(TAG,
-				"%s, mas ha cavidade em teste - adiando reinicio ate ficar seguro",
+				"%s, mas ha ampola em alguma cavidade - adiando reinicio ate ficar seguro",
 				reason);
 		return;
 	}
@@ -161,53 +157,15 @@ void print_check_status(void *pvParameter) {
 	bool statePrinterConnected = false;
 	for (;;) {
 
-		if (print_operation_started_ms > 0) {
-			int64_t elapsed = (esp_timer_get_time() / 1000)
-					- print_operation_started_ms;
-
-			if (elapsed >= PRINT_HANG_TIMEOUT_MS) {
-				print_operation_started_ms = 0;
-				set_is_priting(false);
-
-				char reason[64];
-				snprintf(reason, sizeof(reason),
-						"Impressao travada ha %lld ms sem concluir",
-						(long long) elapsed);
-				attempt_safe_printer_recovery(reason);
-			}
+		if (is_printer_error()) {
+			attempt_safe_printer_recovery(
+					"Erro de impressora detectado (is_printer_error)");
 		}
 
 		if (!is_printer_connected()) {
 			print_leds(1);
 			printer_was_ready = false;
-
-			// So considera "desconectada" pra fins de watchdog depois de ja
-			// ter conectado uma vez - evita disparar um restart no boot,
-			// antes da impressora terminar a enumeracao USB normal.
-			if (printer_ever_connected) {
-				if (printer_disconnected_since_ms == 0) {
-					printer_disconnected_since_ms = esp_timer_get_time()
-							/ 1000;
-				} else {
-					int64_t disconnected_elapsed = (esp_timer_get_time()
-							/ 1000) - printer_disconnected_since_ms;
-
-					if (disconnected_elapsed
-							>= PRINTER_DISCONNECTED_TIMEOUT_MS) {
-						printer_disconnected_since_ms = 0;
-
-						char reason[64];
-						snprintf(reason, sizeof(reason),
-								"Impressora desconectada ha %lld ms",
-								(long long) disconnected_elapsed);
-						attempt_safe_printer_recovery(reason);
-					}
-				}
-			}
 		} else {
-			printer_ever_connected = true;
-			printer_disconnected_since_ms = 0;
-
 			statePrinterConnected = is_setup_done() && !is_printer_error();
 			print_leds(!statePrinterConnected);
 
@@ -226,8 +184,6 @@ void print_check_status(void *pvParameter) {
 				print_leds(statePrinterError);
 			}
 		}
-
-		// || is_printer_error()
 
 		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
