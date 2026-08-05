@@ -79,15 +79,15 @@
                 </div>
                 <form>
                     <div class="form-floating mb-3">
-                        <div class="form-floating mb-3" id="settings_device_date_time">
+                        <div class="mb-3" id="settings_device_date_time">
+                            <label for="device_date_time" class="form-label" key="device_date_time">Data e Hora Atual do Equipamento (RTC)</label>
                             <input type="text" class="form-control" id="device_date_time" disabled>
-                            <label for="device_date_time" key="device_date_time">Data e Hora Atual do Equipamento (RTC)</label>
                         </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <div class="form-floating mb-3" id="settings_date_time">
+                        <div class="mb-3" id="settings_date_time">
+                            <label for="date_time" class="form-label" key="date_time">Nova Data e Hora</label>
                             <input type="text" class="form-control datepicker" id="date_time">
-                            <label for="date_time" key="date_time">Nova Data e Hora</label>
                         </div>
                     </div>
                     <div class="mb-3" id="settings_use_computer_time">
@@ -98,9 +98,9 @@
             <div class="card-body">
                 <form>
                     <div class="form-floating mb-3">
-                        <div class="form-floating mb-3" id="settings_institution">
+                        <div class="mb-3" id="settings_institution">
+                            <label for="institution" class="form-label" key="institution">Instituição</label>
                             <input type="text" class="form-control" id="institution">
-                            <label for="institution" key="institution">Instituição</label>
                         </div>
                     </div>
                 </form>
@@ -116,10 +116,10 @@
         <div class="card bg-light mt-3" id="card_buzzer_alert_timeout">
             <div class="card-header" key="card_buzzer_alert_timeout_title">Alerta sonoro de teste concluído</div>
             <div class="card-body">
-                <div class="form-floating mb-2">
-                    <input type="number" min="1" max="30" step="1" class="form-control" id="buzzer_alert_timeout_min">
-                    <label for="buzzer_alert_timeout_min" key="buzzer_alert_timeout_min_label">Tempo até o alerta
+                <div class="mb-2">
+                    <label for="buzzer_alert_timeout_min" class="form-label" key="buzzer_alert_timeout_min_label">Tempo até o alerta
                         desligar sozinho, se não for reconhecido (1 a 30 min)</label>
+                    <input type="number" min="1" max="30" step="1" class="form-control" id="buzzer_alert_timeout_min">
                 </div>
             </div>
             <div class="card-footer">

@@ -105,13 +105,13 @@
         <div class="card bg-light mb-3" id="card_capture_time">
             <div class="card-header" key="card_capture_time_title">Tempos de Captura</div>
             <div class="card-body">
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="led_capture_time" class="form-label" key="led_capture_time_label">Tempo de LED aceso antes da leitura (0,5 a 7 segundos)</label>
                     <input type="number" class="form-control" id="led_capture_time" min="0.5" max="7" step="0.5">
-                    <label for="led_capture_time" key="led_capture_time_label">Tempo de LED aceso antes da leitura (0,5 a 7 segundos)</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="loop_cycle_time" class="form-label" key="loop_cycle_time_label">Tempo de looping (2 a 50 segundos)</label>
                     <input type="number" class="form-control" id="loop_cycle_time" min="2" max="50" step="1">
-                    <label for="loop_cycle_time" key="loop_cycle_time_label">Tempo de looping (2 a 50 segundos)</label>
                 </div>
                 <div class="form-text" id="loop_cycle_time_hint"></div>
             </div>
@@ -120,13 +120,13 @@
         <div class="card bg-light mb-3" id="card_samples">
             <div class="card-header" key="card_samples_title">Amostras</div>
             <div class="card-body">
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="samples_initial" class="form-label" key="samples_initial_label">Quantidade de amostras iniciais (3 a 10)</label>
                     <input type="number" class="form-control" id="samples_initial" min="3" max="10" step="1">
-                    <label for="samples_initial" key="samples_initial_label">Quantidade de amostras iniciais (3 a 10)</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="samples_final" class="form-label" key="samples_final_label">Quantidade de amostras finais (3 a 10)</label>
                     <input type="number" class="form-control" id="samples_final" min="3" max="10" step="1">
-                    <label for="samples_final" key="samples_final_label">Quantidade de amostras finais (3 a 10)</label>
                 </div>
             </div>
         </div>
@@ -156,9 +156,9 @@
         <div class="card bg-light mb-3" id="card_early_check">
             <div class="card-header" key="card_early_check_title">Checagem Antecipada</div>
             <div class="card-body">
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="early_check_time" class="form-label" key="early_check_time_label">Tempo mínimo para checagem antecipada de resultado positivo, em minutos</label>
                     <input type="number" class="form-control" id="early_check_time" min="3" max="15" step="1">
-                    <label for="early_check_time" key="early_check_time_label">Tempo mínimo para checagem antecipada de resultado positivo, em minutos</label>
                 </div>
                 <div class="form-text" id="early_check_time_hint"></div>
             </div>
@@ -185,22 +185,22 @@
         <div class="card bg-light mb-3" id="card_temperature">
             <div class="card-header" key="card_temperature_title">Temperatura</div>
             <div class="card-body">
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="heater_setpoint" class="form-label" key="heater_setpoint_label">Temperatura de aquecimento (setpoint), em graus</label>
                     <input type="number" class="form-control" id="heater_setpoint" min="20" max="70" step="0.5">
-                    <label for="heater_setpoint" key="heater_setpoint_label">Temperatura de aquecimento (setpoint), em graus</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="heater_min_temp" class="form-label" key="heater_min_temp_label">Temperatura mínima (abaixo disso cancela o teste e soa o alarme)</label>
                     <input type="number" class="form-control" id="heater_min_temp" min="20" max="70" step="0.5">
-                    <label for="heater_min_temp" key="heater_min_temp_label">Temperatura mínima (abaixo disso cancela o teste e soa o alarme)</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="heater_max_temp" class="form-label" key="heater_max_temp_label">Temperatura máxima (acima disso cancela o teste e soa o alarme)</label>
                     <input type="number" class="form-control" id="heater_max_temp" min="20" max="70" step="0.5">
-                    <label for="heater_max_temp" key="heater_max_temp_label">Temperatura máxima (acima disso cancela o teste e soa o alarme)</label>
                 </div>
                 <div class="form-text" id="heater_min_max_hint"></div>
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                    <label for="heater_release_temp" class="form-label" key="heater_release_temp_label">Temperatura de liberação (calculada = mínima + 2)</label>
                     <input type="number" class="form-control" id="heater_release_temp" min="20" max="70" step="0.5" readonly>
-                    <label for="heater_release_temp" key="heater_release_temp_label">Temperatura de liberação (calculada = mínima + 2)</label>
                 </div>
                 <div class="form-text" id="heater_release_temp_hint"></div>
             </div>
