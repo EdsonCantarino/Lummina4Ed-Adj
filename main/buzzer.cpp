@@ -49,6 +49,10 @@ bool get_buzzer_on_off_status() {
 	return is_buzzer_on_off;
 }
 
+bool get_buzzer_alert_on_off_status() {
+	return is_buzzer_alert_on_off;
+}
+
 void buzzer_alarm_task(void *parameter) {
 	const TickType_t xBlockTime = pdMS_TO_TICKS(1000);
 

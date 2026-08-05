@@ -41,7 +41,7 @@
   },
   "#reset-card-title": {
     "title#1": "Configuración",
-    "title#2": "Dispositivo"
+    "title#2": "Restablecer Dispositivo"
   },
   "#reset-msg": {
     "msg#1": "Esta opción elimina los siguientes datos de la memoria del dispositivo:",

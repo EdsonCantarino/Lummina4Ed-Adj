@@ -40,8 +40,8 @@
     "en-us": "English"
   },
   "#reset-card-title": {
-    "title#1": "Device",
-    "title#2": "Settings"
+    "title#1": "Settings",
+    "title#2": "Reset Device"
   },
   "#reset-msg": {
     "msg#1": "This option removes the following data from device memory:",

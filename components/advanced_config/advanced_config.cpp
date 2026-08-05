@@ -8,16 +8,16 @@
 static const char *TAG = "ADV_CONFIG";
 
 const advanced_config_t ADVANCED_CONFIG_DEFAULTS = {
-	2.0f,                        // led_capture_time_s (comportamento atual)
-	30,                          // loop_cycle_time_s (comportamento atual)
+	0.5f,                        // led_capture_time_s (padrao solicitado pelo cliente 05/08)
+	4,                           // loop_cycle_time_s (padrao solicitado pelo cliente 05/08)
 	5,                           // samples_initial (comportamento atual)
 	5,                           // samples_final (comportamento atual)
 	{ true, true, true, true },  // cavity_enabled (comportamento atual)
-	420,                         // early_check_time_s = 7 minutos (comportamento atual)
-	37.0f,                       // heater_setpoint_c (comportamento atual)
-	33.0f,                       // heater_min_temp_c (comportamento atual)
-	43.0f,                       // heater_max_temp_c (comportamento atual)
-	35.0f,                       // heater_release_temp_c (comportamento atual)
+	180,                         // early_check_time_s = 3 minutos (padrao solicitado pelo cliente 05/08)
+	60.0f,                       // heater_setpoint_c (padrao solicitado pelo cliente 05/08)
+	53.0f,                       // heater_min_temp_c (padrao solicitado pelo cliente 05/08)
+	68.0f,                       // heater_max_temp_c (padrao solicitado pelo cliente 05/08)
+	55.0f,                       // heater_release_temp_c (padrao solicitado pelo cliente 05/08)
 	OPERATION_MODE_NORMAL        // operation_mode (padrao de fabrica = Normal)
 };
 

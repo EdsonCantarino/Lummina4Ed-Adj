@@ -41,7 +41,7 @@
   },
   "#reset-card-title": {
     "title#1": "Configurações",
-    "title#2": "Dispositivo"
+    "title#2": "Resetar Dispositivo"
   },
   "#reset-msg": {
     "msg#1": "Esta opção exclui os seguintes dados da memória do dispositivo:",

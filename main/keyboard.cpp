@@ -178,11 +178,17 @@ void update_button_level(buttons_history_t *d) {
 			d->level = 0;
 
 		if (d->button == BUTTON_SOUND_OFF) {
-			buzzer_on();
-			vTaskDelay(pdMS_TO_TICKS(100));
-			buzzer_off();
+			// Botao so pode DESLIGAR o alarme enquanto ele esta tocando de
+			// fato - nao pode ligar o buzzer manualmente (pedido do cliente
+			// 05/08). Sem alarme ativo, o clique fica inerte (sem beep, sem
+			// mudanca de estado).
+			if (get_buzzer_on_off_status() && get_buzzer_alert_on_off_status()) {
+				buzzer_on();
+				vTaskDelay(pdMS_TO_TICKS(100));
+				buzzer_off();
 
-			set_buzzer_on_off();
+				set_buzzer_on_off(false);
+			}
 
 //			if (d->level == 1) {
 //				buzzer_on();

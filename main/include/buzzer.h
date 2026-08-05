@@ -35,4 +35,7 @@ void set_alarm(bool status);
 
 void set_buzzer_alert_on_off(bool status);
 
+bool get_buzzer_on_off_status();
+bool get_buzzer_alert_on_off_status();
+
 #endif /* MAIN_INCLUDE_BUZZER_H_ */
