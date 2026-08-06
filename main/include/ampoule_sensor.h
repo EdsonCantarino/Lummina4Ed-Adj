@@ -43,5 +43,6 @@ void ampoule_sensor_setup();
 void ampoule_sensor_main();
 
 bool check_if_ampoules_is_present_on_init();
+bool check_if_ampoules_is_confirmed_present_in_init();
 
 #endif

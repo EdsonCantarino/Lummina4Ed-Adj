@@ -52,6 +52,22 @@ bool is_cavities_in_test = false;
 
 bool is_printing = false;
 
+// True enquanto um teste esta sendo finalizado/cancelado (imprimindo +
+// gravando o registro no historico). O watchdog de impressora
+// (attempt_safe_printer_recovery, printer.cpp) precisa respeitar essa flag
+// alem de ampoule_any() - motivo: no caso "ampola removida durante o
+// teste", a propria remocao que dispara o cancelamento tambem faz
+// ampoule_any() virar false na hora, e a tentativa de imprimir o ticket
+// desse cancelamento pode falhar (impressora desconectada) e setar
+// is_printer_error() ANTES do set_history() rodar - sem essa flag o
+// watchdog reiniciava o equipamento no meio do caminho e o registro
+// cancelado nunca chegava a ser persistido (bug reportado pelo cliente).
+volatile bool ampoule_finalize_in_progress = false;
+
+bool is_ampoule_finalize_in_progress() {
+	return ampoule_finalize_in_progress;
+}
+
 volatile bool temp_out_of_range_cancel = false;
 
 void trigger_temp_out_of_range_cancel() {
@@ -453,6 +469,8 @@ void set_date_time(int id, bool is_init) {
 void finalize_ampoule_test(int index, int ampoule, bool early_result) {
 	printf("***** [AMPOLA %d] FINALIZANDO TESTES *****\n", ampoule);
 
+	ampoule_finalize_in_progress = true;
+
 	turn_on_buzzer_button();
 
 	ampoules[index].test_done = true;
@@ -486,6 +504,8 @@ void finalize_ampoule_test(int index, int ampoule, bool early_result) {
 	set_history(index, false, printed_ok);
 	reset_ampoules_history_temp(index);
 
+	ampoule_finalize_in_progress = false;
+
 // Liga o led verde ou vermelho se positivado ou nï¿½o
 	ampoules_leds_positived(ampoules[index].id, ampoules[index].is_positived);
 
@@ -507,6 +527,8 @@ void abort_ampoule_test_sensor_fault(int index, int ampoule) {
 			"***** [AMPOLA %d] TESTE ABORTADO - falha persistente de leitura do sensor *****\n",
 			ampoule);
 
+	ampoule_finalize_in_progress = true;
+
 	bool printed_ok = print_ampoule_test(index, true);
 
 	set_history(index, true, printed_ok);
@@ -527,6 +549,8 @@ void abort_ampoule_test_sensor_fault(int index, int ampoule) {
 		buzzer_off();
 		vTaskDelay(pdMS_TO_TICKS(50));
 	}
+
+	ampoule_finalize_in_progress = false;
 }
 
 bool get_is_cavities_in_test() {
@@ -766,6 +790,13 @@ void ampoule_test_error_task(void *pvParameter) {
 			} else {
 				// 3 - beep de ampoula removida durante um teste
 
+				// Seta ANTES do print: e a propria remocao que zera
+				// ampoule_any(), entao o watchdog de impressora
+				// (printer.cpp) precisa saber que ha um cancelamento em
+				// andamento mesmo que o print abaixo falhe e dispare
+				// is_printer_error() (ver ampoule_finalize_in_progress).
+				ampoule_finalize_in_progress = true;
+
 				set_date_time(i, false);
 
 				vTaskDelay(pdMS_TO_TICKS(1000));
@@ -796,6 +827,10 @@ void ampoule_test_error_task(void *pvParameter) {
 				// Liga o Alarme
 				//set_alarm(true);
 
+				// So libera o watchdog da impressora depois do beep de
+				// alarme terminar de tocar - liberar antes (como a versao
+				// anterior deste fix fazia) deixava o reinicio cortar o
+				// beep no meio quando a impressora estava em erro.
 				for (int m = 0; m < 4; m++) {
 					buzzer_on();
 					vTaskDelay(pdMS_TO_TICKS(50));
@@ -807,6 +842,8 @@ void ampoule_test_error_task(void *pvParameter) {
 				vTaskDelay(pdMS_TO_TICKS(500));
 				buzzer_off();
 				vTaskDelay(pdMS_TO_TICKS(500));
+
+				ampoule_finalize_in_progress = false;
 
 				ampoules[i].clear_ampoule_alarm();
 			}
@@ -903,6 +940,7 @@ void ampoules_test_check_done_task(void *pvParameter) {
 			// Cancela todos os testes quando temperatura sair do range 33-43 durante um teste
 			if (temp_out_of_range_cancel) {
 				temp_out_of_range_cancel = false;
+				ampoule_finalize_in_progress = true;
 				for (int i = 0; i < 4; i++) {
 					if (ampoules[i].is_testing) {
 						printf("\n***** [AMPOLA %d] CANCELANDO TESTE POR TEMPERATURA FORA DO RANGE *****\n\n", ampoules[i].id);
@@ -918,6 +956,7 @@ void ampoules_test_check_done_task(void *pvParameter) {
 						ampoules[i].samples.clear();
 					}
 				}
+				ampoule_finalize_in_progress = false;
 				// Não reseta heater_reached_target: novos testes podem iniciar assim que
 				// temperatura voltar ao range (>= 33°C), sem exigir re-aquecimento até 37°C.
 			}

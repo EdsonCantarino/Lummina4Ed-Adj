@@ -35,16 +35,25 @@ device_settings_t settings;
 // se mostraram instaveis em teste fisico (3 formas diferentes de
 // crash/deadlock) - a recuperacao confiavel e um esp_restart(), disparado
 // direto pelo flag isPrinterError do driver USB (is_printer_error(),
-// usb_class_driver.cpp - reflete falha real de transferencia USB), sem
-// timers de tolerancia (decisao do usuario 05/08: nao fazem diferenca no
-// resultado final). So reinicia se nao houver ampola em nenhuma cavidade
-// (ver attempt_safe_printer_recovery) - is_testing() nao serve de guarda
-// porque vira false assim que o ciclo termina, antes do ticket ser
-// impresso e antes do operador remover a ampola; ampoule_any() reflete
-// presenca fisica real (sensor), so fica false depois da remocao de
-// verdade - protege tambem o caso "impressora trava bem no fim do ciclo,
-// ampola ainda la dentro" (relatado pelo cliente 05/08).
+// usb_class_driver.cpp - reflete falha real de transferencia USB). So
+// reinicia se nao houver ampola em nenhuma cavidade e nenhum
+// cancelamento/finalizacao de teste em andamento (ver
+// attempt_safe_printer_recovery + ampoule_finalize_in_progress,
+// ampoule_test.cpp) - is_testing() nao serve de guarda porque vira false
+// assim que o ciclo termina, antes do ticket ser impresso e antes do
+// operador remover a ampola; ampoule_any() reflete presenca fisica real
+// (sensor), so fica false depois da remocao de verdade - protege tambem o
+// caso "impressora trava bem no fim do ciclo, ampola ainda la dentro"
+// (relatado pelo cliente 05/08). Depois de ficar seguro, ainda exige
+// PRINTER_RESTART_GRACE_MS continuos nesse estado antes de reiniciar de
+// fato (contador zera a cada deteccao de ampola/finalizacao em andamento,
+// mesmo padrao do AMPOULE_ABSENT_CONFIRM_MS em ampoule_sensor.cpp) - da
+// tempo de qualquer beep/feedback de UI em andamento terminar de tocar
+// (06/08: reinicio cortava o beep de alarme de ampola removida no meio).
 static bool printer_was_ready = false;
+
+#define PRINTER_RESTART_GRACE_MS (30 * 1000)
+static int64_t printer_safe_to_restart_since_ms = 0;
 
 // Bits usados em xTaskNotify(print_ampoule_test_task_handle, ...): botao
 // fisico de imprimir reimprime os ultimos N (print_count); a reconexao da
@@ -74,13 +83,32 @@ static bool print_operation_end() {
 	return is_printer_connected() && !is_printer_error();
 }
 
-// So reinicia se nao houver ampola em nenhuma cavidade - senao so loga e
-// tenta de novo no proximo ciclo do watchdog (1s).
+// So reinicia se nao houver ampola em nenhuma cavidade havera pelo menos
+// PRINTER_RESTART_GRACE_MS continuos nesse estado - senao so loga e tenta
+// de novo no proximo ciclo do watchdog (1s). Qualquer deteccao de ampola
+// ou cancelamento/finalizacao em andamento zera o contador, igual ao
+// AMPOULE_ABSENT_CONFIRM_MS de ampoule_sensor.cpp.
 static void attempt_safe_printer_recovery(const char *reason) {
-	if (ampoule_any()) {
+	if (ampoule_any() || is_ampoule_finalize_in_progress()) {
 		ESP_LOGW(TAG,
-				"%s, mas ha ampola em alguma cavidade - adiando reinicio ate ficar seguro",
+				"%s, mas ha ampola em alguma cavidade ou um cancelamento/finalizacao em andamento - adiando reinicio ate ficar seguro",
 				reason);
+		printer_safe_to_restart_since_ms = 0;
+		return;
+	}
+
+	int64_t now_ms = esp_timer_get_time() / 1000;
+
+	if (printer_safe_to_restart_since_ms == 0) {
+		printer_safe_to_restart_since_ms = now_ms;
+	}
+
+	int64_t elapsed_ms = now_ms - printer_safe_to_restart_since_ms;
+
+	if (elapsed_ms < PRINTER_RESTART_GRACE_MS) {
+		ESP_LOGW(TAG,
+				"%s, seguro pra reiniciar mas aguardando carencia (%lld/%d ms sem ampola)",
+				reason, (long long) elapsed_ms, PRINTER_RESTART_GRACE_MS);
 		return;
 	}
 

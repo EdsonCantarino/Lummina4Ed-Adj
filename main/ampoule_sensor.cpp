@@ -12,8 +12,19 @@ PCF8574 ampoule(I2C_AMPOULES_ADDRESS, I2C_MASTER_SDA_GPIO, I2C_MASTER_SCL_GPIO);
 
 volatile bool is_ampoules_present_in_init = true;
 
+// Ao contrario de is_ampoules_present_in_init (que comeca "true" e so vira
+// false apos confirmar ausencia por AMPOULE_ABSENT_CONFIRM_MS), essa flag
+// reflete se ha ampola de fato confirmada presente AGORA, durante a janela
+// da trava de boot. Usada pra nao soar alarme/piscar LED de erro em todo
+// boot so porque a trava ainda nao liberou - so quando ha ampola de verdade.
+volatile bool is_ampoules_confirmed_present_in_init = false;
+
 bool check_if_ampoules_is_present_on_init() {
 	return is_ampoules_present_in_init;
+}
+
+bool check_if_ampoules_is_confirmed_present_in_init() {
+	return is_ampoules_confirmed_present_in_init;
 }
 
 void ampoule_sensor_setup() {
@@ -87,6 +98,8 @@ void read_ampoules(void *pvParameter) {
 
 		bool is_ampoules = (confirmed_present[0] || confirmed_present[1]
 				|| confirmed_present[2] || confirmed_present[3]);
+
+		is_ampoules_confirmed_present_in_init = is_ampoules;
 
 		if (is_ampoules_present_in_init) {
 			if (is_ampoules) {

@@ -165,10 +165,18 @@ void read_ampoules_test_task(void *pvParameter) {
 			// Trava as funções, não pode ter ampolas nas cavidades quando inicia o equipamento
 
 			disable_buttons_functions();
-			leds_ampolues_locked_on_start_error_alarm();
 
-			for (int i = 0; i < 3; i++) {
-				buzzer_alarm();
+			// So soa o alarme (LED + buzzer) quando ha ampola de fato
+			// confirmada presente. A trava fica ativa desde o boot ate
+			// confirmar 10s sem ampola (ver ampoule_sensor.cpp), entao
+			// sem essa checagem todo boot alarmava mesmo sem ampola
+			// nenhuma instalada - bug reportado pelo cliente.
+			if (check_if_ampoules_is_confirmed_present_in_init()) {
+				leds_ampolues_locked_on_start_error_alarm();
+
+				for (int i = 0; i < 3; i++) {
+					buzzer_alarm();
+				}
 			}
 
 			// Não retirar o delay para não travar o processamento.

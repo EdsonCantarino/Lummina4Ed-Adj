@@ -35,6 +35,7 @@ bool is_testing(int id);
 bool is_any_testing();
 bool is_any_in_test_done();
 bool is_any_present_cancelled_by_temp();
+bool is_ampoule_finalize_in_progress();
 
 void ampoule_initial_beep(int id);
 
