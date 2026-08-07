@@ -286,8 +286,10 @@ static void wait_drdy_or_reset_boot(const char *contexto) {
 
 		if (drdy_wait_ms >= CS5532_DRDY_TIMEOUT_MS) {
 			ESP_LOGE(TAG,
-					"Timeout aguardando DRDY do CS5532/CS5534 durante %s no boot - reiniciando",
+					"RESTART_ID=4 - Timeout aguardando DRDY do CS5532/CS5534 durante %s no boot - reiniciando",
 					contexto);
+			fflush(stdout);
+			vTaskDelay(pdMS_TO_TICKS(100));
 			esp_restart();
 		}
 	}

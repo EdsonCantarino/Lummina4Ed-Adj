@@ -254,9 +254,10 @@ static esp_err_t restart_device(httpd_req_t *req) {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 	}
 
-	ESP_LOGI(TAG, "Restarting now.\n");
+	ESP_LOGI(TAG, "RESTART_ID=2 - Restarting now (HTTP restart_device).\n");
 
 	fflush(stdout);
+	vTaskDelay(pdMS_TO_TICKS(100));
 	esp_restart();
 }
 
@@ -1999,8 +2000,9 @@ static esp_err_t reset_post_handler(httpd_req_t *req) {
 				httpd_resp_sendstr(req, "{\"success\": false}");
 			}
 
-//			ESP_LOGI(TAG, "Restarting now.\n");
+			ESP_LOGI(TAG, "RESTART_ID=3 - Restarting now (HTTP reset_user_data).\n");
 			fflush(stdout);
+			vTaskDelay(pdMS_TO_TICKS(100));
 			esp_restart();
 		}
 

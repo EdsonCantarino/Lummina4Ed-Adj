@@ -36,7 +36,11 @@ device_settings_t settings;
 // crash/deadlock) - a recuperacao confiavel e um esp_restart(), disparado
 // direto pelo flag isPrinterError do driver USB (is_printer_error(),
 // usb_class_driver.cpp - reflete falha real de transferencia USB). So
-// reinicia se nao houver ampola em nenhuma cavidade e nenhum
+// reinicia se houver ticket pendente no historico esperando pra ser
+// impresso (ver has_unprinted_history() - 07/08: bancada de teste sem
+// impressora conectada ficava reiniciando em loop sem motivo, ja que
+// nao havia nada pendente pra imprimir mesmo) - e alem disso, se nao
+// houver ampola em nenhuma cavidade e nenhum
 // cancelamento/finalizacao de teste em andamento (ver
 // attempt_safe_printer_recovery + ampoule_finalize_in_progress,
 // ampoule_test.cpp) - is_testing() nao serve de guarda porque vira false
@@ -52,7 +56,7 @@ device_settings_t settings;
 // (06/08: reinicio cortava o beep de alarme de ampola removida no meio).
 static bool printer_was_ready = false;
 
-#define PRINTER_RESTART_GRACE_MS (30 * 1000)
+#define PRINTER_RESTART_GRACE_MS (10 * 1000)
 static int64_t printer_safe_to_restart_since_ms = 0;
 
 // Bits usados em xTaskNotify(print_ampoule_test_task_handle, ...): botao
@@ -83,12 +87,59 @@ static bool print_operation_end() {
 	return is_printer_connected() && !is_printer_error();
 }
 
+// So faz sentido reiniciar pra recuperar a impressora se houver algum
+// ticket pendente (nao impresso) esperando por ela - sem isso, o unico
+// "estrago" de ficar sem imprimir e nenhum, entao reiniciar o equipamento
+// seria disruption sem motivo (ex.: bancada de teste sem impressora
+// conectada, reiniciando sozinha em loop). Mesma suposicao de
+// print_pending_unprinted_history(): pendentes sempre ficam no topo
+// (indice 0 = mais recente), entao so precisa olhar o primeiro registro.
+static bool has_unprinted_history() {
+	int total = ampoule_history_get_count();
+
+	if (total == 0)
+		return false;
+
+	ampoule_history_record_t rec;
+
+	if (!ampoule_history_get_record(0, rec))
+		return false;
+
+	return !rec.printed;
+}
+
 // So reinicia se nao houver ampola em nenhuma cavidade havera pelo menos
 // PRINTER_RESTART_GRACE_MS continuos nesse estado - senao so loga e tenta
 // de novo no proximo ciclo do watchdog (1s). Qualquer deteccao de ampola
 // ou cancelamento/finalizacao em andamento zera o contador, igual ao
 // AMPOULE_ABSENT_CONFIRM_MS de ampoule_sensor.cpp.
 static void attempt_safe_printer_recovery(const char *reason) {
+	if (!has_unprinted_history()) {
+		ESP_LOGW(TAG,
+				"%s, mas nao ha ticket pendente no historico - sem motivo pra reiniciar",
+				reason);
+		printer_safe_to_restart_since_ms = 0;
+		return;
+	}
+
+	// Reiniciar so ajuda a recuperar uma impressora que travou CONECTADA
+	// (caso relatado pelo cliente 05/08 - trava no fim do ciclo, ainda
+	// enumerada via USB, so o transfer que falha). Se nenhuma impressora
+	// jamais conectou (isPrinterConnected so vira true num evento
+	// USB_HOST_CLIENT_EVENT_NEW_DEV real - usb_class_driver.cpp),
+	// is_printer_error() fica "travado" true pra sempre (nada reseta sem
+	// um novo evento USB) e reiniciar o equipamento nao resolve nada -
+	// so interrompe o teste em andamento. Sem essa guarda, toda
+	// finalizacao de teste sem impressora fisica vira um reinicio ~10s
+	// depois (bring-up da placa ADS1248 em bancada sem impressora, 07/08).
+	if (!is_printer_connected()) {
+		ESP_LOGW(TAG,
+				"%s, mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)",
+				reason);
+		printer_safe_to_restart_since_ms = 0;
+		return;
+	}
+
 	if (ampoule_any() || is_ampoule_finalize_in_progress()) {
 		ESP_LOGW(TAG,
 				"%s, mas ha ampola em alguma cavidade ou um cancelamento/finalizacao em andamento - adiando reinicio ate ficar seguro",
@@ -112,8 +163,11 @@ static void attempt_safe_printer_recovery(const char *reason) {
 		return;
 	}
 
-	ESP_LOGE(TAG, "%s - reiniciando o equipamento pra recuperar a impressora",
+	ESP_LOGE(TAG,
+			"RESTART_ID=1 - %s - reiniciando o equipamento pra recuperar a impressora",
 			reason);
+	fflush(stdout);
+	vTaskDelay(pdMS_TO_TICKS(100));
 	esp_restart();
 }
 
@@ -446,6 +500,56 @@ void print_test_task_notify(void *pvParameter) {
 	}
 }
 
+// Espera a impressora ter chance de enumerar via USB (se houver uma
+// conectada) e resolve QUALQUER backlog de ticket pendente do historico uma
+// unica vez no boot - mesmo caminho pra reset por software (esp_restart) e
+// pra energizar pela fonte pela primeira vez, ja que os dois passam por
+// app_main()/printer_setup(). Se a impressora ficou pronta a tempo, tenta
+// imprimir de verdade; do contrario (ou se falhar mesmo assim), marca como
+// impresso de qualquer forma - um ticket antigo parado aqui nao serve pra
+// nada (a guarda is_printer_connected() em attempt_safe_printer_recovery ja
+// evita reiniciar por causa dele, mas ele ficaria marcado "nao impresso" no
+// historico web pra sempre sem essa limpeza).
+#define BOOT_PENDING_HISTORY_RESOLVE_DELAY_MS (10 * 1000)
+
+static void resolve_boot_pending_history_task(void *pvParameter) {
+	vTaskDelay(pdMS_TO_TICKS(BOOT_PENDING_HISTORY_RESOLVE_DELAY_MS));
+
+	if (!has_unprinted_history()) {
+		ESP_LOGI(TAG, "Boot: nenhum ticket pendente no historico");
+		vTaskDelete(NULL);
+		return;
+	}
+
+	if (is_printer_connected() && is_setup_done() && !is_printer_error()) {
+		ESP_LOGW(TAG,
+				"Boot: impressora pronta - imprimindo ticket(s) pendente(s)");
+		print_pending_unprinted_history();
+	}
+
+	// Garante que nada fica pendente, com ou sem sucesso na tentativa acima
+	// (sem impressora, ou impressora presente mas print falhou).
+	int total = ampoule_history_get_count();
+
+	for (int i = 0; i < total; i++) {
+		ampoule_history_record_t rec;
+
+		if (!ampoule_history_get_record(i, rec))
+			break;
+
+		if (rec.printed)
+			break;
+
+		ESP_LOGW(TAG,
+				"Boot: marcando ticket id_test=%lu como impresso sem confirmacao de impressao",
+				(unsigned long) rec.id_test);
+
+		ampoule_history_mark_printed(rec.id_test);
+	}
+
+	vTaskDelete(NULL);
+}
+
 void printer_setup() {
 	xTaskCreate(print_test_task_notify, "PRINT_TST",
 	configMINIMAL_STACK_SIZE * 5,
@@ -456,6 +560,10 @@ void printer_setup() {
 	xTaskCreate(print_check_status, "PRINT_CHECK",
 	configMINIMAL_STACK_SIZE * 5,
 	NULL, 10, NULL);
+
+	xTaskCreate(resolve_boot_pending_history_task, "PRINT_BOOT_RESOLVE",
+	configMINIMAL_STACK_SIZE * 5,
+	NULL, 5, NULL);
 }
 
 string get_partner_name() {

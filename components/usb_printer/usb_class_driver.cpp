@@ -136,8 +136,14 @@ static void client_event_cb(const usb_host_client_event_msg_t *event_msg,
 		}
 		break;
 	default:
-		//Should never occur
-		abort();
+		// Nao deveria ocorrer segundo a doc do usb_host_client.h (so
+		// NEW_DEV/DEV_GONE), mas na placa ADS1248 em bring-up esse
+		// default estava caindo aqui e derrubando o equipamento via
+		// abort() - trocado por log + ignorar pra investigar qual
+		// valor esta chegando, sem reiniciar o equipamento por causa
+		// disso (07/08, ver historico/memoria do bring-up).
+		ESP_LOGE(TAG, "client_event_cb: evento USB inesperado (%d) - ignorando",
+				event_msg->event);
 	}
 }
 
