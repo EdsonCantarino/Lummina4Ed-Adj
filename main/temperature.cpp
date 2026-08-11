@@ -79,6 +79,10 @@ void check_temperature_task(void *pvParameter) {
 			ESP_LOGW(TAG, "No sensors detected!");
 
 			xEventGroupClearBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
+			// Sem isso o loop gira sem ceder CPU quando nao acha sensor,
+			// disparando o task_wdt a cada 5s (achado em 10/08 - ver
+			// historico/2026-08-10-...psram-descartada.md).
+			vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
 			continue;
 		}
 

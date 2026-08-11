@@ -8,14 +8,27 @@
 // (light_sensor.cpp) ja implementa hoje, entao ampoule_test.cpp e o resto do
 // firmware nao precisam saber qual chip esta fisicamente na placa.
 //
-// Bit-bang em GPIO, igual o CS5534 - de proposito, nao spi_master do
-// ESP-IDF. Ja foi tentado usar spi_master (ver components/cs5534/cs553x.cpp,
-// que ficou todo comentado) e deu problema, motivo nao documentado na epoca.
-// TODO(pos-validacao): reavaliar migrar pra spi_master depois que esse driver
-// estiver validado fisicamente em producao - nao e bloqueante agora.
+// Usa o periferico de SPI de hardware do ESP32-S3 (spi_master), nao
+// bit-bang. Migrado em 11/08/2026 durante a investigacao do reboot
+// intermitente RTC_SW_SYS_RST (ver historico/2026-08-10b e 2026-08-11):
+// hipoteses de estouro de stack/corrupcao de heap foram descartadas por
+// teste direto, sobrando como hipotese lider colisao de timing entre a
+// espera ocupada do bit-bang e o atendimento de interrupcao de WiFi/USB
+// Host. spi_master usa o periferico de hardware (sem busy-wait manual por
+// bit), reduzindo bastante a janela de CPU ocupada por transferencia.
+//
+// Uma tentativa anterior de usar spi_master nesse projeto (ver
+// components/cs5534/cs553x.cpp, comentado) foi abandonada porque o dev
+// anterior tentou compartilhar uma unica config de SPI entre CS5534 e
+// ADS1248 (chips com modo/timing SPI diferentes). Aqui nao ha esse
+// problema: CS5534 e ADS1248 sao compilados em variantes de firmware
+// separadas (CONFIG_ADC_CHIP_ADS1248), cada driver configura o
+// spi_master com o modo especifico do seu proprio chip.
 #if CONFIG_ADC_CHIP_ADS1248
 
 #include "ads1248.h"
+#include "driver/spi_master.h"
+#include "rom/ets_sys.h"
 
 static const char *TAG = "LIGHT_SENSOR_ADS1248";
 
@@ -24,11 +37,12 @@ static const char *TAG = "LIGHT_SENSOR_ADS1248";
 
 // Mesmos GPIOs que o CS5534 ja usa hoje pro barramento SPI (a placa nova
 // reaproveitou o roteamento de proposito). Os tres pinos dedicados abaixo
-// (DRDY, RESET, START) nao existem no CS5534.
+// (DRDY, RESET, START) nao existem no CS5534 e continuam GPIO simples,
+// fora do barramento SPI.
 #define ADS_SCLK_PIN  (gpio_num_t)12
 #define ADS_CS_PIN    (gpio_num_t)10
-#define ADS_DIN_PIN   (gpio_num_t)13 // ESP32 -> ADS1248 (DIN do chip)
-#define ADS_DOUT_PIN  (gpio_num_t)11 // ADS1248 -> ESP32 (DOUT/DRDY do chip, so DOUT aqui)
+#define ADS_DIN_PIN   (gpio_num_t)13 // ESP32 -> ADS1248 (DIN do chip / MOSI)
+#define ADS_DOUT_PIN  (gpio_num_t)11 // ADS1248 -> ESP32 (DOUT do chip / MISO)
 #define ADS_DRDY_PIN  (gpio_num_t)39 // DRDY dedicado (ADS1248 -> ESP32)
 #define ADS_RESET_PIN (gpio_num_t)4  // ~RESET~ (ESP32 -> ADS1248)
 #define ADS_START_PIN (gpio_num_t)40 // START (ESP32 -> ADS1248)
@@ -37,7 +51,23 @@ static const char *TAG = "LIGHT_SENSOR_ADS1248";
 // driver do CS5534 (ver CS5532_DRDY_TIMEOUT_MS em light_sensor.cpp).
 #define ADS1248_DRDY_TIMEOUT_MS 1000
 
-#define ADS1248_BITBANG_DELAY 200
+// Barramento de hardware dedicado ao ADS1248 - nada mais no projeto usa
+// SPI2_HOST hoje (CS5534 bit-banga em GPIO puro, nao usa periferico SPI).
+#define ADS_SPI_HOST SPI2_HOST
+
+// Clock conservador (bem abaixo do maximo do chip) - prioridade aqui e
+// robustez/margem de timing, nao velocidade maxima; o ADC roda a 20SPS
+// mesmo, entao nao ha ganho pratico em ir mais rapido.
+#define ADS1248_SPI_CLOCK_HZ (500 * 1000)
+
+// Delay minimo entre o byte de comando RDATA e o inicio dos bytes de dado
+// (datasheet: t6, alguns tCLK de folga) - so relevante pra RDATA porque e
+// o unico comando que muda de "escrevendo comando" pra "lendo conversao"
+// dentro da mesma janela de CS baixo. wreg/rreg/command sao continuos
+// porque so tem comando+parametros, sem essa troca de fase.
+#define ADS1248_RDATA_T6_DELAY_US 5
+
+static spi_device_handle_t ads1248_spi;
 
 // Mapa cavidade (indice de software 0-3) -> par de entrada diferencial do
 // ADS1248, confirmado pelo netlist da placa nova (Versao ADS1428/Lummina4
@@ -68,77 +98,64 @@ void reset_channel_consecutive_timeouts(uint8_t channel) {
 	channel_consecutive_timeouts[channel] = 0;
 }
 
-static void ads1248_delay(unsigned long vDelay) {
-	for (; vDelay != 0; vDelay--)
-		;
-}
-
-static void ads1248_cs_low(void) {
-	gpio_set_level(ADS_SCLK_PIN, LOW);
-	gpio_set_level(ADS_CS_PIN, LOW);
-	ads1248_delay(ADS1248_BITBANG_DELAY);
-}
-
-static void ads1248_cs_high(void) {
-	gpio_set_level(ADS_SCLK_PIN, LOW);
-	gpio_set_level(ADS_CS_PIN, HIGH);
-	ads1248_delay(ADS1248_BITBANG_DELAY);
-}
-
-// Um byte por vez, MSB primeiro. Datasheet secao 9.5.1.2/9.5.1.3: o ADS1248
-// le o DIN na borda de DESCIDA do SCLK e atualiza o DOUT na borda de SUBIDA -
-// e o oposto do jeito que o CS5534 bit-banga hoje, entao NAO reaproveitar a
-// logica de borda do CS5534 aqui.
-static uint8_t ads1248_byte(uint8_t out) {
-	uint8_t in = 0;
-	for (int i = 7; i >= 0; i--) {
-		gpio_set_level(ADS_DIN_PIN, (out >> i) & 0x01);
-		ads1248_delay(ADS1248_BITBANG_DELAY);
-
-		gpio_set_level(ADS_SCLK_PIN, HIGH); // DOUT valido apos essa borda
-		ads1248_delay(ADS1248_BITBANG_DELAY);
-		in = (uint8_t) ((in << 1) | (gpio_get_level(ADS_DOUT_PIN) & 0x01));
-
-		gpio_set_level(ADS_SCLK_PIN, LOW); // ADS1248 le o DIN nessa borda
-		ads1248_delay(ADS1248_BITBANG_DELAY);
-	}
-	return in;
+// Transferencia full-duplex de "len" bytes numa unica transacao SPI, CS
+// (automatico via spics_io_num) fica baixo do primeiro ao ultimo bit - Ao
+// contrario do bit-bang antigo (CS low/high manual por chamada), aqui um
+// comando multi-byte inteiro (ex: WREG = cmd+count+valor) e uma transacao
+// so, exatamente como o CS ficava baixo por todo o grupo antes.
+static void ads1248_transfer(const uint8_t *tx, uint8_t *rx, size_t len) {
+	spi_transaction_t t = { };
+	t.length = len * 8;
+	t.tx_buffer = tx;
+	t.rx_buffer = rx;
+	ESP_ERROR_CHECK(spi_device_polling_transmit(ads1248_spi, &t));
 }
 
 static void ads1248_wreg(uint8_t reg_addr, uint8_t value) {
-	ads1248_cs_low();
-	ads1248_byte((uint8_t) (ADS1248_CMD_WREG | (reg_addr & 0x0F)));
-	ads1248_byte(0x00); // numero de registradores a escrever menos 1 (so 1)
-	ads1248_byte(value);
-	ads1248_cs_high();
+	uint8_t tx[3] = { (uint8_t) (ADS1248_CMD_WREG | (reg_addr & 0x0F)), 0x00,
+			value };
+	ads1248_transfer(tx, NULL, sizeof(tx));
 }
 
 static uint8_t ads1248_rreg(uint8_t reg_addr) {
-	ads1248_cs_low();
-	ads1248_byte((uint8_t) (ADS1248_CMD_RREG | (reg_addr & 0x0F)));
-	ads1248_byte(0x00); // numero de registradores a ler menos 1 (so 1)
-	uint8_t value = ads1248_byte(ADS1248_CMD_NOP);
-	ads1248_cs_high();
-	return value;
+	uint8_t tx[3] = { (uint8_t) (ADS1248_CMD_RREG | (reg_addr & 0x0F)), 0x00,
+	ADS1248_CMD_NOP };
+	uint8_t rx[3] = { };
+	ads1248_transfer(tx, rx, sizeof(tx));
+	return rx[2];
 }
 
 static void ads1248_command(uint8_t cmd) {
-	ads1248_cs_low();
-	ads1248_byte(cmd);
-	ads1248_cs_high();
+	uint8_t tx[1] = { cmd };
+	ads1248_transfer(tx, NULL, sizeof(tx));
 }
 
 // Manda o comando RDATA e le os 24 bits do resultado da conversao, com
-// sign-extend de complemento-de-2 pra um long de 32 bits.
+// sign-extend de complemento-de-2 pra um long de 32 bits. Comando e dados
+// vao em duas transacoes separadas (CS mantido baixo entre elas via
+// SPI_TRANS_CS_KEEP_ACTIVE) com um pequeno delay no meio, respeitando o
+// tempo minimo entre o fim do comando e o inicio do dado (datasheet t6).
 static long ads1248_rdata(void) {
-	ads1248_cs_low();
-	ads1248_byte(ADS1248_CMD_RDATA);
+	uint8_t cmd_tx[1] = { ADS1248_CMD_RDATA };
+	spi_transaction_t cmd_t = { };
+	cmd_t.length = 8;
+	cmd_t.tx_buffer = cmd_tx;
+	cmd_t.flags = SPI_TRANS_CS_KEEP_ACTIVE;
+	ESP_ERROR_CHECK(spi_device_polling_transmit(ads1248_spi, &cmd_t));
 
-	uint32_t raw24 = 0;
-	for (int i = 0; i < 3; i++) {
-		raw24 = (raw24 << 8) | ads1248_byte(ADS1248_CMD_NOP);
-	}
-	ads1248_cs_high();
+	ets_delay_us(ADS1248_RDATA_T6_DELAY_US);
+
+	uint8_t data_tx[3] = { ADS1248_CMD_NOP, ADS1248_CMD_NOP,
+	ADS1248_CMD_NOP };
+	uint8_t data_rx[3] = { };
+	spi_transaction_t data_t = { };
+	data_t.length = sizeof(data_tx) * 8;
+	data_t.tx_buffer = data_tx;
+	data_t.rx_buffer = data_rx;
+	ESP_ERROR_CHECK(spi_device_polling_transmit(ads1248_spi, &data_t));
+
+	uint32_t raw24 = ((uint32_t) data_rx[0] << 16)
+			| ((uint32_t) data_rx[1] << 8) | data_rx[2];
 
 	if (raw24 & 0x800000UL) {
 		return (long) (raw24 | 0xFF000000UL);
@@ -152,9 +169,7 @@ static void setup_pins() {
 	out_conf.pull_up_en = (gpio_pullup_t) 0;
 	out_conf.intr_type = (gpio_int_type_t) GPIO_INTR_DISABLE;
 	out_conf.mode = GPIO_MODE_OUTPUT;
-	out_conf.pin_bit_mask = (1ULL << ADS_SCLK_PIN) | (1ULL << ADS_CS_PIN)
-			| (1ULL << ADS_DIN_PIN) | (1ULL << ADS_RESET_PIN)
-			| (1ULL << ADS_START_PIN);
+	out_conf.pin_bit_mask = (1ULL << ADS_RESET_PIN) | (1ULL << ADS_START_PIN);
 	gpio_config(&out_conf);
 
 	gpio_config_t in_conf = { };
@@ -162,14 +177,38 @@ static void setup_pins() {
 	in_conf.pull_up_en = (gpio_pullup_t) 0;
 	in_conf.intr_type = (gpio_int_type_t) GPIO_INTR_DISABLE;
 	in_conf.mode = GPIO_MODE_INPUT;
-	in_conf.pin_bit_mask = (1ULL << ADS_DOUT_PIN) | (1ULL << ADS_DRDY_PIN);
+	in_conf.pin_bit_mask = (1ULL << ADS_DRDY_PIN);
 	gpio_config(&in_conf);
 
-	gpio_set_level(ADS_SCLK_PIN, LOW);
-	gpio_set_level(ADS_CS_PIN, HIGH);
-	gpio_set_level(ADS_DIN_PIN, LOW);
 	gpio_set_level(ADS_RESET_PIN, HIGH);
 	gpio_set_level(ADS_START_PIN, LOW);
+
+	// SCLK/CS/DIN/DOUT saem do controle do periferico de hardware SPI, nao
+	// sao mais GPIO manual.
+	spi_bus_config_t buscfg = { };
+	buscfg.mosi_io_num = ADS_DIN_PIN;
+	buscfg.miso_io_num = ADS_DOUT_PIN;
+	buscfg.sclk_io_num = ADS_SCLK_PIN;
+	buscfg.quadwp_io_num = -1;
+	buscfg.quadhd_io_num = -1;
+	buscfg.max_transfer_sz = 8;
+
+	ESP_ERROR_CHECK(spi_bus_initialize(ADS_SPI_HOST, &buscfg,
+	SPI_DMA_DISABLED));
+
+	spi_device_interface_config_t devcfg = { };
+	devcfg.clock_speed_hz = ADS1248_SPI_CLOCK_HZ;
+	devcfg.mode = 1; // CPOL=0, CPHA=1: DIN lido na descida, DOUT atualiza na subida
+	devcfg.spics_io_num = ADS_CS_PIN;
+	devcfg.queue_size = 1;
+	// Margem extra de CS baixo antes/depois do primeiro/ultimo bit (em
+	// meios-ciclos de SCLK), equivalente ao delay que o bit-bang antigo
+	// dava com ADS1248_BITBANG_DELAY antes de comecar a chavear o clock.
+	devcfg.cs_ena_pretrans = 2;
+	devcfg.cs_ena_posttrans = 2;
+
+	ESP_ERROR_CHECK(
+			spi_bus_add_device(ADS_SPI_HOST, &devcfg, &ads1248_spi));
 }
 
 void light_sensor_setup() {

@@ -529,6 +529,11 @@ void abort_ampoule_test_sensor_fault(int index, int ampoule) {
 
 	ampoule_finalize_in_progress = true;
 
+	// Desliga o LED UV e volta a controlar o aquecedor - prepare_test() ja
+	// tinha ligado o LED/desligado o aquecedor antes da leitura que falhou,
+	// e esse abort pula o finalize_test() normal do fluxo.
+	finalize_test(ampoule);
+
 	bool printed_ok = print_ampoule_test(index, true);
 
 	set_history(index, true, printed_ok);

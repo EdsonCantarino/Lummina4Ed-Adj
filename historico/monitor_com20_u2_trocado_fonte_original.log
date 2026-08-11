@@ -1,0 +1,370 @@
+--- Miniterm on COM20  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+
+[0;31mE (37467) HEATER: Temperatura: 28.500[0m
+[0;31mE (37467) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (37467) HEATER: Esta em teste: Nao[0m
+[0;31mE (37467) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (37467) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (37477) HEATER: AGUARDE: Temperatura de aquecimento atual: 28.500[0m
+
+[0;31mE (44487) HEATER: Temperatura: 28.500[0m
+[0;31mE (44487) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (44487) HEATER: Esta em teste: Nao[0m
+[0;31mE (44487) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (44487) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (44497) HEATER: AGUARDE: Temperatura de aquecimento atual: 28.500[0m
+
+[0;31mE (47737) HEATER: Temperatura: 28.500[0m
+[0;31mE (47737) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (47737) HEATER: Esta em teste: Nao[0m
+[0;31mE (47737) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (47747) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (47747) HEATER: AGUARDE: Temperatura de aquecimento atual: 28.500[0m
+
+[0;31mE (54757) HEATER: Temperatura: 28.500[0m
+[0;31mE (54757) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (54757) HEATER: Esta em teste: Nao[0m
+[0;31mE (54757) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (54757) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (54767) HEATER: AGUARDE: Temperatura de aquecimento atual: 28.500[0m
+
+[0;31mE (61777) HEATER: Temperatura: 28.500[0m
+[0;31mE (61777) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (61777) HEATER: Esta em teste: Nao[0m
+[0;31mE (61777) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (61777) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (61787) HEATER: AGUARDE: Temperatura de aquecimento atual: 28.500[0m
+
+[0;31mE (65017) HEATER: Temperatura: 29.000[0m
+[0;31mE (65017) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (65017) HEATER: Esta em teste: Nao[0m
+[0;31mE (65017) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (65017) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (65027) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (72037) HEATER: Temperatura: 29.000[0m
+[0;31mE (72037) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (72037) HEATER: Esta em teste: Nao[0m
+[0;31mE (72037) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (72037) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (72047) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (79057) HEATER: Temperatura: 29.000[0m
+[0;31mE (79057) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (79057) HEATER: Esta em teste: Nao[0m
+[0;31mE (79057) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (79057) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (79067) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (82297) HEATER: Temperatura: 29.000[0m
+[0;31mE (82297) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (82297) HEATER: Esta em teste: Nao[0m
+[0;31mE (82297) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (82297) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (82307) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (89317) HEATER: Temperatura: 29.000[0m
+[0;31mE (89317) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (89317) HEATER: Esta em teste: Nao[0m
+[0;31mE (89317) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (89317) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (89327) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (96337) HEATER: Temperatura: 29.000[0m
+[0;31mE (96337) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (96337) HEATER: Esta em teste: Nao[0m
+[0;31mE (96337) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (96337) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (96347) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (99587) HEATER: Temperatura: 29.000[0m
+[0;31mE (99587) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (99587) HEATER: Esta em teste: Nao[0m
+[0;31mE (99587) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (99587) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (99597) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (106607) HEATER: Temperatura: 29.000[0m
+[0;31mE (106607) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (106607) HEATER: Esta em teste: Nao[0m
+[0;31mE (106607) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (106607) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (106617) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (113627) HEATER: Temperatura: 29.000[0m
+[0;31mE (113627) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (113627) HEATER: Esta em teste: Nao[0m
+[0;31mE (113627) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (113627) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (113637) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (116867) HEATER: Temperatura: 29.000[0m
+[0;31mE (116867) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (116867) HEATER: Esta em teste: Nao[0m
+[0;31mE (116867) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (116877) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (116877) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (123887) HEATER: Temperatura: 29.000[0m
+[0;31mE (123887) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (123887) HEATER: Esta em teste: Nao[0m
+[0;31mE (123887) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (123887) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (123897) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (130907) HEATER: Temperatura: 29.000[0m
+[0;31mE (130907) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (130907) HEATER: Esta em teste: Nao[0m
+[0;31mE (130907) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (130907) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (130917) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (134147) HEATER: Temperatura: 29.000[0m
+[0;31mE (134147) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (134147) HEATER: Esta em teste: Nao[0m
+[0;31mE (134147) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (134147) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (134157) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (141167) HEATER: Temperatura: 29.000[0m
+[0;31mE (141167) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (141167) HEATER: Esta em teste: Nao[0m
+[0;31mE (141167) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (141167) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (141177) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (148187) HEATER: Temperatura: 29.000[0m
+[0;31mE (148187) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (148187) HEATER: Esta em teste: Nao[0m
+[0;31mE (148187) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (148187) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (148197) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (151437) HEATER: Temperatura: 29.000[0m
+[0;31mE (151437) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (151437) HEATER: Esta em teste: Nao[0m
+[0;31mE (151437) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (151437) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (151447) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (158457) HEATER: Temperatura: 29.000[0m
+[0;31mE (158457) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (158457) HEATER: Esta em teste: Nao[0m
+[0;31mE (158457) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (158457) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (158467) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (165477) HEATER: Temperatura: 29.000[0m
+[0;31mE (165477) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (165477) HEATER: Esta em teste: Nao[0m
+[0;31mE (165477) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (165477) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (165487) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (168717) HEATER: Temperatura: 29.000[0m
+[0;31mE (168717) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (168717) HEATER: Esta em teste: Nao[0m
+[0;31mE (168717) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (168717) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (168727) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (175737) HEATER: Temperatura: 29.000[0m
+[0;31mE (175737) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (175737) HEATER: Esta em teste: Nao[0m
+[0;31mE (175737) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (175737) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (175747) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (182757) HEATER: Temperatura: 29.000[0m
+[0;31mE (182757) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (182757) HEATER: Esta em teste: Nao[0m
+[0;31mE (182757) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (182757) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (182767) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (186007) HEATER: Temperatura: 29.000[0m
+[0;31mE (186007) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (186007) HEATER: Esta em teste: Nao[0m
+[0;31mE (186007) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (186007) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (186017) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (193027) HEATER: Temperatura: 29.000[0m
+[0;31mE (193027) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (193027) HEATER: Esta em teste: Nao[0m
+[0;31mE (193027) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (193027) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (193037) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (200047) HEATER: Temperatura: 29.000[0m
+[0;31mE (200047) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (200047) HEATER: Esta em teste: Nao[0m
+[0;31mE (200047) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (200047) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (200057) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.000[0m
+
+[0;31mE (203287) HEATER: Temperatura: 29.500[0m
+[0;31mE (203287) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (203287) HEATER: Esta em teste: Nao[0m
+[0;31mE (203287) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (203297) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (203297) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (210307) HEATER: Temperatura: 29.500[0m
+[0;31mE (210307) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (210307) HEATER: Esta em teste: Nao[0m
+[0;31mE (210307) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (210307) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (210317) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (217327) HEATER: Temperatura: 29.500[0m
+[0;31mE (217327) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (217327) HEATER: Esta em teste: Nao[0m
+[0;31mE (217327) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (217327) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (217337) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (220567) HEATER: Temperatura: 29.500[0m
+[0;31mE (220567) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (220567) HEATER: Esta em teste: Nao[0m
+[0;31mE (220567) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (220567) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (220577) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (227587) HEATER: Temperatura: 29.500[0m
+[0;31mE (227587) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (227587) HEATER: Esta em teste: Nao[0m
+[0;31mE (227587) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (227587) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (227597) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (234607) HEATER: Temperatura: 29.500[0m
+[0;31mE (234607) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (234607) HEATER: Esta em teste: Nao[0m
+[0;31mE (234607) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (234607) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (234617) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (237857) HEATER: Temperatura: 29.500[0m
+[0;31mE (237857) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (237857) HEATER: Esta em teste: Nao[0m
+[0;31mE (237857) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (237857) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (237867) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (244877) HEATER: Temperatura: 29.500[0m
+[0;31mE (244877) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (244877) HEATER: Esta em teste: Nao[0m
+[0;31mE (244877) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (244877) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (244887) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (251897) HEATER: Temperatura: 29.500[0m
+[0;31mE (251897) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (251897) HEATER: Esta em teste: Nao[0m
+[0;31mE (251897) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (251897) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (251907) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (255137) HEATER: Temperatura: 29.500[0m
+[0;31mE (255137) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (255137) HEATER: Esta em teste: Nao[0m
+[0;31mE (255137) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (255137) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (255147) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (262157) HEATER: Temperatura: 29.500[0m
+[0;31mE (262157) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (262157) HEATER: Esta em teste: Nao[0m
+[0;31mE (262157) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (262157) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (262167) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (269177) HEATER: Temperatura: 29.500[0m
+[0;31mE (269177) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (269177) HEATER: Esta em teste: Nao[0m
+[0;31mE (269177) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (269177) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (269187) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (272417) HEATER: Temperatura: 29.500[0m
+[0;31mE (272417) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (272417) HEATER: Esta em teste: Nao[0m
+[0;31mE (272417) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (272427) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (272427) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (279437) HEATER: Temperatura: 29.500[0m
+[0;31mE (279437) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (279437) HEATER: Esta em teste: Nao[0m
+[0;31mE (279437) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (279437) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (279447) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (286457) HEATER: Temperatura: 29.500[0m
+[0;31mE (286457) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (286457) HEATER: Esta em teste: Nao[0m
+[0;31mE (286457) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (286457) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (286467) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (289707) HEATER: Temperatura: 29.500[0m
+[0;31mE (289707) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (289707) HEATER: Esta em teste: Nao[0m
+[0;31mE (289707) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (289707) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (289717) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
+
+[0;31mE (296727) HEATER: Temperatura: 29.500[0m
+[0;31mE (296727) HEATER: Funcoes Habilitadas: Não[0m
+[0;31mE (296727) HEATER: Esta em teste: Nao[0m
+[0;31mE (296727) HEATER: Temperatura estabilizada: Nao[0m
+[0;31mE (296727) HEATER: Temperatura no Range > 53.0 e < 68.0: Nao[0m
+
+[0;32mI (296737) HEATER: AGUARDE: Temperatura de aquecimento atual: 29.500[0m
