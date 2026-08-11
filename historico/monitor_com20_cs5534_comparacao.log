@@ -1,0 +1,2148 @@
+--- Miniterm on COM20  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 2
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 4 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 296 (segundos)
+Read CH01 1 = 2217
+[ADCDBG] chip=CS5534 ch=0 raw=2217
+[AMPOLA 1] Valor recebido do sensor: 22
+Tamanho da lista de resultados: (1)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (727494) DS1302: Date & Time: 11/08/2026 16:42:07[0m
+[0;32mI (727504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (727504) TEST: Delay: 2880 ms[0m
+
+[0;31mE (728784) HEATER: Temperatura: 58.000[0m
+[0;31mE (728784) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (728784) HEATER: Esta em teste: Sim[0m
+[0;31mE (728784) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (728784) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 3
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 8 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 292 (segundos)
+Read CH01 1 = 2171
+[ADCDBG] chip=CS5534 ch=0 raw=2171
+[AMPOLA 1] Valor recebido do sensor: 21
+Tamanho da lista de resultados: (2)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (731494) DS1302: Date & Time: 11/08/2026 16:42:11[0m
+[0;32mI (731504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (731504) TEST: Delay: 2880 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 4
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 12 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 288 (segundos)
+Read CH01 1 = 2140
+[ADCDBG] chip=CS5534 ch=0 raw=2140
+[AMPOLA 1] Valor recebido do sensor: 21
+Tamanho da lista de resultados: (3)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (735494) DS1302: Date & Time: 11/08/2026 16:42:15[0m
+[0;32mI (735504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (735504) TEST: Delay: 2880 ms[0m
+
+[0;31mE (735794) HEATER: Temperatura: 58.000[0m
+[0;31mE (735794) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (735794) HEATER: Esta em teste: Sim[0m
+[0;31mE (735794) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (735794) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 5
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 16 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 284 (segundos)
+
+[0;31mE (739064) HEATER: Temperatura: 58.500[0m
+[0;31mE (739064) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (739064) HEATER: Esta em teste: Sim[0m
+[0;31mE (739064) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (739064) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 2116
+[ADCDBG] chip=CS5534 ch=0 raw=2116
+[AMPOLA 1] Valor recebido do sensor: 21
+Tamanho da lista de resultados: (4)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (739494) DS1302: Date & Time: 11/08/2026 16:42:19[0m
+[0;32mI (739504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (739504) TEST: Delay: 2880 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 6
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 20 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 280 (segundos)
+Read CH01 1 = 2100
+[ADCDBG] chip=CS5534 ch=0 raw=2100
+[AMPOLA 1] Valor recebido do sensor: 21
+Tamanho da lista de resultados: (5)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (743494) DS1302: Date & Time: 11/08/2026 16:42:23[0m
+[0;32mI (743504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (743504) TEST: Delay: 2880 ms[0m
+
+[0;31mE (746074) HEATER: Temperatura: 58.500[0m
+[0;31mE (746074) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (746074) HEATER: Esta em teste: Sim[0m
+[0;31mE (746074) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (746074) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 7
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 24 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 276 (segundos)
+Read CH01 1 = 2083
+[ADCDBG] chip=CS5534 ch=0 raw=2083
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (6)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (747494) DS1302: Date & Time: 11/08/2026 16:42:27[0m
+[0;32mI (747504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (747504) TEST: Delay: 2880 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 8
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 28 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 272 (segundos)
+Read CH01 1 = 2070
+[ADCDBG] chip=CS5534 ch=0 raw=2070
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (7)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (751494) DS1302: Date & Time: 11/08/2026 16:42:31[0m
+[0;32mI (751504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (751504) TEST: Delay: 2880 ms[0m
+
+[0;31mE (753084) HEATER: Temperatura: 58.500[0m
+[0;31mE (753084) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (753084) HEATER: Esta em teste: Sim[0m
+[0;31mE (753084) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (753084) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 9
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 32 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 268 (segundos)
+Read CH01 1 = 2057
+[ADCDBG] chip=CS5534 ch=0 raw=2057
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (8)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (755494) DS1302: Date & Time: 11/08/2026 16:42:35[0m
+[0;32mI (755504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (755504) TEST: Delay: 2880 ms[0m
+
+[0;31mE (756344) HEATER: Temperatura: 58.500[0m
+[0;31mE (756344) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (756344) HEATER: Esta em teste: Sim[0m
+[0;31mE (756344) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (756344) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 10
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 36 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 264 (segundos)
+Read CH01 1 = 2045
+[ADCDBG] chip=CS5534 ch=0 raw=2045
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (9)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (759494) DS1302: Date & Time: 11/08/2026 16:42:39[0m
+[0;32mI (759504) TEST: Tempo total de execucao: 1120 us[0m
+[0;32mI (759504) TEST: Delay: 2880 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 40 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 260 (segundos)
+
+[0;31mE (763354) HEATER: Temperatura: 59.000[0m
+[0;31mE (763354) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (763354) HEATER: Esta em teste: Sim[0m
+[0;31mE (763354) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (763354) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 2032
+[ADCDBG] chip=CS5534 ch=0 raw=2032
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (763504) DS1302: Date & Time: 11/08/2026 16:42:43[0m
+[0;32mI (763504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (763514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 44 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 256 (segundos)
+Read CH01 1 = 2023
+[ADCDBG] chip=CS5534 ch=0 raw=2023
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (767504) DS1302: Date & Time: 11/08/2026 16:42:47[0m
+[0;32mI (767504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (767514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (770364) HEATER: Temperatura: 59.000[0m
+[0;31mE (770364) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (770364) HEATER: Esta em teste: Sim[0m
+[0;31mE (770364) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (770364) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 48 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 252 (segundos)
+Read CH01 1 = 2012
+[ADCDBG] chip=CS5534 ch=0 raw=2012
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (771504) DS1302: Date & Time: 11/08/2026 16:42:51[0m
+[0;32mI (771504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (771514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (773624) HEATER: Temperatura: 59.000[0m
+[0;31mE (773624) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (773624) HEATER: Esta em teste: Sim[0m
+[0;31mE (773624) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (773624) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 52 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 248 (segundos)
+Read CH01 1 = 2004
+[ADCDBG] chip=CS5534 ch=0 raw=2004
+[AMPOLA 1] Valor recebido do sensor: 20
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (775504) DS1302: Date & Time: 11/08/2026 16:42:55[0m
+[0;32mI (775504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (775514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 56 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 244 (segundos)
+Read CH01 1 = 1995
+[ADCDBG] chip=CS5534 ch=0 raw=1995
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (779504) DS1302: Date & Time: 11/08/2026 16:42:59[0m
+[0;32mI (779504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (779514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (780634) HEATER: Temperatura: 59.000[0m
+[0;31mE (780634) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (780634) HEATER: Esta em teste: Sim[0m
+[0;31mE (780634) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (780634) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 60 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 240 (segundos)
+Read CH01 1 = 1984
+[ADCDBG] chip=CS5534 ch=0 raw=1984
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (783504) DS1302: Date & Time: 11/08/2026 16:43:03[0m
+[0;32mI (783504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (783514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 64 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 236 (segundos)
+Read CH01 1 = 1978
+[ADCDBG] chip=CS5534 ch=0 raw=1978
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (787504) DS1302: Date & Time: 11/08/2026 16:43:07[0m
+[0;32mI (787504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (787514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (787644) HEATER: Temperatura: 59.000[0m
+[0;31mE (787644) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (787644) HEATER: Esta em teste: Sim[0m
+[0;31mE (787644) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (787644) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 68 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 232 (segundos)
+
+[0;31mE (790914) HEATER: Temperatura: 59.000[0m
+[0;31mE (790914) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (790914) HEATER: Esta em teste: Sim[0m
+[0;31mE (790914) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (790914) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1970
+[ADCDBG] chip=CS5534 ch=0 raw=1970
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (791504) DS1302: Date & Time: 11/08/2026 16:43:11[0m
+[0;32mI (791504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (791514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 72 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 228 (segundos)
+Read CH01 1 = 1961
+[ADCDBG] chip=CS5534 ch=0 raw=1961
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (795504) DS1302: Date & Time: 11/08/2026 16:43:15[0m
+[0;32mI (795504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (795514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (797924) HEATER: Temperatura: 59.000[0m
+[0;31mE (797924) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (797924) HEATER: Esta em teste: Sim[0m
+[0;31mE (797924) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (797924) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 76 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 224 (segundos)
+Read CH01 1 = 1953
+[ADCDBG] chip=CS5534 ch=0 raw=1953
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (799504) DS1302: Date & Time: 11/08/2026 16:43:19[0m
+[0;32mI (799504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (799514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 80 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 220 (segundos)
+Read CH01 1 = 1947
+[ADCDBG] chip=CS5534 ch=0 raw=1947
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (803504) DS1302: Date & Time: 11/08/2026 16:43:23[0m
+[0;32mI (803504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (803514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (804934) HEATER: Temperatura: 59.000[0m
+[0;31mE (804934) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (804934) HEATER: Esta em teste: Sim[0m
+[0;31mE (804934) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (804934) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 84 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 216 (segundos)
+Read CH01 1 = 1939
+[ADCDBG] chip=CS5534 ch=0 raw=1939
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (807504) DS1302: Date & Time: 11/08/2026 16:43:27[0m
+[0;32mI (807504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (807514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (808194) HEATER: Temperatura: 58.500[0m
+[0;31mE (808194) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (808194) HEATER: Esta em teste: Sim[0m
+[0;31mE (808194) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (808204) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 88 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 212 (segundos)
+Read CH01 1 = 1930
+[ADCDBG] chip=CS5534 ch=0 raw=1930
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (811504) DS1302: Date & Time: 11/08/2026 16:43:31[0m
+[0;32mI (811504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (811514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 92 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 208 (segundos)
+
+[0;31mE (815204) HEATER: Temperatura: 58.500[0m
+[0;31mE (815204) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (815204) HEATER: Esta em teste: Sim[0m
+[0;31mE (815204) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (815204) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1928
+[ADCDBG] chip=CS5534 ch=0 raw=1928
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (815504) DS1302: Date & Time: 11/08/2026 16:43:35[0m
+[0;32mI (815504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (815514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 96 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 204 (segundos)
+Read CH01 1 = 1925
+[ADCDBG] chip=CS5534 ch=0 raw=1925
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (819504) DS1302: Date & Time: 11/08/2026 16:43:39[0m
+[0;32mI (819504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (819514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (822214) HEATER: Temperatura: 58.500[0m
+[0;31mE (822214) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (822214) HEATER: Esta em teste: Sim[0m
+[0;31mE (822214) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (822214) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 100 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 200 (segundos)
+Read CH01 1 = 1924
+[ADCDBG] chip=CS5534 ch=0 raw=1924
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (823504) DS1302: Date & Time: 11/08/2026 16:43:43[0m
+[0;32mI (823504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (823514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (825474) HEATER: Temperatura: 58.500[0m
+[0;31mE (825474) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (825474) HEATER: Esta em teste: Sim[0m
+[0;31mE (825474) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (825474) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 104 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 196 (segundos)
+Read CH01 1 = 1921
+[ADCDBG] chip=CS5534 ch=0 raw=1921
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (827504) DS1302: Date & Time: 11/08/2026 16:43:47[0m
+[0;32mI (827504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (827514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 108 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 192 (segundos)
+Read CH01 1 = 1923
+[ADCDBG] chip=CS5534 ch=0 raw=1923
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (831504) DS1302: Date & Time: 11/08/2026 16:43:51[0m
+[0;32mI (831504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (831514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (832484) HEATER: Temperatura: 58.500[0m
+[0;31mE (832484) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (832484) HEATER: Esta em teste: Sim[0m
+[0;31mE (832484) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (832484) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 112 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 188 (segundos)
+Read CH01 1 = 1922
+[ADCDBG] chip=CS5534 ch=0 raw=1922
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (835504) DS1302: Date & Time: 11/08/2026 16:43:55[0m
+[0;32mI (835504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (835514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 116 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 184 (segundos)
+Read CH01 1 = 1918
+[ADCDBG] chip=CS5534 ch=0 raw=1918
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (839504) DS1302: Date & Time: 11/08/2026 16:43:59[0m
+[0;32mI (839504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (839514) TEST: Delay: 2871 ms[0m
+[0;31mE (839494) HEATER: Temperatura: 58.500[0m
+[0;31mE (839524) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (839524) HEATER: Esta em teste: Sim[0m
+[0;31mE (839534) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (839534) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 120 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 180 (segundos)
+
+[0;31mE (842764) HEATER: Temperatura: 58.500[0m
+[0;31mE (842764) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (842764) HEATER: Esta em teste: Sim[0m
+[0;31mE (842764) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (842764) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1920
+[ADCDBG] chip=CS5534 ch=0 raw=1920
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (843504) DS1302: Date & Time: 11/08/2026 16:44:03[0m
+[0;32mI (843504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (843514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 124 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 176 (segundos)
+Read CH01 1 = 1921
+[ADCDBG] chip=CS5534 ch=0 raw=1921
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (847504) DS1302: Date & Time: 11/08/2026 16:44:07[0m
+[0;32mI (847504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (847514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (849774) HEATER: Temperatura: 58.000[0m
+[0;31mE (849774) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (849774) HEATER: Esta em teste: Sim[0m
+[0;31mE (849774) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (849774) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 128 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 172 (segundos)
+Read CH01 1 = 1917
+[ADCDBG] chip=CS5534 ch=0 raw=1917
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (851504) DS1302: Date & Time: 11/08/2026 16:44:11[0m
+[0;32mI (851504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (851514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 132 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 168 (segundos)
+Read CH01 1 = 1919
+[ADCDBG] chip=CS5534 ch=0 raw=1919
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (855504) DS1302: Date & Time: 11/08/2026 16:44:15[0m
+[0;32mI (855504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (855514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (856784) HEATER: Temperatura: 58.000[0m
+[0;31mE (856784) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (856784) HEATER: Esta em teste: Sim[0m
+[0;31mE (856784) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (856784) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 136 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 164 (segundos)
+Read CH01 1 = 1919
+[ADCDBG] chip=CS5534 ch=0 raw=1919
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (859504) DS1302: Date & Time: 11/08/2026 16:44:19[0m
+[0;32mI (859504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (859514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (860044) HEATER: Temperatura: 58.000[0m
+[0;31mE (860044) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (860044) HEATER: Esta em teste: Sim[0m
+[0;31mE (860044) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (860044) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 140 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 160 (segundos)
+Read CH01 1 = 1918
+[ADCDBG] chip=CS5534 ch=0 raw=1918
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (863504) DS1302: Date & Time: 11/08/2026 16:44:23[0m
+[0;32mI (863504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (863514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 144 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 156 (segundos)
+
+[0;31mE (867054) HEATER: Temperatura: 58.000[0m
+[0;31mE (867054) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (867054) HEATER: Esta em teste: Sim[0m
+[0;31mE (867054) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (867054) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1921
+[ADCDBG] chip=CS5534 ch=0 raw=1921
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (867504) DS1302: Date & Time: 11/08/2026 16:44:27[0m
+[0;32mI (867504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (867514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 148 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 152 (segundos)
+Read CH01 1 = 1916
+[ADCDBG] chip=CS5534 ch=0 raw=1916
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (871504) DS1302: Date & Time: 11/08/2026 16:44:31[0m
+[0;32mI (871504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (871514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (874064) HEATER: Temperatura: 58.000[0m
+[0;31mE (874064) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (874064) HEATER: Esta em teste: Sim[0m
+[0;31mE (874064) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (874064) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 152 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 148 (segundos)
+Read CH01 1 = 1922
+[ADCDBG] chip=CS5534 ch=0 raw=1922
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (875504) DS1302: Date & Time: 11/08/2026 16:44:35[0m
+[0;32mI (875504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (875514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (877334) HEATER: Temperatura: 57.500[0m
+[0;31mE (877334) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (877334) HEATER: Esta em teste: Sim[0m
+[0;31mE (877334) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (877334) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 156 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 144 (segundos)
+Read CH01 1 = 1920
+[ADCDBG] chip=CS5534 ch=0 raw=1920
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (879504) DS1302: Date & Time: 11/08/2026 16:44:39[0m
+[0;32mI (879504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (879514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 160 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 140 (segundos)
+Read CH01 1 = 1918
+[ADCDBG] chip=CS5534 ch=0 raw=1918
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (883504) DS1302: Date & Time: 11/08/2026 16:44:43[0m
+[0;32mI (883504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (883514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (884344) HEATER: Temperatura: 57.500[0m
+[0;31mE (884344) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (884344) HEATER: Esta em teste: Sim[0m
+[0;31mE (884344) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (884344) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 164 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 136 (segundos)
+Read CH01 1 = 1921
+[ADCDBG] chip=CS5534 ch=0 raw=1921
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (887504) DS1302: Date & Time: 11/08/2026 16:44:47[0m
+[0;32mI (887504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (887514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 168 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 132 (segundos)
+
+[0;31mE (891354) HEATER: Temperatura: 57.500[0m
+[0;31mE (891354) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (891354) HEATER: Esta em teste: Sim[0m
+[0;31mE (891354) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (891354) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1915
+[ADCDBG] chip=CS5534 ch=0 raw=1915
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (891504) DS1302: Date & Time: 11/08/2026 16:44:51[0m
+[0;32mI (891504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (891514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 172 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 128 (segundos)
+
+[0;31mE (894614) HEATER: Temperatura: 57.500[0m
+[0;31mE (894614) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (894614) HEATER: Esta em teste: Sim[0m
+[0;31mE (894614) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (894624) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1919
+[ADCDBG] chip=CS5534 ch=0 raw=1919
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (895504) DS1302: Date & Time: 11/08/2026 16:44:55[0m
+[0;32mI (895504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (895514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 176 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 124 (segundos)
+Read CH01 1 = 1913
+[ADCDBG] chip=CS5534 ch=0 raw=1913
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (899504) DS1302: Date & Time: 11/08/2026 16:44:59[0m
+[0;32mI (899504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (899514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (901624) HEATER: Temperatura: 57.500[0m
+[0;31mE (901624) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (901624) HEATER: Esta em teste: Sim[0m
+[0;31mE (901624) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (901624) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 180 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 120 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1916
+[ADCDBG] chip=CS5534 ch=0 raw=1916
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (903504) DS1302: Date & Time: 11/08/2026 16:45:03[0m
+[0;32mI (903504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (903514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 184 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 116 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1919
+[ADCDBG] chip=CS5534 ch=0 raw=1919
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (907504) DS1302: Date & Time: 11/08/2026 16:45:07[0m
+[0;32mI (907504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (907514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (908634) HEATER: Temperatura: 57.500[0m
+[0;31mE (908634) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (908634) HEATER: Esta em teste: Sim[0m
+[0;31mE (908634) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (908634) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 188 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 112 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1919
+[ADCDBG] chip=CS5534 ch=0 raw=1919
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (911504) DS1302: Date & Time: 11/08/2026 16:45:11[0m
+[0;32mI (911504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (911514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (911894) HEATER: Temperatura: 57.000[0m
+[0;31mE (911894) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (911894) HEATER: Esta em teste: Sim[0m
+[0;31mE (911894) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (911894) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 192 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 108 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (915504) DS1302: Date & Time: 11/08/2026 16:45:15[0m
+[0;32mI (915504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (915514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 196 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 104 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (918904) HEATER: Temperatura: 57.000[0m
+[0;31mE (918904) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (918904) HEATER: Esta em teste: Sim[0m
+[0;31mE (918904) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (918904) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1916
+[ADCDBG] chip=CS5534 ch=0 raw=1916
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (919504) DS1302: Date & Time: 11/08/2026 16:45:19[0m
+[0;32mI (919504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (919514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 200 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 100 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1917
+[ADCDBG] chip=CS5534 ch=0 raw=1917
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (923504) DS1302: Date & Time: 11/08/2026 16:45:23[0m
+[0;32mI (923504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (923514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (925914) HEATER: Temperatura: 57.000[0m
+[0;31mE (925914) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (925914) HEATER: Esta em teste: Sim[0m
+[0;31mE (925914) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (925914) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 204 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 96 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1913
+[ADCDBG] chip=CS5534 ch=0 raw=1913
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (927504) DS1302: Date & Time: 11/08/2026 16:45:27[0m
+[0;32mI (927504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (927514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (929184) HEATER: Temperatura: 57.000[0m
+[0;31mE (929184) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (929184) HEATER: Esta em teste: Sim[0m
+[0;31mE (929184) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (929184) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 208 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 92 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1911
+[ADCDBG] chip=CS5534 ch=0 raw=1911
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (931504) DS1302: Date & Time: 11/08/2026 16:45:31[0m
+[0;32mI (931504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (931514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 212 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 88 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1916
+[ADCDBG] chip=CS5534 ch=0 raw=1916
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (935504) DS1302: Date & Time: 11/08/2026 16:45:35[0m
+[0;32mI (935504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (935514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (936194) HEATER: Temperatura: 57.000[0m
+[0;31mE (936194) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (936194) HEATER: Esta em teste: Sim[0m
+[0;31mE (936194) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (936194) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 216 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 84 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1915
+[ADCDBG] chip=CS5534 ch=0 raw=1915
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (939504) DS1302: Date & Time: 11/08/2026 16:45:39[0m
+[0;32mI (939504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (939514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 220 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 80 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (943204) HEATER: Temperatura: 56.500[0m
+[0;31mE (943204) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (943204) HEATER: Esta em teste: Sim[0m
+[0;31mE (943204) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (943204) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (943504) DS1302: Date & Time: 11/08/2026 16:45:43[0m
+[0;32mI (943504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (943514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 224 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 76 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (946464) HEATER: Temperatura: 56.500[0m
+[0;31mE (946464) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (946464) HEATER: Esta em teste: Sim[0m
+[0;31mE (946464) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (946464) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (947504) DS1302: Date & Time: 11/08/2026 16:45:47[0m
+[0;32mI (947504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (947514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 228 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 72 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (951504) DS1302: Date & Time: 11/08/2026 16:45:51[0m
+[0;32mI (951504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (951514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (953474) HEATER: Temperatura: 56.500[0m
+[0;31mE (953474) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (953474) HEATER: Esta em teste: Sim[0m
+[0;31mE (953474) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (953474) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 232 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 68 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (955504) DS1302: Date & Time: 11/08/2026 16:45:55[0m
+[0;32mI (955504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (955514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 236 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 64 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (959504) DS1302: Date & Time: 11/08/2026 16:45:59[0m
+[0;32mI (959504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (959514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (960484) HEATER: Temperatura: 56.500[0m
+[0;31mE (960484) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (960484) HEATER: Esta em teste: Sim[0m
+[0;31mE (960484) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (960484) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 240 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 60 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1913
+[ADCDBG] chip=CS5534 ch=0 raw=1913
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (963504) DS1302: Date & Time: 11/08/2026 16:46:03[0m
+[0;32mI (963504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (963514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (963744) HEATER: Temperatura: 56.500[0m
+[0;31mE (963744) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (963744) HEATER: Esta em teste: Sim[0m
+[0;31mE (963744) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (963754) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 244 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 56 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1910
+[ADCDBG] chip=CS5534 ch=0 raw=1910
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (967504) DS1302: Date & Time: 11/08/2026 16:46:07[0m
+[0;32mI (967504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (967514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 248 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 52 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (970754) HEATER: Temperatura: 56.500[0m
+[0;31mE (970754) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (970754) HEATER: Esta em teste: Sim[0m
+[0;31mE (970754) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (970754) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1909
+[ADCDBG] chip=CS5534 ch=0 raw=1909
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (971504) DS1302: Date & Time: 11/08/2026 16:46:11[0m
+[0;32mI (971504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (971514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 252 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 48 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1908
+[ADCDBG] chip=CS5534 ch=0 raw=1908
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (975504) DS1302: Date & Time: 11/08/2026 16:46:15[0m
+[0;32mI (975504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (975514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (977764) HEATER: Temperatura: 56.000[0m
+[0;31mE (977764) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (977764) HEATER: Esta em teste: Sim[0m
+[0;31mE (977764) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (977764) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 256 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 44 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1912
+[ADCDBG] chip=CS5534 ch=0 raw=1912
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (979504) DS1302: Date & Time: 11/08/2026 16:46:19[0m
+[0;32mI (979504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (979514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (981034) HEATER: Temperatura: 56.000[0m
+[0;31mE (981034) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (981034) HEATER: Esta em teste: Sim[0m
+[0;31mE (981034) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (981034) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 260 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 40 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1910
+[ADCDBG] chip=CS5534 ch=0 raw=1910
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (983504) DS1302: Date & Time: 11/08/2026 16:46:23[0m
+[0;32mI (983504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (983514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 264 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 36 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1908
+[ADCDBG] chip=CS5534 ch=0 raw=1908
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (987504) DS1302: Date & Time: 11/08/2026 16:46:27[0m
+[0;32mI (987504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (987514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (988044) HEATER: Temperatura: 56.000[0m
+[0;31mE (988044) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (988044) HEATER: Esta em teste: Sim[0m
+[0;31mE (988044) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (988044) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 268 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 32 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1908
+[ADCDBG] chip=CS5534 ch=0 raw=1908
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (991504) DS1302: Date & Time: 11/08/2026 16:46:31[0m
+[0;32mI (991504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (991514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 272 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 28 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (995054) HEATER: Temperatura: 56.000[0m
+[0;31mE (995054) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (995054) HEATER: Esta em teste: Sim[0m
+[0;31mE (995054) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (995054) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 1 = 1911
+[ADCDBG] chip=CS5534 ch=0 raw=1911
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (995504) DS1302: Date & Time: 11/08/2026 16:46:35[0m
+[0;32mI (995504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (995514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (998314) HEATER: Temperatura: 56.000[0m
+[0;31mE (998314) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (998314) HEATER: Esta em teste: Sim[0m
+[0;31mE (998314) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (998314) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 276 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 24 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1904
+[ADCDBG] chip=CS5534 ch=0 raw=1904
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (999504) DS1302: Date & Time: 11/08/2026 16:46:39[0m
+[0;32mI (999504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (999514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 280 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 20 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1908
+[ADCDBG] chip=CS5534 ch=0 raw=1908
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1003504) DS1302: Date & Time: 11/08/2026 16:46:43[0m
+[0;32mI (1003504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (1003514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (1005324) HEATER: Temperatura: 56.000[0m
+[0;31mE (1005324) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1005324) HEATER: Esta em teste: Sim[0m
+[0;31mE (1005324) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1005324) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 284 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 16 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1908
+[ADCDBG] chip=CS5534 ch=0 raw=1908
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1007504) DS1302: Date & Time: 11/08/2026 16:46:47[0m
+[0;32mI (1007504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (1007514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 288 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 12 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1908
+[ADCDBG] chip=CS5534 ch=0 raw=1908
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1011504) DS1302: Date & Time: 11/08/2026 16:46:51[0m
+[0;32mI (1011504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (1011514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (1012334) HEATER: Temperatura: 56.000[0m
+[0;31mE (1012334) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1012334) HEATER: Esta em teste: Sim[0m
+[0;31mE (1012334) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1012334) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 292 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 8 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1904
+[ADCDBG] chip=CS5534 ch=0 raw=1904
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1015504) DS1302: Date & Time: 11/08/2026 16:46:55[0m
+[0;32mI (1015504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (1015514) TEST: Delay: 2871 ms[0m
+
+[0;31mE (1015604) HEATER: Temperatura: 55.500[0m
+[0;31mE (1015604) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1015604) HEATER: Esta em teste: Sim[0m
+[0;31mE (1015604) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1015614) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 296 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 4 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 1 = 1905
+[ADCDBG] chip=CS5534 ch=0 raw=1905
+[AMPOLA 1] Valor recebido do sensor: 19
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1019504) DS1302: Date & Time: 11/08/2026 16:46:59[0m
+[0;32mI (1019504) TEST: Tempo total de execucao: 1129 us[0m
+[0;32mI (1019514) TEST: Delay: 2871 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000001858 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 300 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 0 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;32mI (1022394) DS1302: Date & Time: 11/08/2026 16:47:01[0m
+***** [AMPOLA 1] FINALIZANDO TESTES *****
+Date & Time Init: 11/08/2026 16:42:01
+Date & Time End: 11/08/2026 16:47:01
+Date & Time End (Final): 11/08/2026 16:47:01
+***** [AMPOLA 1] TESTE FINALIZADO COM SUCESSO *****
+
+***** [AMPOLA 1] IMPRIMINDO RESULTADO *****
+
+
+
+Serial Number 002300P4
+
+
+
+Language: pt-br
+
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;32mI (1022434) : Start Date & Time Formatted: 11/08/2026 | 16:42:01[0m
+[0;32mI (1022444) : End   Date & Time Formatted: 11/08/2026 | 16:47:01[0m
+date: 11/08/2026 16:47:01
+day: 11
+month: 8
+year: 2026
+hour: 16
+minute: 47
+second: 1
+date: 11/08/2026 16:42:01
+day: 11
+month: 8
+year: 2026
+hour: 16
+minute: 42
+second: 1
+s1: 61747289221
+s2: 61747288921
+diferenca: 300.000000
+
+[0;31mE (1022614) HEATER: Temperatura: 55.500[0m
+[0;31mE (1022614) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1022614) HEATER: Esta em teste: Nao[0m
+[0;31mE (1022614) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1022614) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1023224) PRINTER_DRIVER: usb_host_transfer_submit Out fail: ESP_ERR_INVALID_ARG[0m
+[0;33mW (1023334) PRINTER: Erro de impressora detectado (is_printer_error), mas nao ha ticket pendente no historico - sem motivo pra reiniciar[0m
+[0;32mI (1023474) PRINTER_DRIVER: usb_host_transfer_submit Out fail: ESP_ERR_INVALID_ARG[0m
+[0;32mI (1023774) NVS_Helper: NVSHelper::setObjct(): set obj addr = [0x3FCDED28], length = [1161]
+[0m
+
+
+**************************************************************
+Ampola sob teste (1)
+Data e hora de inicio: 11/08/2026 16:42:01
+Data e hora de fim: 11/08/2026 16:47:01
+Resultado:
+     Valor da amostra [1]:   22
+     Valor da amostra [2]:   22
+     Valor da amostra [3]:   21
+     Valor da amostra [4]:   21
+     Valor da amostra [5]:   21
+     Valor da amostra [6]:   19
+     Valor da amostra [7]:   19
+     Valor da amostra [8]:   19
+     Valor da amostra [9]:   19
+     Valor da amostra [10]:   19
+     -----------------------------
+     Soma dos valores:       202
+     Quantidade de amostras: 10
+     -----------------------------
+     Media dos valores:      20
+     Variacao Percentual:    -11.21
+     -----------------------------
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+******* AMOSTRA NEGATIVADA *******
+
+**************************************************************
+
+[0;33mW (1023854) timer_manager: Timer not started[0m
+[0;32mI (1023864) timer_manager: Starting timer[0m
+[0;32mI (1023864) TEST: Tempo total de execucao: 1486 us[0m
+[0;32mI (1023874) TEST: Delay: 2514 ms[0m
+[0;33mW (1024334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1025334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1026334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1026384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1026384) TEST: Delay: 4000 ms[0m
+[0;33mW (1027334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1028334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1029334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1029624) HEATER: Temperatura: 55.500[0m
+[0;31mE (1029624) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1029624) HEATER: Esta em teste: Nao[0m
+[0;31mE (1029624) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1029624) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1030334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1030384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1030384) TEST: Delay: 4000 ms[0m
+[0;33mW (1031334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1032334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1032884) HEATER: Temperatura: 55.500[0m
+[0;31mE (1032884) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1032884) HEATER: Esta em teste: Nao[0m
+[0;31mE (1032884) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1032894) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1033334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1034334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1034384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1034384) TEST: Delay: 4000 ms[0m
+[0;33mW (1035334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1036334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1037334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1038334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1038384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1038384) TEST: Delay: 4000 ms[0m
+[0;33mW (1039334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1039894) HEATER: Temperatura: 55.500[0m
+[0;31mE (1039894) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1039894) HEATER: Esta em teste: Nao[0m
+[0;31mE (1039894) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1039894) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1040334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1041334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1042334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1042384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1042384) TEST: Delay: 4000 ms[0m
+[0;33mW (1043334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1044334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1045334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1046334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1046384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1046384) TEST: Delay: 4000 ms[0m
+
+[0;31mE (1046904) HEATER: Temperatura: 55.500[0m
+[0;31mE (1046904) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1046904) HEATER: Esta em teste: Nao[0m
+[0;31mE (1046904) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1046904) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1047334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1048334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1049334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1050164) HEATER: Temperatura: 55.500[0m
+[0;31mE (1050164) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1050164) HEATER: Esta em teste: Nao[0m
+[0;31mE (1050164) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1050174) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1050334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1050384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1050384) TEST: Delay: 4000 ms[0m
+[0;33mW (1051334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1052334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1053334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1054334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1054384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1054384) TEST: Delay: 4000 ms[0m
+[0;33mW (1055334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1056334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1057174) HEATER: Temperatura: 55.500[0m
+[0;31mE (1057174) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1057174) HEATER: Esta em teste: Nao[0m
+[0;31mE (1057174) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1057174) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1057334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1058334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1058384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1058384) TEST: Delay: 4000 ms[0m
+[0;33mW (1059334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1060334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1061334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1062334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1062384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1062384) TEST: Delay: 4000 ms[0m
+[0;33mW (1063334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1064184) HEATER: Temperatura: 55.500[0m
+[0;31mE (1064184) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1064184) HEATER: Esta em teste: Nao[0m
+[0;31mE (1064184) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1064184) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1064334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[DEBUG-ALARM] Ampola 1: alarm_status=2 (removida, fora de teste)
+[0;33mW (1065334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1066334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1066384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1066384) TEST: Delay: 4000 ms[0m
+[0;33mW (1067334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1067454) HEATER: Temperatura: 55.500[0m
+[0;31mE (1067454) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1067454) HEATER: Esta em teste: Nao[0m
+[0;31mE (1067454) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1067464) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1068334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1069334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1070334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1070384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1070384) TEST: Delay: 4000 ms[0m
+[0;33mW (1071334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1072334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1073334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1074334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1074384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1074384) TEST: Delay: 4000 ms[0m
+
+[0;31mE (1074464) HEATER: Temperatura: 55.500[0m
+[0;31mE (1074464) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1074464) HEATER: Esta em teste: Nao[0m
+[0;31mE (1074464) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1074464) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1075334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1076334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1077334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1078334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1078384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1078384) TEST: Delay: 4000 ms[0m
+[0;33mW (1079334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1080334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1081334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1081474) HEATER: Temperatura: 55.500[0m
+[0;31mE (1081474) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1081474) HEATER: Esta em teste: Nao[0m
+[0;31mE (1081474) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1081474) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1082334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1082384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1082384) TEST: Delay: 4000 ms[0m
+[0;33mW (1083334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1084334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1084734) HEATER: Temperatura: 56.000[0m
+[0;31mE (1084734) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1084734) HEATER: Esta em teste: Nao[0m
+[0;31mE (1084734) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1084744) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1085334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1086334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1086384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1086384) TEST: Delay: 4000 ms[0m
+[0;33mW (1087334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1088334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1089334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1090334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1090384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1090384) TEST: Delay: 4000 ms[0m
+[0;33mW (1091334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1091744) HEATER: Temperatura: 56.000[0m
+[0;31mE (1091744) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1091744) HEATER: Esta em teste: Nao[0m
+[0;31mE (1091744) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1091744) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1092334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1093334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1094334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1094384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1094384) TEST: Delay: 4000 ms[0m
+[0;33mW (1095334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1096334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1097334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1098334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1098384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1098384) TEST: Delay: 4000 ms[0m
+
+[0;31mE (1098754) HEATER: Temperatura: 56.000[0m
+[0;31mE (1098754) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1098754) HEATER: Esta em teste: Nao[0m
+[0;31mE (1098754) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1098754) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1099334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1100334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1101334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1102014) HEATER: Temperatura: 56.000[0m
+[0;31mE (1102014) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1102014) HEATER: Esta em teste: Nao[0m
+[0;31mE (1102014) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1102024) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1102334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1102384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1102384) TEST: Delay: 4000 ms[0m
+[0;33mW (1103334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1104334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1105334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1106334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1106384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1106384) TEST: Delay: 4000 ms[0m
+[0;33mW (1107334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1108334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1109024) HEATER: Temperatura: 56.500[0m
+[0;31mE (1109024) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1109024) HEATER: Esta em teste: Nao[0m
+[0;31mE (1109024) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1109024) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1109334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1110334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1110384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1110384) TEST: Delay: 4000 ms[0m
+[0;33mW (1111334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1112334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1113334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1114334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1114384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1114384) TEST: Delay: 4000 ms[0m
+[0;33mW (1115334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1116034) HEATER: Temperatura: 56.500[0m
+[0;31mE (1116034) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1116034) HEATER: Esta em teste: Nao[0m
+[0;31mE (1116034) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1116034) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1116334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1117334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1118334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1118384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1118384) TEST: Delay: 4000 ms[0m
+
+[0;31mE (1119304) HEATER: Temperatura: 56.500[0m
+[0;31mE (1119304) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1119304) HEATER: Esta em teste: Nao[0m
+[0;31mE (1119304) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1119314) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1119334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1120334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1121334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1122334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1122384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1122384) TEST: Delay: 4000 ms[0m
+[0;33mW (1123334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1124334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1125334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1126314) HEATER: Temperatura: 56.500[0m
+[0;31mE (1126314) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1126314) HEATER: Esta em teste: Nao[0m
+[0;31mE (1126314) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1126314) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1126334) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1126384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1126384) TEST: Delay: 4000 ms[0m
+[0;33mW (1127344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1128344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1129344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1130344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1130384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1130384) TEST: Delay: 4000 ms[0m
+[0;33mW (1131344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1132344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1133324) HEATER: Temperatura: 57.000[0m
+[0;31mE (1133324) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1133324) HEATER: Esta em teste: Nao[0m
+[0;31mE (1133324) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1133324) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1133344) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1134354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1134384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1134384) TEST: Delay: 4000 ms[0m
+[0;33mW (1135354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1136354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1136584) HEATER: Temperatura: 57.000[0m
+[0;31mE (1136584) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1136584) HEATER: Esta em teste: Nao[0m
+[0;31mE (1136584) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1136594) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1137354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1138354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1138384) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1138384) TEST: Delay: 4000 ms[0m
+[0;33mW (1139354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1140354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1141354) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+� Exception in thread rx:
+Traceback (most recent call last):
+  File "C:\Users\Edson\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Edson\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\Edson\AppData\Local\Programs\Python\Python312\Lib\site-packages\serial\tools\miniterm.py", line 499, in reader
+    data = self.serial.read(self.serial.in_waiting or 1)
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Edson\AppData\Local\Programs\Python\Python312\Lib\site-packages\serial\serialwin32.py", line 259, in in_waiting
+    raise SerialException("ClearCommError failed ({!r})".format(ctypes.WinError()))
+serial.serialutil.SerialException: ClearCommError failed (PermissionError(13, 'Acesso negado.', None, 5))

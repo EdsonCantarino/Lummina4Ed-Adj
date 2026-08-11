@@ -141,9 +141,6 @@ static long ads1248_rdata(void) {
 	cmd_t.length = 8;
 	cmd_t.tx_buffer = cmd_tx;
 	cmd_t.flags = SPI_TRANS_CS_KEEP_ACTIVE;
-	ESP_ERROR_CHECK(spi_device_polling_transmit(ads1248_spi, &cmd_t));
-
-	ets_delay_us(ADS1248_RDATA_T6_DELAY_US);
 
 	uint8_t data_tx[3] = { ADS1248_CMD_NOP, ADS1248_CMD_NOP,
 	ADS1248_CMD_NOP };
@@ -152,7 +149,23 @@ static long ads1248_rdata(void) {
 	data_t.length = sizeof(data_tx) * 8;
 	data_t.tx_buffer = data_tx;
 	data_t.rx_buffer = data_rx;
+
+	// SPI_TRANS_CS_KEEP_ACTIVE exige o barramento adquirido explicitamente
+	// (spi_device_acquire_bus/release_bus) em volta de todo o grupo de
+	// transacoes - sem isso o segundo polling_transmit falha com
+	// ESP_ERR_INVALID_ARG ("polling can't get buslock") e o ESP_ERROR_CHECK
+	// aborta o firmware. So apareceu no primeiro teste real de ampola
+	// (11/08/2026), nunca tinha rodado read_channel_value() de ponta a
+	// ponta desde a migracao pra spi_master.
+	ESP_ERROR_CHECK(spi_device_acquire_bus(ads1248_spi, portMAX_DELAY));
+
+	ESP_ERROR_CHECK(spi_device_polling_transmit(ads1248_spi, &cmd_t));
+
+	ets_delay_us(ADS1248_RDATA_T6_DELAY_US);
+
 	ESP_ERROR_CHECK(spi_device_polling_transmit(ads1248_spi, &data_t));
+
+	spi_device_release_bus(ads1248_spi);
 
 	uint32_t raw24 = ((uint32_t) data_rx[0] << 16)
 			| ((uint32_t) data_rx[1] << 8) | data_rx[2];
