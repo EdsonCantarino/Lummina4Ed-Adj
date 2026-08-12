@@ -4,7 +4,7 @@
 **Branch:** `feature/config-web`
 **Placas:** ADS1248 na COM21 (firmware com driver `spi_master`, pós-fix do bus-lock em `ads1248_rdata()`), CS5534 na COM20 (firmware de referência, sem alteração nesta investigação).
 **Ampolas:** as mesmas usadas no teste de 07/08 (ver `historico/2026-08-07-comparacao-ads1248-vs-cs5534.md`), cavidade 1 nas duas placas, ciclo de 5 minutos.
-**Logs brutos:** `historico/monitor_com20_cs5534_comparacao.log` (CS5534), `historico/monitor_com21_ads1248_comparacao.log` (ADS1248).
+**Logs brutos:** `historico/Testes/monitor_com20_cs5534_comparacao.log` (CS5534), `historico/Testes/monitor_com21_ads1248_comparacao.log` (ADS1248).
 
 ## Resultado
 

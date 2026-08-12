@@ -1,0 +1,2886 @@
+--- Miniterm on COM20  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+[0;33mW (1476384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1477304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1477304) TEST: Delay: 4000 ms[0m
+[0;33mW (1477384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1478384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1479124) HEATER: Temperatura: 58.500[0m
+[0;31mE (1479124) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1479124) HEATER: Esta em teste: Nao[0m
+[0;31mE (1479124) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1479124) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1479384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1480384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1481304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1481304) TEST: Delay: 4000 ms[0m
+[0;33mW (1481384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1482384) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1482394) HEATER: Temperatura: 58.500[0m
+[0;31mE (1482394) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1482394) HEATER: Esta em teste: Nao[0m
+[0;31mE (1482404) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1482404) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1483394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1484394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1485304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1485304) TEST: Delay: 4000 ms[0m
+[0;33mW (1485394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1486394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1487394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1488394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1489304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1489304) TEST: Delay: 4000 ms[0m
+[0;33mW (1489394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1489414) HEATER: Temperatura: 58.000[0m
+[0;31mE (1489414) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1489414) HEATER: Esta em teste: Nao[0m
+[0;31mE (1489414) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1489414) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[DEBUG-ALARM] Ampola 1: alarm_status=1 (inserida)
+[0;33mW (1490394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1491394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1492394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1493304) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1493304) NVS_UTILS: Save Ampoule Test Counter in SRAM - DS1302
+[0m
+Value: 4
+[0;32mI (1493304) NVS_UTILS: Ampoule Test Counter in ROM: (4)!
+[0m
+[0;32mI (1493304) NVS_UTILS: Ampoule Test Counter: (5)!
+[0m
+[0;32mI (1493314) NVS_UTILS: Ampoule Test Counter: (5)!
+[0m
+[0;32mI (1493334) NVS_UTILS: Ampoule Test Counter: (5)!
+[0m
+[0;32mI (1493334) NVS_UTILS: Prepare to save Ampoules Temp History in NVS
+[0m
+[0;32mI (1493334) NVS_UTILS: Ampoules Temp History saved in NVS!
+[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 1
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 0 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 300 (segundos)
+[0;33mW (1493394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 43032
+[ADCDBG] chip=ADS1248 ch=0 raw=43032
+[AMPOLA 1] Valor recebido do sensor: 430
+Tamanho da lista de resultados: (0)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1494064) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1494074) TEST: Tempo total de execucao: 771 us[0m
+[0;32mI (1494074) TEST: Delay: 3229 ms[0m
+[0;33mW (1494394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1495394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1496394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1496424) HEATER: Temperatura: 58.000[0m
+[0;31mE (1496424) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1496424) HEATER: Esta em teste: Sim[0m
+[0;31mE (1496424) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1496424) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 2
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 4 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 296 (segundos)
+[0;33mW (1497394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 42640
+[ADCDBG] chip=ADS1248 ch=0 raw=42640
+[AMPOLA 1] Valor recebido do sensor: 426
+Tamanho da lista de resultados: (1)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1498014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1498024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1498024) TEST: Delay: 3279 ms[0m
+[0;33mW (1498394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1499394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1499674) HEATER: Temperatura: 58.000[0m
+[0;31mE (1499674) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1499674) HEATER: Esta em teste: Sim[0m
+[0;31mE (1499674) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1499684) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1500394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 3
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 8 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 292 (segundos)
+[0;33mW (1501394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 42302
+[ADCDBG] chip=ADS1248 ch=0 raw=42302
+[AMPOLA 1] Valor recebido do sensor: 423
+Tamanho da lista de resultados: (2)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1502014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1502024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1502024) TEST: Delay: 3279 ms[0m
+[0;33mW (1502394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1503394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1504394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 4
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 12 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 288 (segundos)
+[0;33mW (1505394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 41977
+[ADCDBG] chip=ADS1248 ch=0 raw=41977
+[AMPOLA 1] Valor recebido do sensor: 419
+Tamanho da lista de resultados: (3)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1506014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1506024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1506024) TEST: Delay: 3279 ms[0m
+[0;33mW (1506394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1506684) HEATER: Temperatura: 58.000[0m
+[0;31mE (1506684) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1506684) HEATER: Esta em teste: Sim[0m
+[0;31mE (1506684) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1506684) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1507394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1508394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 5
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 16 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 284 (segundos)
+[0;33mW (1509394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 41696
+[ADCDBG] chip=ADS1248 ch=0 raw=41696
+[AMPOLA 1] Valor recebido do sensor: 416
+Tamanho da lista de resultados: (4)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1510014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1510024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1510024) TEST: Delay: 3279 ms[0m
+[0;33mW (1510394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1511394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1512394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 6
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 20 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 280 (segundos)
+[0;33mW (1513394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1513694) HEATER: Temperatura: 58.000[0m
+[0;31mE (1513694) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1513694) HEATER: Esta em teste: Sim[0m
+[0;31mE (1513694) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1513694) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 41319
+[ADCDBG] chip=ADS1248 ch=0 raw=41319
+[AMPOLA 1] Valor recebido do sensor: 413
+Tamanho da lista de resultados: (5)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1514014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1514024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1514024) TEST: Delay: 3279 ms[0m
+[0;33mW (1514394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1515394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1516394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1516954) HEATER: Temperatura: 58.000[0m
+[0;31mE (1516954) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1516954) HEATER: Esta em teste: Sim[0m
+[0;31mE (1516954) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1516964) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 7
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 24 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 276 (segundos)
+[0;33mW (1517394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 40994
+[ADCDBG] chip=ADS1248 ch=0 raw=40994
+[AMPOLA 1] Valor recebido do sensor: 409
+Tamanho da lista de resultados: (6)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1518014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1518024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1518024) TEST: Delay: 3279 ms[0m
+[0;33mW (1518394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1519394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1520394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 8
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 28 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 272 (segundos)
+[0;33mW (1521394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 40674
+[ADCDBG] chip=ADS1248 ch=0 raw=40674
+[AMPOLA 1] Valor recebido do sensor: 406
+Tamanho da lista de resultados: (7)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1522004) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1522014) TEST: Tempo total de execucao: 711 us[0m
+[0;32mI (1522014) TEST: Delay: 3289 ms[0m
+[0;33mW (1522394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1523394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1523964) HEATER: Temperatura: 57.500[0m
+[0;31mE (1523964) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1523964) HEATER: Esta em teste: Sim[0m
+[0;31mE (1523964) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1523964) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1524394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 9
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 32 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 268 (segundos)
+[0;33mW (1525394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 40440
+[ADCDBG] chip=ADS1248 ch=0 raw=40440
+[AMPOLA 1] Valor recebido do sensor: 404
+Tamanho da lista de resultados: (8)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1525994) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1526004) TEST: Tempo total de execucao: 701 us[0m
+[0;32mI (1526004) TEST: Delay: 3299 ms[0m
+[0;33mW (1526394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1527394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1528394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 10
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 36 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 264 (segundos)
+[0;33mW (1529394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 40163
+[ADCDBG] chip=ADS1248 ch=0 raw=40163
+[AMPOLA 1] Valor recebido do sensor: 401
+Tamanho da lista de resultados: (9)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1530014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1530024) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (1530024) TEST: Delay: 3279 ms[0m
+[0;33mW (1530394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1530974) HEATER: Temperatura: 57.500[0m
+[0;31mE (1530974) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1530974) HEATER: Esta em teste: Sim[0m
+[0;31mE (1530974) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1530974) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1531394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1532394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 40 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 260 (segundos)
+[0;33mW (1533394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39950
+[ADCDBG] chip=ADS1248 ch=0 raw=39950
+[AMPOLA 1] Valor recebido do sensor: 399
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1534024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1534024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1534034) TEST: Delay: 3271 ms[0m
+
+[0;31mE (1534244) HEATER: Temperatura: 57.500[0m
+[0;31mE (1534244) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1534244) HEATER: Esta em teste: Sim[0m
+[0;31mE (1534244) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1534254) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1534394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1535394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1536394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 44 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 256 (segundos)
+[0;33mW (1537394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39746
+[ADCDBG] chip=ADS1248 ch=0 raw=39746
+[AMPOLA 1] Valor recebido do sensor: 397
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1538024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1538024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1538034) TEST: Delay: 3271 ms[0m
+[0;33mW (1538394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1539394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1540394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1541254) HEATER: Temperatura: 57.500[0m
+[0;31mE (1541254) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1541254) HEATER: Esta em teste: Sim[0m
+[0;31mE (1541254) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1541254) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 48 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 252 (segundos)
+[0;33mW (1541394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39524
+[ADCDBG] chip=ADS1248 ch=0 raw=39524
+[AMPOLA 1] Valor recebido do sensor: 395
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1542014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1542014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1542024) TEST: Delay: 3281 ms[0m
+[0;33mW (1542394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1543394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1544394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 52 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 248 (segundos)
+[0;33mW (1545394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39289
+[ADCDBG] chip=ADS1248 ch=0 raw=39289
+[AMPOLA 1] Valor recebido do sensor: 392
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1546024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1546024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1546034) TEST: Delay: 3271 ms[0m
+[0;33mW (1546394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1547394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1548264) HEATER: Temperatura: 57.500[0m
+[0;31mE (1548264) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1548264) HEATER: Esta em teste: Sim[0m
+[0;31mE (1548264) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1548264) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1548394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 56 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 244 (segundos)
+[0;33mW (1549394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39144
+[ADCDBG] chip=ADS1248 ch=0 raw=39144
+[AMPOLA 1] Valor recebido do sensor: 391
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1550014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1550014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1550024) TEST: Delay: 3281 ms[0m
+[0;33mW (1550394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1551394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1551524) HEATER: Temperatura: 57.500[0m
+[0;31mE (1551524) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1551524) HEATER: Esta em teste: Sim[0m
+[0;31mE (1551524) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1551534) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1552394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 60 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 240 (segundos)
+[0;33mW (1553394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38975
+[ADCDBG] chip=ADS1248 ch=0 raw=38975
+[AMPOLA 1] Valor recebido do sensor: 389
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1554024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1554024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1554034) TEST: Delay: 3271 ms[0m
+[0;33mW (1554394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1555394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1556394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 64 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 236 (segundos)
+[0;33mW (1557394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38795
+[ADCDBG] chip=ADS1248 ch=0 raw=38795
+[AMPOLA 1] Valor recebido do sensor: 387
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1558024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1558024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1558034) TEST: Delay: 3271 ms[0m
+[0;33mW (1558394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1558534) HEATER: Temperatura: 57.500[0m
+[0;31mE (1558534) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1558534) HEATER: Esta em teste: Sim[0m
+[0;31mE (1558534) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1558534) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1559394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1560394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 68 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 232 (segundos)
+[0;33mW (1561394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38658
+[ADCDBG] chip=ADS1248 ch=0 raw=38658
+[AMPOLA 1] Valor recebido do sensor: 386
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1562024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1562024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1562034) TEST: Delay: 3271 ms[0m
+[0;33mW (1562394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1563394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1564394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 72 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 228 (segundos)
+[0;33mW (1565394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1565544) HEATER: Temperatura: 57.500[0m
+[0;31mE (1565544) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1565544) HEATER: Esta em teste: Sim[0m
+[0;31mE (1565544) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1565544) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 38534
+[ADCDBG] chip=ADS1248 ch=0 raw=38534
+[AMPOLA 1] Valor recebido do sensor: 385
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1566024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1566024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1566034) TEST: Delay: 3271 ms[0m
+[0;33mW (1566394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1567394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1568394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1568814) HEATER: Temperatura: 57.500[0m
+[0;31mE (1568814) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1568814) HEATER: Esta em teste: Sim[0m
+[0;31mE (1568814) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1568824) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 76 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 224 (segundos)
+[0;33mW (1569394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38365
+[ADCDBG] chip=ADS1248 ch=0 raw=38365
+[AMPOLA 1] Valor recebido do sensor: 383
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1570024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1570024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1570034) TEST: Delay: 3271 ms[0m
+[0;33mW (1570394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1571394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1572394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 80 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 220 (segundos)
+[0;33mW (1573394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38267
+[ADCDBG] chip=ADS1248 ch=0 raw=38267
+[AMPOLA 1] Valor recebido do sensor: 382
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1574024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1574024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1574034) TEST: Delay: 3271 ms[0m
+[0;33mW (1574394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1575394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1575824) HEATER: Temperatura: 57.500[0m
+[0;31mE (1575824) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1575824) HEATER: Esta em teste: Sim[0m
+[0;31mE (1575824) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1575824) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1576394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 84 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 216 (segundos)
+[0;33mW (1577394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38210
+[ADCDBG] chip=ADS1248 ch=0 raw=38210
+[AMPOLA 1] Valor recebido do sensor: 382
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1578024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1578024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1578034) TEST: Delay: 3271 ms[0m
+[0;33mW (1578394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1579394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1580394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 88 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 212 (segundos)
+[0;33mW (1581394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38065
+[ADCDBG] chip=ADS1248 ch=0 raw=38065
+[AMPOLA 1] Valor recebido do sensor: 380
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1582014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1582014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1582024) TEST: Delay: 3281 ms[0m
+[0;33mW (1582394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1582834) HEATER: Temperatura: 57.000[0m
+[0;31mE (1582834) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1582834) HEATER: Esta em teste: Sim[0m
+[0;31mE (1582834) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1582834) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1583394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1584394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 92 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 208 (segundos)
+[0;33mW (1585394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38012
+[ADCDBG] chip=ADS1248 ch=0 raw=38012
+[AMPOLA 1] Valor recebido do sensor: 380
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1585994) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1585994) TEST: Tempo total de execucao: 699 us[0m
+[0;32mI (1586004) TEST: Delay: 3301 ms[0m
+
+[0;31mE (1586094) HEATER: Temperatura: 57.000[0m
+[0;31mE (1586094) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1586094) HEATER: Esta em teste: Sim[0m
+[0;31mE (1586094) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1586104) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1586394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1587394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1588394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 96 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 204 (segundos)
+[0;33mW (1589394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37948
+[ADCDBG] chip=ADS1248 ch=0 raw=37948
+[AMPOLA 1] Valor recebido do sensor: 379
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1590024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1590024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1590034) TEST: Delay: 3271 ms[0m
+[0;33mW (1590394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1591394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1592394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1593104) HEATER: Temperatura: 57.000[0m
+[0;31mE (1593104) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1593104) HEATER: Esta em teste: Sim[0m
+[0;31mE (1593104) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1593104) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 100 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 200 (segundos)
+[0;33mW (1593394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37890
+[ADCDBG] chip=ADS1248 ch=0 raw=37890
+[AMPOLA 1] Valor recebido do sensor: 378
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1594024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1594024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1594034) TEST: Delay: 3271 ms[0m
+[0;33mW (1594394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1595394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1596394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 104 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 196 (segundos)
+[0;33mW (1597394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37813
+[ADCDBG] chip=ADS1248 ch=0 raw=37813
+[AMPOLA 1] Valor recebido do sensor: 378
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1598024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1598024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1598034) TEST: Delay: 3271 ms[0m
+[0;33mW (1598394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1599394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1600114) HEATER: Temperatura: 57.000[0m
+[0;31mE (1600114) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1600114) HEATER: Esta em teste: Sim[0m
+[0;31mE (1600114) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1600114) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1600394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 108 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 192 (segundos)
+[0;33mW (1601394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37777
+[ADCDBG] chip=ADS1248 ch=0 raw=37777
+[AMPOLA 1] Valor recebido do sensor: 377
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1602024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1602024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1602034) TEST: Delay: 3271 ms[0m
+[0;33mW (1602394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1603374) HEATER: Temperatura: 57.000[0m
+[0;31mE (1603374) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1603374) HEATER: Esta em teste: Sim[0m
+[0;31mE (1603374) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1603384) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1603394) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1604404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 112 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 188 (segundos)
+[0;33mW (1605404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37828
+[ADCDBG] chip=ADS1248 ch=0 raw=37828
+[AMPOLA 1] Valor recebido do sensor: 378
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1606014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1606014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1606024) TEST: Delay: 3281 ms[0m
+[0;33mW (1606404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1607404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1608404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 116 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 184 (segundos)
+[0;33mW (1609404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37708
+[ADCDBG] chip=ADS1248 ch=0 raw=37708
+[AMPOLA 1] Valor recebido do sensor: 377
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1610024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1610024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1610034) TEST: Delay: 3271 ms[0m
+
+[0;31mE (1610384) HEATER: Temperatura: 57.000[0m
+[0;31mE (1610384) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1610384) HEATER: Esta em teste: Sim[0m
+[0;31mE (1610384) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1610384) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1610404) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1611414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1612414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 120 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 180 (segundos)
+[0;33mW (1613414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37702
+[ADCDBG] chip=ADS1248 ch=0 raw=37702
+[AMPOLA 1] Valor recebido do sensor: 377
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1614024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1614024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1614034) TEST: Delay: 3271 ms[0m
+[0;33mW (1614414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1615414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1616414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 124 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 176 (segundos)
+
+[0;31mE (1617394) HEATER: Temperatura: 57.000[0m
+[0;31mE (1617394) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1617394) HEATER: Esta em teste: Sim[0m
+[0;31mE (1617394) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1617394) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1617414) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37654
+[ADCDBG] chip=ADS1248 ch=0 raw=37654
+[AMPOLA 1] Valor recebido do sensor: 376
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1618024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1618024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1618034) TEST: Delay: 3271 ms[0m
+[0;33mW (1618424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1619424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1620424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1620664) HEATER: Temperatura: 57.000[0m
+[0;31mE (1620664) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1620664) HEATER: Esta em teste: Sim[0m
+[0;31mE (1620664) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1620674) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 128 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 172 (segundos)
+[0;33mW (1621424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37611
+[ADCDBG] chip=ADS1248 ch=0 raw=37611
+[AMPOLA 1] Valor recebido do sensor: 376
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1622024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1622024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1622034) TEST: Delay: 3271 ms[0m
+[0;33mW (1622424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1623424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1624424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 132 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 168 (segundos)
+[0;33mW (1625424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37578
+[ADCDBG] chip=ADS1248 ch=0 raw=37578
+[AMPOLA 1] Valor recebido do sensor: 375
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1626024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1626024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1626034) TEST: Delay: 3271 ms[0m
+[0;33mW (1626424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1627424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1627674) HEATER: Temperatura: 57.000[0m
+[0;31mE (1627674) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1627674) HEATER: Esta em teste: Sim[0m
+[0;31mE (1627674) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1627674) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1628424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 136 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 164 (segundos)
+[0;33mW (1629424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37543
+[ADCDBG] chip=ADS1248 ch=0 raw=37543
+[AMPOLA 1] Valor recebido do sensor: 375
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1630024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1630024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1630034) TEST: Delay: 3271 ms[0m
+[0;33mW (1630424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1631424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1632424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 140 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 160 (segundos)
+[0;33mW (1633424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37485
+[ADCDBG] chip=ADS1248 ch=0 raw=37485
+[AMPOLA 1] Valor recebido do sensor: 374
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1634024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1634024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1634034) TEST: Delay: 3271 ms[0m
+[0;33mW (1634424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1634684) HEATER: Temperatura: 57.000[0m
+[0;31mE (1634684) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1634684) HEATER: Esta em teste: Sim[0m
+[0;31mE (1634684) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1634684) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1635424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1636424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 144 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 156 (segundos)
+[0;33mW (1637424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1637944) HEATER: Temperatura: 57.000[0m
+[0;31mE (1637944) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1637944) HEATER: Esta em teste: Sim[0m
+[0;31mE (1637944) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1637954) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 37503
+[ADCDBG] chip=ADS1248 ch=0 raw=37503
+[AMPOLA 1] Valor recebido do sensor: 375
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1638024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1638024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1638034) TEST: Delay: 3271 ms[0m
+[0;33mW (1638424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1639424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1640424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 148 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 152 (segundos)
+[0;33mW (1641424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37460
+[ADCDBG] chip=ADS1248 ch=0 raw=37460
+[AMPOLA 1] Valor recebido do sensor: 374
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1642024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1642024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1642034) TEST: Delay: 3271 ms[0m
+[0;33mW (1642424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1643424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1644424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1644954) HEATER: Temperatura: 57.000[0m
+[0;31mE (1644954) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1644954) HEATER: Esta em teste: Sim[0m
+[0;31mE (1644954) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1644954) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 152 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 148 (segundos)
+[0;33mW (1645424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37514
+[ADCDBG] chip=ADS1248 ch=0 raw=37514
+[AMPOLA 1] Valor recebido do sensor: 375
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1646024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1646024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1646034) TEST: Delay: 3271 ms[0m
+[0;33mW (1646424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1647424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1648424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 156 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 144 (segundos)
+[0;33mW (1649424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37607
+[ADCDBG] chip=ADS1248 ch=0 raw=37607
+[AMPOLA 1] Valor recebido do sensor: 376
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1650024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1650024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1650034) TEST: Delay: 3271 ms[0m
+[0;33mW (1650424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1651424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1651964) HEATER: Temperatura: 57.000[0m
+[0;31mE (1651964) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1651964) HEATER: Esta em teste: Sim[0m
+[0;31mE (1651964) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1651964) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1652424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 160 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 140 (segundos)
+[0;33mW (1653424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37652
+[ADCDBG] chip=ADS1248 ch=0 raw=37652
+[AMPOLA 1] Valor recebido do sensor: 376
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1654024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1654024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1654034) TEST: Delay: 3271 ms[0m
+[0;33mW (1654424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1655224) HEATER: Temperatura: 57.000[0m
+[0;31mE (1655224) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1655224) HEATER: Esta em teste: Sim[0m
+[0;31mE (1655224) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1655234) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1655424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1656424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 164 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 136 (segundos)
+[0;33mW (1657424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37681
+[ADCDBG] chip=ADS1248 ch=0 raw=37681
+[AMPOLA 1] Valor recebido do sensor: 376
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1658024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1658024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1658034) TEST: Delay: 3271 ms[0m
+[0;33mW (1658424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1659424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1660424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 168 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 132 (segundos)
+[0;33mW (1661424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37697
+[ADCDBG] chip=ADS1248 ch=0 raw=37697
+[AMPOLA 1] Valor recebido do sensor: 376
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1662024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1662024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1662034) TEST: Delay: 3271 ms[0m
+
+[0;31mE (1662234) HEATER: Temperatura: 57.000[0m
+[0;31mE (1662234) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1662234) HEATER: Esta em teste: Sim[0m
+[0;31mE (1662234) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1662234) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1662424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1663424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1664424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 172 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 128 (segundos)
+[0;33mW (1665424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37762
+[ADCDBG] chip=ADS1248 ch=0 raw=37762
+[AMPOLA 1] Valor recebido do sensor: 377
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1666024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1666024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1666034) TEST: Delay: 3271 ms[0m
+[0;33mW (1666424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1667424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1668424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1669244) HEATER: Temperatura: 56.500[0m
+[0;31mE (1669244) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1669244) HEATER: Esta em teste: Sim[0m
+[0;31mE (1669244) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1669244) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 176 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 124 (segundos)
+[0;33mW (1669424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37809
+[ADCDBG] chip=ADS1248 ch=0 raw=37809
+[AMPOLA 1] Valor recebido do sensor: 378
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1670024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1670024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1670034) TEST: Delay: 3271 ms[0m
+[0;33mW (1670424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1671424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1672424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1672514) HEATER: Temperatura: 56.500[0m
+[0;31mE (1672514) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1672514) HEATER: Esta em teste: Sim[0m
+[0;31mE (1672514) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1672524) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 180 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 120 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1673424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37860
+[ADCDBG] chip=ADS1248 ch=0 raw=37860
+[AMPOLA 1] Valor recebido do sensor: 378
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1674024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1674024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1674034) TEST: Delay: 3271 ms[0m
+[0;33mW (1674424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1675424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1676424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 184 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 116 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1677424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37900
+[ADCDBG] chip=ADS1248 ch=0 raw=37900
+[AMPOLA 1] Valor recebido do sensor: 379
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1678014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1678014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1678024) TEST: Delay: 3281 ms[0m
+[0;33mW (1678424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1679424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1679524) HEATER: Temperatura: 56.500[0m
+[0;31mE (1679524) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1679524) HEATER: Esta em teste: Sim[0m
+[0;31mE (1679524) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1679524) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1680424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 188 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 112 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1681424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 37978
+[ADCDBG] chip=ADS1248 ch=0 raw=37978
+[AMPOLA 1] Valor recebido do sensor: 379
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1682004) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1682004) TEST: Tempo total de execucao: 709 us[0m
+[0;32mI (1682014) TEST: Delay: 3291 ms[0m
+[0;33mW (1682424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1683424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1684424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 192 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 108 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1685424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38042
+[ADCDBG] chip=ADS1248 ch=0 raw=38042
+[AMPOLA 1] Valor recebido do sensor: 380
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1685984) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1685984) TEST: Tempo total de execucao: 689 us[0m
+[0;32mI (1685994) TEST: Delay: 3311 ms[0m
+[0;33mW (1686424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1686534) HEATER: Temperatura: 56.500[0m
+[0;31mE (1686534) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1686534) HEATER: Esta em teste: Sim[0m
+[0;31mE (1686534) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1686534) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1687424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1688424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 196 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 104 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1689424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1689794) HEATER: Temperatura: 56.500[0m
+[0;31mE (1689794) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1689794) HEATER: Esta em teste: Sim[0m
+[0;31mE (1689794) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1689804) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 38172
+[ADCDBG] chip=ADS1248 ch=0 raw=38172
+[AMPOLA 1] Valor recebido do sensor: 381
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1689974) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1689974) TEST: Tempo total de execucao: 679 us[0m
+[0;32mI (1689984) TEST: Delay: 3321 ms[0m
+[0;33mW (1690424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1691424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1692424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 200 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 100 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1693424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38147
+[ADCDBG] chip=ADS1248 ch=0 raw=38147
+[AMPOLA 1] Valor recebido do sensor: 381
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1694024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1694024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1694034) TEST: Delay: 3271 ms[0m
+[0;33mW (1694424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1695424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1696424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1696804) HEATER: Temperatura: 56.500[0m
+[0;31mE (1696804) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1696804) HEATER: Esta em teste: Sim[0m
+[0;31mE (1696804) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1696804) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 204 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 96 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1697424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38234
+[ADCDBG] chip=ADS1248 ch=0 raw=38234
+[AMPOLA 1] Valor recebido do sensor: 382
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1698024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1698024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1698034) TEST: Delay: 3271 ms[0m
+[0;33mW (1698424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1699424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1700424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 208 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 92 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1701424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38264
+[ADCDBG] chip=ADS1248 ch=0 raw=38264
+[AMPOLA 1] Valor recebido do sensor: 382
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1702024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1702024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1702034) TEST: Delay: 3271 ms[0m
+[0;33mW (1702424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1703424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1703814) HEATER: Temperatura: 56.500[0m
+[0;31mE (1703814) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1703814) HEATER: Esta em teste: Sim[0m
+[0;31mE (1703814) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1703814) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1704424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 212 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 88 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1705424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38344
+[ADCDBG] chip=ADS1248 ch=0 raw=38344
+[AMPOLA 1] Valor recebido do sensor: 383
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1706024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1706024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1706034) TEST: Delay: 3271 ms[0m
+[0;33mW (1706424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1707094) HEATER: Temperatura: 56.500[0m
+[0;31mE (1707094) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1707094) HEATER: Esta em teste: Sim[0m
+[0;31mE (1707094) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1707104) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1707424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1708424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 216 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 84 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1709424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38374
+[ADCDBG] chip=ADS1248 ch=0 raw=38374
+[AMPOLA 1] Valor recebido do sensor: 383
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1710014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1710014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1710024) TEST: Delay: 3281 ms[0m
+[0;33mW (1710424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1711424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1712424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 220 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 80 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1713424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38438
+[ADCDBG] chip=ADS1248 ch=0 raw=38438
+[AMPOLA 1] Valor recebido do sensor: 384
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1714024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1714024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1714034) TEST: Delay: 3271 ms[0m
+
+[0;31mE (1714104) HEATER: Temperatura: 56.500[0m
+[0;31mE (1714104) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1714104) HEATER: Esta em teste: Sim[0m
+[0;31mE (1714104) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1714104) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1714424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1715424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1716424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 224 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 76 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1717424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38504
+[ADCDBG] chip=ADS1248 ch=0 raw=38504
+[AMPOLA 1] Valor recebido do sensor: 385
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1718024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1718024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1718034) TEST: Delay: 3271 ms[0m
+[0;33mW (1718424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1719424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1720424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1721114) HEATER: Temperatura: 56.500[0m
+[0;31mE (1721114) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1721114) HEATER: Esta em teste: Sim[0m
+[0;31mE (1721114) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1721114) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 228 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 72 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1721424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38562
+[ADCDBG] chip=ADS1248 ch=0 raw=38562
+[AMPOLA 1] Valor recebido do sensor: 385
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1722024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1722024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1722034) TEST: Delay: 3271 ms[0m
+[0;33mW (1722424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1723424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1724374) HEATER: Temperatura: 56.500[0m
+[0;31mE (1724374) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1724374) HEATER: Esta em teste: Sim[0m
+[0;31mE (1724374) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1724384) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1724424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 232 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 68 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1725424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38643
+[ADCDBG] chip=ADS1248 ch=0 raw=38643
+[AMPOLA 1] Valor recebido do sensor: 386
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1726024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1726024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1726034) TEST: Delay: 3271 ms[0m
+[0;33mW (1726424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1727424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1728424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 236 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 64 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1729424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38658
+[ADCDBG] chip=ADS1248 ch=0 raw=38658
+[AMPOLA 1] Valor recebido do sensor: 386
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1730014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1730014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1730024) TEST: Delay: 3281 ms[0m
+[0;33mW (1730424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1731384) HEATER: Temperatura: 56.500[0m
+[0;31mE (1731384) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1731384) HEATER: Esta em teste: Sim[0m
+[0;31mE (1731384) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1731384) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1731424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1732424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 240 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 60 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1733424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38740
+[ADCDBG] chip=ADS1248 ch=0 raw=38740
+[AMPOLA 1] Valor recebido do sensor: 387
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1734024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1734024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1734034) TEST: Delay: 3271 ms[0m
+[0;33mW (1734424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1735424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1736424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 244 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 56 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1737424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38782
+[ADCDBG] chip=ADS1248 ch=0 raw=38782
+[AMPOLA 1] Valor recebido do sensor: 387
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1738024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1738024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1738034) TEST: Delay: 3271 ms[0m
+
+[0;31mE (1738394) HEATER: Temperatura: 56.500[0m
+[0;31mE (1738394) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1738394) HEATER: Esta em teste: Sim[0m
+[0;31mE (1738394) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1738394) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1738424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1739424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1740424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 248 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 52 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1741424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1741654) HEATER: Temperatura: 56.500[0m
+[0;31mE (1741654) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1741654) HEATER: Esta em teste: Sim[0m
+[0;31mE (1741654) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1741664) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 38839
+[ADCDBG] chip=ADS1248 ch=0 raw=38839
+[AMPOLA 1] Valor recebido do sensor: 388
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1742024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1742024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1742034) TEST: Delay: 3271 ms[0m
+[0;33mW (1742424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1743424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1744424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 252 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 48 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1745424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38887
+[ADCDBG] chip=ADS1248 ch=0 raw=38887
+[AMPOLA 1] Valor recebido do sensor: 388
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1746024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1746024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1746034) TEST: Delay: 3271 ms[0m
+[0;33mW (1746424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1747424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1748424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1748664) HEATER: Temperatura: 56.500[0m
+[0;31mE (1748664) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1748664) HEATER: Esta em teste: Sim[0m
+[0;31mE (1748664) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1748664) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 256 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 44 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1749424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 38981
+[ADCDBG] chip=ADS1248 ch=0 raw=38981
+[AMPOLA 1] Valor recebido do sensor: 389
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1750024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1750024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1750034) TEST: Delay: 3271 ms[0m
+[0;33mW (1750424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1751424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1752424) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 260 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 40 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1753434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39036
+[ADCDBG] chip=ADS1248 ch=0 raw=39036
+[AMPOLA 1] Valor recebido do sensor: 390
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1754024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1754024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1754034) TEST: Delay: 3271 ms[0m
+[0;33mW (1754434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1755434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1755674) HEATER: Temperatura: 56.500[0m
+[0;31mE (1755674) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1755674) HEATER: Esta em teste: Sim[0m
+[0;31mE (1755674) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1755674) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1756434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 264 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 36 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1757434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39101
+[ADCDBG] chip=ADS1248 ch=0 raw=39101
+[AMPOLA 1] Valor recebido do sensor: 391
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1758014) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1758014) TEST: Tempo total de execucao: 719 us[0m
+[0;32mI (1758024) TEST: Delay: 3281 ms[0m
+[0;33mW (1758434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1758944) HEATER: Temperatura: 56.500[0m
+[0;31mE (1758944) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1758944) HEATER: Esta em teste: Sim[0m
+[0;31mE (1758944) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1758954) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1759434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1760434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 268 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 32 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1761434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39201
+[ADCDBG] chip=ADS1248 ch=0 raw=39201
+[AMPOLA 1] Valor recebido do sensor: 392
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1762024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1762024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1762034) TEST: Delay: 3271 ms[0m
+[0;33mW (1762434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1763434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1764434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 272 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 28 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1765434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1765954) HEATER: Temperatura: 56.500[0m
+[0;31mE (1765954) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1765954) HEATER: Esta em teste: Sim[0m
+[0;31mE (1765954) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1765954) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 39208
+[ADCDBG] chip=ADS1248 ch=0 raw=39208
+[AMPOLA 1] Valor recebido do sensor: 392
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1766024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1766024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1766034) TEST: Delay: 3271 ms[0m
+[0;33mW (1766434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1767434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1768434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 276 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 24 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1769434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39291
+[ADCDBG] chip=ADS1248 ch=0 raw=39291
+[AMPOLA 1] Valor recebido do sensor: 392
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1770024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1770024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1770034) TEST: Delay: 3271 ms[0m
+[0;33mW (1770434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1771434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1772434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1772964) HEATER: Temperatura: 56.500[0m
+[0;31mE (1772964) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1772964) HEATER: Esta em teste: Sim[0m
+[0;31mE (1772964) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1772964) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 280 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 20 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1773434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39353
+[ADCDBG] chip=ADS1248 ch=0 raw=39353
+[AMPOLA 1] Valor recebido do sensor: 393
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1774024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1774024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1774034) TEST: Delay: 3271 ms[0m
+[0;33mW (1774434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1775434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1776224) HEATER: Temperatura: 56.500[0m
+[0;31mE (1776224) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1776224) HEATER: Esta em teste: Sim[0m
+[0;31mE (1776224) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1776234) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1776434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 284 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 16 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1777434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39400
+[ADCDBG] chip=ADS1248 ch=0 raw=39400
+[AMPOLA 1] Valor recebido do sensor: 394
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1778024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1778024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1778034) TEST: Delay: 3271 ms[0m
+[0;33mW (1778434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1779434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1780434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 288 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 12 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1781434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39445
+[ADCDBG] chip=ADS1248 ch=0 raw=39445
+[AMPOLA 1] Valor recebido do sensor: 394
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1782024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1782024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1782034) TEST: Delay: 3271 ms[0m
+[0;33mW (1782434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1783234) HEATER: Temperatura: 56.500[0m
+[0;31mE (1783234) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1783234) HEATER: Esta em teste: Sim[0m
+[0;31mE (1783234) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1783234) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1783434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1784434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 292 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 8 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1785434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39521
+[ADCDBG] chip=ADS1248 ch=0 raw=39521
+[AMPOLA 1] Valor recebido do sensor: 395
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1786024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1786024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1786034) TEST: Delay: 3271 ms[0m
+[0;33mW (1786434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1787434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1788434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 296 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 4 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;33mW (1789434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+Read CH01 = 39548
+[ADCDBG] chip=ADS1248 ch=0 raw=39548
+[AMPOLA 1] Valor recebido do sensor: 395
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (1790024) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (1790024) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (1790034) TEST: Delay: 3271 ms[0m
+
+[0;31mE (1790244) HEATER: Temperatura: 56.000[0m
+[0;31mE (1790244) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1790244) HEATER: Esta em teste: Sim[0m
+[0;31mE (1790244) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1790244) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1790434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1791434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1792434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000005 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 300 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 0 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;32mI (1793314) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+***** [AMPOLA 1] FINALIZANDO TESTES *****
+Date & Time Init: 01/01/2000 00:00:00
+Date & Time End: 01/01/2000 00:05:00
+Date & Time End (Final): 01/01/2000 00:05:00
+***** [AMPOLA 1] TESTE FINALIZADO COM SUCESSO *****
+
+***** [AMPOLA 1] IMPRIMINDO RESULTADO *****
+
+
+
+Serial Number 002300P4
+
+
+
+Language: pt-br
+
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;32mI (1793354) : Start Date & Time Formatted: 01/01/2000 | 00:00:00[0m
+[0;32mI (1793364) : End   Date & Time Formatted: 01/01/2000 | 00:05:00[0m
+date: 01/01/2000 00:05:00
+day: 1
+month: 1
+year: 2000
+hour: 0
+minute: 5
+second: 0
+date: 01/01/2000 00:00:00
+day: 1
+month: 1
+year: 2000
+hour: 0
+minute: 0
+second: 0
+s1: 60907593900
+s2: 60907593600
+diferenca: 300.000000
+[0;33mW (1793434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1793504) HEATER: Temperatura: 56.000[0m
+[0;31mE (1793504) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1793504) HEATER: Esta em teste: Nao[0m
+[0;31mE (1793504) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1793514) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1794144) PRINTER_DRIVER: usb_host_transfer_submit Out fail: ESP_ERR_INVALID_ARG[0m
+[0;32mI (1794394) PRINTER_DRIVER: usb_host_transfer_submit Out fail: ESP_ERR_INVALID_ARG[0m
+[0;33mW (1794434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1794694) NVS_Helper: NVSHelper::setObjct(): set obj addr = [0x3FCDECF4], length = [1161]
+[0m
+
+
+**************************************************************
+Ampola sob teste (1)
+Data e hora de inicio: 01/01/2000 00:00:00
+Data e hora de fim: 01/01/2000 00:05:00
+Resultado:
+     Valor da amostra [1]:   430
+     Valor da amostra [2]:   426
+     Valor da amostra [3]:   423
+     Valor da amostra [4]:   419
+     Valor da amostra [5]:   416
+     Valor da amostra [6]:   393
+     Valor da amostra [7]:   394
+     Valor da amostra [8]:   394
+     Valor da amostra [9]:   395
+     Valor da amostra [10]:   395
+     -----------------------------
+     Soma dos valores:       4085
+     Quantidade de amostras: 10
+     -----------------------------
+     Media dos valores:      408
+     Variacao Percentual:    -6.76
+     -----------------------------
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+******* AMOSTRA NEGATIVADA *******
+
+**************************************************************
+
+[0;32mI (1794774) timer_manager: Stopping timer[0m
+[0;32mI (1794784) timer_manager: Starting timer[0m
+[0;32mI (1794784) TEST: Tempo total de execucao: 1485 us[0m
+[0;32mI (1794794) TEST: Delay: 2515 ms[0m
+[0;33mW (1795434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1796434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1797304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1797304) TEST: Delay: 4000 ms[0m
+[0;33mW (1797434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1798434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1799434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1800434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1800514) HEATER: Temperatura: 56.000[0m
+[0;31mE (1800514) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1800514) HEATER: Esta em teste: Nao[0m
+[0;31mE (1800514) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1800514) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1801304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1801304) TEST: Delay: 4000 ms[0m
+[0;33mW (1801434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1802434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1803434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1804434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1805304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1805304) TEST: Delay: 4000 ms[0m
+[0;33mW (1805434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1806434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1807434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1807524) HEATER: Temperatura: 56.000[0m
+[0;31mE (1807524) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1807524) HEATER: Esta em teste: Nao[0m
+[0;31mE (1807524) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1807524) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1808434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1809304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1809304) TEST: Delay: 4000 ms[0m
+[0;33mW (1809434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1810434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1810794) HEATER: Temperatura: 56.000[0m
+[0;31mE (1810794) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1810794) HEATER: Esta em teste: Nao[0m
+[0;31mE (1810794) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1810804) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1811434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1812434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1813304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1813304) TEST: Delay: 4000 ms[0m
+[0;33mW (1813434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1814434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1815434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1816434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1817304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1817304) TEST: Delay: 4000 ms[0m
+[0;33mW (1817434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1817804) HEATER: Temperatura: 56.000[0m
+[0;31mE (1817804) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1817804) HEATER: Esta em teste: Nao[0m
+[0;31mE (1817804) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1817804) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1818434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[DEBUG-ALARM] Ampola 1: alarm_status=2 (removida, fora de teste)
+[0;33mW (1819434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1820434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1821304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1821304) TEST: Delay: 4000 ms[0m
+[0;33mW (1821434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1822434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1823434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1824434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1824814) HEATER: Temperatura: 56.000[0m
+[0;31mE (1824814) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1824814) HEATER: Esta em teste: Nao[0m
+[0;31mE (1824814) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1824814) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1825304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1825304) TEST: Delay: 4000 ms[0m
+[0;33mW (1825434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1826434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1827434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1828074) HEATER: Temperatura: 56.500[0m
+[0;31mE (1828074) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1828074) HEATER: Esta em teste: Nao[0m
+[0;31mE (1828074) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1828084) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1828434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1829304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1829304) TEST: Delay: 4000 ms[0m
+[0;33mW (1829434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1830434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1831434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1832434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1833304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1833304) TEST: Delay: 4000 ms[0m
+[0;33mW (1833434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1834434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1835084) HEATER: Temperatura: 56.500[0m
+[0;31mE (1835084) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1835084) HEATER: Esta em teste: Nao[0m
+[0;31mE (1835084) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1835084) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1835434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1836434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1837304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1837304) TEST: Delay: 4000 ms[0m
+[0;33mW (1837434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1838434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1839434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1840434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1841304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1841304) TEST: Delay: 4000 ms[0m
+[0;33mW (1841434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1842094) HEATER: Temperatura: 56.500[0m
+[0;31mE (1842094) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1842094) HEATER: Esta em teste: Nao[0m
+[0;31mE (1842094) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1842094) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1842434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1843434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1844434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1845304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1845304) TEST: Delay: 4000 ms[0m
+
+[0;31mE (1845364) HEATER: Temperatura: 56.500[0m
+[0;31mE (1845364) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1845364) HEATER: Esta em teste: Nao[0m
+[0;31mE (1845364) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1845374) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1845434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1846434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1847434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1848434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1849304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1849304) TEST: Delay: 4000 ms[0m
+[0;33mW (1849434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1850434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1851434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1852374) HEATER: Temperatura: 57.000[0m
+[0;31mE (1852374) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1852374) HEATER: Esta em teste: Nao[0m
+[0;31mE (1852374) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1852374) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1852434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1853304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1853304) TEST: Delay: 4000 ms[0m
+[0;33mW (1853434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1854434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1855434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1856434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1857304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1857304) TEST: Delay: 4000 ms[0m
+[0;33mW (1857434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1858434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1859384) HEATER: Temperatura: 57.000[0m
+[0;31mE (1859384) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1859384) HEATER: Esta em teste: Nao[0m
+[0;31mE (1859384) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1859384) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1859434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1860434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1861304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1861304) TEST: Delay: 4000 ms[0m
+[0;33mW (1861434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1862434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1862644) HEATER: Temperatura: 57.000[0m
+[0;31mE (1862644) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1862644) HEATER: Esta em teste: Nao[0m
+[0;31mE (1862644) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1862654) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1863434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1864434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1865304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1865304) TEST: Delay: 4000 ms[0m
+[0;33mW (1865434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1866434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1867434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1868434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1869304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1869304) TEST: Delay: 4000 ms[0m
+[0;33mW (1869434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1869654) HEATER: Temperatura: 57.500[0m
+[0;31mE (1869654) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1869654) HEATER: Esta em teste: Nao[0m
+[0;31mE (1869654) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1869654) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1870434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1871434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1872434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1873304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1873304) TEST: Delay: 4000 ms[0m
+[0;33mW (1873434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1874434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1875434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1876434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1876664) HEATER: Temperatura: 57.500[0m
+[0;31mE (1876664) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1876664) HEATER: Esta em teste: Nao[0m
+[0;31mE (1876664) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1876664) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1877304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1877304) TEST: Delay: 4000 ms[0m
+[0;33mW (1877434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1878434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1879434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1879924) HEATER: Temperatura: 57.500[0m
+[0;31mE (1879924) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1879924) HEATER: Esta em teste: Nao[0m
+[0;31mE (1879924) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1879934) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1880434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1881304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1881304) TEST: Delay: 4000 ms[0m
+[0;33mW (1881434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1882434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1883434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1884434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1885304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1885304) TEST: Delay: 4000 ms[0m
+[0;33mW (1885434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1886434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1886934) HEATER: Temperatura: 58.000[0m
+[0;31mE (1886934) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1886934) HEATER: Esta em teste: Nao[0m
+[0;31mE (1886934) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1886934) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1887434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1888434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1889304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1889304) TEST: Delay: 4000 ms[0m
+[0;33mW (1889434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1890434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1891434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1892434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1893304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1893304) TEST: Delay: 4000 ms[0m
+[0;33mW (1893434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1893944) HEATER: Temperatura: 58.000[0m
+[0;31mE (1893944) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1893944) HEATER: Esta em teste: Nao[0m
+[0;31mE (1893944) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1893944) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1894434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1895434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1896434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1897214) HEATER: Temperatura: 58.500[0m
+[0;31mE (1897214) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1897214) HEATER: Esta em teste: Nao[0m
+[0;31mE (1897214) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1897224) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1897304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1897304) TEST: Delay: 4000 ms[0m
+[0;33mW (1897434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1898434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1899434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1900434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1901304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1901304) TEST: Delay: 4000 ms[0m
+[0;33mW (1901434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1902434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1903434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1904224) HEATER: Temperatura: 58.500[0m
+[0;31mE (1904224) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1904224) HEATER: Esta em teste: Nao[0m
+[0;31mE (1904224) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1904224) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1904434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1905304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1905304) TEST: Delay: 4000 ms[0m
+[0;33mW (1905434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1906434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1907434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1908434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1909304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1909304) TEST: Delay: 4000 ms[0m
+[0;33mW (1909434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1910434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1911234) HEATER: Temperatura: 59.000[0m
+[0;31mE (1911234) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1911234) HEATER: Esta em teste: Nao[0m
+[0;31mE (1911234) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1911234) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1911434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1912434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1913304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1913304) TEST: Delay: 4000 ms[0m
+[0;33mW (1913434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1914434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1914494) HEATER: Temperatura: 59.000[0m
+[0;31mE (1914494) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1914494) HEATER: Esta em teste: Nao[0m
+[0;31mE (1914494) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1914494) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1915434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1916434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1917304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1917304) TEST: Delay: 4000 ms[0m
+[0;33mW (1917434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1918434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1919434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1920434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1921304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1921304) TEST: Delay: 4000 ms[0m
+[0;33mW (1921434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1921504) HEATER: Temperatura: 59.000[0m
+[0;31mE (1921504) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1921504) HEATER: Esta em teste: Nao[0m
+[0;31mE (1921504) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1921504) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1922434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1923434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1924434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1925304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1925304) TEST: Delay: 4000 ms[0m
+[0;33mW (1925434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1926434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1927434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1928434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1928514) HEATER: Temperatura: 59.500[0m
+[0;31mE (1928514) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1928514) HEATER: Esta em teste: Nao[0m
+[0;31mE (1928514) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1928514) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1929304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1929304) TEST: Delay: 4000 ms[0m
+[0;33mW (1929434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1930434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1931434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1931774) HEATER: Temperatura: 59.500[0m
+[0;31mE (1931774) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1931774) HEATER: Esta em teste: Nao[0m
+[0;31mE (1931774) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1931784) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1932434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1933304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1933304) TEST: Delay: 4000 ms[0m
+[0;33mW (1933434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1934434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1935434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1936434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1937304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1937304) TEST: Delay: 4000 ms[0m
+[0;33mW (1937434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1938434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1938784) HEATER: Temperatura: 60.000[0m
+[0;31mE (1938784) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1938784) HEATER: Esta em teste: Nao[0m
+[0;31mE (1938784) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1938784) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1939434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1940434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1941304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1941304) TEST: Delay: 4000 ms[0m
+[0;33mW (1941434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1942434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1943434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1944434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1945304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1945304) TEST: Delay: 4000 ms[0m
+[0;33mW (1945434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1945794) HEATER: Temperatura: 60.000[0m
+[0;31mE (1945794) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1945794) HEATER: Esta em teste: Nao[0m
+[0;31mE (1945794) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1945794) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1946434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1947434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1948434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1949064) HEATER: Temperatura: 60.500[0m
+[0;31mE (1949064) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1949064) HEATER: Esta em teste: Nao[0m
+[0;31mE (1949064) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1949074) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (1949304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1949304) TEST: Delay: 4000 ms[0m
+[0;33mW (1949434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1950434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1951434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1952434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1953304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1953304) TEST: Delay: 4000 ms[0m
+[0;33mW (1953434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1954434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1955434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1956074) HEATER: Temperatura: 60.500[0m
+[0;31mE (1956074) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1956074) HEATER: Esta em teste: Nao[0m
+[0;31mE (1956074) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1956074) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1956434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1957304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1957304) TEST: Delay: 4000 ms[0m
+[0;33mW (1957434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1958434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1959434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1960434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1961304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1961304) TEST: Delay: 4000 ms[0m
+[0;33mW (1961434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1962434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1963084) HEATER: Temperatura: 61.000[0m
+[0;31mE (1963084) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1963084) HEATER: Esta em teste: Nao[0m
+[0;31mE (1963084) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1963084) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1963434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1964434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1965304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1965304) TEST: Delay: 4000 ms[0m
+[0;33mW (1965434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1966344) HEATER: Temperatura: 61.000[0m
+[0;31mE (1966344) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1966344) HEATER: Esta em teste: Nao[0m
+[0;31mE (1966344) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1966354) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1966434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1967434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1968434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1969304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1969304) TEST: Delay: 4000 ms[0m
+[0;33mW (1969434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1970434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1971434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1972434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1973304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1973304) TEST: Delay: 4000 ms[0m
+
+[0;31mE (1973354) HEATER: Temperatura: 61.500[0m
+[0;31mE (1973354) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1973354) HEATER: Esta em teste: Nao[0m
+[0;31mE (1973354) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1973354) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1973434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1974434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1975434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1976434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1977304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1977304) TEST: Delay: 4000 ms[0m
+[0;33mW (1977434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1978434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1979434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1980364) HEATER: Temperatura: 61.500[0m
+[0;31mE (1980364) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1980364) HEATER: Esta em teste: Nao[0m
+[0;31mE (1980364) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1980364) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1980434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1981304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1981304) TEST: Delay: 4000 ms[0m
+[0;33mW (1981434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1982434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1983434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1983634) HEATER: Temperatura: 62.000[0m
+[0;31mE (1983634) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1983634) HEATER: Esta em teste: Nao[0m
+[0;31mE (1983634) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1983644) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1984434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1985304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1985304) TEST: Delay: 4000 ms[0m
+[0;33mW (1985434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1986434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1987434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1988434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1989304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1989304) TEST: Delay: 4000 ms[0m
+[0;33mW (1989434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1990434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1990644) HEATER: Temperatura: 62.000[0m
+[0;31mE (1990644) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1990644) HEATER: Esta em teste: Nao[0m
+[0;31mE (1990644) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1990644) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1991434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1992434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1993304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1993304) TEST: Delay: 4000 ms[0m
+[0;33mW (1993434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1994434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1995434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1996434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (1997304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (1997304) TEST: Delay: 4000 ms[0m
+[0;33mW (1997434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (1997654) HEATER: Temperatura: 62.000[0m
+[0;31mE (1997654) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (1997654) HEATER: Esta em teste: Nao[0m
+[0;31mE (1997654) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (1997654) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (1998434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (1999434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2000434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2000914) HEATER: Temperatura: 62.000[0m
+[0;31mE (2000914) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2000914) HEATER: Esta em teste: Nao[0m
+[0;31mE (2000914) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2000924) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (2001304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2001304) TEST: Delay: 4000 ms[0m
+[0;33mW (2001434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2002434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2003434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2004434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2005304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2005304) TEST: Delay: 4000 ms[0m
+[0;33mW (2005434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2006434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2007434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2007924) HEATER: Temperatura: 62.000[0m
+[0;31mE (2007924) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2007924) HEATER: Esta em teste: Nao[0m
+[0;31mE (2007924) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2007924) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (2008434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2009304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2009304) TEST: Delay: 4000 ms[0m
+[0;33mW (2009434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2010434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2011434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2012434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2013304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2013304) TEST: Delay: 4000 ms[0m
+[0;33mW (2013434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2014434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2014934) HEATER: Temperatura: 62.000[0m
+[0;31mE (2014934) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2014934) HEATER: Esta em teste: Nao[0m
+[0;31mE (2014934) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2014934) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (2015434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2016434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2017304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2017304) TEST: Delay: 4000 ms[0m
+[0;33mW (2017434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2018194) HEATER: Temperatura: 62.000[0m
+[0;31mE (2018194) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2018194) HEATER: Esta em teste: Nao[0m
+[0;31mE (2018194) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2018204) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (2018434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2019434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2020434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2021304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2021304) TEST: Delay: 4000 ms[0m
+[0;33mW (2021434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2022434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2023434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2024434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2025204) HEATER: Temperatura: 62.000[0m
+[0;31mE (2025204) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2025204) HEATER: Esta em teste: Nao[0m
+[0;31mE (2025204) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2025204) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (2025304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2025304) TEST: Delay: 4000 ms[0m
+[0;33mW (2025434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2026434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2027434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2028434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2029304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2029304) TEST: Delay: 4000 ms[0m
+[0;33mW (2029434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2030434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2031434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2032214) HEATER: Temperatura: 62.000[0m
+[0;31mE (2032214) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2032214) HEATER: Esta em teste: Nao[0m
+[0;31mE (2032214) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2032214) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (2032434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2033304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2033304) TEST: Delay: 4000 ms[0m
+[0;33mW (2033434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2034434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2035434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2035484) HEATER: Temperatura: 62.000[0m
+[0;31mE (2035484) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2035484) HEATER: Esta em teste: Nao[0m
+[0;31mE (2035484) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2035494) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (2036434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2037304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2037304) TEST: Delay: 4000 ms[0m
+[0;33mW (2037434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2038434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2039434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2040434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2041304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2041304) TEST: Delay: 4000 ms[0m
+[0;33mW (2041434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2042434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (2042494) HEATER: Temperatura: 62.000[0m
+[0;31mE (2042494) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (2042494) HEATER: Esta em teste: Nao[0m
+[0;31mE (2042494) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (2042494) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (2043434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2044434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (2045304) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (2045304) TEST: Delay: 4000 ms[0m
+[0;33mW (2045434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2046434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (2047434) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m

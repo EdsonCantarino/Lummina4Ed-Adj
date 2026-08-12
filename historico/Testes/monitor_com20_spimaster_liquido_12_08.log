@@ -1,0 +1,1894 @@
+--- Miniterm on COM20  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+
+[0;31mE (106587) HEATER: Temperatura: 58.000[0m
+[0;31mE (106587) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (106587) HEATER: Esta em teste: Nao[0m
+[0;31mE (106587) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (106587) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+[0;31mE (113597) HEATER: Temperatura: 58.000[0m
+[0;31mE (113597) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (113597) HEATER: Esta em teste: Nao[0m
+[0;31mE (113597) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (113597) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (114257) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (114257) NVS_UTILS: Save Ampoule Test Counter in SRAM - DS1302
+[0m
+Value: 5
+[0;32mI (114257) NVS_UTILS: Ampoule Test Counter in ROM: (5)!
+[0m
+[0;32mI (114257) NVS_UTILS: Ampoule Test Counter: (6)!
+[0m
+[0;32mI (114267) NVS_UTILS: Ampoule Test Counter: (6)!
+[0m
+[DEBUG-ALARM] Ampola 1: alarm_status=1 (inserida)
+[0;32mI (114287) NVS_UTILS: Ampoule Test Counter: (6)!
+[0m
+[0;32mI (114287) NVS_UTILS: Prepare to save Ampoules Temp History in NVS
+[0m
+[0;32mI (114287) NVS_UTILS: Ampoules Temp History saved in NVS!
+[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 1
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 0 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 300 (segundos)
+Read CH01 = 51021
+[ADCDBG] chip=ADS1248 ch=0 raw=51021
+[AMPOLA 1] Valor recebido do sensor: 510
+Tamanho da lista de resultados: (0)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (115017) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (115027) TEST: Tempo total de execucao: 770 us[0m
+[0;32mI (115027) TEST: Delay: 3230 ms[0m
+
+[0;31mE (116857) HEATER: Temperatura: 58.000[0m
+[0;31mE (116857) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (116857) HEATER: Esta em teste: Sim[0m
+[0;31mE (116857) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (116857) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 2
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 4 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 296 (segundos)
+Read CH01 = 50648
+[ADCDBG] chip=ADS1248 ch=0 raw=50648
+[AMPOLA 1] Valor recebido do sensor: 506
+Tamanho da lista de resultados: (1)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (118967) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (118977) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (118977) TEST: Delay: 3279 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 3
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 8 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 292 (segundos)
+Read CH01 = 50395
+[ADCDBG] chip=ADS1248 ch=0 raw=50395
+[AMPOLA 1] Valor recebido do sensor: 503
+Tamanho da lista de resultados: (2)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (122957) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (122967) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (122967) TEST: Delay: 3279 ms[0m
+
+[0;31mE (123867) HEATER: Temperatura: 58.000[0m
+[0;31mE (123867) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (123867) HEATER: Esta em teste: Sim[0m
+[0;31mE (123867) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (123867) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 4
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 12 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 288 (segundos)
+Read CH01 = 50171
+[ADCDBG] chip=ADS1248 ch=0 raw=50171
+[AMPOLA 1] Valor recebido do sensor: 501
+Tamanho da lista de resultados: (3)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (126947) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (126957) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (126957) TEST: Delay: 3279 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 5
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 16 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 284 (segundos)
+
+[0;31mE (130877) HEATER: Temperatura: 58.000[0m
+[0;31mE (130877) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (130877) HEATER: Esta em teste: Sim[0m
+[0;31mE (130877) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (130877) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 49879
+[ADCDBG] chip=ADS1248 ch=0 raw=49879
+[AMPOLA 1] Valor recebido do sensor: 498
+Tamanho da lista de resultados: (4)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (130937) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (130947) TEST: Tempo total de execucao: 720 us[0m
+[0;32mI (130947) TEST: Delay: 3280 ms[0m
+
+[0;31mE (134137) HEATER: Temperatura: 58.000[0m
+[0;31mE (134137) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (134137) HEATER: Esta em teste: Sim[0m
+[0;31mE (134137) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (134137) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 6
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 20 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 280 (segundos)
+Read CH01 = 49600
+[ADCDBG] chip=ADS1248 ch=0 raw=49600
+[AMPOLA 1] Valor recebido do sensor: 496
+Tamanho da lista de resultados: (5)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (134937) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (134947) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (134947) TEST: Delay: 3279 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 7
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 24 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 276 (segundos)
+Read CH01 = 49386
+[ADCDBG] chip=ADS1248 ch=0 raw=49386
+[AMPOLA 1] Valor recebido do sensor: 493
+Tamanho da lista de resultados: (6)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (138927) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (138937) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (138937) TEST: Delay: 3279 ms[0m
+
+[0;31mE (141147) HEATER: Temperatura: 58.000[0m
+[0;31mE (141147) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (141147) HEATER: Esta em teste: Sim[0m
+[0;31mE (141147) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (141147) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 8
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 28 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 272 (segundos)
+Read CH01 = 49204
+[ADCDBG] chip=ADS1248 ch=0 raw=49204
+[AMPOLA 1] Valor recebido do sensor: 492
+Tamanho da lista de resultados: (7)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (142917) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (142927) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (142927) TEST: Delay: 3279 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 9
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 32 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 268 (segundos)
+Read CH01 = 49034
+[ADCDBG] chip=ADS1248 ch=0 raw=49034
+[AMPOLA 1] Valor recebido do sensor: 490
+Tamanho da lista de resultados: (8)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (146907) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (146917) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (146917) TEST: Delay: 3279 ms[0m
+
+[0;31mE (148157) HEATER: Temperatura: 58.000[0m
+[0;31mE (148157) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (148157) HEATER: Esta em teste: Sim[0m
+[0;31mE (148157) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (148157) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 10
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 36 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 264 (segundos)
+Read CH01 = 48956
+[ADCDBG] chip=ADS1248 ch=0 raw=48956
+[AMPOLA 1] Valor recebido do sensor: 489
+Tamanho da lista de resultados: (9)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (150897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (150907) TEST: Tempo total de execucao: 721 us[0m
+[0;32mI (150907) TEST: Delay: 3279 ms[0m
+
+[0;31mE (151427) HEATER: Temperatura: 58.000[0m
+[0;31mE (151427) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (151427) HEATER: Esta em teste: Sim[0m
+[0;31mE (151427) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (151427) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 40 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 260 (segundos)
+Read CH01 = 48859
+[ADCDBG] chip=ADS1248 ch=0 raw=48859
+[AMPOLA 1] Valor recebido do sensor: 488
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (154897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (154897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (154907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 44 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 256 (segundos)
+
+[0;31mE (158437) HEATER: Temperatura: 58.000[0m
+[0;31mE (158437) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (158437) HEATER: Esta em teste: Sim[0m
+[0;31mE (158437) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (158437) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 48597
+[ADCDBG] chip=ADS1248 ch=0 raw=48597
+[AMPOLA 1] Valor recebido do sensor: 485
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (158897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (158897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (158907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 48 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 252 (segundos)
+Read CH01 = 48520
+[ADCDBG] chip=ADS1248 ch=0 raw=48520
+[AMPOLA 1] Valor recebido do sensor: 485
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (162897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (162897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (162907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (165447) HEATER: Temperatura: 58.000[0m
+[0;31mE (165447) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (165447) HEATER: Esta em teste: Sim[0m
+[0;31mE (165447) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (165447) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 52 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 248 (segundos)
+Read CH01 = 48485
+[ADCDBG] chip=ADS1248 ch=0 raw=48485
+[AMPOLA 1] Valor recebido do sensor: 484
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (166897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (166897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (166907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (168707) HEATER: Temperatura: 58.000[0m
+[0;31mE (168707) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (168707) HEATER: Esta em teste: Sim[0m
+[0;31mE (168707) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (168707) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 56 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 244 (segundos)
+Read CH01 = 48473
+[ADCDBG] chip=ADS1248 ch=0 raw=48473
+[AMPOLA 1] Valor recebido do sensor: 484
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (170897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (170897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (170907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 60 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 240 (segundos)
+Read CH01 = 48394
+[ADCDBG] chip=ADS1248 ch=0 raw=48394
+[AMPOLA 1] Valor recebido do sensor: 483
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (174897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (174897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (174907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (175717) HEATER: Temperatura: 57.500[0m
+[0;31mE (175717) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (175717) HEATER: Esta em teste: Sim[0m
+[0;31mE (175717) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (175717) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 64 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 236 (segundos)
+Read CH01 = 48374
+[ADCDBG] chip=ADS1248 ch=0 raw=48374
+[AMPOLA 1] Valor recebido do sensor: 483
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (178897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (178897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (178907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 68 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 232 (segundos)
+
+[0;31mE (182727) HEATER: Temperatura: 57.500[0m
+[0;31mE (182727) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (182727) HEATER: Esta em teste: Sim[0m
+[0;31mE (182727) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (182727) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 48346
+[ADCDBG] chip=ADS1248 ch=0 raw=48346
+[AMPOLA 1] Valor recebido do sensor: 483
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (182897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (182897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (182907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (185997) HEATER: Temperatura: 57.500[0m
+[0;31mE (185997) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (185997) HEATER: Esta em teste: Sim[0m
+[0;31mE (185997) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (185997) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 72 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 228 (segundos)
+Read CH01 = 48261
+[ADCDBG] chip=ADS1248 ch=0 raw=48261
+[AMPOLA 1] Valor recebido do sensor: 482
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (186897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (186897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (186907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 76 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 224 (segundos)
+Read CH01 = 48238
+[ADCDBG] chip=ADS1248 ch=0 raw=48238
+[AMPOLA 1] Valor recebido do sensor: 482
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (190897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (190897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (190907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (193007) HEATER: Temperatura: 57.500[0m
+[0;31mE (193007) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (193007) HEATER: Esta em teste: Sim[0m
+[0;31mE (193007) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (193007) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 80 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 220 (segundos)
+Read CH01 = 48227
+[ADCDBG] chip=ADS1248 ch=0 raw=48227
+[AMPOLA 1] Valor recebido do sensor: 482
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (194897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (194897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (194907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 84 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 216 (segundos)
+Read CH01 = 48102
+[ADCDBG] chip=ADS1248 ch=0 raw=48102
+[AMPOLA 1] Valor recebido do sensor: 481
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (198897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (198897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (198907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (200017) HEATER: Temperatura: 57.500[0m
+[0;31mE (200017) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (200017) HEATER: Esta em teste: Sim[0m
+[0;31mE (200017) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (200017) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 88 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 212 (segundos)
+Read CH01 = 48190
+[ADCDBG] chip=ADS1248 ch=0 raw=48190
+[AMPOLA 1] Valor recebido do sensor: 481
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (202897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (202897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (202907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (203277) HEATER: Temperatura: 57.500[0m
+[0;31mE (203277) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (203277) HEATER: Esta em teste: Sim[0m
+[0;31mE (203277) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (203287) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 92 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 208 (segundos)
+Read CH01 = 48082
+[ADCDBG] chip=ADS1248 ch=0 raw=48082
+[AMPOLA 1] Valor recebido do sensor: 480
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (206897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (206897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (206907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 96 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 204 (segundos)
+
+[0;31mE (210287) HEATER: Temperatura: 57.500[0m
+[0;31mE (210287) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (210287) HEATER: Esta em teste: Sim[0m
+[0;31mE (210287) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (210287) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 47955
+[ADCDBG] chip=ADS1248 ch=0 raw=47955
+[AMPOLA 1] Valor recebido do sensor: 479
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (210897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (210897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (210907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 100 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 200 (segundos)
+Read CH01 = 47954
+[ADCDBG] chip=ADS1248 ch=0 raw=47954
+[AMPOLA 1] Valor recebido do sensor: 479
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (214897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (214897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (214907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (217297) HEATER: Temperatura: 57.500[0m
+[0;31mE (217297) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (217297) HEATER: Esta em teste: Sim[0m
+[0;31mE (217297) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (217297) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 104 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 196 (segundos)
+Read CH01 = 47984
+[ADCDBG] chip=ADS1248 ch=0 raw=47984
+[AMPOLA 1] Valor recebido do sensor: 479
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (218897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (218897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (218907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (220557) HEATER: Temperatura: 57.500[0m
+[0;31mE (220557) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (220557) HEATER: Esta em teste: Sim[0m
+[0;31mE (220557) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (220557) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 108 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 192 (segundos)
+Read CH01 = 47921
+[ADCDBG] chip=ADS1248 ch=0 raw=47921
+[AMPOLA 1] Valor recebido do sensor: 479
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (222897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (222897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (222907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 112 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 188 (segundos)
+Read CH01 = 47887
+[ADCDBG] chip=ADS1248 ch=0 raw=47887
+[AMPOLA 1] Valor recebido do sensor: 478
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (226897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (226897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (226907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (227567) HEATER: Temperatura: 57.500[0m
+[0;31mE (227567) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (227567) HEATER: Esta em teste: Sim[0m
+[0;31mE (227567) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (227567) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 116 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 184 (segundos)
+Read CH01 = 47906
+[ADCDBG] chip=ADS1248 ch=0 raw=47906
+[AMPOLA 1] Valor recebido do sensor: 479
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (230897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (230897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (230907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 120 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 180 (segundos)
+
+[0;31mE (234577) HEATER: Temperatura: 57.500[0m
+[0;31mE (234577) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (234577) HEATER: Esta em teste: Sim[0m
+[0;31mE (234577) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (234577) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 47991
+[ADCDBG] chip=ADS1248 ch=0 raw=47991
+[AMPOLA 1] Valor recebido do sensor: 479
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (234897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (234897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (234907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (237847) HEATER: Temperatura: 57.500[0m
+[0;31mE (237847) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (237847) HEATER: Esta em teste: Sim[0m
+[0;31mE (237847) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (237847) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 124 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 176 (segundos)
+Read CH01 = 48074
+[ADCDBG] chip=ADS1248 ch=0 raw=48074
+[AMPOLA 1] Valor recebido do sensor: 480
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (238897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (238897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (238907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 128 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 172 (segundos)
+Read CH01 = 48089
+[ADCDBG] chip=ADS1248 ch=0 raw=48089
+[AMPOLA 1] Valor recebido do sensor: 480
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (242897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (242897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (242907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (244857) HEATER: Temperatura: 57.500[0m
+[0;31mE (244857) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (244857) HEATER: Esta em teste: Sim[0m
+[0;31mE (244857) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (244857) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 132 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 168 (segundos)
+Read CH01 = 48141
+[ADCDBG] chip=ADS1248 ch=0 raw=48141
+[AMPOLA 1] Valor recebido do sensor: 481
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (246897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (246897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (246907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 136 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 164 (segundos)
+Read CH01 = 48236
+[ADCDBG] chip=ADS1248 ch=0 raw=48236
+[AMPOLA 1] Valor recebido do sensor: 482
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (250897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (250897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (250907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (251867) HEATER: Temperatura: 57.500[0m
+[0;31mE (251867) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (251867) HEATER: Esta em teste: Sim[0m
+[0;31mE (251867) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (251867) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 140 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 160 (segundos)
+Read CH01 = 48416
+[ADCDBG] chip=ADS1248 ch=0 raw=48416
+[AMPOLA 1] Valor recebido do sensor: 484
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (254897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (254897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (254907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (255127) HEATER: Temperatura: 57.000[0m
+[0;31mE (255127) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (255127) HEATER: Esta em teste: Sim[0m
+[0;31mE (255127) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (255127) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 144 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 156 (segundos)
+Read CH01 = 48617
+[ADCDBG] chip=ADS1248 ch=0 raw=48617
+[AMPOLA 1] Valor recebido do sensor: 486
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (258897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (258897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (258907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (262137) HEATER: Temperatura: 57.000[0m
+[0;31mE (262137) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (262137) HEATER: Esta em teste: Sim[0m
+[0;31mE (262137) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (262137) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 148 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 152 (segundos)
+Read CH01 = 48788
+[ADCDBG] chip=ADS1248 ch=0 raw=48788
+[AMPOLA 1] Valor recebido do sensor: 487
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (262897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (262897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (262907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 152 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 148 (segundos)
+Read CH01 = 48936
+[ADCDBG] chip=ADS1248 ch=0 raw=48936
+[AMPOLA 1] Valor recebido do sensor: 489
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (266897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (266897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (266907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (269147) HEATER: Temperatura: 57.000[0m
+[0;31mE (269147) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (269147) HEATER: Esta em teste: Sim[0m
+[0;31mE (269147) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (269147) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 156 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 144 (segundos)
+Read CH01 = 49071
+[ADCDBG] chip=ADS1248 ch=0 raw=49071
+[AMPOLA 1] Valor recebido do sensor: 490
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (270897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (270897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (270907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (272407) HEATER: Temperatura: 57.000[0m
+[0;31mE (272407) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (272407) HEATER: Esta em teste: Sim[0m
+[0;31mE (272407) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (272407) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 160 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 140 (segundos)
+Read CH01 = 49177
+[ADCDBG] chip=ADS1248 ch=0 raw=49177
+[AMPOLA 1] Valor recebido do sensor: 491
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (274897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (274897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (274907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 164 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 136 (segundos)
+Read CH01 = 49311
+[ADCDBG] chip=ADS1248 ch=0 raw=49311
+[AMPOLA 1] Valor recebido do sensor: 493
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (278897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (278897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (278907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (279417) HEATER: Temperatura: 57.000[0m
+[0;31mE (279417) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (279417) HEATER: Esta em teste: Sim[0m
+[0;31mE (279417) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (279417) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 168 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 132 (segundos)
+Read CH01 = 49454
+[ADCDBG] chip=ADS1248 ch=0 raw=49454
+[AMPOLA 1] Valor recebido do sensor: 494
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (282897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (282897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (282907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 172 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 128 (segundos)
+
+[0;31mE (286427) HEATER: Temperatura: 57.000[0m
+[0;31mE (286427) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (286427) HEATER: Esta em teste: Sim[0m
+[0;31mE (286427) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (286427) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 49552
+[ADCDBG] chip=ADS1248 ch=0 raw=49552
+[AMPOLA 1] Valor recebido do sensor: 495
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (286897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (286897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (286907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (289707) HEATER: Temperatura: 57.000[0m
+[0;31mE (289707) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (289707) HEATER: Esta em teste: Sim[0m
+[0;31mE (289707) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (289717) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 176 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 124 (segundos)
+Read CH01 = 49669
+[ADCDBG] chip=ADS1248 ch=0 raw=49669
+[AMPOLA 1] Valor recebido do sensor: 496
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (290897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (290897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (290907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 180 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 120 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 49724
+[ADCDBG] chip=ADS1248 ch=0 raw=49724
+[AMPOLA 1] Valor recebido do sensor: 497
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (294897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (294907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (294907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (296717) HEATER: Temperatura: 57.000[0m
+[0;31mE (296717) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (296717) HEATER: Esta em teste: Sim[0m
+[0;31mE (296717) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (296717) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 184 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 116 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 49848
+[ADCDBG] chip=ADS1248 ch=0 raw=49848
+[AMPOLA 1] Valor recebido do sensor: 498
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (298897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (298907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (298907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 188 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 112 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 49935
+[ADCDBG] chip=ADS1248 ch=0 raw=49935
+[AMPOLA 1] Valor recebido do sensor: 499
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (302897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (302907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (302907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (303727) HEATER: Temperatura: 57.000[0m
+[0;31mE (303727) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (303727) HEATER: Esta em teste: Sim[0m
+[0;31mE (303727) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (303727) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 192 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 108 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 50038
+[ADCDBG] chip=ADS1248 ch=0 raw=50038
+[AMPOLA 1] Valor recebido do sensor: 500
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (306897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (306907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (306907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (306987) HEATER: Temperatura: 57.000[0m
+[0;31mE (306987) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (306987) HEATER: Esta em teste: Sim[0m
+[0;31mE (306987) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (306987) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 196 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 104 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 50116
+[ADCDBG] chip=ADS1248 ch=0 raw=50116
+[AMPOLA 1] Valor recebido do sensor: 501
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (310897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (310907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (310907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (313997) HEATER: Temperatura: 57.000[0m
+[0;31mE (313997) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (313997) HEATER: Esta em teste: Sim[0m
+[0;31mE (313997) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (313997) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 200 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 100 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 50239
+[ADCDBG] chip=ADS1248 ch=0 raw=50239
+[AMPOLA 1] Valor recebido do sensor: 502
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (314897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (314907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (314907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 204 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 96 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 50339
+[ADCDBG] chip=ADS1248 ch=0 raw=50339
+[AMPOLA 1] Valor recebido do sensor: 503
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (318897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (318907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (318907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (321007) HEATER: Temperatura: 57.000[0m
+[0;31mE (321007) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (321007) HEATER: Esta em teste: Sim[0m
+[0;31mE (321007) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (321007) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 208 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 92 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 50548
+[ADCDBG] chip=ADS1248 ch=0 raw=50548
+[AMPOLA 1] Valor recebido do sensor: 505
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (322897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (322907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (322907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (324277) HEATER: Temperatura: 57.000[0m
+[0;31mE (324277) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (324277) HEATER: Esta em teste: Sim[0m
+[0;31mE (324277) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (324277) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 212 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 88 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 50869
+[ADCDBG] chip=ADS1248 ch=0 raw=50869
+[AMPOLA 1] Valor recebido do sensor: 508
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (326897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (326907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (326907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 216 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 84 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 51256
+[ADCDBG] chip=ADS1248 ch=0 raw=51256
+[AMPOLA 1] Valor recebido do sensor: 512
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (330897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (330907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (330907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (331287) HEATER: Temperatura: 57.000[0m
+[0;31mE (331287) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (331287) HEATER: Esta em teste: Sim[0m
+[0;31mE (331287) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (331287) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 220 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 80 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 51685
+[ADCDBG] chip=ADS1248 ch=0 raw=51685
+[AMPOLA 1] Valor recebido do sensor: 516
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (334897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (334907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (334907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 224 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 76 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (338297) HEATER: Temperatura: 57.000[0m
+[0;31mE (338297) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (338297) HEATER: Esta em teste: Sim[0m
+[0;31mE (338297) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (338297) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 52166
+[ADCDBG] chip=ADS1248 ch=0 raw=52166
+[AMPOLA 1] Valor recebido do sensor: 521
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (338897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (338897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (338907) TEST: Delay: 3271 ms[0m
+
+[0;31mE (341557) HEATER: Temperatura: 57.000[0m
+[0;31mE (341557) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (341557) HEATER: Esta em teste: Sim[0m
+[0;31mE (341557) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (341557) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 228 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 72 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 52550
+[ADCDBG] chip=ADS1248 ch=0 raw=52550
+[AMPOLA 1] Valor recebido do sensor: 525
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (342897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (342907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (342907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 232 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 68 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 52832
+[ADCDBG] chip=ADS1248 ch=0 raw=52832
+[AMPOLA 1] Valor recebido do sensor: 528
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (346897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (346907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (346907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (348567) HEATER: Temperatura: 57.000[0m
+[0;31mE (348567) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (348567) HEATER: Esta em teste: Sim[0m
+[0;31mE (348567) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (348567) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 236 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 64 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 53082
+[ADCDBG] chip=ADS1248 ch=0 raw=53082
+[AMPOLA 1] Valor recebido do sensor: 530
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (350897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (350907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (350907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 240 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 60 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 53320
+[ADCDBG] chip=ADS1248 ch=0 raw=53320
+[AMPOLA 1] Valor recebido do sensor: 533
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (354897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (354907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (354907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (355577) HEATER: Temperatura: 56.500[0m
+[0;31mE (355577) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (355577) HEATER: Esta em teste: Sim[0m
+[0;31mE (355577) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (355577) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 244 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 56 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (358837) HEATER: Temperatura: 56.500[0m
+[0;31mE (358837) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (358837) HEATER: Esta em teste: Sim[0m
+[0;31mE (358837) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (358837) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 53521
+[ADCDBG] chip=ADS1248 ch=0 raw=53521
+[AMPOLA 1] Valor recebido do sensor: 535
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (358897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (358897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (358907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 248 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 52 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 53667
+[ADCDBG] chip=ADS1248 ch=0 raw=53667
+[AMPOLA 1] Valor recebido do sensor: 536
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (362897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (362907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (362907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (365847) HEATER: Temperatura: 56.500[0m
+[0;31mE (365847) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (365847) HEATER: Esta em teste: Sim[0m
+[0;31mE (365847) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (365847) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 252 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 48 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 53836
+[ADCDBG] chip=ADS1248 ch=0 raw=53836
+[AMPOLA 1] Valor recebido do sensor: 538
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (366897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (366907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (366907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 256 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 44 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 53906
+[ADCDBG] chip=ADS1248 ch=0 raw=53906
+[AMPOLA 1] Valor recebido do sensor: 539
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (370897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (370907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (370907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (372857) HEATER: Temperatura: 56.500[0m
+[0;31mE (372857) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (372857) HEATER: Esta em teste: Sim[0m
+[0;31mE (372857) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (372857) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 260 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 40 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 53977
+[ADCDBG] chip=ADS1248 ch=0 raw=53977
+[AMPOLA 1] Valor recebido do sensor: 539
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (374897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (374907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (374907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (376127) HEATER: Temperatura: 56.500[0m
+[0;31mE (376127) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (376127) HEATER: Esta em teste: Sim[0m
+[0;31mE (376127) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (376137) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 264 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 36 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54067
+[ADCDBG] chip=ADS1248 ch=0 raw=54067
+[AMPOLA 1] Valor recebido do sensor: 540
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (378897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (378907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (378907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 268 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 32 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54146
+[ADCDBG] chip=ADS1248 ch=0 raw=54146
+[AMPOLA 1] Valor recebido do sensor: 541
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (382897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (382907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (382907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (383137) HEATER: Temperatura: 56.500[0m
+[0;31mE (383137) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (383137) HEATER: Esta em teste: Sim[0m
+[0;31mE (383137) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (383137) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 272 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 28 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54281
+[ADCDBG] chip=ADS1248 ch=0 raw=54281
+[AMPOLA 1] Valor recebido do sensor: 542
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (386897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (386907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (386907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (390147) HEATER: Temperatura: 56.500[0m
+[0;31mE (390147) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (390147) HEATER: Esta em teste: Sim[0m
+[0;31mE (390147) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (390147) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 276 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 24 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54427
+[ADCDBG] chip=ADS1248 ch=0 raw=54427
+[AMPOLA 1] Valor recebido do sensor: 544
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (390897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (390907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (390907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (393437) HEATER: Temperatura: 56.500[0m
+[0;31mE (393437) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (393437) HEATER: Esta em teste: Sim[0m
+[0;31mE (393437) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (393447) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 280 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 20 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54567
+[ADCDBG] chip=ADS1248 ch=0 raw=54567
+[AMPOLA 1] Valor recebido do sensor: 545
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (394897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (394907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (394907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 284 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 16 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54731
+[ADCDBG] chip=ADS1248 ch=0 raw=54731
+[AMPOLA 1] Valor recebido do sensor: 547
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (398897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (398907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (398907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (400447) HEATER: Temperatura: 56.500[0m
+[0;31mE (400447) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (400447) HEATER: Esta em teste: Sim[0m
+[0;31mE (400447) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (400447) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 288 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 12 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 54958
+[ADCDBG] chip=ADS1248 ch=0 raw=54958
+[AMPOLA 1] Valor recebido do sensor: 549
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (402897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (402907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (402907) TEST: Delay: 3270 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 292 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 8 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?Read CH01 = 55210
+[ADCDBG] chip=ADS1248 ch=0 raw=55210
+[AMPOLA 1] Valor recebido do sensor: 552
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (406897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (406907) TEST: Tempo total de execucao: 730 us[0m
+[0;32mI (406907) TEST: Delay: 3270 ms[0m
+
+[0;31mE (407457) HEATER: Temperatura: 56.500[0m
+[0;31mE (407457) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (407457) HEATER: Esta em teste: Sim[0m
+[0;31mE (407457) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (407457) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 296 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 4 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+[0;31mE (410717) HEATER: Temperatura: 56.500[0m
+[0;31mE (410717) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (410717) HEATER: Esta em teste: Sim[0m
+[0;31mE (410717) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (410717) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+Read CH01 = 56212
+[ADCDBG] chip=ADS1248 ch=0 raw=56212
+[AMPOLA 1] Valor recebido do sensor: 562
+Tamanho da lista de resultados: (10)
+Tamanho da lista de resultados (após exclusão): (9)
+Tamanho da lista de resultados (final): (10)
+[AMPOLA 1] Aguardando proxima leitura de teste
+[0;32mI (410897) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+[0;32mI (410897) TEST: Tempo total de execucao: 729 us[0m
+[0;32mI (410907) TEST: Delay: 3271 ms[0m
+
+
+[AMPOLA 1] Numero Sequencial do teste : [ 0000000006 ]
+[AMPOLA 1] Executando teste: 11
+[AMPOLA 1] Tempo total de teste        : 300 (segundos)
+[AMPOLA 1] Tempo em teste              : 300 (segundos)
+[AMPOLA 1] Tempo para concluir o teste : 0 (segundos)
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;32mI (414187) DS1302: Date & Time: 01/01/2000 00:00:00[0m
+***** [AMPOLA 1] FINALIZANDO TESTES *****
+Date & Time Init: 01/01/2000 00:00:00
+Date & Time End: 01/01/2000 00:05:00
+Date & Time End (Final): 01/01/2000 00:05:00
+***** [AMPOLA 1] TESTE FINALIZADO COM SUCESSO *****
+
+***** [AMPOLA 1] IMPRIMINDO RESULTADO *****
+
+
+
+Serial Number 002300P4
+
+
+
+Language: pt-br
+
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?[0;32mI (414227) : Start Date & Time Formatted: 01/01/2000 | 00:00:00[0m
+[0;32mI (414237) : End   Date & Time Formatted: 01/01/2000 | 00:05:00[0m
+date: 01/01/2000 00:05:00
+day: 1
+month: 1
+year: 2000
+hour: 0
+minute: 5
+second: 0
+date: 01/01/2000 00:00:00
+day: 1
+month: 1
+year: 2000
+hour: 0
+minute: 0
+second: 0
+s1: 60907593900
+s2: 60907593600
+diferenca: 300.000000
+[0;32mI (415017) PRINTER_DRIVER: usb_host_transfer_submit Out fail: ESP_ERR_INVALID_ARG[0m
+[0;32mI (415267) PRINTER_DRIVER: usb_host_transfer_submit Out fail: ESP_ERR_INVALID_ARG[0m
+[0;33mW (415297) PRINTER: Erro de impressora detectado (is_printer_error), mas nao ha ticket pendente no historico - sem motivo pra reiniciar[0m
+[0;32mI (415567) NVS_Helper: NVSHelper::setObjct(): set obj addr = [0x3FCE071C], length = [1161]
+[0m
+
+
+**************************************************************
+Ampola sob teste (1)
+Data e hora de inicio: 01/01/2000 00:00:00
+Data e hora de fim: 01/01/2000 00:05:00
+Resultado:
+     Valor da amostra [1]:   510
+     Valor da amostra [2]:   506
+     Valor da amostra [3]:   503
+     Valor da amostra [4]:   501
+     Valor da amostra [5]:   498
+     Valor da amostra [6]:   545
+     Valor da amostra [7]:   547
+     Valor da amostra [8]:   549
+     Valor da amostra [9]:   552
+     Valor da amostra [10]:   562
+     -----------------------------
+     Soma dos valores:       5273
+     Quantidade de amostras: 10
+     -----------------------------
+     Media dos valores:      527
+     Variacao Percentual:    9.41
+     -----------------------------
+
+Positive Percentage: 40.000000
+
+Is Positive: 0
+?
+******* AMOSTRA NEGATIVADA *******
+
+**************************************************************
+
+[0;33mW (415647) timer_manager: Timer not started[0m
+[0;32mI (415657) timer_manager: Starting timer[0m
+[0;32mI (415657) TEST: Tempo total de execucao: 1486 us[0m
+[0;32mI (415667) TEST: Delay: 2514 ms[0m
+[0;33mW (416297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (417297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (417727) HEATER: Temperatura: 56.500[0m
+[0;31mE (417727) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (417727) HEATER: Esta em teste: Nao[0m
+[0;31mE (417727) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (417727) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;32mI (418177) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (418177) TEST: Delay: 4000 ms[0m
+[0;33mW (418297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (419297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (420297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (421297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;32mI (422177) TEST: Tempo total de execucao: 0 us[0m
+[0;32mI (422177) TEST: Delay: 4000 ms[0m
+[0;33mW (422297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[DEBUG-ALARM] Ampola 1: alarm_status=2 (removida, fora de teste)
+[0;33mW (423297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+[0;33mW (424297) PRINTER: Erro de impressora detectado (is_printer_error), mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)[0m
+
+[0;31mE (424737) HEATER: Temperatura: 56.500[0m
+[0;31mE (424737) HEATER: Funcoes Habilitadas: Sim[0m
+[0;31mE (424737) HEATER: Esta em teste: Nao[0m
+[0;31mE (424737) HEATER: Temperatura estabilizada: Sim[0m
+[0;31mE (424737) HEATER: Temperatura no Range > 53.0 e < 68.0: Sim[0m
+
+[0;33mW (425297) PRINTER: Erro de impress
