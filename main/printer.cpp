@@ -56,6 +56,19 @@ device_settings_t settings;
 // (06/08: reinicio cortava o beep de alarme de ampola removida no meio).
 static bool printer_was_ready = false;
 
+// Foto tirada uma unica vez, ~10s depois do boot (resolve_boot_pending_history_task) -
+// diferente do estado atual de is_printer_connected() (que vira false de
+// novo assim que o cabo sai), essa fica fixa pro resto do boot. Testado
+// fisicamente em 12/08: impressora conectada no boot, imprime, cabo
+// retirado no meio de outro teste - o reinicio de recuperacao deve
+// continuar valendo (a impressora "deveria" estar la, so sumiu), diferente
+// do caso "nunca teve impressora nesse boot" (bring-up ADS1248 em bancada,
+// 07/08), onde reiniciar nao ajuda em nada. Se a impressora so for
+// conectada depois dessa janela dos 10s iniciais, essa foto fica false e o
+// reinicio de recuperacao nao dispara pra ela nessa sessao - aceito por
+// decisao do usuario (12/08).
+static bool printer_present_at_boot = false;
+
 #define PRINTER_RESTART_GRACE_MS (10 * 1000)
 static int64_t printer_safe_to_restart_since_ms = 0;
 
@@ -122,19 +135,14 @@ static void attempt_safe_printer_recovery(const char *reason) {
 		return;
 	}
 
-	// Reiniciar so ajuda a recuperar uma impressora que travou CONECTADA
-	// (caso relatado pelo cliente 05/08 - trava no fim do ciclo, ainda
-	// enumerada via USB, so o transfer que falha). Se nenhuma impressora
-	// jamais conectou (isPrinterConnected so vira true num evento
-	// USB_HOST_CLIENT_EVENT_NEW_DEV real - usb_class_driver.cpp),
-	// is_printer_error() fica "travado" true pra sempre (nada reseta sem
-	// um novo evento USB) e reiniciar o equipamento nao resolve nada -
-	// so interrompe o teste em andamento. Sem essa guarda, toda
-	// finalizacao de teste sem impressora fisica vira um reinicio ~10s
-	// depois (bring-up da placa ADS1248 em bancada sem impressora, 07/08).
-	if (!is_printer_connected()) {
+	// Usa a foto tirada no boot (printer_present_at_boot), nao o estado
+	// atual - ver comentario na declaracao da variavel. Reiniciar so ajuda
+	// a recuperar uma impressora que devia estar la (esteve presente no
+	// boot) e sumiu/travou - se nunca teve impressora nesse boot, reiniciar
+	// nao resolve nada (bring-up ADS1248 em bancada, 07/08).
+	if (!printer_present_at_boot) {
 		ESP_LOGW(TAG,
-				"%s, mas nenhuma impressora esta conectada via USB - sem motivo pra reiniciar (nada fisico pra recuperar)",
+				"%s, mas a impressora nao estava presente no boot - sem motivo pra reiniciar (nada fisico pra recuperar)",
 				reason);
 		printer_safe_to_restart_since_ms = 0;
 		return;
@@ -507,13 +515,22 @@ void print_test_task_notify(void *pvParameter) {
 // app_main()/printer_setup(). Se a impressora ficou pronta a tempo, tenta
 // imprimir de verdade; do contrario (ou se falhar mesmo assim), marca como
 // impresso de qualquer forma - um ticket antigo parado aqui nao serve pra
-// nada (a guarda is_printer_connected() em attempt_safe_printer_recovery ja
-// evita reiniciar por causa dele, mas ele ficaria marcado "nao impresso" no
-// historico web pra sempre sem essa limpeza).
+// nada (a guarda printer_present_at_boot em attempt_safe_printer_recovery
+// ja evita reiniciar por causa dele, mas ele ficaria marcado "nao impresso"
+// no historico web pra sempre sem essa limpeza).
 #define BOOT_PENDING_HISTORY_RESOLVE_DELAY_MS (10 * 1000)
 
 static void resolve_boot_pending_history_task(void *pvParameter) {
 	vTaskDelay(pdMS_TO_TICKS(BOOT_PENDING_HISTORY_RESOLVE_DELAY_MS));
+
+	// Foto unica da presenca da impressora nesse boot - ver comentario na
+	// declaracao de printer_present_at_boot. Tirada aqui (nao antes) pra
+	// dar tempo real da enumeracao USB acontecer (~600ms depois do client
+	// registrar, testado em 12/08), e sempre, mesmo sem ticket pendente
+	// agora - um ticket pode ficar pendente mais tarde, nessa mesma sessao.
+	printer_present_at_boot = is_printer_connected();
+	ESP_LOGI(TAG, "Boot: impressora %s no boot",
+			printer_present_at_boot ? "presente" : "ausente");
 
 	if (!has_unprinted_history()) {
 		ESP_LOGI(TAG, "Boot: nenhum ticket pendente no historico");
