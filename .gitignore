@@ -3,3 +3,4 @@ managed_components/
 sdkconfig.old
 *.bin
 *.elf.claude/
+tools/build_exe/
