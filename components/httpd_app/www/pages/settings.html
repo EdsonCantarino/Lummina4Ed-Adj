@@ -10,7 +10,6 @@
 
     <script src="/jquery/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.js"></script>
     <script src="/moment/moment.js"></script>
     <script src="/moment/moment-with-locales.js"></script>
     <script src="/custom/custom.js"></script>
@@ -19,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-toaster.min.css">
-    <link rel="stylesheet" type="text/css" href="/bootstrap_datetimepicker/bootstrap.datetimepicker.min.css">
 
     <title>Configurações do dispositivo</title>
 </head>
@@ -41,9 +39,9 @@
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false" key="config">Configurações</a>
                         <div class="dropdown-menu" id="sub-menu-1">
-                            <a class="dropdown-item" href="/" key="device">Dispositivo</a>
-                            <a class="dropdown-item" href="/calibration" key="calibration">Calibração</a>
-                            <a class="dropdown-item" href="/reset" key="reset">Resetar dispositivo</a>
+                            <a class="dropdown-item" href="/" key="device">Data/Hora Buzzer</a>
+                            <a class="dropdown-item" href="/calibration" key="calibration">Calib. Temperatura</a>
+                            <a class="dropdown-item" href="/reset" key="reset">Padrão Fábrica</a>
                             <a class="dropdown-item" href="/history" key="history">Histórico</a>
                         </div>
                     </li>
@@ -86,12 +84,9 @@
                     </div>
                     <div class="form-floating mb-3">
                         <div class="mb-3" id="settings_date_time">
-                            <label for="date_time" class="form-label" key="date_time">Nova Data e Hora</label>
-                            <input type="text" class="form-control datepicker" id="date_time">
+                            <label for="date_time" class="form-label" key="date_time">Data/Hora Servidor</label>
+                            <input type="text" class="form-control" id="date_time" disabled>
                         </div>
-                    </div>
-                    <div class="mb-3" id="settings_use_computer_time">
-                        <button type="button" class="btn btn-secondary btn-sm" id="btnUseComputerTime" key="use_computer_time">Atualizar hora do Lummina?</button>
                     </div>
                 </form>
             </div>
@@ -180,17 +175,6 @@
             console.log(JSON.stringify(data));
 
             setLanguage(data.language);
-        });
-
-        $('.datepicker').datetimepicker({
-            language: 'pt-BR',
-            format: "dd/mm/yyyy HH:ii:ss",
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1
         });
 
         function ascii_to_hexa(str) {
@@ -306,7 +290,7 @@
                 deviceDateTimeOriginal = data.deviceDateTime;
 
                 $("#device_date_time").val(deviceDateTimeOriginal);
-                $("#date_time").val(deviceDateTimeOriginal);
+                $("#date_time").val(moment().format("DD/MM/YYYY HH:mm:ss"));
 
                 //var inst = hex_to_ascii(data.institution);
 
@@ -371,13 +355,6 @@
                 });
             });
 
-            $("#btnUseComputerTime").on('click', function (e) {
-                e.preventDefault();
-
-                var timestamp = moment().format("DD/MM/YYYY HH:mm:ss");
-                $("#date_time").val(timestamp);
-            });
-
             $("#btnConfirmDateTime").on('click', function (e) {
                 $('#dateTimeConfirmModal').modal('hide');
 
@@ -390,6 +367,12 @@
 
             $("#btnSalvar").on('click', function (e) {
                 e.preventDefault();
+
+                // Busca a hora do navegador de novo aqui, em vez de confiar no
+                // valor carregado no load da pagina - evita gravar uma hora
+                // desatualizada se a pagina ficou aberta um tempo antes de
+                // clicar em Salvar.
+                $("#date_time").val(moment().format("DD/MM/YYYY HH:mm:ss"));
 
                 var newDateTime = $("#date_time").val();
 

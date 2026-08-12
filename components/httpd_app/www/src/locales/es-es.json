@@ -6,9 +6,9 @@
     "config": "Configuración"
   },
   "#sub-menu-1": {
-    "device": "Dispositivo",
-    "calibration": "Calibración",
-    "reset": "Restablecer dispositivo"
+    "device": "Fecha/Hora Buzzer",
+    "calibration": "Calib. Temperatura",
+    "reset": "Configuración de Fábrica"
   },
   "#menu_2": {
     "incubation": "Incubación"
@@ -41,14 +41,14 @@
   },
   "#reset-card-title": {
     "title#1": "Configuración",
-    "title#2": "Restablecer Dispositivo"
+    "title#2": "Configuración de Fábrica"
   },
   "#reset-msg": {
     "msg#1": "Esta opción elimina los siguientes datos de la memoria del dispositivo:",
     "msg#2": "1 - Secuencia de incubación",
     "msg#3": "2 - Todo el historial de pruebas del equipo",
     "msg#4": "3 - Nombre del hospital",
-    "reset": "Restablecer datos del dispositivo"
+    "reset": "Asumir configuración de fábrica"
   },
   "#resetForm": {
     "msg#3": "Esta operación no se puede cancelar ni revertir.",
@@ -318,10 +318,7 @@
     "device_date_time": "Fecha y Hora Actual del Equipo (RTC)"
   },
   "#settings_date_time": {
-    "date_time": "Nueva Fecha y Hora"
-  },
-  "#settings_use_computer_time": {
-    "use_computer_time": "¿Actualizar la hora del Lummina?"
+    "date_time": "Fecha/Hora del Servidor"
   },
   "#settings_institution": {
     "institution": "Institución"
