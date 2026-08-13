@@ -121,6 +121,16 @@ Proporção spi_master/bit-bang: ~1,029 (médias 39931,2 vs 38819,3, ~2,9% de di
 | 74 | 39521 | 41269 |
 | 75 | 39548 | 41261 |
 
+## Nota — escala do "raw" vs valores de campo (comparação com testes do cliente)
+
+Os valores desta tabela são o **raw da chip**, capturados via `[ADCDBG] chip=ADS1248 ch=... raw=...`
+(`CONFIG_ADC_DEBUG_SERIAL=y`, ligado só em builds de debug). Em operação normal esse raw
+**não é o que aparece no log** — `main/ampoule_test.cpp:748` faz `sensor = sensor / 100` antes de
+imprimir `"Valor recebido do sensor"` e guardar a amostra usada no cálculo de positivo/negativo.
+Ao comparar com logs de campo (ex.: `2026-08-12d-cliente-corridas-positiva-negativa-com4.md`, que
+não tem `CONFIG_ADC_DEBUG_SERIAL` ligado e só mostra o valor já dividido), dividir este raw por 100
+antes de comparar — senão parece uma diferença de ~100x que não existe de verdade.
+
 ## Ambiente
 
 - Firmware: mesmo binário gravado na sessão anterior de hoje (nenhum build/flash novo nesta rodada).

@@ -113,6 +113,16 @@ Com o mesmo chip ADS1248 nas duas placas, bit-bang e spi_master ficam na mesma o
 
 **Padrão observado:** as duas curvas seguem o mesmo formato — queda acentuada nas primeiras ~20-25 leituras (estabilização inicial/exposição UV), depois patamar com variação pequena. spi_master fica consistentemente ~10% acima do bit-bang durante todo o platô, sem cruzar nem inverter — diferença sistemática de escala, não ruído aleatório. COM22 (spi_master) completou só 68 leituras contra 75 do COM20 (bit-bang) no mesmo intervalo de 300s — spi_master roda o ciclo de leitura um pouco mais devagar nesse teste.
 
+## Nota — escala do "raw" vs valores de campo (comparação com testes do cliente)
+
+Os valores desta tabela são o **raw da chip**, capturados via `[ADCDBG] chip=ADS1248 ch=... raw=...`
+(`CONFIG_ADC_DEBUG_SERIAL=y`, ligado só em builds de debug). Em operação normal esse raw
+**não é o que aparece no log** — `main/ampoule_test.cpp:748` faz `sensor = sensor / 100` antes de
+imprimir `"Valor recebido do sensor"` e guardar a amostra usada no cálculo de positivo/negativo.
+Ao comparar com logs de campo (ex.: `2026-08-12d-cliente-corridas-positiva-negativa-com4.md`, que
+não tem `CONFIG_ADC_DEBUG_SERIAL` ligado e só mostra o valor já dividido), dividir este raw por 100
+antes de comparar — senão parece uma diferença de ~100x que não existe de verdade.
+
 ## Ambiente
 
 - Build: `.\compila_Lummina4EdAdj.ps1` (Docker `espressif/idf:release-v5.1`, fullclean+reconfigure+build).
