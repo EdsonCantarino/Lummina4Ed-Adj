@@ -37,9 +37,11 @@
 
 **Implementado em `main/ampoules.cpp`** (`read_ampoules_test_task`), log `RESTART_ID=5` (próximo número livre da convenção: 1=printer, 2=restart_device, 3=reset_user_data, 4=DRDY timeout).
 
-## Pendente pra próxima sessão
+## Validação física — concluída (14/08, mesmo dia)
 
-- Gravar no equipamento e confirmar fisicamente **as duas mudanças**:
-  - Trava de config: tentar mudar número de série, data/hora, buzzer, % positivo e idioma com ampola em teste — confirmar mensagem de erro aparecendo (não só toast de sucesso falso).
-  - Reset por ampola/aquecimento: ligar com ampola já inserida (deve resetar 1x e depois cair no alarme conhecido da trava de boot); inserir ampola durante o aquecimento (mesmo resultado); confirmar que depois de passar da liberação, ampola normal não causa mais nenhum reset; testar com uma cavidade desabilitada (CRC1 ou Config Avançada) pra confirmar que ela também dispara o reset.
-- Nada commitado — perguntar ao usuário quando puder commitar/pushar.
+Todos os itens pendentes acima foram confirmados no equipamento (COM20):
+
+- **Trava de config**, os 5 endpoints (número de série, data/hora+instituição, buzzer, % positivo, idioma), testados via Chrome com teste real em andamento (modo ETO, estabilizado) — todos bloqueados corretamente, incluindo o caso crítico do número de série (sem reiniciar o equipamento). Detalhe completo em `historico/2026-08-14b-validacao-fisica-trava-config-e-presets-modo.md`.
+- **Reset por ampola/aquecimento**: confirmado disparando ao inserir ampola durante o aquecimento (cavidade habilitada), sem loop. **Confirmado também com cavidade bloqueada pelo CRC1** — o usuário testou trocando pra CRC1 e validou que o reset dispara mesmo com as cavidades 2-4 travadas, conforme decisão de design (tratar todas as cavidades igual nessa fase).
+
+Commitado e pushado em `7a3b247` (código) + commit desta validação (ver log do git).
