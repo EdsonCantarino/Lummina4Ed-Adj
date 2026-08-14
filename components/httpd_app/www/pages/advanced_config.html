@@ -406,6 +406,49 @@
                 "Calculada automaticamente: mínima (" + minTemp + "°C) + 2°C");
         }
 
+        // Valores padrao por modo (pedido do cliente 14/08): ao trocar de
+        // modo na tela, os campos pulam pra esses valores. O operador ainda
+        // pode ajustar manualmente antes de Salvar - nao e travado como as
+        // cavidades do CRC1.
+        const MODE_PRESETS = {
+            normal: {
+                ledCaptureTime: 0.5, loopCycleTime: 4,
+                samplesInitial: 5, samplesFinal: 5,
+                earlyCheckTime: 3, cavityEnabled: [true, true, true, true],
+                heaterSetpoint: 60, heaterMinTemp: 53, heaterMaxTemp: 67
+            },
+            eto: {
+                ledCaptureTime: 0.5, loopCycleTime: 4,
+                samplesInitial: 5, samplesFinal: 5,
+                earlyCheckTime: 3, cavityEnabled: [true, true, true, true],
+                heaterSetpoint: 37, heaterMinTemp: 30, heaterMaxTemp: 44
+            },
+            crc1: {
+                ledCaptureTime: 0.5, loopCycleTime: 2,
+                samplesInitial: 5, samplesFinal: 5,
+                earlyCheckTime: 1, cavityEnabled: [true, false, false, false],
+                heaterSetpoint: 60, heaterMinTemp: 53, heaterMaxTemp: 67
+            }
+        };
+
+        function applyModePreset(mode) {
+            let p = MODE_PRESETS[mode];
+            if (!p) return;
+
+            $("#led_capture_time").val(p.ledCaptureTime);
+            $("#loop_cycle_time").val(p.loopCycleTime);
+            $("#samples_initial").val(p.samplesInitial);
+            $("#samples_final").val(p.samplesFinal);
+            $("#early_check_time").val(p.earlyCheckTime);
+            $("#heater_setpoint").val(p.heaterSetpoint);
+            $("#heater_min_temp").val(p.heaterMinTemp);
+            $("#heater_max_temp").val(p.heaterMaxTemp);
+
+            for (let i = 1; i <= 4; i++) {
+                $("#cavity_enabled_" + i).prop('checked', p.cavityEnabled[i - 1]);
+            }
+        }
+
         function loadCurrentConfig() {
             $.get("/api/v1/advanced_config", function (data) {
                 $("#led_capture_time").val(data.ledCaptureTime);
@@ -474,30 +517,39 @@
                 if ($(this).is(':checked')) {
                     $("#mode_eto").prop('checked', false);
                     $("#mode_crc1").prop('checked', false);
+                    updateCrc1CavityLock();
+                    applyModePreset('normal');
                 } else {
                     $(this).prop('checked', true);
                 }
                 recalculateMinimums();
+                recalculateTemperatureHints();
             });
 
             $("#mode_eto").on('change', function () {
                 if ($(this).is(':checked')) {
                     $("#mode_normal").prop('checked', false);
                     $("#mode_crc1").prop('checked', false);
+                    updateCrc1CavityLock();
+                    applyModePreset('eto');
                 } else {
                     $(this).prop('checked', true);
                 }
                 recalculateMinimums();
+                recalculateTemperatureHints();
             });
 
             $("#mode_crc1").on('change', function () {
                 if ($(this).is(':checked')) {
                     $("#mode_normal").prop('checked', false);
                     $("#mode_eto").prop('checked', false);
+                    updateCrc1CavityLock();
+                    applyModePreset('crc1');
                 } else {
                     $(this).prop('checked', true);
                 }
                 recalculateMinimums();
+                recalculateTemperatureHints();
             });
 
             $("#btnSalvar").on('click', function (e) {

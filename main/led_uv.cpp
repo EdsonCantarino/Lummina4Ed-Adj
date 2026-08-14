@@ -78,7 +78,9 @@ void led_uv_setup() {
 	led_uv.digital_write(P2, 1); // Cavidade 4
 	led_uv.digital_write(P3, 1); // Cavidade 2
 
-	vTaskDelay(pdMS_TO_TICKS(3000));
+	// Era 3000ms - prendia o boot inteiro por 3s so pra esse flash de
+	// autoteste. 300ms ja da pra enxergar o flash.
+	vTaskDelay(pdMS_TO_TICKS(300));
 
 	// 1 On - 0 Off
 	led_uv.digital_write(P0, 0);

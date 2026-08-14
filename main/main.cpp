@@ -60,28 +60,7 @@
 
 static const char *TAG = "LIMMINA4";
 
-#include "include/coredump_to_server.h"
-
-// uint8_t global_var;
-//COREDUMP_DRAM_ATTR uint8_t global_var;
-
 LinkedList<string> reset_reason_list = LinkedList<string>();
-
-static esp_err_t _coredump_to_server_begin_cb(void *priv) {
-	ets_printf("================= CORE DUMP START =================\r\n");
-	return ESP_OK;
-}
-
-static esp_err_t _coredump_to_server_end_cb(void *priv) {
-	ets_printf("================= CORE DUMP END ===================\r\n");
-	return ESP_OK;
-}
-
-static esp_err_t _coredump_to_server_write_cb(void *priv,
-		char const *const str) {
-	ets_printf("%s\r\n", str);
-	return ESP_OK;
-}
 
 void add_reset_reason(string r) {
 	reset_reason_list.add(r);
@@ -339,11 +318,6 @@ void print_reset_reason() {
 void setup() {
 	//nvs_flash_init();
 	init();
-
-	coredump_to_server_config_t coredump_cfg = { .start =
-			_coredump_to_server_begin_cb, .end = _coredump_to_server_end_cb,
-			.write = _coredump_to_server_write_cb, .priv = NULL, };
-	coredump_to_server(&coredump_cfg);
 
 	//assert(0);
 

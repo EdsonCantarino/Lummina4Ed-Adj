@@ -948,10 +948,33 @@ static esp_err_t restart_device_get_handler(httpd_req_t *req) {
 	return ESP_OK;
 }
 
+static void send_test_in_progress_error(httpd_req_t *req) {
+	ESP_LOGW(TAG, "Alteracao recusada: analise em andamento");
+
+	cJSON *root = cJSON_CreateObject();
+	cJSON_AddBoolToObject(root, "success", false);
+	cJSON_AddStringToObject(root, "message",
+			"Não é possível alterar essa configuração enquanto houver análises em andamento.");
+
+	char *json = cJSON_Print(root);
+
+	httpd_resp_set_status(req, "200 OK");
+	httpd_resp_set_type(req, "application/json");
+	httpd_resp_sendstr(req, json);
+
+	free(json);
+	cJSON_Delete(root);
+}
+
 static esp_err_t device_settings_post_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
 	if (uri.find("/api/v1/device/settings") != string::npos) {
+		if (ampoule_any()) {
+			send_test_in_progress_error(req);
+			return ESP_OK;
+		}
+
 		int total_len = req->content_len;
 		int cur_len = 0;
 
@@ -1056,6 +1079,11 @@ static esp_err_t device_settings_post_handler(httpd_req_t *req) {
 
 static esp_err_t api_settings_serialnumber_post_handler(httpd_req_t *req) {
 	if (strcmp(req->uri, "/api/v1/restrict/serialnumber") == 0) {
+		if (ampoule_any()) {
+			send_test_in_progress_error(req);
+			return ESP_OK;
+		}
+
 		int total_len = req->content_len;
 		int cur_len = 0;
 
@@ -1123,6 +1151,11 @@ static esp_err_t restrict_device_settings_post_handler(httpd_req_t *req) {
 	string uri = req->uri;
 
 	if (uri.find("/api/v1/restrict/settings") != string::npos) {
+		if (ampoule_any()) {
+			send_test_in_progress_error(req);
+			return ESP_OK;
+		}
+
 		int total_len = req->content_len;
 		int cur_len = 0;
 
@@ -1739,6 +1772,12 @@ static esp_err_t api_buzzer_config_post_handler(httpd_req_t *req) {
 		return ESP_OK;
 	}
 
+	if (ampoule_any()) {
+		send_history_error(req,
+				"Não é possível alterar essa configuração enquanto houver análises em andamento.");
+		return ESP_OK;
+	}
+
 	int total_len = req->content_len;
 	int cur_len = 0;
 
@@ -2016,6 +2055,11 @@ static esp_err_t reset_post_handler(httpd_req_t *req) {
 
 static esp_err_t api_language_post_handler(httpd_req_t *req) {
 	if (strcmp(req->uri, "/api/v1/language") == 0) {
+		if (ampoule_any()) {
+			send_test_in_progress_error(req);
+			return ESP_OK;
+		}
+
 		int total_len = req->content_len;
 		int cur_len = 0;
 

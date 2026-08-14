@@ -9,6 +9,7 @@
 #include "include/keyboard.h"
 
 #include "include/ampoule_test.h"
+#include "advanced_config.h"
 
 static const char *TAG = "AMPOULE";
 
@@ -203,6 +204,28 @@ void read_ampoules_test_task(void *pvParameter) {
 
 		bool is_temp_stabilized = check_if_heater_temperature_stabilized();
 		float temp = get_heater_temperature();
+
+		// Comportamento do firmware original (Lummina4Ed, sem "Adj"),
+		// reintroduzido a pedido do usuario: ampola presente (qualquer
+		// cavidade, mesmo desabilitada - usa a leitura bruta do sensor,
+		// nao ampoule_any(), que ignora cavidade desabilitada) enquanto o
+		// aquecedor ainda nao atingiu a liberacao para trabalho
+		// (heater_release_temp_c) significa que o equipamento esta em
+		// processo de aquecimento - reinicia. So chega aqui depois que a
+		// trava de boot (10s de ausencia confirmada, ver ampoule_sensor.cpp)
+		// ja liberou, entao nao entra em loop: apos o reset, se a ampola
+		// continuar presente, quem assume e a trava de boot (alarme, sem
+		// resetar de novo), nao este bloco.
+		if (check_if_ampoules_is_confirmed_present_in_init()
+				&& temp < g_advanced_config.heater_release_temp_c) {
+			ESP_LOGE(TAG,
+					"RESTART_ID=5 - Ampola presente durante o aquecimento (temp=%.1f < liberacao=%.1f) - reiniciando.\n",
+					temp, g_advanced_config.heater_release_temp_c);
+
+			fflush(stdout);
+			vTaskDelay(pdMS_TO_TICKS(100));
+			esp_restart();
+		}
 
 		if (ampoule_any()) {
 

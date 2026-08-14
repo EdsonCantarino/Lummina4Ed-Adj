@@ -193,7 +193,19 @@
                     data: JSON.stringify(data),
                     dataType: "json",
                     contentType: "application/json;charset=utf-8",
-                    success: function () {
+                    success: function (resp) {
+                        if (resp && resp.success === false) {
+                            let toast = {
+                                title: $("#save_error_toast_title").val(),
+                                message: resp.message,
+                                status: TOAST_STATUS.DANGER,
+                                timeout: 10000
+                            }
+                            Toast.setTheme(TOAST_THEME.LIGHT);
+                            Toast.create(toast);
+                            return;
+                        }
+
                         let toast = {
                             title: $("#save_success_toast_title").val(),
                             message: $("#save_success_toast_message").val(),

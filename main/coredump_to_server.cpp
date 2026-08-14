@@ -23,6 +23,9 @@
 #include <esp_spi_flash.h>
 #include <mbedtls/base64.h>
 
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
 #include "include/coredump_to_server.h"
 
 #define MIN(a,b) ({ __typeof__ (a) _a = (a); __typeof__ (b) _b = (b); _a < _b ? _a : _b; })
@@ -98,6 +101,12 @@ coredump_to_server(coredump_to_server_config_t const * const write_cfg)
                 break;
             }
         }
+
+        // Sem isso, coredump grande (ate 64KB, ~1365 iteracoes) roda num
+        // loop apertado sem nunca ceder CPU - starva a task idle e dispara
+        // o watchdog em todo boot que tenha um coredump salvo na flash
+        // (achado em 14/08, nao relacionado a nenhum crash de hoje).
+        vTaskDelay(1);
     }
     free(chunk);
     free(b64);
