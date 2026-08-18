@@ -69,7 +69,7 @@ static bool printer_was_ready = false;
 // decisao do usuario (12/08).
 static bool printer_present_at_boot = false;
 
-#define PRINTER_RESTART_GRACE_MS (10 * 1000)
+#define PRINTER_RESTART_GRACE_MS (7 * 1000)
 static int64_t printer_safe_to_restart_since_ms = 0;
 
 // Bits usados em xTaskNotify(print_ampoule_test_task_handle, ...): botao

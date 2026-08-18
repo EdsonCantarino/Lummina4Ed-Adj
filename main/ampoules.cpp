@@ -216,8 +216,18 @@ void read_ampoules_test_task(void *pvParameter) {
 		// ja liberou, entao nao entra em loop: apos o reset, se a ampola
 		// continuar presente, quem assume e a trava de boot (alarme, sem
 		// resetar de novo), nao este bloco.
+		//
+		// !is_any_testing() e essencial: sem isso, uma queda normal de
+		// temperatura abaixo da liberacao NO MEIO de um teste ja em
+		// andamento (ampola obviamente presente) tambem reiniciava o
+		// equipamento - reproduzido em campo pelo cliente 18/08 (log
+		// COM4, RESTART_ID=5 disparando aos 156s de um teste de 3600s,
+		// "Esta em teste: Sim" no log logo antes do reset). A regra so
+		// deve valer pra ampola presente ANTES do primeiro aquecimento
+		// (nenhum teste ainda iniciado).
 		if (check_if_ampoules_is_confirmed_present_in_init()
-				&& temp < g_advanced_config.heater_release_temp_c) {
+				&& temp < g_advanced_config.heater_release_temp_c
+				&& !is_any_testing()) {
 			ESP_LOGE(TAG,
 					"RESTART_ID=5 - Ampola presente durante o aquecimento (temp=%.1f < liberacao=%.1f) - reiniciando.\n",
 					temp, g_advanced_config.heater_release_temp_c);

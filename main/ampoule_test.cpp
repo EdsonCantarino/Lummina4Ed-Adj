@@ -425,16 +425,31 @@ void set_is_priting(bool ispriting) {
 	is_printing = ispriting;
 }
 
+// Tempo antes da leitura do ADC em que o aquecedor fica desligado, pra
+// evitar ruido eletrico na conversao - antes ficava desligado durante
+// TODA a espera de captura do LED (led_capture_time_s inteiro), sobrando
+// pouquissimo tempo de aquecedor-ligado por cavidade e derrubando a
+// temperatura em testes com as 4 cavidades ativas (RESTART_ID=5 falso em
+// campo, 18/08). So o fim da janela de captura precisa do aquecedor
+// desligado; o resto da espera ele pode continuar sob controle normal.
+#define HEATER_OFF_BEFORE_READ_MS 100
+
 void prepare_test(int ampoule) {
 // Liga o led UV
 	led_uv_on(ampoule);
 
-	vTaskDelay(
-			pdMS_TO_TICKS(
-					(uint32_t) (g_advanced_config.led_capture_time_s * 1000)));
+	uint32_t capture_ms = (uint32_t) (g_advanced_config.led_capture_time_s
+			* 1000);
+	uint32_t heater_off_ms =
+			(capture_ms > HEATER_OFF_BEFORE_READ_MS) ?
+					HEATER_OFF_BEFORE_READ_MS : capture_ms;
 
-// Desliga o aquecedor
+	vTaskDelay(pdMS_TO_TICKS(capture_ms - heater_off_ms));
+
+// Desliga o aquecedor so na reta final da captura, perto da leitura
 	set_heater_controlling(false);
+
+	vTaskDelay(pdMS_TO_TICKS(heater_off_ms));
 }
 
 void finalize_test(int ampoule) {
@@ -739,6 +754,13 @@ void ampoule_test(int index) {
 			// Faz a leitura do sensor
 			long sensor = read_channel_value(index);
 
+			// Religa o aquecedor assim que a leitura termina, antes de
+			// desligar o LED UV (finalize_test la embaixo religa de novo -
+			// idempotente, so garante o estado em qualquer caminho de
+			// saida, como o abort de timeout abaixo). Minimiza o tempo
+			// real de aquecedor desligado por cavidade.
+			set_heater_controlling(true);
+
 			if (get_channel_consecutive_timeouts(index)
 					>= MAX_CONSECUTIVE_SENSOR_TIMEOUTS) {
 				abort_ampoule_test_sensor_fault(index, ampoule);
@@ -903,15 +925,27 @@ void ampoules_test_timer_task(void *pvParameter) {
 
 		int64_t cycle_ms = (int64_t) g_advanced_config.loop_cycle_time_s * 1000;
 
+		// Piso de folga entre uma rodada de leitura das 4 ampolas e a
+		// proxima - e o unico intervalo em que o aquecedor fica realmente
+		// livre pra ligar (prepare_test/finalize_test o desligam durante
+		// cada leitura individual). Antes o piso era 100ms, so o bastante
+		// pra nao corromper o vTaskDelay - na pratica, com 4 cavidades a
+		// leitura ja leva mais tempo que o loop_cycle_time_s configurado
+		// (4,5s medidos em campo contra um ciclo de 4s), entao o delay
+		// calculado ficava negativo e caia direto nesse piso: o aquecedor
+		// ficava ligado so por poucos milissegundos entre cavidades,
+		// derrubando a temperatura em testes longos e causando reinicio
+		// falso por temperatura baixa (RESTART_ID=5, log de campo 18/08).
+		// 2s garante folga real pro aquecedor recuperar, **independente**
+		// do loop_cycle_time_s configurado - corrige tambem unidades que
+		// ja tem um valor antigo/insuficiente gravado na memoria.
+		const int64_t HEATER_RECOVERY_MIN_MS = 2000;
+
 		if (!is_long_test) {
 			int64_t delay = cycle_ms - round(tt);
 
-			// Protecao defensiva: mesmo com a validacao feita na web, o
-			// delay nunca pode chegar negativo aqui - isso corromperia o
-			// vTaskDelay (que espera um valor sem sinal) e travaria a
-			// tarefa. Se acontecer, usa um minimo seguro.
-			if (delay < 100)
-				delay = 100;
+			if (delay < HEATER_RECOVERY_MIN_MS)
+				delay = HEATER_RECOVERY_MIN_MS;
 
 			ESP_LOGI("TEST", "Delay: %lld ms", delay);
 
@@ -919,8 +953,8 @@ void ampoules_test_timer_task(void *pvParameter) {
 		} else {
 			int64_t delay = (cycle_ms * 2) - round(tt);
 
-			if (delay < 100)
-				delay = 100;
+			if (delay < HEATER_RECOVERY_MIN_MS)
+				delay = HEATER_RECOVERY_MIN_MS;
 
 			ESP_LOGI("TEST", "Long Time Delay: %lld ms", delay);
 
