@@ -410,15 +410,16 @@
         // modo na tela, os campos pulam pra esses valores. O operador ainda
         // pode ajustar manualmente antes de Salvar - nao e travado como as
         // cavidades do CRC1.
+        // loopCycleTime do Normal/ETO: 4 -> 12 (pedido do cliente 21/08).
         const MODE_PRESETS = {
             normal: {
-                ledCaptureTime: 0.5, loopCycleTime: 4,
+                ledCaptureTime: 0.5, loopCycleTime: 12,
                 samplesInitial: 5, samplesFinal: 5,
                 earlyCheckTime: 3, cavityEnabled: [true, true, true, true],
                 heaterSetpoint: 60, heaterMinTemp: 53, heaterMaxTemp: 67
             },
             eto: {
-                ledCaptureTime: 0.5, loopCycleTime: 4,
+                ledCaptureTime: 0.5, loopCycleTime: 12,
                 samplesInitial: 5, samplesFinal: 5,
                 earlyCheckTime: 3, cavityEnabled: [true, true, true, true],
                 heaterSetpoint: 37, heaterMinTemp: 30, heaterMaxTemp: 44

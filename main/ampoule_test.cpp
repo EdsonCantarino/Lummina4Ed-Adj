@@ -404,9 +404,9 @@ AmpouleTestResult get_test_result(int index) {
 
 	result.set_id(ampoules[index].id);
 
+	// Sem zeros a esquerda no numero da incubacao (pedido do cliente 21/08).
 	int32_t test_id = ampoules[index].id_test;
 	std::string id_test_format = std::to_string(test_id);
-	str_pad_to(id_test_format, 10, '0');
 
 	result.set_id_test(id_test_format);
 

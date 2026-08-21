@@ -9,7 +9,7 @@ static const char *TAG = "ADV_CONFIG";
 
 const advanced_config_t ADVANCED_CONFIG_DEFAULTS = {
 	0.5f,                        // led_capture_time_s (padrao solicitado pelo cliente 05/08)
-	4,                           // loop_cycle_time_s (padrao solicitado pelo cliente 05/08)
+	12,                          // loop_cycle_time_s (padrao solicitado pelo cliente 21/08, era 4)
 	5,                           // samples_initial (comportamento atual)
 	5,                           // samples_final (comportamento atual)
 	{ true, true, true, true },  // cavity_enabled (comportamento atual)

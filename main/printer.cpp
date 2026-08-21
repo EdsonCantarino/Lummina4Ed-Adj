@@ -224,8 +224,9 @@ static string format_ts(uint32_t ts) {
 void ampoule_history_record_to_result(const ampoule_history_record_t &rec,
 		AmpouleTestResult &result) {
 
+	// Sem zeros a esquerda no numero da incubacao (pedido do cliente 21/08).
 	char id_test_format[11];
-	snprintf(id_test_format, sizeof(id_test_format), "%010lu",
+	snprintf(id_test_format, sizeof(id_test_format), "%lu",
 			(unsigned long) rec.id_test);
 
 	result.set_id_test(string(id_test_format));

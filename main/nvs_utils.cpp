@@ -202,7 +202,7 @@ uint8_t get_buzzer_alert_timeout_min() {
 	int64_t minutes = nvs_storage.getInt("buzz_alert_min", -1);
 
 	if (minutes < 1 || minutes > 30) {
-		return 30; // default - mesmo comportamento historico do timeout fixo
+		return 1; // default (pedido do cliente 21/08, era 30)
 	}
 
 	return (uint8_t) minutes;
