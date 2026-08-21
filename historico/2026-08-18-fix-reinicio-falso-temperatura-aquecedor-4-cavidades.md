@@ -96,13 +96,33 @@ teve ida e volta (4→6→4), o conteúdo final bateu exatamente com o já
 commitado (só thumbprint do gzip mudava, revertido pra evitar diff
 espúrio).
 
+## Validação física parcial (logs COM4, 16:36–16:54 do mesmo dia)
+
+Dois logs (`monitor_COM4_2026-08-18_163624.log.txt` e
+`monitor_COM4_2026-08-18_164725.log.txt`, salvos em Downloads) cobrindo
+juntos ~16:36–16:54 com teste de 4 cavidades já em andamento (firmware
+rodando não identificado no log — os dois monitores conectaram após o
+boot, sem capturar o print de versão):
+
+- Log 1 (16:36:25→16:44:54, ~8min29s): temperatura caiu de 58,0°C pra
+  54,5°C, mas **nunca saiu do range** (`> 53.0 e < 67.0: Sim` em 100%
+  das leituras). Sem `RESTART_ID`, sem panic/reboot. Encerrado
+  manualmente pelo usuário.
+- Log 2 (16:47:25→16:54:09, ~6min44s, teste já em andamento antes da
+  conexão): temperatura caiu até um piso de 54,5°C (16:52:36–16:53:38) e
+  depois **subiu de volta pra 55,0°C** (16:53:45), se mantendo — indício
+  de recuperação do aquecedor, consistente com a folga de 2s
+  (`HEATER_RECOVERY_MIN_MS`). De novo, nunca saiu do range, sem reboot.
+
+Nenhum dos dois reproduziu o reinício falso. Não é validação completa:
+juntos cobrem só ~18min, não o 1h reportado pelo cliente.
+
 ## Pendente
 
 - Nada gravado no equipamento nem enviado ao cliente ainda.
-- Validação física: nenhuma ainda. Precisa confirmar em bancada que a
-  temperatura se mantém estável com as 4 cavidades ativas por um teste
-  longo (idealmente reproduzir o cenário de 1h do cliente) antes de
-  mandar pro campo.
+- Validação física: parcial (ver acima). Falta confirmar em bancada um
+  teste longo completo (idealmente reproduzindo o 1h do cliente) antes
+  de mandar pro campo.
 - `sdkconfig` do repo permanece em ADS1248 + `CONFIG_ADC_DEBUG_SERIAL=y`
   (estado de HEAD, não alterado nesta sessão apesar de ter sido alternado
   temporariamente pra gerar os dois builds).
