@@ -29,9 +29,6 @@ static const char *TAG = "HEATER";
 // Semaphores
 static SemaphoreHandle_t heater_timer_semaphore;
 
-// TaskHandlers
-static TaskHandle_t check_temperature_task_handle;
-
 // TimerHandlers
 static TimerHandle_t heater_alarm_timer_handler;
 
@@ -43,13 +40,9 @@ esp_err_t heater_setup();
 esp_err_t heater_start();
 esp_err_t heater_stop();
 esp_err_t check_temperature_sensor();
-void check_heater_temperature_task(void *parameter);
 void heater_temperature_timeout_callback(TimerHandle_t xTimer);
 esp_err_t heater_alarm_start_timer();
 esp_err_t heater_alarm_stop_timer();
-
-esp_err_t check_heater_temperature_start_task();
-esp_err_t check_heater_temperature_stop_task();
 
 volatile float heater_temperature = -1.0f;
 volatile float old_temp = -1.0f;
@@ -62,6 +55,18 @@ static bool tests_cancelled_on_temp_error = false;
 
 bool enable_functions = true;
 static bool heater_reached_target = false;
+
+// process_heater_temperature() so pode rodar depois que heater_start() for
+// chamado pela 1a vez (main.cpp: temperature_setup() roda ANTES de
+// led_panel_setup(), que e quem cria blink_led_heater_task_handle -
+// process_heater_temperature() notifica essa handle. Antes da fusao das
+// tasks (27/08) isso nunca dava problema por acidente: a antiga
+// check_heater_temperature_task so era criada dentro de heater_start(),
+// que roda bem depois de led_panel_setup() no boot. Sem essa trava, a
+// primeira leitura do sensor (que agora chega em menos de 1s) chama
+// xTaskNotify numa handle ainda NULL e trava o boot em crash loop
+// (Guru Meditation LoadProhibited).
+static volatile bool heater_processing_ready = false;
 
 bool check_temperature_status(bool is_in_test) {
 	float min_temp = get_min_temperature(is_in_test);
@@ -88,6 +93,19 @@ void set_heater_controlling(bool status) {
 
 	if (!is_heater_on) {
 		heater_stop();
+	} else if (heater_temperature > 0.0f
+			&& heater_temperature
+					< g_advanced_config.heater_setpoint_c
+							- HEATER_HYSTERESIS_C) {
+		// Religa a resistencia na hora, com a ultima temperatura conhecida,
+		// em vez de esperar passivamente a proxima amostra do DS18B20 pra
+		// reavaliar o liga/desliga - process_heater_temperature() so roda
+		// quando uma amostra nova chega, e o sensor tem um passo de leitura
+		// irregular (medido comparando um video do LED do aquecedor com o
+		// log serial em 27/08). Sem isso o aquecedor ficava desligado por
+		// vários segundos depois de cada leitura do ADC, mesmo com a
+		// temperatura bem abaixo do setpoint.
+		heater_start();
 	}
 }
 
@@ -134,8 +152,13 @@ void heater_setup_timer() {
 esp_err_t heater_start() {
 	gpio_set_level(HEATER_GPIO, ON);
 
+	// So a partir da 1a chamada de heater_start() (main.cpp, apos
+	// led_panel_setup() ja ter criado blink_led_heater_task_handle) e que
+	// process_heater_temperature() pode rodar sem risco de notificar uma
+	// handle ainda nao criada.
+	heater_processing_ready = true;
+
 	if (check_temperature_sensor() == ESP_OK) {
-		ESP_ERROR_CHECK(check_heater_temperature_start_task());
 		ESP_ERROR_CHECK(heater_alarm_start_timer());
 
 		return ESP_OK;
@@ -186,152 +209,130 @@ esp_err_t check_temperature_sensor() {
 	return ESP_FAIL;
 }
 
-void check_heater_temperature_task(void *parameter) {
-//	ESP_LOGI(TAG, "Check Temperature Task\n");
+void process_heater_temperature(float temperature) {
+	heater_temperature = temperature;
 
-	const TickType_t xBlockTime = pdMS_TO_TICKS(1000);
-
-	size_t xReceivedBytes;
-	float *temperature = 0;
-
-	while (true) {
-		xReceivedBytes = xMessageBufferReceive(temperature_message_buffer,
-				(void* )&temperature, sizeof(float), xBlockTime);
-
-		if (xReceivedBytes > 0) {
-			heater_temperature = *temperature;
-
-			if (heater_temperature >= g_advanced_config.heater_setpoint_c
-					&& !heater_reached_target) {
-				heater_reached_target = true;
-			}
-
-			if (is_heater_on) {
-				if (heater_temperature
-						< g_advanced_config.heater_setpoint_c
-								- HEATER_HYSTERESIS_C) {
-					heater_start();
-				} else if (heater_temperature
-						>= g_advanced_config.heater_setpoint_c
-								+ HEATER_HYSTERESIS_C) {
-					heater_stop();
-				}
-				// Dentro da banda de histerese: mantem o estado atual do
-				// aquecedor (nao chama start nem stop).
-			}
-
-			bool is_in_test = is_any_testing();
-			bool is_temp_stabilized = check_if_heater_temperature_stabilized();
-			bool is_in_range = is_temperature_in_range();
-
-			// Removido: esp_restart() ao detectar temperatura fora do range durante teste.
-			// O fluxo normal abaixo já aciona heater_fail_start() quando necessário,
-			// evitando reboot indevido ao inserir ampola após alarme de temperatura alta.
-
-			printf("\n");
-
-			ESP_LOGE(TAG, "Temperatura: %.3f", heater_temperature);
-
-			ESP_LOGE(TAG, "Funcoes Habilitadas: %s",
-					enable_functions ? "Não" : "Sim");
-
-			ESP_LOGE(TAG, "Esta em teste: %s", is_in_test ? "Sim" : "Nao");
-
-			ESP_LOGE(TAG, "Temperatura estabilizada: %s",
-					is_temp_stabilized ? "Sim" : "Nao");
-
-			ESP_LOGE(TAG, "Temperatura no Range > %.1f e < %.1f: %s",
-					g_advanced_config.heater_min_temp_c,
-					g_advanced_config.heater_max_temp_c,
-					is_in_range ? "Sim" : "Nao");
-
-			printf("\n");
-
-			if (is_temp_stabilized) {
-				//ESP_LOGE(TAG, "Aqui - Temperatura estabilizada");
-
-				if (enable_functions) {
-					// Aqui ativa as funções do teclado e mantem os leds ligados
-					// so nas cavidades habilitadas - set_led_function_active()
-					// ligava as 4 sem checar disabled_status (mesmo bug ja
-					// corrigido em read_ampoules_test_task(), so que aqui nao
-					// tinha sido aplicado).
-					enable_buttons_functions();
-					ampoule_test_check_cavity_finalize();
-
-					enable_functions = false;
-
-					if (!is_in_test) {
-						start_stop_led_effect_test(false);
-						ampoule_test_check_cavity_finalize();
-
-						// CRC1: so a cavidade 1 fica habilitada - percorre
-						// LED1->2->3->4 so nela, confirmando visualmente
-						// que os 4 niveis de tempo funcionam (Normal ja
-						// mostra LED1 aceso em todas as cavidades
-						// habilitadas; ETO nunca usa LED2/3/4).
-						if (g_advanced_config.operation_mode
-								== OPERATION_MODE_CRC1) {
-							crc1_led_lamp_test_cavity1();
-						}
-					}
-				}
-
-				heater_fail_stop(); // para alarme de temperatura alta se estiver ativo
-				xTaskNotify(blink_led_heater_task_handle, 0, eSetBits);
-			} else {
-				//ESP_LOGE(TAG, "Aqui - Temperatura NAO estabilizada");
-
-				if (is_temperature_in_range()) {
-					//ESP_LOGE(TAG, "Aqui - Temperatura no Range de 50 - 68");
-					heater_fail_stop(); // temperatura voltou ao range, para alarme
-					tests_cancelled_on_temp_error = false;
-					xTaskNotify(blink_led_heater_task_handle, 0, eSetBits);
-				} else {
-					//ESP_LOGE(TAG, "Aqui - Fora do Range e não esta em teste");
-					xTaskNotify(blink_led_heater_task_handle, 1, eSetBits);
-
-					// Cancela todos os testes em andamento se temperatura sair da
-					// faixa configurada (heater_min_temp_c-heater_max_temp_c)
-					if (!tests_cancelled_on_temp_error && is_any_testing()) {
-						tests_cancelled_on_temp_error = true;
-						trigger_temp_out_of_range_cancel();
-					}
-
-					// Alarme de temperatura fora do range:
-					// - Sempre alarma se > heater_max_temp_c
-					// - Só alarma se < heater_min_temp_c quando a máquina já
-					//   estabilizou ao menos uma vez (!enable_functions),
-					//   evitando alarme no aquecimento inicial
-					if (heater_temperature > get_max_temperature(false)
-							|| (!enable_functions && heater_temperature < get_min_temperature(false))) {
-						printf(
-								"[DEBUG-ALARM] heater_fail_start chamado por FORA DO RANGE - temp: %.3f (min: %.1f, max: %.1f)\n",
-								heater_temperature, get_min_temperature(false),
-								get_max_temperature(false));
-						heater_fail_start();
-					}
-				}
-
-				ESP_LOGI(TAG, "AGUARDE: Temperatura de aquecimento atual: %.3f",
-						*temperature);
-			}
-
-			//ESP_LOGE(TAG, "Esta caindo aqui fora...");
-
-//			if (heater_temperature > HEATER_TEMPERATURE) {
-//				xTaskNotify(blink_led_heater_task_handle, 0, eSetBits);
-//			} else {
-//				xTaskNotify(blink_led_heater_task_handle, 1, eSetBits);
-//
-//				ESP_LOGI(TAG, "AGUARDE: Temperatura de aquecimento atual: %.3f", *temperature);
-//			}
-		}
-
-		vTaskDelay(3000 / portTICK_PERIOD_MS);
+	if (!heater_processing_ready) {
+		// Ainda nao passamos pela 1a chamada de heater_start() no boot -
+		// so guarda a leitura bruta e sai, sem tocar em handles/estruturas
+		// de outros modulos que podem nao ter sido criados ainda.
+		return;
 	}
 
-	vTaskDelete(NULL);
+	if (heater_temperature >= g_advanced_config.heater_setpoint_c
+			&& !heater_reached_target) {
+		heater_reached_target = true;
+	}
+
+	if (is_heater_on) {
+		if (heater_temperature
+				< g_advanced_config.heater_setpoint_c - HEATER_HYSTERESIS_C) {
+			heater_start();
+		} else if (heater_temperature
+				>= g_advanced_config.heater_setpoint_c
+						+ HEATER_HYSTERESIS_C) {
+			heater_stop();
+		}
+		// Dentro da banda de histerese: mantem o estado atual do
+		// aquecedor (nao chama start nem stop).
+	}
+
+	bool is_in_test = is_any_testing();
+	bool is_temp_stabilized = check_if_heater_temperature_stabilized();
+	bool is_in_range = is_temperature_in_range();
+
+	// Removido: esp_restart() ao detectar temperatura fora do range durante teste.
+	// O fluxo normal abaixo já aciona heater_fail_start() quando necessário,
+	// evitando reboot indevido ao inserir ampola após alarme de temperatura alta.
+
+	printf("\n");
+
+	ESP_LOGE(TAG, "Temperatura: %.3f", heater_temperature);
+
+	ESP_LOGE(TAG, "Funcoes Habilitadas: %s",
+			enable_functions ? "Não" : "Sim");
+
+	ESP_LOGE(TAG, "Esta em teste: %s", is_in_test ? "Sim" : "Nao");
+
+	ESP_LOGE(TAG, "Temperatura estabilizada: %s",
+			is_temp_stabilized ? "Sim" : "Nao");
+
+	ESP_LOGE(TAG, "Temperatura no Range > %.1f e < %.1f: %s",
+			g_advanced_config.heater_min_temp_c,
+			g_advanced_config.heater_max_temp_c,
+			is_in_range ? "Sim" : "Nao");
+
+	printf("\n");
+
+	if (is_temp_stabilized) {
+		//ESP_LOGE(TAG, "Aqui - Temperatura estabilizada");
+
+		if (enable_functions) {
+			// Aqui ativa as funções do teclado e mantem os leds ligados
+			// so nas cavidades habilitadas - set_led_function_active()
+			// ligava as 4 sem checar disabled_status (mesmo bug ja
+			// corrigido em read_ampoules_test_task(), so que aqui nao
+			// tinha sido aplicado).
+			enable_buttons_functions();
+			ampoule_test_check_cavity_finalize();
+
+			enable_functions = false;
+
+			if (!is_in_test) {
+				start_stop_led_effect_test(false);
+				ampoule_test_check_cavity_finalize();
+
+				// CRC1: so a cavidade 1 fica habilitada - percorre
+				// LED1->2->3->4 so nela, confirmando visualmente
+				// que os 4 niveis de tempo funcionam (Normal ja
+				// mostra LED1 aceso em todas as cavidades
+				// habilitadas; ETO nunca usa LED2/3/4).
+				if (g_advanced_config.operation_mode
+						== OPERATION_MODE_CRC1) {
+					crc1_led_lamp_test_cavity1();
+				}
+			}
+		}
+
+		heater_fail_stop(); // para alarme de temperatura alta se estiver ativo
+		xTaskNotify(blink_led_heater_task_handle, 0, eSetBits);
+	} else {
+		//ESP_LOGE(TAG, "Aqui - Temperatura NAO estabilizada");
+
+		if (is_temperature_in_range()) {
+			//ESP_LOGE(TAG, "Aqui - Temperatura no Range de 50 - 68");
+			heater_fail_stop(); // temperatura voltou ao range, para alarme
+			tests_cancelled_on_temp_error = false;
+			xTaskNotify(blink_led_heater_task_handle, 0, eSetBits);
+		} else {
+			//ESP_LOGE(TAG, "Aqui - Fora do Range e não esta em teste");
+			xTaskNotify(blink_led_heater_task_handle, 1, eSetBits);
+
+			// Cancela todos os testes em andamento se temperatura sair da
+			// faixa configurada (heater_min_temp_c-heater_max_temp_c)
+			if (!tests_cancelled_on_temp_error && is_any_testing()) {
+				tests_cancelled_on_temp_error = true;
+				trigger_temp_out_of_range_cancel();
+			}
+
+			// Alarme de temperatura fora do range:
+			// - Sempre alarma se > heater_max_temp_c
+			// - Só alarma se < heater_min_temp_c quando a máquina já
+			//   estabilizou ao menos uma vez (!enable_functions),
+			//   evitando alarme no aquecimento inicial
+			if (heater_temperature > get_max_temperature(false)
+					|| (!enable_functions && heater_temperature < get_min_temperature(false))) {
+				printf(
+						"[DEBUG-ALARM] heater_fail_start chamado por FORA DO RANGE - temp: %.3f (min: %.1f, max: %.1f)\n",
+						heater_temperature, get_min_temperature(false),
+						get_max_temperature(false));
+				heater_fail_start();
+			}
+		}
+
+		ESP_LOGI(TAG, "AGUARDE: Temperatura de aquecimento atual: %.3f",
+				heater_temperature);
+	}
 }
 
 void heater_temperature_timeout_callback(TimerHandle_t xTimer) {
@@ -372,26 +373,6 @@ esp_err_t heater_alarm_stop_timer() {
 //		ESP_LOGI(TAG, "Successfully. Heater Temperature Alarm is OFF");
 	} else {
 //		ESP_LOGI(TAG, "Heater is OFF.");
-	}
-
-	return ESP_OK;
-}
-
-esp_err_t check_heater_temperature_start_task() {
-	if (check_temperature_task_handle == NULL) {
-
-		xTaskCreate(check_heater_temperature_task, "check_heat_temp", 1024 * 5,
-		NULL,
-		configMAX_PRIORITIES - 5, &check_temperature_task_handle);
-	}
-
-	return ESP_OK;
-}
-
-esp_err_t check_heater_temperature_stop_task() {
-	if (check_temperature_task_handle != NULL) {
-		vTaskSuspend(check_temperature_task_handle);
-		//vTaskDelete(check_temperature_task_handle);
 	}
 
 	return ESP_OK;

@@ -600,6 +600,13 @@ static esp_err_t translate_json_post_handler(httpd_req_t *req) {
 				httpd_resp_set_type(req, "application/json");
 				httpd_resp_set_hdr(req, "Content-Encoding", "gzip");
 				httpd_resp_send(req, (const char*) _start_es_es_json, _size);
+			} else if (l == "ko-kr") {
+				extern const unsigned char _start_ko_kr_json[] asm("_binary_ko_kr_json_gz_start");
+				extern const unsigned char _end_ko_kr_json[] asm("_binary_ko_kr_json_gz_end");
+				const size_t _size = (_end_ko_kr_json - _start_ko_kr_json);
+				httpd_resp_set_type(req, "application/json");
+				httpd_resp_set_hdr(req, "Content-Encoding", "gzip");
+				httpd_resp_send(req, (const char*) _start_ko_kr_json, _size);
 			} else {
 				extern const unsigned char _start_pt_br_json[] asm("_binary_pt_br_json_gz_start");
 				extern const unsigned char _end_pt_br_json[] asm("_binary_pt_br_json_gz_end");

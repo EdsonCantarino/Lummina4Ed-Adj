@@ -23,8 +23,14 @@ esp_err_t heater_stop();
 
 float get_heater_temperature();
 
-esp_err_t check_heater_temperature_start_task();
-esp_err_t check_heater_temperature_stop_task();
+// Roda a decisao liga/desliga do aquecedor + logs de status + logica de
+// estabilizacao. Chamada direto por check_temperature_task (temperature.cpp)
+// logo apos cada leitura do DS18B20 - antes era uma task separada
+// consumindo de um message buffer, mas so tinha um unico consumidor e a
+// task tinha um vTaskDelay(3000) fixo no fim do loop, dessincronizado da
+// task produtora depois que a leitura do sensor ficou mais rapida (achado
+// em 27/08). Fundir elimina a defasagem e o handoff extra entre tasks.
+void process_heater_temperature(float temperature);
 
 bool check_if_heater_temperature_stabilized();
 

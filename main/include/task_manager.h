@@ -4,7 +4,6 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <freertos/event_groups.h>
-#include <freertos/message_buffer.h>
 #include <esp_system.h>
 #include <freertos/timers.h>
 #include <freertos/semphr.h>
@@ -17,8 +16,6 @@ extern EventGroupHandle_t task_manager_event_group;
 extern EventGroupHandle_t sensors_event_group;
 
 //extern TaskHandle_t ledext_task_handler;
-
-extern MessageBufferHandle_t temperature_message_buffer;
 
 extern TaskHandle_t led_panel_task_handle;
 extern TaskHandle_t led_uv_task_handle;

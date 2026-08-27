@@ -76,10 +76,18 @@
 #define DSROM_CRC       7
 
 // Device resolution
-#define TEMP_9_BIT  0x1F //  9 bit
+// TEMP_9_BIT agora fica em ds18x20.h (usado por main/temperature.cpp pra
+// configurar o sensor uma vez no boot).
 #define TEMP_10_BIT 0x3F // 10 bit
 #define TEMP_11_BIT 0x5F // 11 bit
 #define TEMP_12_BIT 0x7F // 12 bit
+
+// 9 bits = 93,75ms de conversao (datasheet DS18B20) + margem. So o unico
+// chamador de ds18x20_measure() com wait=true no firmware inteiro e
+// main/temperature.cpp, que configura o sensor pra 9 bits no boot -
+// mudar esse valor global e seguro (nao ha nenhum outro caminho de
+// codigo esperando 12 bits aqui).
+#define DS18X20_CONVERSION_9BIT_MS 100
 
 #define SLEEP_MS(x) vTaskDelay(((x) + portTICK_PERIOD_MS - 1) / portTICK_PERIOD_MS)
 #define CHECK(x) do { esp_err_t __; if ((__ = x) != ESP_OK) return __; } while (0)
@@ -114,7 +122,7 @@ esp_err_t ds18x20_measure(gpio_num_t pin, ds18x20_addr_t addr, bool wait) {
 	PORT_EXIT_CRITICAL;
 
 	if (wait) {
-		SLEEP_MS(750);
+		SLEEP_MS(DS18X20_CONVERSION_9BIT_MS);
 		onewire_depower(pin);
 	}
 

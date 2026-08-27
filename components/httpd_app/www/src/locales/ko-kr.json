@@ -1,0 +1,432 @@
+{
+  "head": {
+    "title": "Lummina 4"
+  },
+  "#menu_1": {
+    "config": "설정"
+  },
+  "#sub-menu-1": {
+    "device": "날짜/시간 부저",
+    "calibration": "온도 보정",
+    "reset": "공장 초기화",
+    "history": "이력"
+  },
+  "#menu_2": {
+    "incubation": "배양"
+  },
+  "#sub-menu-2": {
+    "analysis": "분석"
+  },
+  "#menu_3": {
+    "restrict": "제한 구역"
+  },
+  "#sub-menu-3": {
+    "settings": "설정",
+    "advanced_config": "고급 설정",
+    "history": "이력",
+    "serial_number": "일련번호"
+  },
+  "#menu_4": {
+    "system": "시스템"
+  },
+  "#sub-menu-4": {
+    "restart": "장치 재시작"
+  },
+  "#menu_9": {
+    "language": "언어"
+  },
+  "#submenu-9": {
+    "pt-br": "Português",
+    "es-es": "Español",
+    "en-us": "English",
+    "ko-kr": "한국어"
+  },
+  "#reset-card-title": {
+    "title#1": "설정",
+    "title#2": "공장 초기화"
+  },
+  "#reset-msg": {
+    "msg#1": "이 옵션은 장치 메모리에서 다음 데이터를 삭제합니다:",
+    "msg#2": "1 - 배양 순서",
+    "msg#3": "2 - 장치의 모든 검사 이력",
+    "msg#4": "3 - 병원 이름",
+    "reset": "공장 기본값으로 복원"
+  },
+  "#resetForm": {
+    "msg#3": "이 작업은 취소하거나 되돌릴 수 없습니다.",
+    "confirm": "확인"
+  },
+  "#resetFormInfo": {
+    "msg#1": "확인 비밀번호를 입력하고 아래 버튼을 클릭하면 장치에서 데이터가 삭제됩니다.",
+    "msg#2": "정말로 데이터를 삭제하려는 것인지 확인하십시오."
+  },
+  "#resetFormTitle": {
+    "title": "확인"
+  },
+  "#restartFormInfo": {
+    "msg#1": "장치가 성공적으로 초기화되었습니다.",
+    "msg#2": "설정을 완료하려면 장치를 재시작해야 합니다.",
+    "msg#3": "장치를 끄고 잠시 기다린 후 다시 켜십시오."
+  },
+  "#restartFormTitle": {
+    "title": "성공"
+  },
+  "#resetErrorInfo": {
+    "msg#1": "분석이 진행 중인 동안에는 장치를 초기화할 수 없습니다.",
+    "msg#2": "장치를 초기화하기 전에 진행 중인 분석이 완료되기를 기다리거나 취소하십시오."
+  },
+  "#resetErrorTitle": {
+    "title": "오류"
+  },
+  "#messages": {
+    "toast_title": "장치 설정",
+    "toast_message": "장치 데이터가 성공적으로 초기화되었습니다!",
+    "error_message": "장치 데이터 초기화 중 오류가 발생했습니다. 다시 시도해 주세요!"
+  },
+  "#configErrorTitle": {
+    "title": "오류"
+  },
+  "#configErrorInfo": {
+    "msg#1": "분석이 진행 중인 동안에는 온도를 보정할 수 없습니다.",
+    "msg#2": "장치를 설정하기 전에 진행 중인 분석이 완료되기를 기다리거나 취소하십시오."
+  },
+  "#configSuccessFormTitle": {
+    "title": "성공"
+  },
+  "#configSuccessFormInfo": {
+    "msg#1": "온도가 성공적으로 보정되었습니다.",
+    "msg#2": "설정을 완료하려면 장치를 재시작해야 합니다.",
+    "msg#3": "장치를 끄고 잠시 기다린 후 다시 켜십시오."
+  },
+  "#serial-number-card-title": {
+    "title#1": "설정",
+    "title#2": "장치 (제한 구역)"
+  },
+  "#restrict-card-title": {
+    "title#1": "설정",
+    "title#2": "장치 (제한 구역)"
+  },
+  "#ampoules-card-title": {
+    "title#1": "배양",
+    "title#2": "앰플"
+  },
+  "#calibration-card-title": {
+    "title#1": "보정",
+    "title#2": "온도 센서"
+  },
+  "#settings-card-title": {
+    "title#1": "설정",
+    "title#2": "장치"
+  },
+  "#old_serial_number": {
+    "num_serie": "일련번호 (현재)"
+  },
+  "#new_serial_number": {
+    "num_serie": "일련번호 (신규)"
+  },
+  "#save_serial_number": {
+    "save": "저장"
+  },
+  "#serial_number_messages": {
+    "restart_toast_title": "장치 재시작",
+    "restart_toast_message": "장치가 10초 후에 재시작됩니다!",
+    "save_success_toast_title": "장치 설정",
+    "save_success_toast_message": "장비 일련번호를 변경하려면 장치를 재시작해야 합니다.<br />장치가 10초 후 자동으로 재시작됩니다!",
+    "save_error_toast_title": "장치 설정",
+    "save_error_toast_message": "데이터 저장 중 오류가 발생했습니다. 다시 시도해 주세요!"
+  },
+  "#positivepercentage": {
+    "positive_percentage": "샘플 양성률"
+  },
+  "#save_positive_percentage": {
+    "save": "저장"
+  },
+  "#restrict_messages": {
+    "restart_toast_title": "장치 재시작",
+    "restart_toast_message": "장치가 10초 후에 재시작됩니다!",
+    "save_success_toast_title": "장치 설정",
+    "save_success_toast_message": "설정이 성공적으로 저장되었습니다!",
+    "save_error_toast_title": "장치 설정",
+    "save_error_toast_message": "데이터 저장 중 오류가 발생했습니다. 다시 시도해 주세요!"
+  },
+  "#advanced-config-card-title": {
+    "title#1": "고급 설정",
+    "title#2": "검사 매개변수"
+  },
+  "#crc_error_alert": {
+    "crc_error_msg#1": "저장된 설정에서 불일치가 감지되었습니다 (무결성 오류). 장치가 일시적으로 공장 기본값으로 작동하고 있습니다.",
+    "restore_defaults": "공장 기본값 복원"
+  },
+  "#card_capture_time": {
+    "card_capture_time_title": "측정 시간",
+    "led_capture_time_label": "판독 전 LED 점등 시간 (0.5~7초)",
+    "loop_cycle_time_label": "루프 재시작 시간 (2~50초)"
+  },
+  "#card_samples": {
+    "card_samples_title": "샘플",
+    "samples_initial_label": "초기 샘플 수 (3~10)",
+    "samples_final_label": "최종 샘플 수 (3~10)"
+  },
+  "#card_cavities": {
+    "card_cavities_title": "캐비티",
+    "cavity_1_label": "캐비티 01",
+    "cavity_2_label": "캐비티 02",
+    "cavity_3_label": "캐비티 03",
+    "cavity_4_label": "캐비티 04"
+  },
+  "#card_early_check": {
+    "card_early_check_title": "조기 확인",
+    "early_check_time_label": "조기 양성 결과 확인을 위한 최소 시간(분)"
+  },
+  "#card_temperature": {
+    "card_temperature_title": "온도",
+    "heater_setpoint_label": "가열 온도(설정값), 단위: 도",
+    "heater_min_temp_label": "최소 온도 (이 값보다 낮으면 검사가 취소되고 경보가 울립니다)",
+    "heater_max_temp_label": "최대 온도 (이 값보다 높으면 검사가 취소되고 경보가 울립니다)",
+    "heater_release_temp_label": "해제 온도 (계산값 = 최소값 + 2)"
+  },
+  "#card_operation_mode": {
+    "card_operation_mode_title": "작동 모드",
+    "mode_normal_label": "일반",
+    "mode_eto_label": "ETO",
+    "mode_crc1_label": "CRC1"
+  },
+  "#test_in_progress_alert": {
+    "test_in_progress_msg": "분석이 진행 중인 동안에는 이 설정을 변경할 수 없습니다."
+  },
+  "#restoreConfirmTitle": {
+    "title": "확인"
+  },
+  "#restoreConfirmBody": {
+    "restore_confirm_msg": "고급 설정이 공장 기본값으로 복원됩니다. 계속하시겠습니까?",
+    "cancel": "뒤로",
+    "confirm": "확인"
+  },
+  "#advanced_config_messages": {
+    "save_success_toast_title": "고급 설정",
+    "save_success_toast_message": "설정이 성공적으로 저장되었습니다!",
+    "save_error_toast_title": "고급 설정",
+    "save_error_toast_message": "데이터 저장 중 오류가 발생했습니다. 다시 시도해 주세요!"
+  },
+  "#cavity_1": {
+    "title_cavity_1": "캐비티 01"
+  },
+  "#body_cavity_1": {
+    "key#1": "배양 번호: ",
+    "key#2": "시작 날짜 및 시간:",
+    "key#3": "종료 날짜 및 시간:"
+  },
+  "#ampoules_result_1": {
+    "key#4": "판독 횟수: ",
+    "key#5": "판독값 합계: ",
+    "key#6": "평균 판독값: ",
+    "key#7": "변화율: ",
+    "key#8": "양성률(%): "
+  },
+  "#records_table_cols_1": {
+    "key#1": "샘플",
+    "key#2": "결과"
+  },
+  "#card_footer_result_1": {
+    "key#1": "결과: "
+  },
+  "#cavity_2": {
+    "title_cavity_2": "캐비티 02"
+  },
+  "#body_cavity_2": {
+    "key#1": "배양 번호: ",
+    "key#2": "시작 날짜 및 시간:",
+    "key#3": "종료 날짜 및 시간:"
+  },
+  "#ampoules_result_2": {
+    "key#4": "판독 횟수: ",
+    "key#5": "판독값 합계: ",
+    "key#6": "평균 판독값: ",
+    "key#7": "변화율: ",
+    "key#8": "양성률(%): "
+  },
+  "#records_table_cols_2": {
+    "key#1": "샘플",
+    "key#2": "결과"
+  },
+  "#card_footer_result_2": {
+    "key#1": "결과: "
+  },
+  "#cavity_3": {
+    "title_cavity_3": "캐비티 03"
+  },
+  "#body_cavity_3": {
+    "key#1": "배양 번호: ",
+    "key#2": "시작 날짜 및 시간:",
+    "key#3": "종료 날짜 및 시간:"
+  },
+  "#ampoules_result_3": {
+    "key#4": "판독 횟수: ",
+    "key#5": "판독값 합계: ",
+    "key#6": "평균 판독값: ",
+    "key#7": "변화율: ",
+    "key#8": "양성률(%): "
+  },
+  "#records_table_cols_3": {
+    "key#1": "샘플",
+    "key#2": "결과"
+  },
+  "#card_footer_result_3": {
+    "key#1": "결과: "
+  },
+  "#cavity_4": {
+    "title_cavity_4": "캐비티 04"
+  },
+  "#body_cavity_4": {
+    "key#1": "배양 번호: ",
+    "key#2": "시작 날짜 및 시간:",
+    "key#3": "종료 날짜 및 시간:"
+  },
+  "#ampoules_result_4": {
+    "key#4": "판독 횟수: ",
+    "key#5": "판독값 합계: ",
+    "key#6": "평균 판독값: ",
+    "key#7": "변화율: ",
+    "key#8": "양성률(%): "
+  },
+  "#records_table_cols_4": {
+    "key#1": "샘플",
+    "key#2": "결과"
+  },
+  "#card_footer_result_4": {
+    "key#1": "결과: "
+  },
+  "#ampoules_messages": {
+    "restart_toast_title": "장치 재시작",
+    "restart_toast_message": "장치가 10초 후에 재시작됩니다!",
+    "process": "처리 중...",
+    "positive_result": "**** 양성 ****",
+    "negative_result": "**** 음성 ****"
+  },
+  "#settings_messages": {
+    "save_success_toast_title": "장치 설정",
+    "save_success_toast_message": "설정이 성공적으로 저장되었습니다!",
+    "save_error_toast_title": "장치 설정",
+    "save_error_toast_message": "데이터 저장 중 오류가 발생했습니다. 다시 시도해 주세요!"
+  },
+  "#version_title": {
+    "title#1": "펌웨어 버전"
+  },
+  "#settings_device_date_time": {
+    "device_date_time": "현재 장치 날짜 및 시간 (RTC)"
+  },
+  "#settings_date_time": {
+    "date_time": "서버 날짜/시간"
+  },
+  "#settings_institution": {
+    "institution": "기관"
+  },
+  "#save_settings": {
+    "save": "저장"
+  },
+  "#card_buzzer_alert_timeout": {
+    "card_buzzer_alert_timeout_title": "검사 완료 경보음",
+    "buzzer_alert_timeout_min_label": "확인하지 않을 경우 경보가 자동으로 꺼지는 시간 (1~30분)"
+  },
+  "#save_buzzer_alert_timeout": {
+    "save": "저장"
+  },
+  "#calibration_messages": {
+    "save_success_toast_title": "보정",
+    "save_success_toast_message": "보정 계수가 성공적으로 저장되었습니다!",
+    "save_error_toast_title": "보정",
+    "save_error_toast_message": "보정 계수 저장 중 오류가 발생했습니다. 다시 시도해 주세요!",
+    "read_temperatures_toast_title": "온도 센서 보정",
+    "read_temperatures_toast_message": "외부 온도 센서에서 측정한 값을 입력하세요!"
+  },
+  "#calibration_temperature_thermometer": {
+    "temperature_thermometer": "현재 온도"
+  },
+  "#calibration_temperature_thermometer_adjusted": {
+    "temperature_thermometer_adjusted": "보정된 온도"
+  },
+  "#table_temperatures_cols": {
+    "title#1": "샘플",
+    "title#2": "온도"
+  },
+  "#avg_title": {
+    "key#1": "평균: "
+  },
+  "#factor_calibration_title": {
+    "key#1": "보정 계수: "
+  },
+  "#controls": {
+    "read": "보정 시작",
+    "save": "저장"
+  },
+  "#reset_password": {
+    "password": "비밀번호"
+  },
+  "#history-card-title": {
+    "title#1": "이력",
+    "title#2": "검사 결과"
+  },
+  "#card_print_count": {
+    "card_print_count_title": "인쇄",
+    "print_count_label": "인쇄할 결과 수 (1~64)"
+  },
+  "#save_print_count": {
+    "save": "저장"
+  },
+  "#card_history_table": {
+    "card_history_table_title": "최근 결과"
+  },
+  "#history_table_cols": {
+    "col_date": "날짜/시간",
+    "col_cavidade": "캐비티",
+    "col_resultado": "결과",
+    "col_ciclo": "검사 시간",
+    "col_temperatura": "온도"
+  },
+  "#history_messages": {
+    "save_success_toast_title": "이력",
+    "save_success_toast_message": "설정이 성공적으로 저장되었습니다!",
+    "save_error_toast_title": "이력",
+    "save_error_toast_message": "데이터 저장 중 오류가 발생했습니다. 다시 시도해 주세요!",
+    "result_positive_label": "양성",
+    "result_negative_label": "음성",
+    "result_cancelled_label": "취소됨",
+    "empty_history_label": "저장된 결과가 없습니다."
+  },
+  "#loop_cycle_time_hint": {
+    "template": "현재 허용 최소값: {min}초 ({n}개 활성 캐비티 × ({led}초 + 여유 0.5초))"
+  },
+  "#early_check_time_hint": {
+    "range_template": "허용 범위: {min}~15분.",
+    "min_now_template": "현재 허용 최소값: {min}분 ({n}개 샘플 × 루핑 {t}초)"
+  },
+  "#heater_min_max_hint": {
+    "template": "설정값: {sp}°C — 최소값은 {a}°C 이하, 최대값은 {b}°C 이상이어야 합니다 (양쪽 최소 여유 4°C)"
+  },
+  "#heater_release_temp_hint": {
+    "template": "자동 계산됨: 최소값 ({min}°C) + 2°C"
+  },
+  "#save_advanced_config": {
+    "save": "저장"
+  },
+  "#configForm": {
+    "ok": "확인"
+  },
+  "#configModalSucess": {
+    "ok": "확인"
+  },
+  "#restartDeviceModal": {
+    "ok": "확인"
+  },
+  "#resetErrorForm": {
+    "ok": "확인"
+  },
+  "#dateTimeConfirmFormTitle": {
+    "title": "날짜/시간 업데이트 확인"
+  },
+  "#dateTimeConfirmModal": {
+    "msg#1": "현재 장치 시간:",
+    "msg#2": "저장될 새 시간:",
+    "confirm": "확인"
+  }
+}

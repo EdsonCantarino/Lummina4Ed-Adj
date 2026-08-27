@@ -63,6 +63,9 @@ typedef onewire_addr_t ds18x20_addr_t;
 /** Family ID (lower address byte) of DS18S20 sensors */
 #define DS18S20_FAMILY_ID 0x10
 
+/** Resolution config byte for ds18x20_write_scratchpad() - 9 bit (0.5C, ~93.75ms conversion) */
+#define TEMP_9_BIT 0x1F
+
 /**
  * @brief Find the addresses of all ds18x20 devices on the bus.
  *

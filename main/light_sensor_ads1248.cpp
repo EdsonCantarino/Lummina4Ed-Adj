@@ -277,31 +277,59 @@ long read_channel_value(uint8_t channel) {
 			ADS1248_MUX0_BYTE(channel_mux_sp[channel],
 					channel_mux_sn[channel]));
 
-	uint16_t drdy_wait_ms = 0;
-	while (gpio_get_level(ADS_DRDY_PIN)) {
-		vTaskDelay(pdMS_TO_TICKS(10));
-		drdy_wait_ms += 10;
+	// Levantamento de dados (27/08): tira 3 conversoes seguidas do mesmo
+	// canal (chip fica em conversao continua, ~50ms entre elas, sem
+	// reescrever MUX0) so pra logar o quanto elas variam entre si. Ainda
+	// nao rejeita/valida nada com base nisso - e so instrumentacao pra
+	// decidir com dado real qual limiar faz sentido antes de implementar
+	// a validacao de estabilidade combinada com o usuario.
+	long samples[3];
+	bool timed_out = false;
 
-		if (drdy_wait_ms >= ADS1248_DRDY_TIMEOUT_MS) {
-			ESP_LOGE(TAG,
-					"Timeout aguardando DRDY do ADS1248 (canal %d) - assumindo ultima leitura valida",
-					channel + 1);
+	for (int i = 0; i < 3; i++) {
+		uint16_t drdy_wait_ms = 0;
+		while (gpio_get_level(ADS_DRDY_PIN)) {
+			vTaskDelay(pdMS_TO_TICKS(10));
+			drdy_wait_ms += 10;
 
-			if (channel_consecutive_timeouts[channel] < 255)
-				channel_consecutive_timeouts[channel]++;
-
-			return last_valid_channel_value[channel];
+			if (drdy_wait_ms >= ADS1248_DRDY_TIMEOUT_MS) {
+				ESP_LOGE(TAG,
+						"Timeout aguardando DRDY do ADS1248 (canal %d, amostra %d) - assumindo ultima leitura valida",
+						channel + 1, i + 1);
+				timed_out = true;
+				break;
+			}
 		}
+
+		if (timed_out)
+			break;
+
+		samples[i] = ads1248_rdata();
 	}
 
-	long raw = ads1248_rdata();
+	if (timed_out) {
+		if (channel_consecutive_timeouts[channel] < 255)
+			channel_consecutive_timeouts[channel]++;
+
+		return last_valid_channel_value[channel];
+	}
+
+	long raw = samples[0];
 
 	last_valid_channel_value[channel] = raw;
 	channel_consecutive_timeouts[channel] = 0;
 
-	printf("Read CH%02d = %ld\n", channel + 1, raw);
+	long min_s = samples[0], max_s = samples[0];
+	for (int i = 1; i < 3; i++) {
+		if (samples[i] < min_s) min_s = samples[i];
+		if (samples[i] > max_s) max_s = samples[i];
+	}
+
+	printf("Read CH%02d = %ld [%ld,%ld,%ld] delta=%ld\n", channel + 1, raw,
+			samples[0], samples[1], samples[2], max_s - min_s);
 #if CONFIG_ADC_DEBUG_SERIAL
-	printf("[ADCDBG] chip=ADS1248 ch=%u raw=%ld\n", channel, raw);
+	printf("[ADCDBG] chip=ADS1248 ch=%u raw=%ld s0=%ld s1=%ld s2=%ld delta=%ld\n",
+			channel, raw, samples[0], samples[1], samples[2], max_s - min_s);
 #endif
 
 	return raw;

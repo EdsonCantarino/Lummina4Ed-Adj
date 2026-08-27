@@ -631,6 +631,16 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append("BIOLOGICAL INCUBATOR", true);
 
 		printer.append("S/N: ");
+	} else if (language == "es-es") {
+		printer.append("INCUBADORA BIOL");
+		printer.appendByte(0x9F); // Ã“
+		printer.append("GICA", true);
+
+		printer.append("N/S: ");
+	} else if (language == "ko-kr") {
+		printer.append("BIOLOGICAL INCUBATOR", true);
+
+		printer.append("S/N: ");
 	} else {
 		printer.append("INCUBADORA BIOL");
 		printer.appendByte(0x9F); // Ã“
@@ -654,6 +664,10 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append("IB - ", false);
 	} else if (language == "en-us") {
 		printer.append("BI - ", false);
+	} else if (language == "es-es") {
+		printer.append("IB - ", false);
+	} else if (language == "ko-kr") {
+		printer.append("BI - ", false);
 	} else {
 		printer.append("IB - ", false);
 	}
@@ -663,6 +677,10 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 	if (language == "pt-br") {
 		printer.append("TIPO: ");
 	} else if (language == "en-us") {
+		printer.append("TYPE: ");
+	} else if (language == "es-es") {
+		printer.append("TIPO: ");
+	} else if (language == "ko-kr") {
 		printer.append("TYPE: ");
 	} else {
 		printer.append("TIPO: ");
@@ -681,8 +699,12 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append("CAVIDADE: ");
 	} else if (language == "en-us") {
 		printer.append("CAVITY: ");
-	} else {
+	} else if (language == "es-es") {
 		printer.append("CAVIDAD: ");
+	} else if (language == "ko-kr") {
+		printer.append("CAVITY: ");
+	} else {
+		printer.append("CAVIDADE: ");
 	}
 
 	printer.append(ampola.c_str(), true);
@@ -691,8 +713,12 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append("TEMPO DE LEITURA: ");
 	} else if (language == "en-us") {
 		printer.append("READING TIME: ");
+	} else if (language == "es-es") {
+		printer.append("TIEMPO DE LECTURA: ");
+	} else if (language == "ko-kr") {
+		printer.append("READING TIME: ");
 	} else {
-		printer.append("TIEMPO DE LEER: ");
+		printer.append("TEMPO DE LEITURA: ");
 	}
 
 	printer.append(format_duration_hm(tempo_em_teste).c_str(), true);
@@ -712,6 +738,10 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 	if (language == "pt-br") {
 		printer.Bold("** CANCELADO **");
 	} else if (language == "en-us") {
+		printer.Bold("** CANCELED **");
+	} else if (language == "es-es") {
+		printer.Bold("** CANCELADO **");
+	} else if (language == "ko-kr") {
 		printer.Bold("** CANCELED **");
 	} else {
 		printer.Bold("** CANCELADO **");
@@ -733,6 +763,12 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append(" INCUB.:");
 	} else if (language == "en-us") {
 		printer.append("INCUB. NUM:");
+	} else if (language == "es-es") {
+		printer.append("N");
+		printer.appendByte(0xF8);
+		printer.append(" INCUB.:");
+	} else if (language == "ko-kr") {
+		printer.append("INCUB. NUM:");
 	} else {
 		printer.append("N");
 		printer.appendByte(0xF8);
@@ -745,8 +781,12 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 		printer.append("DATA:");
 	} else if (language == "en-us") {
 		printer.append("DATE:");
-	} else {
+	} else if (language == "es-es") {
 		printer.append("FECHA:");
+	} else if (language == "ko-kr") {
+		printer.append("DATE:");
+	} else {
+		printer.append("DATA:");
 	}
 
 	printer.append(dt_inicio.c_str());
@@ -754,6 +794,10 @@ void print_test_cancelled(string ampola, string id_test, string dt_inicio,
 	if (language == "pt-br") {
 		printer.append(" HORA:");
 	} else if (language == "en-us") {
+		printer.append(" HOUR:");
+	} else if (language == "es-es") {
+		printer.append(" HORA:");
+	} else if (language == "ko-kr") {
 		printer.append(" HOUR:");
 	} else {
 		printer.append(" HORA:");
@@ -821,6 +865,16 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append("BIOLOGICAL INCUBATOR", true);
 
 		printer.append("S/N: ");
+	} else if (language == "es-es") {
+		printer.append("INCUBADORA BIOL");
+		printer.appendByte(0x9F); // Ã“
+		printer.append("GICA", true);
+
+		printer.append("N/S: ");
+	} else if (language == "ko-kr") {
+		printer.append("BIOLOGICAL INCUBATOR", true);
+
+		printer.append("S/N: ");
 	} else {
 		printer.append("INCUBADORA BIOL");
 		printer.appendByte(0x9F); // Ã“
@@ -844,6 +898,10 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append("IB - ", false);
 	} else if (language == "en-us") {
 		printer.append("BI - ", false);
+	} else if (language == "es-es") {
+		printer.append("IB - ", false);
+	} else if (language == "ko-kr") {
+		printer.append("BI - ", false);
 	} else {
 		printer.append("IB - ", false);
 	}
@@ -853,6 +911,10 @@ void print_test(string ampola, string id_test, string dt_inicio,
 	if (language == "pt-br") {
 		printer.append("TIPO: ");
 	} else if (language == "en-us") {
+		printer.append("TYPE: ");
+	} else if (language == "es-es") {
+		printer.append("TIPO: ");
+	} else if (language == "ko-kr") {
 		printer.append("TYPE: ");
 	} else {
 		printer.append("TIPO: ");
@@ -871,8 +933,12 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append("CAVIDADE: ");
 	} else if (language == "en-us") {
 		printer.append("CAVITY: ");
-	} else {
+	} else if (language == "es-es") {
 		printer.append("CAVIDAD: ");
+	} else if (language == "ko-kr") {
+		printer.append("CAVITY: ");
+	} else {
+		printer.append("CAVIDADE: ");
 	}
 
 	printer.append(ampola.c_str(), true);
@@ -881,8 +947,12 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append("TEMPO DE LEITURA: ");
 	} else if (language == "en-us") {
 		printer.append("READING TIME: ");
+	} else if (language == "es-es") {
+		printer.append("TIEMPO DE LECTURA: ");
+	} else if (language == "ko-kr") {
+		printer.append("READING TIME: ");
 	} else {
-		printer.append("TIEMPO DE LEER: ");
+		printer.append("TEMPO DE LEITURA: ");
 	}
 
 	printer.append(format_duration_hm(tempo_em_teste).c_str(), true);
@@ -899,6 +969,10 @@ void print_test(string ampola, string id_test, string dt_inicio,
 			printer.Bold("* POSITIVO *");
 		} else if (language == "en-us") {
 			printer.Bold("* POSITIVE *");
+		} else if (language == "es-es") {
+			printer.Bold("* POSITIVO *");
+		} else if (language == "ko-kr") {
+			printer.Bold("* POSITIVE *");
 		} else {
 			printer.Bold("* POSITIVO *");
 		}
@@ -906,6 +980,10 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		if (language == "pt-br") {
 			printer.Bold("* NEGATIVO *");
 		} else if (language == "en-us") {
+			printer.Bold("* NEGATIVE *");
+		} else if (language == "es-es") {
+			printer.Bold("* NEGATIVO *");
+		} else if (language == "ko-kr") {
 			printer.Bold("* NEGATIVE *");
 		} else {
 			printer.Bold("* NEGATIVO *");
@@ -926,6 +1004,12 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append(" INCUB.:");
 	} else if (language == "en-us") {
 		printer.append("INCUB. NUM:");
+	} else if (language == "es-es") {
+		printer.append("N");
+		printer.appendByte(0xF8);
+		printer.append(" INCUB.:");
+	} else if (language == "ko-kr") {
+		printer.append("INCUB. NUM:");
 	} else {
 		printer.append("N");
 		printer.appendByte(0xF8);
@@ -938,8 +1022,12 @@ void print_test(string ampola, string id_test, string dt_inicio,
 		printer.append("DATA:");
 	} else if (language == "en-us") {
 		printer.append("DATE:");
-	} else {
+	} else if (language == "es-es") {
 		printer.append("FECHA:");
+	} else if (language == "ko-kr") {
+		printer.append("DATE:");
+	} else {
+		printer.append("DATA:");
 	}
 
 	printer.append(dt_inicio.c_str());
@@ -947,6 +1035,10 @@ void print_test(string ampola, string id_test, string dt_inicio,
 	if (language == "pt-br") {
 		printer.append(" HORA:");
 	} else if (language == "en-us") {
+		printer.append(" HOUR:");
+	} else if (language == "es-es") {
+		printer.append(" HORA:");
+	} else if (language == "ko-kr") {
 		printer.append(" HOUR:");
 	} else {
 		printer.append(" HORA:");

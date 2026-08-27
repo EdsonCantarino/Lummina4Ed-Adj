@@ -5,14 +5,20 @@
 
 #include "include/temperature.h"
 #include "include/task_manager.h"
+#include "include/heater.h"
 #include "LinkedList.h"
 #include "cJSON.h"
 #include "include/nvs_utils.h"
 
 static const gpio_num_t SENSOR_GPIO = (gpio_num_t) CONFIG_DS18X20_ONEWIRE_GPIO;
 static const int MAX_SENSORS = CONFIG_DS18X20_MAX_SENSORS;
-static const int RESCAN_INTERVAL = 8;
-static const uint32_t LOOP_DELAY_MS = 5000;
+// + ~100ms de conversao 9-bit (ds18x20.c) = leitura nova a cada ~1s.
+// Reduzido de 5000ms - achado em 27/08 (comparacao video do LED do
+// aquecedor x log serial) que esse delay artificial, somado ao rescan a
+// cada 8 leituras que existia antes, deixava a temperatura desatualizada
+// por ate ~7s, tempo suficiente pro aquecedor ficar desligado sem
+// necessidade entre leituras de ADC das cavidades.
+static const uint32_t LOOP_DELAY_MS = 900;
 
 static const char *TAG = "TEMPERATURE";
 
@@ -21,7 +27,6 @@ static TaskHandle_t check_temperature_task_handle;
 
 // Prototipos
 void check_temperature_task(void *pvParameter);
-esp_err_t send_temperature_buffer(float *temperature);
 esp_err_t check_temperature_start_task();
 esp_err_t check_temperature_stop_task();
 
@@ -65,85 +70,112 @@ void check_temperature_task(void *pvParameter) {
 	int count = 0;
 
 	while (1) {
-		res = ds18x20_scan_devices(SENSOR_GPIO, addrs, MAX_SENSORS,
-				&sensor_count);
-		if (res != ESP_OK) {
-			ESP_LOGE(TAG, "Sensors scan error %d (%s)", res,
-					esp_err_to_name(res));
-
-			xEventGroupClearBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
-			continue;
-		}
-
-		if (!sensor_count) {
-			ESP_LOGW(TAG, "No sensors detected!");
-
-			xEventGroupClearBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
-			// Sem isso o loop gira sem ceder CPU quando nao acha sensor,
-			// disparando o task_wdt a cada 5s (achado em 10/08 - ver
-			// historico/2026-08-10-...psram-descartada.md).
-			vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
-			continue;
-		}
-
-		ESP_LOGD(TAG, "%d sensors detected", sensor_count);
-		xEventGroupSetBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
-
-		// If there were more sensors found than we have space to handle,
-		// just report the first MAX_SENSORS..
-		if (sensor_count > MAX_SENSORS)
-			sensor_count = MAX_SENSORS;
-
-		// Do a number of temperature samples, and print the results.
-		for (int i = 0; i < RESCAN_INTERVAL; i++) {
-			//ESP_LOGD(TAG, "Measuring...");
-
-			if (count == 0) {
-				get_calibration_factor(factor_temp);
-			}
-
-			//ESP_LOGI(TAG, "%.2f fator de calibracao", factor_temp);
-
-			//factor_temp = 0.0f;
-
-			count++;
-
-			if (count > 60) {
-				count = 0;
-			}
-
-			res = ds18x20_measure_and_read_multi(SENSOR_GPIO, addrs,
-					sensor_count, temps);
+		// Rescan reativo: so re-escaneia o barramento se ainda nao
+		// conhecemos os enderecos (primeira volta) ou se uma leitura
+		// falhou de verdade (sensor_count zerado abaixo). Antes disso
+		// re-escaneava a cada 8 leituras (RESCAN_INTERVAL) mesmo sem
+		// motivo - o endereco ROM de um sensor fisico fixo nao muda
+		// sozinho, entao isso so custava tempo sem detectar nada que uma
+		// falha de leitura ja nao detectasse (achado em 27/08).
+		if (sensor_count == 0) {
+			res = ds18x20_scan_devices(SENSOR_GPIO, addrs, MAX_SENSORS,
+					&sensor_count);
 			if (res != ESP_OK) {
-				ESP_LOGE(TAG, "Sensors read error %d (%s)", res,
+				ESP_LOGE(TAG, "Sensors scan error %d (%s)", res,
 						esp_err_to_name(res));
+
+				xEventGroupClearBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
+				vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
 				continue;
 			}
 
-			for (int j = 0; j < sensor_count; j++) {
-				float temp_c = temps[j];
-				//float temp_f = (temp_c * 1.8) + 32;
+			if (!sensor_count) {
+				ESP_LOGW(TAG, "No sensors detected!");
 
-				float temp_factor = roundTemperature(temp_c) + roundTemperature(factor_temp);
+				xEventGroupClearBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
+				// Sem isso o loop gira sem ceder CPU quando nao acha sensor,
+				// disparando o task_wdt a cada 5s (achado em 10/08 - ver
+				// historico/2026-08-10-...psram-descartada.md).
+				vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
+				continue;
+			}
 
-				last_temperature = temp_factor;
+			ESP_LOGD(TAG, "%d sensors detected", sensor_count);
+			xEventGroupSetBits(sensors_event_group, SENSOR_TEMPERATURE_BIT);
 
-				//temp_factor = 69.5f;
+			// If there were more sensors found than we have space to handle,
+			// just report the first MAX_SENSORS..
+			if (sensor_count > MAX_SENSORS)
+				sensor_count = MAX_SENSORS;
 
-//				ESP_LOGI(TAG,
-//						"Temperatura: %.3f + Fator de Calibracao: %.3f = %.3f",
-//						temp_c, factor_temp, temp_factor);
+			// Configura resolucao de 9 bits (0,5 grau, ~93,75ms de
+			// conversao) em cada sensor achado - roundTemperature() ja
+			// arredonda pra 0,5 grau mesmo, entao os 12 bits de fabrica
+			// (750ms) so custavam tempo sem ganhar precisao usada de
+			// verdade (achado em 27/08).
+			for (size_t i = 0; i < sensor_count; i++) {
+				uint8_t scratchpad[3] = { 0x00, 0x00, TEMP_9_BIT };
+				ds18x20_write_scratchpad(SENSOR_GPIO, addrs[i], scratchpad);
 
-				//printf("%.3f\n", temp_factor);
-				//printf("%.1f\n\n", factor_temp);
-
-				send_temperature_buffer(&temp_factor);			}
-
-			// Wait for a little bit between each sample (note that the
-			// ds18x20_measure_and_read_multi operation already takes at
-			// least 750ms to run, so this is on top of that delay).
-			vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
+				// Confirma que o sensor realmente aceitou 9 bits, em vez
+				// de assumir - se o byte de config lido de volta nao for
+				// 0x1F, a conversao ainda esta rodando em 12 bits (750ms)
+				// e o codigo so espera 100ms, lendo o valor da conversao
+				// ANTERIOR em vez da atual (suspeita levantada em 27/08
+				// comparando com a pistola/termometro fisico).
+				uint8_t readback[8];
+				esp_err_t rres = ds18x20_read_scratchpad(SENSOR_GPIO,
+						addrs[i], readback);
+				ESP_LOGW(TAG,
+						"Sensor %d: config byte apos write = 0x%02X (esperado 0x1F) res=%d",
+						(int) i, readback[4], rres);
+			}
 		}
+
+		if (count == 0) {
+			get_calibration_factor(factor_temp);
+		}
+
+		count++;
+
+		if (count > 60) {
+			count = 0;
+		}
+
+		res = ds18x20_measure_and_read_multi(SENSOR_GPIO, addrs, sensor_count,
+				temps);
+		if (res != ESP_OK) {
+			ESP_LOGE(TAG, "Sensors read error %d (%s)", res,
+					esp_err_to_name(res));
+			// Leitura falhou - sensor pode ter sido desconectado. Zera
+			// sensor_count pra forcar um rescan na proxima volta, em vez
+			// de continuar tentando ler um endereco que pode nao existir
+			// mais.
+			sensor_count = 0;
+			vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
+			continue;
+		}
+
+		for (int j = 0; j < sensor_count; j++) {
+			float temp_c = temps[j];
+
+			float temp_factor = roundTemperature(temp_c)
+					+ roundTemperature(factor_temp);
+
+			last_temperature = temp_factor;
+
+			// Chamada direta em vez de mandar por message buffer pra uma
+			// task consumidora separada - so existia um consumidor
+			// (heater.cpp) mesmo, e a task antiga tinha um vTaskDelay(3000)
+			// fixo no fim do loop, que ficou dessincronizado do produtor
+			// depois que a leitura do sensor ficou mais rapida (achado em
+			// 27/08 - era a causa real da cadencia de ~3s medida, nao
+			// disputa de prioridade). Fundido em 27/08.
+			process_heater_temperature(temp_factor);
+		}
+
+		// + ~100ms de conversao 9-bit (ds18x20.c) = leitura nova a cada ~1s.
+		vTaskDelay(pdMS_TO_TICKS(LOOP_DELAY_MS));
 	}
 }
 
@@ -184,21 +216,6 @@ string read_temperatures_calibration_json() {
 	locked_list = false;
 
 	return temperatures_json;
-}
-
-esp_err_t send_temperature_buffer(float *temperature) {
-	size_t xBytesSent;
-
-//	ESP_LOGI(TAG, "Temperature Send: %.3f", *temperature);
-
-	xBytesSent = xMessageBufferSend(temperature_message_buffer,
-			(void* )&temperature, sizeof(float), 0);
-
-	if (xBytesSent != sizeof(temperature)) {
-		return ESP_FAIL;
-	}
-
-	return ESP_OK;
 }
 
 esp_err_t check_temperature_start_task() {

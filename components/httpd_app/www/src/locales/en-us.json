@@ -8,12 +8,13 @@
   "#sub-menu-1": {
     "device": "Date/Time Buzzer",
     "calibration": "Calib. Temperature",
-    "reset": "Factory Default"
+    "reset": "Factory Default",
+    "history": "History"
   },
   "#menu_2": {
     "incubation": "Incubation"
   },
-  "#submenu-2": {
+  "#sub-menu-2": {
     "analysis": "Analysis"
   },
   "#menu_3": {
@@ -28,7 +29,7 @@
   "#menu_4": {
     "system": "System"
   },
-  "#submenu-4": {
+  "#sub-menu-4": {
     "restart": "Restart Device"
   },
   "#menu_9": {
@@ -69,7 +70,6 @@
   "#restartFormTitle": {
     "title": "Success"
   },
-
   "#resetErrorInfo": {
     "msg#1": "The device cannot be reset while analysis is in progress.",
     "msg#2": "Wait for the completion or cancel the analyzes in progress before resetting the device."
@@ -82,7 +82,6 @@
     "toast_message": "Device data reset successful!",
     "error_message": "Error resetting device data. Please try again!"
   },
-
   "#configErrorTitle": {
     "title": "Error"
   },
@@ -98,7 +97,6 @@
     "msg#2": "A restart of the device is required for the settings to complete.",
     "msg#3": "Turn off the device, wait a few moments, then turn it back on."
   },
-
   "#serial-number-card-title": {
     "title#1": "Settings",
     "title#2": "Device (Restricted Area)"
@@ -193,7 +191,7 @@
     "mode_crc1_label": "CRC1"
   },
   "#test_in_progress_alert": {
-    "test_in_progress_msg": "Cannot save while there are analyses in progress."
+    "test_in_progress_msg": "This setting cannot be changed while there are analyses in progress."
   },
   "#restoreConfirmTitle": {
     "title": "Confirmation"
@@ -294,7 +292,7 @@
     "key#1": "Sample",
     "key#2": "Result"
   },
-  "#card_footer_resultado_4": {
+  "#card_footer_result_4": {
     "key#1": "Result: "
   },
   "#ampoules_messages": {
@@ -367,9 +365,6 @@
     "title#1": "History",
     "title#2": "Test Results"
   },
-  "#test_in_progress_alert": {
-    "test_in_progress_msg": "This setting cannot be changed while there are analyses in progress."
-  },
   "#card_print_count": {
     "card_print_count_title": "Printing",
     "print_count_label": "Number of results to print (1 to 64)"
@@ -396,5 +391,41 @@
     "result_negative_label": "Negative",
     "result_cancelled_label": "Cancelled",
     "empty_history_label": "No results saved."
+  },
+  "#loop_cycle_time_hint": {
+    "template": "Minimum allowed now: {min} seconds ({n} active cavity(ies) × ({led}s + 0.5s margin))"
+  },
+  "#early_check_time_hint": {
+    "range_template": "Allowed range: {min} to 15 minutes.",
+    "min_now_template": "Minimum allowed now: {min} minutes ({n} samples × {t}s looping)"
+  },
+  "#heater_min_max_hint": {
+    "template": "Setpoint: {sp}°C — minimum must be ≤ {a}°C and maximum must be ≥ {b}°C (minimum margin of 4°C on each side)"
+  },
+  "#heater_release_temp_hint": {
+    "template": "Automatically calculated: minimum ({min}°C) + 2°C"
+  },
+  "#save_advanced_config": {
+    "save": "Save"
+  },
+  "#configForm": {
+    "ok": "Ok"
+  },
+  "#configModalSucess": {
+    "ok": "Ok"
+  },
+  "#restartDeviceModal": {
+    "ok": "Ok"
+  },
+  "#resetErrorForm": {
+    "ok": "Ok"
+  },
+  "#dateTimeConfirmFormTitle": {
+    "title": "Confirm date/time update"
+  },
+  "#dateTimeConfirmModal": {
+    "msg#1": "Current device time:",
+    "msg#2": "New time to be saved:",
+    "confirm": "Confirm"
   }
 }

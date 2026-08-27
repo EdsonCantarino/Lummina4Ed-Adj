@@ -8,7 +8,8 @@
   "#sub-menu-1": {
     "device": "Data/Hora Buzzer",
     "calibration": "Calib. Temperatura",
-    "reset": "Padrão Fábrica"
+    "reset": "Padrão Fábrica",
+    "history": "Histórico"
   },
   "#menu_2": {
     "incubation": "Incubação"
@@ -69,7 +70,6 @@
   "#restartFormTitle": {
     "title": "Sucesso"
   },
-
   "#resetErrorInfo": {
     "msg#1": "O dispositivo não pode ser resetado enquanto houver análises em andamento.",
     "msg#2": "Aguarde a finalização ou cancele as análises em andamento antes de resetar o dispositivo."
@@ -77,7 +77,6 @@
   "#resetErrorTitle": {
     "title": "Erro"
   },
-
   "#configErrorTitle": {
     "title": "Erro"
   },
@@ -93,9 +92,6 @@
     "msg#2": "É necessário reiniciar o dispositivo para que as configurações sejam concluidas.",
     "msg#3": "Desligue o dispositivo da tomada, aguarde alguns instantes e religue-o."
   },
-  
-
-
   "#messages": {
     "toast_title": "Configurações do dispositivo",
     "toast_message": "Reset dos dados do dispositivo realizado com sucesso!",
@@ -195,7 +191,7 @@
     "mode_crc1_label": "CRC1"
   },
   "#test_in_progress_alert": {
-    "test_in_progress_msg": "Não é possível salvar enquanto houver análises em andamento."
+    "test_in_progress_msg": "Não é possível alterar essa configuração enquanto houver análises em andamento."
   },
   "#restoreConfirmTitle": {
     "title": "Confirmação"
@@ -252,7 +248,7 @@
     "key#1": "Amostra",
     "key#2": "Resultado"
   },
-  "card_footer_result_2": {
+  "#card_footer_result_2": {
     "key#1": "Resultado: "
   },
   "#cavity_3": {
@@ -296,7 +292,7 @@
     "key#1": "Amostra",
     "key#2": "Resultado"
   },
-  "#card_footer_resultado_4": {
+  "#card_footer_result_4": {
     "key#1": "Resultado: "
   },
   "#ampoules_messages": {
@@ -369,9 +365,6 @@
     "title#1": "Histórico",
     "title#2": "Resultados de Testes"
   },
-  "#test_in_progress_alert": {
-    "test_in_progress_msg": "Não é possível alterar essa configuração enquanto houver análises em andamento."
-  },
   "#card_print_count": {
     "card_print_count_title": "Impressão",
     "print_count_label": "Quantidade de resultados a imprimir (1 a 64)"
@@ -398,5 +391,41 @@
     "result_negative_label": "Negativo",
     "result_cancelled_label": "Cancelado",
     "empty_history_label": "Nenhum resultado salvo."
+  },
+  "#loop_cycle_time_hint": {
+    "template": "Mínimo permitido agora: {min} segundos ({n} cavidade(s) ativa(s) × ({led}s + 0,5s de margem))"
+  },
+  "#early_check_time_hint": {
+    "range_template": "Faixa permitida: {min} a 15 minutos.",
+    "min_now_template": "Mínimo permitido agora: {min} minutos ({n} amostras × {t}s de looping)"
+  },
+  "#heater_min_max_hint": {
+    "template": "Setpoint: {sp}°C — mínima precisa ser ≤ {a}°C e máxima precisa ser ≥ {b}°C (margem mínima de 4°C para cada lado)"
+  },
+  "#heater_release_temp_hint": {
+    "template": "Calculada automaticamente: mínima ({min}°C) + 2°C"
+  },
+  "#save_advanced_config": {
+    "save": "Salvar"
+  },
+  "#configForm": {
+    "ok": "Ok"
+  },
+  "#configModalSucess": {
+    "ok": "Ok"
+  },
+  "#restartDeviceModal": {
+    "ok": "Ok"
+  },
+  "#resetErrorForm": {
+    "ok": "Ok"
+  },
+  "#dateTimeConfirmFormTitle": {
+    "title": "Confirmar atualização de data/hora"
+  },
+  "#dateTimeConfirmModal": {
+    "msg#1": "Hora atual do equipamento:",
+    "msg#2": "Nova hora a ser gravada:",
+    "confirm": "Confirmar"
   }
 }

@@ -432,7 +432,14 @@ void set_is_priting(bool ispriting) {
 // temperatura em testes com as 4 cavidades ativas (RESTART_ID=5 falso em
 // campo, 18/08). So o fim da janela de captura precisa do aquecedor
 // desligado; o resto da espera ele pode continuar sob controle normal.
-#define HEATER_OFF_BEFORE_READ_MS 100
+// 100ms -> 300ms em 27/08: depois do fix que faz o aquecedor religar na
+// hora (heater.cpp, set_heater_controlling), o chaveamento ficou muito
+// mais frequente que antes (ele nao fica mais minutos desligado) - o
+// ruido relativo medido no ADC subiu de ~0,02-0,16% (log de 14/08, antes
+// do fix) pra ~0,3-0,9% (mesma metodologia, amostra do mesmo tamanho).
+// 300ms da mais margem de assentamento antes da conversao (ADS1248 a
+// 20SPS ja leva ~50ms por conversao sozinho).
+#define HEATER_OFF_BEFORE_READ_MS 300
 
 void prepare_test(int ampoule) {
 // Liga o led UV

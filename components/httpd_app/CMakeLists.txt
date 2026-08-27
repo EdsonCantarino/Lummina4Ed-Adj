@@ -26,6 +26,7 @@ idf_component_register(
         "www/src/locales/es-es.json.gz"
         "www/src/locales/en-us.json.gz"
         "www/src/locales/pt-br.json.gz"
+        "www/src/locales/ko-kr.json.gz"
         "www/resources/baumer.png.gz"
         "www/resources/maxximed.png.gz"
         "www/resources/medcontrol.png.gz"
