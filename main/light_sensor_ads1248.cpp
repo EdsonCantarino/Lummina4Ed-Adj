@@ -266,9 +266,9 @@ void light_sensor_setup() {
 			idac0_readback, (idac0_readback >> 4) & 0x0F);
 }
 
-long read_channel_value(uint8_t channel) {
+void light_sensor_select_channel(uint8_t channel) {
 	if (channel > 3)
-		return 0;
+		return;
 
 	// Grava MUX0 com o par AIN correto pra essa cavidade. Isso ja reseta o
 	// filtro digital sozinho e reinicia a conversao (datasheet secao
@@ -276,63 +276,59 @@ long read_channel_value(uint8_t channel) {
 	ads1248_wreg(ADS1248_REG_MUX0,
 			ADS1248_MUX0_BYTE(channel_mux_sp[channel],
 					channel_mux_sn[channel]));
+}
 
-	// Levantamento de dados (27/08): tira 3 conversoes seguidas do mesmo
-	// canal (chip fica em conversao continua, ~50ms entre elas, sem
-	// reescrever MUX0) so pra logar o quanto elas variam entre si. Ainda
-	// nao rejeita/valida nada com base nisso - e so instrumentacao pra
-	// decidir com dado real qual limiar faz sentido antes de implementar
-	// a validacao de estabilidade combinada com o usuario.
-	long samples[3];
-	bool timed_out = false;
+long light_sensor_read_selected_channel(uint8_t channel) {
+	if (channel > 3)
+		return 0;
 
-	for (int i = 0; i < 3; i++) {
-		uint16_t drdy_wait_ms = 0;
-		while (gpio_get_level(ADS_DRDY_PIN)) {
-			vTaskDelay(pdMS_TO_TICKS(10));
-			drdy_wait_ms += 10;
+	// Ate 27/08 essa funcao tirava 3 conversoes seguidas do mesmo canal so
+	// pra logar o quanto variavam entre si (levantamento de dados sobre o
+	// "sinal em transito" apos troca de canal). Com o fix de troca
+	// antecipada de canal (CHANNEL_SWITCH_DELAY_MS + CHANNEL_SETTLE_MS em
+	// ampoule_test.cpp), o delta entre as 3 amostras caiu pra 0-1 (na
+	// resolucao real usada pelo teste, apos o "/100" em ampoule_test.cpp)
+	// na quase totalidade das leituras - só valia a pena nos eventos raros
+	// e isolados (ex.: rodada com delta grande em 1 unico canal). Voltou a
+	// ser 1 conversao so (28/08), a pedido do usuario, apos aumentar o
+	// tempo de assentamento (CHANNEL_SETTLE_MS 200->300ms) pra tentar
+	// reduzir tambem esses outliers isolados.
+	uint16_t drdy_wait_ms = 0;
+	while (gpio_get_level(ADS_DRDY_PIN)) {
+		vTaskDelay(pdMS_TO_TICKS(10));
+		drdy_wait_ms += 10;
 
-			if (drdy_wait_ms >= ADS1248_DRDY_TIMEOUT_MS) {
-				ESP_LOGE(TAG,
-						"Timeout aguardando DRDY do ADS1248 (canal %d, amostra %d) - assumindo ultima leitura valida",
-						channel + 1, i + 1);
-				timed_out = true;
-				break;
-			}
+		if (drdy_wait_ms >= ADS1248_DRDY_TIMEOUT_MS) {
+			ESP_LOGE(TAG,
+					"Timeout aguardando DRDY do ADS1248 (canal %d) - assumindo ultima leitura valida",
+					channel + 1);
+
+			if (channel_consecutive_timeouts[channel] < 255)
+				channel_consecutive_timeouts[channel]++;
+
+			return last_valid_channel_value[channel];
 		}
-
-		if (timed_out)
-			break;
-
-		samples[i] = ads1248_rdata();
 	}
 
-	if (timed_out) {
-		if (channel_consecutive_timeouts[channel] < 255)
-			channel_consecutive_timeouts[channel]++;
-
-		return last_valid_channel_value[channel];
-	}
-
-	long raw = samples[0];
+	long raw = ads1248_rdata();
 
 	last_valid_channel_value[channel] = raw;
 	channel_consecutive_timeouts[channel] = 0;
 
-	long min_s = samples[0], max_s = samples[0];
-	for (int i = 1; i < 3; i++) {
-		if (samples[i] < min_s) min_s = samples[i];
-		if (samples[i] > max_s) max_s = samples[i];
-	}
-
-	printf("Read CH%02d = %ld [%ld,%ld,%ld] delta=%ld\n", channel + 1, raw,
-			samples[0], samples[1], samples[2], max_s - min_s);
+	printf("Read CH%02d = %ld\n", channel + 1, raw);
 #if CONFIG_ADC_DEBUG_SERIAL
-	printf("[ADCDBG] chip=ADS1248 ch=%u raw=%ld s0=%ld s1=%ld s2=%ld delta=%ld\n",
-			channel, raw, samples[0], samples[1], samples[2], max_s - min_s);
+	printf("[ADCDBG] chip=ADS1248 ch=%u raw=%ld\n", channel, raw);
 #endif
 
 	return raw;
+}
+
+long read_channel_value(uint8_t channel) {
+	if (channel > 3)
+		return 0;
+
+	light_sensor_select_channel(channel);
+	return light_sensor_read_selected_channel(channel);
 }
 
 void light_sensor_task(void *pvParameter) {

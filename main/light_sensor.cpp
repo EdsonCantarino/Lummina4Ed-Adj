@@ -1099,10 +1099,9 @@ void reset_channel_consecutive_timeouts(uint8_t channel) {
 	channel_consecutive_timeouts[channel] = 0;
 }
 
-long read_channel_value(uint8_t channel) {
-	uint8_t aux = 0;
-	long auxl = 0;
-	uint8_t res = 0;
+void light_sensor_select_channel(uint8_t channel) {
+	if (channel > 3)
+		return;
 
 	vCMD_Setup1_Channel = channel;
 	vCMD_Setup2_Channel = channel;
@@ -1142,54 +1141,68 @@ long read_channel_value(uint8_t channel) {
 
 		break;
 	}
-	vTaskDelay(pdMS_TO_TICKS(50));
+	// Sem vTaskDelay aqui (28/08) - antes tinha 50ms fixo depois de trocar
+	// canal/OffSet/Gain. Igual foi feito no driver do ADS1248
+	// (light_sensor_ads1248.cpp), o assentamento vira responsabilidade de
+	// quem chama (ver CHANNEL_SWITCH_DELAY_MS/CHANNEL_SETTLE_MS em
+	// ampoule_test.cpp::prepare_test - 100ms antes de chamar essa funcao +
+	// 400ms depois, antes de ler). Sem hardware CS5534 pra validar
+	// fisicamente nesta sessao (CONFIG_ADC_CHIP_CS5534 desligado no build
+	// atual) - so replica a mesma tecnica do ADS1248 por simetria de API,
+	// nao foi testado em bancada.
+}
 
-	for (uint8_t i = 0; i != 5; i++) {
-		Inic_CS_Line();
-		switch (channel) {
-		case 0:
-			CS5532_BYTE(CMDH_Channel_Setup_Pt1);
-			break;
-		case 1:
-			CS5532_BYTE(CMDH_Channel_Setup_Pt3);
-			break;
-		case 2:
-			CS5532_BYTE(CMDH_Channel_Setup_Pt5);
-			break;
-		case 3:
-			CS5532_BYTE(CMDH_Channel_Setup_Pt7);
-			break;
-		}
+long light_sensor_read_selected_channel(uint8_t channel) {
+	uint8_t aux = 0;
+	long auxl = 0;
 
-		uint16_t drdy_wait_ms = 0;
-		while (read_mosi_pin()) {
-			vTaskDelay(pdMS_TO_TICKS(10));
-			drdy_wait_ms += 10;
-			if (drdy_wait_ms >= CS5532_DRDY_TIMEOUT_MS) {
-				ESP_LOGE(TAG,
-						"Timeout aguardando DRDY do CS5532/CS5534 (canal %d, leitura %d/5) - assumindo ultima leitura valida",
-						channel + 1, i + 1);
-				End_CS_Line();
-
-				if (channel_consecutive_timeouts[channel] < 255)
-					channel_consecutive_timeouts[channel]++;
-
-				return last_valid_channel_value[channel];
-			}
-		}
-		CS5532_BYTE(0x00);
-		auxl = CS5532_LONG(0X00000000);
-		aux = (((uint8_t) auxl) & 0x03) + 1;
-		auxl = auxl >> 8;
-		End_CS_Line();
-		vTaskDelay(pdMS_TO_TICKS(10));
+	// Ate 28/08 essa funcao tirava 5 conversoes seguidas e usava a ultima.
+	// Simplificado pra 1 conversao so, espelhando a mesma mudanca feita no
+	// driver do ADS1248 (light_sensor_ads1248.cpp) - com a troca de canal
+	// antecipada (ver light_sensor_select_channel acima) e o assentamento
+	// de 400ms em prepare_test(), a 1a conversao ja deve estar
+	// suficientemente assentada. Nao validado fisicamente (sem hardware
+	// CS5534 disponivel nesta sessao).
+	Inic_CS_Line();
+	switch (channel) {
+	case 0:
+		CS5532_BYTE(CMDH_Channel_Setup_Pt1);
+		break;
+	case 1:
+		CS5532_BYTE(CMDH_Channel_Setup_Pt3);
+		break;
+	case 2:
+		CS5532_BYTE(CMDH_Channel_Setup_Pt5);
+		break;
+	case 3:
+		CS5532_BYTE(CMDH_Channel_Setup_Pt7);
+		break;
 	}
+
+	uint16_t drdy_wait_ms = 0;
+	while (read_mosi_pin()) {
+		vTaskDelay(pdMS_TO_TICKS(10));
+		drdy_wait_ms += 10;
+		if (drdy_wait_ms >= CS5532_DRDY_TIMEOUT_MS) {
+			ESP_LOGE(TAG,
+					"Timeout aguardando DRDY do CS5532/CS5534 (canal %d) - assumindo ultima leitura valida",
+					channel + 1);
+			End_CS_Line();
+
+			if (channel_consecutive_timeouts[channel] < 255)
+				channel_consecutive_timeouts[channel]++;
+
+			return last_valid_channel_value[channel];
+		}
+	}
+	CS5532_BYTE(0x00);
+	auxl = CS5532_LONG(0X00000000);
+	aux = (((uint8_t) auxl) & 0x03) + 1;
+	auxl = auxl >> 8;
+	End_CS_Line();
 
 	last_valid_channel_value[channel] = auxl;
 	channel_consecutive_timeouts[channel] = 0;
-
-//		vTaskDelay(pdMS_TO_TICKS(10));
-//	}
 
 	printf("Read CH%02d %d = %ld\n", channel + 1, aux, auxl);
 #if CONFIG_ADC_DEBUG_SERIAL
@@ -1197,6 +1210,11 @@ long read_channel_value(uint8_t channel) {
 #endif
 
 	return auxl;
+}
+
+long read_channel_value(uint8_t channel) {
+	light_sensor_select_channel(channel);
+	return light_sensor_read_selected_channel(channel);
 }
 
 void setup_cs5534() {

@@ -441,22 +441,79 @@ void set_is_priting(bool ispriting) {
 // 20SPS ja leva ~50ms por conversao sozinho).
 #define HEATER_OFF_BEFORE_READ_MS 300
 
-void prepare_test(int ampoule) {
+// Levantamento de 3 leituras seguidas por canal (27/08) mostrou CH01/CH04
+// caindo de forma quase sempre monotonica (s0>=s1>=s2), compativel com o
+// sinal ainda "em transito" (assentamento analogico) apos a troca de canal
+// do ADS1248 - nao ruido aleatorio. Fix aplicado em 28/08: em vez de deixar
+// a troca de canal (MUX0) acontecer so no fim da janela de
+// aquecedor-desligado (dentro de read_channel_value, como era antes), troca
+// no meio dela. Validado com ampola real (ver historico/Testes/
+// teste280826_Ruido_AD.md): delta medio de CH04 caiu ~8,7x (401,5 -> 45,9)
+// e CH01 tambem melhorou bastante. Sobraram 2 outliers isolados (1 rodada
+// de CH01, 1 de CH02) mesmo com o fix.
+//
+// CHANNEL_SETTLE_MS 200->300ms na mesma sessao, junto com a leitura voltando
+// a ser 1 amostra so (era 3, ver light_sensor_ads1248.cpp): o tempo REAL de
+// aquecedor-desligado por cavidade nao muda com isso. Na versao validada
+// (100ms troca + 200ms assentamento + 3 amostras), a 1a amostra ja saia
+// quase instantanea apos os 200ms (o chip ja tinha conversao pronta), mas a
+// 2a e 3a amostra ainda esperavam ~50ms cada - += 100ms depois da janela
+// (real ~400ms). Com 100ms troca + 300ms assentamento + 1 amostra, a janela
+// cresce pra 400ms mas a leitura unica tambem sai quase instantanea depois
+// dela - real tambem ~400ms. So desloca "2 conversoes extras descartadas"
+// pra "assentamento aproveitado de fato", nao adiciona tempo novo.
+//
+// 300->400ms (28/08, mais tarde na mesma sessao): comparacao com ampola
+// real (2 testes por configuracao, ver historico/Testes/
+// teste280826_Ruido_AD.md) nao foi conclusiva - CV%% variou mais entre
+// repeticoes do MESMO valor de settle (300ms: 1,2%% vs 4,3%% em testes
+// diferentes) do que entre 300 e 400ms. Ficou em 400ms ao final da sessao
+// por decisao do usuario, sem evidencia forte de que seja melhor que 300ms
+// pra esse ruido especifico - precisaria de mais repeticoes de cada lado
+// pra decidir com confianca. Isso so vale pro caminho que troca de canal -
+// nao mexe no HEATER_OFF_BEFORE_READ_MS usado por quem chama sem channel
+// (ex.: calibracao de cavidade).
+#define CHANNEL_SWITCH_DELAY_MS 100
+#define CHANNEL_SETTLE_MS 400
+
+void prepare_test(int ampoule, int channel = -1) {
 // Liga o led UV
 	led_uv_on(ampoule);
 
 	uint32_t capture_ms = (uint32_t) (g_advanced_config.led_capture_time_s
 			* 1000);
-	uint32_t heater_off_ms =
-			(capture_ms > HEATER_OFF_BEFORE_READ_MS) ?
-					HEATER_OFF_BEFORE_READ_MS : capture_ms;
 
-	vTaskDelay(pdMS_TO_TICKS(capture_ms - heater_off_ms));
+	if (channel >= 0) {
+		// Troca o canal no meio da janela de aquecedor-desligado (ver
+		// CHANNEL_SWITCH_DELAY_MS/CHANNEL_SETTLE_MS acima) em vez de deixar
+		// pra leitura trocar no fim - quem chama com channel >= 0 deve ler
+		// com light_sensor_read_selected_channel() depois, nao com
+		// read_channel_value() (que trocaria o canal de novo e desperdicaria
+		// o assentamento).
+		uint32_t heater_off_ms = CHANNEL_SWITCH_DELAY_MS + CHANNEL_SETTLE_MS;
+		uint32_t pre_capture_ms =
+				(capture_ms > heater_off_ms) ? (capture_ms - heater_off_ms) : 0;
 
-// Desliga o aquecedor so na reta final da captura, perto da leitura
-	set_heater_controlling(false);
+		vTaskDelay(pdMS_TO_TICKS(pre_capture_ms));
 
-	vTaskDelay(pdMS_TO_TICKS(heater_off_ms));
+		// Desliga o aquecedor so na reta final da captura, perto da leitura
+		set_heater_controlling(false);
+
+		vTaskDelay(pdMS_TO_TICKS(CHANNEL_SWITCH_DELAY_MS));
+		light_sensor_select_channel((uint8_t) channel);
+		vTaskDelay(pdMS_TO_TICKS(CHANNEL_SETTLE_MS));
+	} else {
+		uint32_t heater_off_ms =
+				(capture_ms > HEATER_OFF_BEFORE_READ_MS) ?
+						HEATER_OFF_BEFORE_READ_MS : capture_ms;
+
+		vTaskDelay(pdMS_TO_TICKS(capture_ms - heater_off_ms));
+
+		// Desliga o aquecedor so na reta final da captura, perto da leitura
+		set_heater_controlling(false);
+
+		vTaskDelay(pdMS_TO_TICKS(heater_off_ms));
+	}
 }
 
 void finalize_test(int ampoule) {
@@ -756,10 +813,12 @@ void ampoule_test(int index) {
 						(g_advanced_config.loop_cycle_time_s * 2);
 			}
 
-			prepare_test(ampoule);
+			prepare_test(ampoule, index);
 
-			// Faz a leitura do sensor
-			long sensor = read_channel_value(index);
+			// Faz a leitura do sensor - canal ja foi selecionado dentro de
+			// prepare_test() (troca antecipada, ver CHANNEL_SWITCH_DELAY_MS),
+			// entao le sem trocar de novo.
+			long sensor = light_sensor_read_selected_channel(index);
 
 			// Religa o aquecedor assim que a leitura termina, antes de
 			// desligar o LED UV (finalize_test la embaixo religa de novo -
