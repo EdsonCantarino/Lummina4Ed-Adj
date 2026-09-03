@@ -180,6 +180,10 @@
                     <input class="form-check-input" type="checkbox" id="mode_crc1">
                     <label class="form-check-label" for="mode_crc1" key="mode_crc1_label">CRC1</label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mode_pa20">
+                    <label class="form-check-label" for="mode_pa20" key="mode_pa20_label">PA20</label>
+                </div>
             </div>
         </div>
 
@@ -290,40 +294,61 @@
         function getOperationMode() {
             if ($("#mode_crc1").is(':checked')) return 'crc1';
             if ($("#mode_eto").is(':checked')) return 'eto';
+            if ($("#mode_pa20").is(':checked')) return 'pa20';
             return 'normal';
         }
 
-        // CRC1: so a cavidade 1 pode ficar habilitada. Enquanto CRC1 estiver
-        // selecionado, trava as 4 cavidades na tela (1 marcada, 2/3/4
-        // desmarcadas, todas desabilitadas) guardando o estado anterior para
-        // restaurar quando o operador voltar para Normal/ETO.
-        let cavityStateBeforeCrc1 = null;
+        // CRC1: so a cavidade 1 pode ficar habilitada. PA20: as 4 cavidades
+        // ficam sempre habilitadas. Enquanto CRC1 ou PA20 estiver
+        // selecionado, trava as 4 cavidades na tela guardando o estado
+        // anterior para restaurar quando o operador voltar para Normal/ETO.
+        let cavityStateBeforeLock = null;
 
         function updateCrc1CavityLock() {
-            let isCrc1 = getOperationMode() === 'crc1';
+            let mode = getOperationMode();
+            let isCrc1 = mode === 'crc1';
+            let isPa20 = mode === 'pa20';
+            let lockCavities = isCrc1 || isPa20;
 
-            if (isCrc1 && cavityStateBeforeCrc1 === null) {
-                cavityStateBeforeCrc1 = [];
+            if (lockCavities && cavityStateBeforeLock === null) {
+                cavityStateBeforeLock = [];
                 for (let i = 1; i <= 4; i++) {
-                    cavityStateBeforeCrc1.push($("#cavity_enabled_" + i).is(':checked'));
+                    cavityStateBeforeLock.push($("#cavity_enabled_" + i).is(':checked'));
                 }
             }
 
-            if (isCrc1) {
+            if (lockCavities) {
                 for (let i = 1; i <= 4; i++) {
-                    $("#cavity_enabled_" + i).prop('checked', i === 1)
+                    $("#cavity_enabled_" + i).prop('checked', isCrc1 ? (i === 1) : true)
                         .prop('disabled', true);
                 }
             } else {
-                if (cavityStateBeforeCrc1 !== null) {
+                if (cavityStateBeforeLock !== null) {
                     for (let i = 1; i <= 4; i++) {
-                        $("#cavity_enabled_" + i).prop('checked', cavityStateBeforeCrc1[i - 1]);
+                        $("#cavity_enabled_" + i).prop('checked', cavityStateBeforeLock[i - 1]);
                     }
-                    cavityStateBeforeCrc1 = null;
+                    cavityStateBeforeLock = null;
                 }
                 for (let i = 1; i <= 4; i++) {
                     $("#cavity_enabled_" + i).prop('disabled', false);
                 }
+            }
+        }
+
+        // PA20: perfil de configuracao inteiro travado na tela (pedido do
+        // cliente 03/09) - o operador nao pode editar esses campos enquanto
+        // PA20 estiver selecionado, ja que o backend forca esses valores de
+        // qualquer forma (ver bloco PA20 em api_advanced_config_post_handler,
+        // app_httpd.cpp). Cavidades sao tratadas por updateCrc1CavityLock().
+        const PA20_LOCKED_FIELD_IDS = ["led_capture_time", "loop_cycle_time",
+            "samples_initial", "samples_final", "early_check_time",
+            "heater_setpoint", "heater_min_temp", "heater_max_temp"];
+
+        function updatePa20FieldLock() {
+            let isPa20 = getOperationMode() === 'pa20';
+
+            for (let i = 0; i < PA20_LOCKED_FIELD_IDS.length; i++) {
+                $("#" + PA20_LOCKED_FIELD_IDS[i]).prop('disabled', isPa20);
             }
         }
 
@@ -340,6 +365,7 @@
         // conforme definido na analise tecnica.
         function recalculateMinimums() {
             updateCrc1CavityLock();
+            updatePa20FieldLock();
 
             let ledCaptureTime = parseFloat($("#led_capture_time").val()) || 0;
             let loopCycleTime = parseInt($("#loop_cycle_time").val()) || 0;
@@ -449,6 +475,15 @@
                 samplesInitial: 5, samplesFinal: 5,
                 earlyCheckTime: 1, cavityEnabled: [true, false, false, false],
                 heaterSetpoint: 60, heaterMinTemp: 53, heaterMaxTemp: 67
+            },
+            // PA20 (pedido do cliente 03/09): perfil inteiro forcado pelo
+            // backend, nao e so um preset editavel como os outros modos -
+            // ver updatePa20FieldLock() e o bloco PA20 em app_httpd.cpp.
+            pa20: {
+                ledCaptureTime: 0.5, loopCycleTime: 12,
+                samplesInitial: 5, samplesFinal: 5,
+                earlyCheckTime: 7, cavityEnabled: [true, true, true, true],
+                heaterSetpoint: 60, heaterMinTemp: 53, heaterMaxTemp: 67
             }
         };
 
@@ -485,6 +520,7 @@
                 $("#mode_normal").prop('checked', data.operationMode === 'normal');
                 $("#mode_eto").prop('checked', data.operationMode === 'eto');
                 $("#mode_crc1").prop('checked', data.operationMode === 'crc1');
+                $("#mode_pa20").prop('checked', data.operationMode === 'pa20');
 
                 for (let i = 1; i <= 4; i++) {
                     $("#cavity_enabled_" + i).prop('checked', data.cavityEnabled[i - 1]);
@@ -546,6 +582,7 @@
                 if ($(this).is(':checked')) {
                     $("#mode_eto").prop('checked', false);
                     $("#mode_crc1").prop('checked', false);
+                    $("#mode_pa20").prop('checked', false);
                     updateCrc1CavityLock();
                     applyModePreset('normal');
                 } else {
@@ -559,6 +596,7 @@
                 if ($(this).is(':checked')) {
                     $("#mode_normal").prop('checked', false);
                     $("#mode_crc1").prop('checked', false);
+                    $("#mode_pa20").prop('checked', false);
                     updateCrc1CavityLock();
                     applyModePreset('eto');
                 } else {
@@ -572,8 +610,23 @@
                 if ($(this).is(':checked')) {
                     $("#mode_normal").prop('checked', false);
                     $("#mode_eto").prop('checked', false);
+                    $("#mode_pa20").prop('checked', false);
                     updateCrc1CavityLock();
                     applyModePreset('crc1');
+                } else {
+                    $(this).prop('checked', true);
+                }
+                recalculateMinimums();
+                recalculateTemperatureHints();
+            });
+
+            $("#mode_pa20").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $("#mode_normal").prop('checked', false);
+                    $("#mode_eto").prop('checked', false);
+                    $("#mode_crc1").prop('checked', false);
+                    updateCrc1CavityLock();
+                    applyModePreset('pa20');
                 } else {
                     $(this).prop('checked', true);
                 }

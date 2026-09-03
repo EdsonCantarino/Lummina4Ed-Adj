@@ -189,7 +189,8 @@
     "card_operation_mode_title": "작동 모드",
     "mode_normal_label": "일반",
     "mode_eto_label": "ETO",
-    "mode_crc1_label": "CRC1"
+    "mode_crc1_label": "CRC1",
+    "mode_pa20_label": "PA20"
   },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "분석이 진행 중인 동안에는 이 설정을 변경할 수 없습니다."

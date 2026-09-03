@@ -9,11 +9,17 @@
 // ampoule_test.cpp), botoes de tempo sem efeito. CRC1: mesmo comportamento
 // de botoes do Normal (tempo selecionavel, beep, LED), porem so a cavidade 1
 // pode ficar habilitada e o minimo absoluto de checagem antecipada cai de 3
-// para 1 minuto.
+// para 1 minuto. PA20: mesmo comportamento de botoes do Normal (selecionavel,
+// beep, LED), mas com a tabela de tempo "de versoes anteriores" (20min/1h/2h/3h,
+// ver ampoule_set_time_test()) e um perfil completo de configuracao forcado
+// pelo backend (4 cavidades habilitadas, checagem antecipada de 7 minutos e
+// os demais parametros do pedido do cliente 03/09) - ver bloco de forcagem em
+// api_advanced_config_post_handler() em app_httpd.cpp.
 typedef enum {
 	OPERATION_MODE_NORMAL = 0,
 	OPERATION_MODE_ETO = 1,
 	OPERATION_MODE_CRC1 = 2,
+	OPERATION_MODE_PA20 = 3,
 } operation_mode_t;
 
 typedef struct {

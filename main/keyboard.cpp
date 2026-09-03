@@ -84,6 +84,29 @@ void disable_buttons_functions() {
 	is_buttons_functions_enabled = false;
 }
 
+// Ver comentario em keyboard.h. So leitura do estado ja mantido por
+// button_event_task - nao mexe em nenhum dos gotchas de escrita
+// concorrente ja documentados (xTaskNotify/led_panel).
+int keyboard_get_time_level(int ampoule_id) {
+	int button;
+
+	switch (ampoule_id) {
+	case 1: button = BUTTON_1; break;
+	case 2: button = BUTTON_2; break;
+	case 3: button = BUTTON_3; break;
+	case 4: button = BUTTON_4; break;
+	default: return 0;
+	}
+
+	for (int idx = 0; idx < button_count; idx++) {
+		if (buttons_history[idx].button == button) {
+			return buttons_history[idx].level - 1;
+		}
+	}
+
+	return 0;
+}
+
 bool button_rose(buttons_history_t *d) {
 	if ((d->history & MASK) == 0b0000000000111111) {
 		d->history = 0xffff;

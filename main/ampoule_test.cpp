@@ -750,11 +750,21 @@ void ampoule_test(int index) {
 			// ETO e fixo em 20 min (botao de tempo fica desabilitado nesse
 			// modo, ver keyboard.cpp) - forcado aqui, no inicio do teste,
 			// porque time_test pode ter ficado com um valor herdado de
-			// Normal/CRC1 (5 min por padrao) se o modo foi trocado pela
-			// tela web sem reboot.
+			// outro modo se o modo foi trocado pela tela web sem reboot.
 			if (g_advanced_config.operation_mode == OPERATION_MODE_ETO) {
 				ampoules[index].time_test = 20 * 60;
 				time = 20 * 60;
+			} else {
+				// Normal/CRC1/PA20: re-sincroniza com a posicao real do
+				// botao de tempo dessa cavidade. Sem isso, time_test podia
+				// ficar parado no residual de boot (DEFAULT_TIME_TEST=5min)
+				// ou na tabela de outro modo se o botao nunca foi tocado
+				// desde o boot/troca de modo - achado real em bancada
+				// (03/09): ampola inserida direto apos trocar pra PA20
+				// rodou com 5min em vez dos 20min esperados no nivel
+				// inicial da tabela do PA20.
+				ampoule_set_time_test(ampoule, keyboard_get_time_level(ampoule));
+				time = ampoules[index].time_test;
 			}
 
 			set_date_time(index, true);
@@ -1270,10 +1280,21 @@ void ampoule_set_time_test(int id, int level) {
 
 	printf("LEVEL %d\n", level);
 
-	// Sequencia de tempos nos botoes fisicos: 5min -> 20min -> 1h -> 3h
-	// (level vem de keyboard.cpp como d->level-1, entao 0 e o default/nivel
-	// inicial). Antes era 20min -> 1h -> 2h -> 3h.
-	if (level == 1) {
+	// PA20 usa a tabela de tempo "de versoes anteriores" (pedido do cliente
+	// 03/09): 20min -> 1h -> 2h -> 3h, sem o 5min que os outros modos tem.
+	// Normal/CRC1 usam a sequencia atual: 5min -> 20min -> 1h -> 3h (level
+	// vem de keyboard.cpp como d->level-1, entao 0 e o default/nivel inicial).
+	if (g_advanced_config.operation_mode == OPERATION_MODE_PA20) {
+		if (level == 1) {
+			time = 60 * 60;
+		} else if (level == 2) {
+			time = 2 * 60 * 60;
+		} else if (level == 3) {
+			time = 3 * 60 * 60;
+		} else {
+			time = 20 * 60;
+		}
+	} else if (level == 1) {
 		time = 20 * 60;
 	} else if (level == 2) {
 		time = 60 * 60;

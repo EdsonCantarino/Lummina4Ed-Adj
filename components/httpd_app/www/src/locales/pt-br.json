@@ -188,7 +188,8 @@
     "card_operation_mode_title": "Modo de Operação",
     "mode_normal_label": "Normal",
     "mode_eto_label": "ETO",
-    "mode_crc1_label": "CRC1"
+    "mode_crc1_label": "CRC1",
+    "mode_pa20_label": "PA20"
   },
   "#test_in_progress_alert": {
     "test_in_progress_msg": "Não é possível alterar essa configuração enquanto houver análises em andamento."

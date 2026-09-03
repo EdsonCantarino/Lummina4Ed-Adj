@@ -1,0 +1,5 @@
+#
+# Overlay de SDKCONFIG_DEFAULTS para forcar CS5534 (ver compila_Lummina4EdAdj.ps1 -Adc)
+#
+CONFIG_ADC_CHIP_CS5534=y
+# CONFIG_ADC_CHIP_ADS1248 is not set

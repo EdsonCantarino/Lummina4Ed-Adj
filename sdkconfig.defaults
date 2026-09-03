@@ -27,7 +27,7 @@ CONFIG_HTTPD_PURGE_BUF_LEN=32
 #
 # ADC (conversor analogico)
 #
-CONFIG_ADC_CHIP_CS5534=y
+CONFIG_ADC_CHIP_ADS1248=y
 # end of ADC (conversor analogico)
 
 #

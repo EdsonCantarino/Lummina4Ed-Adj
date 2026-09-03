@@ -64,7 +64,8 @@ static void log_config(const char *prefix, const advanced_config_t &cfg) {
 			cfg.heater_setpoint_c, cfg.heater_min_temp_c,
 			cfg.heater_release_temp_c, cfg.heater_max_temp_c,
 			cfg.operation_mode == OPERATION_MODE_CRC1 ? "CRC1" :
-			cfg.operation_mode == OPERATION_MODE_ETO ? "ETO" : "Normal");
+			cfg.operation_mode == OPERATION_MODE_ETO ? "ETO" :
+			cfg.operation_mode == OPERATION_MODE_PA20 ? "PA20" : "Normal");
 }
 
 static AreaState read_area(const char *key, advanced_config_t &out) {

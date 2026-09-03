@@ -545,8 +545,8 @@ CONFIG_DEFAULT_BASIC_AUTH_PASSWORD="suporte@2022!!"
 #
 # ADC (conversor analogico)
 #
-# CONFIG_ADC_CHIP_CS5534 is not set
-CONFIG_ADC_CHIP_ADS1248=y
+CONFIG_ADC_CHIP_CS5534=y
+# CONFIG_ADC_CHIP_ADS1248 is not set
 CONFIG_ADC_DEBUG_SERIAL=y
 # end of ADC (conversor analogico)
 

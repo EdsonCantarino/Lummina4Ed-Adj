@@ -55,4 +55,9 @@ void turn_on_buzzer_button();
 void enable_buttons_functions();
 void disable_buttons_functions();
 
+// Nivel atual do botao de tempo da cavidade (id 1-4), no mesmo formato
+// usado por ampoule_set_time_test()/button_event_task (0 = LED apagado/
+// nivel inicial, 1-3 = LED P1/P2/P3). Ampoule id invalido retorna 0.
+int keyboard_get_time_level(int ampoule_id);
+
 #endif

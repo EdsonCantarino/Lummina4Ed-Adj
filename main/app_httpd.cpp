@@ -1264,6 +1264,7 @@ static esp_err_t api_advanced_config_get_handler(httpd_req_t *req) {
 	const char *operation_mode_str =
 			g_advanced_config.operation_mode == OPERATION_MODE_CRC1 ? "crc1" :
 			g_advanced_config.operation_mode == OPERATION_MODE_ETO ? "eto" :
+			g_advanced_config.operation_mode == OPERATION_MODE_PA20 ? "pa20" :
 					"normal";
 	cJSON_AddStringToObject(root, "operationMode", operation_mode_str);
 
@@ -1407,6 +1408,8 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 			cfg.operation_mode = OPERATION_MODE_CRC1;
 		else if (strcmp(item->valuestring, "eto") == 0)
 			cfg.operation_mode = OPERATION_MODE_ETO;
+		else if (strcmp(item->valuestring, "pa20") == 0)
+			cfg.operation_mode = OPERATION_MODE_PA20;
 		else
 			cfg.operation_mode = OPERATION_MODE_NORMAL;
 	}
@@ -1439,6 +1442,27 @@ static esp_err_t api_advanced_config_post_handler(httpd_req_t *req) {
 		cfg.cavity_enabled[2] = false;
 		cfg.cavity_enabled[3] = false;
 		cavities_enabled_count = 1;
+	}
+
+	// PA20: perfil de configuracao inteiro forcado pelo backend (pedido do
+	// cliente 03/09), igual o CRC1 forca a cavidade unica - independente do
+	// que a tela web enviou (defesa contra requisicao manual/fora da tela).
+	if (cfg.operation_mode == OPERATION_MODE_PA20) {
+		cfg.cavity_enabled[0] = true;
+		cfg.cavity_enabled[1] = true;
+		cfg.cavity_enabled[2] = true;
+		cfg.cavity_enabled[3] = true;
+		cavities_enabled_count = 4;
+
+		cfg.led_capture_time_s = 0.5f;
+		cfg.loop_cycle_time_s = 12;
+		cfg.samples_initial = 5;
+		cfg.samples_final = 5;
+		cfg.early_check_time_s = 7 * 60;
+		cfg.heater_setpoint_c = 60.0f;
+		cfg.heater_min_temp_c = 53.0f;
+		cfg.heater_max_temp_c = 67.0f;
+		cfg.heater_release_temp_c = 55.0f;
 	}
 
 	// Validacao defensiva no firmware - independente da validacao ja
